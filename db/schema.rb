@@ -10,9 +10,60 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_29_163624) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_30_105024) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "consultations", force: :cascade do |t|
+    t.date "start_date"
+    t.integer "duration_in_min"
+    t.bigint "patient_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["patient_id"], name: "index_consultations_on_patient_id"
+    t.index ["user_id"], name: "index_consultations_on_user_id"
+  end
+
+  create_table "notes", force: :cascade do |t|
+    t.text "content"
+    t.boolean "favorite"
+    t.bigint "creation_consultation_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["creation_consultation_id"], name: "index_notes_on_creation_consultation_id"
+  end
+
+  create_table "patients", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "address"
+    t.string "email"
+    t.string "tel_number"
+    t.string "ss_number"
+    t.string "referring_doctor"
+    t.string "emergency_contact_name"
+    t.string "emergency_contact_tel"
+    t.date "birth_day"
+    t.integer "height"
+    t.integer "weight"
+    t.string "blood_type"
+    t.bigint "referring_user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["referring_user_id"], name: "index_patients_on_referring_user_id"
+  end
+
+  create_table "treatments", force: :cascade do |t|
+    t.string "category"
+    t.string "sub_category"
+    t.boolean "done"
+    t.text "content"
+    t.bigint "consultation_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["consultation_id"], name: "index_treatments_on_consultation_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,8 +73,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_29_163624) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "tel_number"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "consultations", "patients"
+  add_foreign_key "consultations", "users"
+  add_foreign_key "notes", "consultations", column: "creation_consultation_id"
+  add_foreign_key "patients", "users", column: "referring_user_id"
+  add_foreign_key "treatments", "consultations"
 end
