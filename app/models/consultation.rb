@@ -4,4 +4,6 @@ class Consultation < ApplicationRecord
 
   has_many :notes, foreign_key: :creation_consultation_id
   has_many :treatments
+
+  validates :start_date, presence: true
 end
