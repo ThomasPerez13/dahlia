@@ -4,4 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :patients, foreign_key: :referring_user_id
+  has_many :consultations
+
 end
