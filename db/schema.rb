@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_30_105024) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_31_153617) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "consultations", force: :cascade do |t|
     t.date "start_date"
-    t.integer "duration_in_min"
+    t.integer "duration_in_min", default: 30
     t.bigint "patient_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
