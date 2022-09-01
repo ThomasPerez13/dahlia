@@ -23,5 +23,7 @@ Rails.application.routes.draw do
         patch :mark_as_done
       end
     end
+
+    "/component" to: "pages#component"
   end
 end
