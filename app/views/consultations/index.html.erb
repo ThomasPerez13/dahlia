@@ -1,0 +1,12 @@
+<h1> <%= Date.today.strftime('%A %d %b') %> </h1>
+
+<ul>
+  <% @consultations.each do |consultation| %>
+    <li><%= consultation.patient.first_name %></li>
+    <li><%= consultation.patient.last_name %></li>
+    <li><%= consultation.patient.address %></li>
+    <% consultation.treatments.each do |treatment| %>
+      <li> <%= treatment.category %></li>
+    <% end %>
+  <% end %>
+</ul>
