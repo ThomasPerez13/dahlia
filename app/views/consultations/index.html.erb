@@ -8,5 +8,6 @@
     <% consultation.treatments.each do |treatment| %>
       <li> <%= treatment.category %></li>
     <% end %>
+    <li><%= consultation.start_date.strftime("%I:%M") %></li>
   <% end %>
 </ul>
