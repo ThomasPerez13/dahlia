@@ -37,16 +37,16 @@ jade = Patient.create!(first_name: "Louise", last_name: "Lambert", address: "10 
 puts "loading consultations..."
 
 # Consultations de Isabelle le 12 septembre 2022
-consultation1_isa = Consultation.create!(patient: alexandre, user: isabelle, start_date: "12/09/22")
-consultation2_isa = Consultation.create!(patient: catherine, user: isabelle, start_date: "12/09/22")
-consultation3_isa = Consultation.create!(patient: florent, user: isabelle, start_date: "12/09/22")
-consultation4_isa = Consultation.create!(patient: jade, user: isabelle, start_date: "12/09/22")
-consultation5_isa = Consultation.create!(patient: emma, user: isabelle, start_date: "12/09/22")
-consultation6_isa = Consultation.create!(patient: alexandre, user: isabelle, start_date: "12/09/22")
-consultation7_isa = Consultation.create!(patient: catherine, user: isabelle, start_date: "12/09/22")
-consultation8_isa = Consultation.create!(patient: florent, user: isabelle, start_date: "12/09/22")
-consultation9_isa = Consultation.create!(patient: jade, user: isabelle, start_date: "12/09/22")
-consultation10_isa = Consultation.create!(patient: emma, user: isabelle, start_date: "12/09/22")
+consultation1_isa = Consultation.create!(patient: alexandre, user: isabelle, start_date: DateTime.parse("22/09/12 07:00"))
+consultation2_isa = Consultation.create!(patient: catherine, user: isabelle, start_date: DateTime.parse("22/09/12 07:30"))
+consultation3_isa = Consultation.create!(patient: florent, user: isabelle, start_date: DateTime.parse("22/09/12 08:00"))
+consultation4_isa = Consultation.create!(patient: jade, user: isabelle, start_date: DateTime.parse("22/09/12 08:30"))
+consultation5_isa = Consultation.create!(patient: emma, user: isabelle, start_date: DateTime.parse("22/09/12 09:00"))
+consultation6_isa = Consultation.create!(patient: alexandre, user: isabelle, start_date: DateTime.parse("22/09/12 09:30"))
+consultation7_isa = Consultation.create!(patient: catherine, user: isabelle, start_date: DateTime.parse("22/09/12 10:00"))
+consultation8_isa = Consultation.create!(patient: florent, user: isabelle, start_date: DateTime.parse("22/09/12 10:30"))
+consultation9_isa = Consultation.create!(patient: jade, user: isabelle, start_date: DateTime.parse("22/09/12 11:00"))
+consultation10_isa = Consultation.create!(patient: emma, user: isabelle, start_date: DateTime.parse("22/09/12 11:30"))
 
 # Consultations de Nicolas
 consultation_catherine = Consultation.create!(patient: catherine, user: nicolas, start_date: "01/09/22")
