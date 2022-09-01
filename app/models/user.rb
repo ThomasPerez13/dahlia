@@ -9,7 +9,5 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :tel_number, presence: true
-  validates :email, presence: true
-
-  validates :email, format: { with: /\A.*@.*\.com\z/ }
+  validates :email, presence: true, format: { with: /\A.*@.*\.com\z/ }
 end
