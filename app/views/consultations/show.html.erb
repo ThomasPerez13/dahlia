@@ -1,0 +1,25 @@
+<ul>
+    <li><%= @consultation.patient.first_name %></li>
+    <li><%= @consultation.patient.last_name %></li>
+    <li><%= @consultation.patient.address %></li>
+    <% @consultation.treatments.each do |treatment| %>
+      <li> <%= treatment.category %></li>
+    <% end %>
+</ul>
+
+<ul>
+    <% @consultation.treatments.each do |treatment| %>
+      <li> <%= treatment.content %></li>
+    <% end %>
+</ul>
+
+<h5><%= link_to "Ajouter un soin", new_consultation_treatment_path(@consultation)%></h5>
+
+<ul>
+    <% @notes.each do |note| %>
+      <li> <%= note.content %></li>
+    <% end %>
+</ul>
+
+<h5>Terminer la consultation</h5>
+
