@@ -5,6 +5,27 @@
 $body-font: "Roboto", "sans-serif";
 $headers-font: "Montserrat", "sans-serif";
 
+h1 {
+  font-size: 40px;
+  font-family: $headers-font;
+}
+
+h2 {
+  font-size: 30px;
+  font-family: $headers-font;
+}
+
+h3 {
+  font-size: 20px;
+  font-family: $headers-font;
+}
+
+p {
+  font-size: 14px;
+  font-family: $body-font;
+}
+
+
 // To use a font file (.woff) uncomment following lines
 // @font-face {
 //   font-family: "Font Name";
