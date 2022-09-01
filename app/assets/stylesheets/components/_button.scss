@@ -1,15 +1,79 @@
 .btn-submit {
   color: white;
-  background-color: #A75AA2;
+  background-color: $primary-button;
   height: 37px;
   width: 256px;
   left: 0px;
   top: 0px;
   border-radius: 30px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 .btn-submit:hover {
-  background-color: #A75AA2;
+  background-color: $primary-button;
   color: white;
   stroke: none;
+}
+
+.btn-add-treatment{
+  color: $purpureus;
+  background-color: white;
+  height: 37px;
+  width: 256px;
+  left: 0px;
+  top: 0px;
+  border-radius: 30px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.btn-add-treatment:hover {
+  background-color: white;
+  color: $purpureus;
+  stroke: none;
+}
+
+.btn-add{
+  color: $oxford-blue;
+  background-color: transparent;
+  border: solid $oxford-blue;
+  height: 37px;
+  width: 256px;
+  left: 0px;
+  top: 0px;
+  border-radius: 30px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.btn-add:hover {
+  background-color: transparent;
+  color: $oxford-blue;
+  stroke: none;
+}
+
+.btn-create {
+  height: 30px;
+  background-color: $magnolia;
+  width: 30px;
+  border-radius: 50px;
+  font-size: 30px;
+  font-weight: bold;
+  display: grid;
+  place-content: center;
+  color: $purpureus;
+  padding: 0px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.btn-create:hover {
+  height: 30px;
+  color: $purpureus;
+  background-color: $magnolia;
+  width: 30px;
+  border-radius: 50px;
+  font-size: 30px;
+  font-weight: bold;
+  display: grid;
+  place-content: center;
+  padding: 0px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
