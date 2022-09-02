@@ -1,0 +1,38 @@
+<header class="header" id="header">
+    <nav class="nav container">
+        <div class="nav__menu" id="nav-menu">
+          <% if user_signed_in? %>
+            <div class="nav__list">
+                <div class="nav__item">
+                    <a href="/consultations" class="nav__link active-link">
+                        <i class="fa-solid fa-house"></i>
+                        <span class="nav__name">Accueil</span>
+                    </a>
+                </div>
+                <div class="nav__item">
+                    <a href="/" class="nav__link">
+                        <i class="fa-solid fa-calendar-days"></i>
+                        <span class="nav__name">Consultations</span>
+                    </a>
+                </div>
+                <div class="nav__item">
+                    <a href="/" class="nav__link">
+                        <i class="fa-solid fa-bed-pulse"></i>
+                        <span class="nav__name">Patients</span>
+                    </a>
+                </div>
+                <div class="nav__item">
+                    <a href="/" class="nav__link">
+                        <i class="fa-solid fa-user-nurse"></i>
+                        <span class="nav__name">Mon compte</span>
+                    </a>
+                </div>
+            </div>
+          <% else %>
+            <div class="nav__list nav__item nav__link">
+              <%= link_to "Login", new_user_session_path, class: "nav__name" %>
+            </div>
+          <% end %>
+        </div>
+    </nav>
+</header>
