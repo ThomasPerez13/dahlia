@@ -1,6 +1,6 @@
-<h1> <%= Date.today.strftime('%A %d %b') %> </h1>
+<h1 class="d-flex justify-content-center"> <%= Date.today.strftime('%A %d %b') %> </h1>
 
-<ul>
+<!-- <ul>
   <% @consultations.each do |consultation| %>
     <li><%= consultation.patient.first_name %></li>
     <li><%= consultation.patient.last_name %></li>
@@ -8,6 +8,55 @@
     <% consultation.treatments.each do |treatment| %>
       <li> <%= treatment.category %></li>
     <% end %>
-    <li><%= consultation.start_date.strftime("%I:%M") %></li>
+    <li></li>
   <% end %>
-</ul>
+</ul> -->
+
+
+
+  <% @consultations.each do |consultation| %>
+    <div class="card-consult-calendar d-flex justify-content-evenly">
+     <%= consultation.start_date.strftime("%I:%M") %>
+      <div class="card-consult">
+        <div class="card-consult-header">
+          <%= image_tag "avatar_homme.svg" %>
+          <div class="card-info">
+            <div class="card-patient-name">
+              <%= consultation.patient.first_name %> <%= consultation.patient.last_name %>
+            </div>
+            <div class="info-adresse">
+              <i class="fa-solid fa-location-dot"></i>
+              <div class="text-adresse"> <%= consultation.patient.address %> </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-traitement">
+        <% consultation.treatments.each do |treatment| %>
+              <div class="tag-soins prelevement"><%= treatment.category %></div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+  <% end %>
+
+
+
+<div class="card-consult">
+  <div class="card-consult-header">
+    <%= image_tag "avatar_homme.svg" %>
+    <div class="card-info">
+      <div class="card-patient-name">
+        Raphaël Hamou
+      </div>
+       <div class="info-adresse">
+        <i class="fa-solid fa-location-dot"></i>
+        <div class="text-adresse">6 rue Bonamie - Nantes</div>
+      </div>
+    </div>
+  </div>
+  <div class="card-traitement">
+    <div class="tag-soins prelevement">Prélèvement</div>
+    <div class="tag-soins medicament">Médicament</div>
+  </div>
+</div>
