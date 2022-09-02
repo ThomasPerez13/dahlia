@@ -1,6 +1,6 @@
 // Import Google fonts
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;700&display=swap');
-
+@import "colors";
 // Define fonts for body and headers
 $body-font: "Roboto", "sans-serif";
 $headers-font: "Montserrat", "sans-serif";
@@ -8,6 +8,7 @@ $headers-font: "Montserrat", "sans-serif";
 h1 {
   font-size: 40px;
   font-family: $headers-font;
+  color: $oxford-blue;
 }
 
 h2 {
@@ -21,8 +22,9 @@ h3 {
 }
 
 p {
-  font-size: 14px;
+  font-size: 12px;
   font-family: $body-font;
+  color: $oxford-blue;
 }
 
 
