@@ -1,0 +1,40 @@
+#checkbox-custom {
+  height: 45px;
+  width: 340px;
+  left: 18px;
+  top: 356px;
+  border-radius: 12px;
+  background-color: white;
+
+
+  p {
+    font-weight: bold;
+    margin: 0;
+    color: $oxford-blue;
+  }
+
+  .checkbox-wrapper {
+    display: flex;
+    // flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding-left: 15px ;
+    padding-right: 15px ;
+  }
+
+
+
+  .my-checkbox + label {
+    background-color: white;
+    border: 1px solid black;
+    width: 20px;
+    height: 100%;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  .my-checkbox:checked + label {
+    background-color: green;
+  }
+}

@@ -1,0 +1,30 @@
+.note-content{
+  padding: 10px;
+  background-color: #FAF6FA;
+  height: 68px;
+  width: 280px;
+  left: 50px;
+  top: 554px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 110%;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+  margin: auto;
+  margin-bottom: 15px;
+}
+
+.card-note {
+  width: 350px;
+  padding: 1.9rem 1.2rem;
+  text-align: center;
+  background-color: white;
+  border-radius: 20px;
+    // margin-left: 10px;
+  border: 1px #C264BC solid;
+  margin: 30px
+  }
+
+  #add-note {
+  margin: auto;
+}
