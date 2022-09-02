@@ -8,7 +8,7 @@
 
 <%# Login %>
 <h3>Login</h3>
-<div class="card">
+<div class="card-login">
   <h4 class="title">Log In!</h4>
   <form>
     <div class="field">
@@ -57,3 +57,109 @@
     <a class="btn btn-add" href="#">Ajouter une note</a>
   </div>
 </div>
+
+<%# Card %>
+<h3>Card homme</h3>
+<h4>waiting</h4>
+<div class="card-consult">
+  <div class="card-consult-header">
+    <%= image_tag "avatar_homme.svg" %>
+    <div class="card-info">
+      <div class="card-patient-name">
+        Raphaël Hamou
+      </div>
+       <div class="info-adresse">
+        <i class="fa-solid fa-location-dot"></i>
+        <div class="text-adresse">6 rue Bonamie - Nantes</div>
+      </div>
+    </div>
+  </div>
+  <div class="card-traitement">
+    <div class="tag-soins prelevement">Prélèvement</div>
+    <div class="tag-soins medicament">Médicament</div>
+  </div>
+</div>
+
+<h4>done</h4>
+<div class="card-done">
+  <div class="card-consult-done">
+    <div class="card-consult-header">
+      <%= image_tag "avatar_homme.svg" %>
+      <div class="card-info">
+        <div class="card-patient-name">
+          Raphaël Hamou
+        </div>
+        <div class="info-adresse">
+          <i class="fa-solid fa-location-dot"></i>
+          <div class="text-adresse">6 rue Bonamie - Nantes</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-traitement">
+      <div class="tag-soins prelevement">Prélèvement</div>
+      <div class="tag-soins medicament">Médicament</div>
+    </div>
+  </div>
+</div>
+
+
+<h3>Card femme</h3>
+<h4>waiting</h4>
+<div class="card-consult">
+  <div class="card-consult-header">
+    <%= image_tag "avatar_femme.svg" %>
+    <div class="card-info">
+      <div class="card-patient-name">
+        Sylvie Bariol
+      </div>
+       <div class="info-adresse">
+        <i class="fa-solid fa-location-dot"></i>
+        <div class="text-adresse">25 rue Boileau - Nantes</div>
+      </div>
+    </div>
+  </div>
+  <div class="card-traitement">
+    <div class="tag-soins aide_domicile">Aide domicile</div>
+    <div class="tag-soins diabetique">Diabétique</div>
+  </div>
+</div>
+
+<h4>done</h4>
+<div class="card-done">
+  <div class="card-consult-done">
+    <div class="card-consult-header">
+      <%= image_tag "avatar_femme.svg" %>
+      <div class="card-info">
+        <div class="card-patient-name">
+          Sylvie Bariol
+        </div>
+        <div class="info-adresse">
+          <i class="fa-solid fa-location-dot"></i>
+          <div class="text-adresse">25 rue Boileau - Nantes</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-traitement">
+      <div class="tag-soins aide_domicile">Aide domicile</div>
+      <div class="tag-soins diabetique">Diabétique</div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<%# catégories soins %>
+<h3>catégories soins</h3>
+<div class="tag-soins">
+  <div class="tag-soins injection">Injection</div>
+  <div class="tag-soins pansement">Pansement</div>
+  <div class="tag-soins prelevement">Prélèvement</div>
+  <div class="tag-soins hygiene">Hygiene</div>
+  <div class="tag-soins perfusion">Perfusion</div>
+  <div class="tag-soins aide_domicile">Aide domicile</div>
+  <div class="tag-soins medicament">Médicament</div>
+  <div class="tag-soins diabetique">Diabétique</div>
+  <div class="tag-soins autre">Autre</div>
+</div>
+
