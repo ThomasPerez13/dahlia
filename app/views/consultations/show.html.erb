@@ -1,53 +1,55 @@
-<div class="card-consult">
-  <div class="card-consult-header">
-    <%= image_tag "avatar_homme.svg" %>
-    <div class="card-info">
-      <div class="card-patient-name">
-        <%= @consultation.patient.first_name %>  <%= @consultation.patient.last_name %>
-      </div>
-      <div class="info-adresse">
-        <i class="fa-solid fa-location-dot"></i>
-        <div class="text-adresse"><%= @consultation.patient.address %></div>
+<div class="show-consultation">
+  <div class="card-consult">
+    <div class="card-consult-header">
+      <%= image_tag "avatar_homme.svg" %>
+      <div class="card-info">
+        <div class="card-patient-name">
+          <%= @consultation.patient.first_name %>  <%= @consultation.patient.last_name %>
+        </div>
+        <div class="info-adresse">
+          <i class="fa-solid fa-location-dot"></i>
+          <div class="text-adresse"><%= @consultation.patient.address %></div>
+        </div>
       </div>
     </div>
+    <div class="card-traitement">
+       <% @consultation.treatments.each do |treatment| %>
+          <div class="tag-soins <%= treatment.category.downcase %>"> <%= treatment.category %></div>
+        <% end %>
+    </div>
   </div>
-  <div class="card-traitement">
-    <% @consultation.treatments.each do |treatment| %>
-      <div class="tag-soins prelevement"><%= treatment.category %></div>
-    <% end %>
-  </div>
+
+
+  <% @consultation.treatments.each do |treatment| %>
+    <div id="checkbox-custom" class="checkbox-container" >
+      <div class="checkbox-wrapper">
+        <div class="d-flex">
+          <%= image_tag "picto-medicament.svg" %>
+            <p class="p-3"><%= treatment.content %></p>
+        </div>
+        <div class="check">
+          <%= radio_button_tag :test, nil, nil, class:"my-checkbox" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+
+  <%= link_to "Ajouter un soin", new_consultation_treatment_path(@consultation), class:"btn btn-add-treatment" %>
+
+
+  <% @notes.each do |note| %>
+    <div class="card-note">
+    <div class="top-note">
+        <h5>Notes :</h5>
+        <div class="note-content">
+          <p><%= note.content %></p>
+          <i class="fa-regular fa-star"></i>
+        </div>
+      </div>
+        <%= link_to "Ajouter une note", new_consultation_note_path(@consultation), class:"btn btn-add"%>
+    </div>
+  <% end %>
+
+  <%= link_to "Terminer la consultation", consultations_path,class:"btn btn-submit" %>
 </div>
-
-
-<% @consultation.treatments.each do |treatment| %>
-  <div id="checkbox-custom" class="checkbox-container" >
-    <div class="checkbox-wrapper">
-      <div class="d-flex">
-        <%= image_tag "picto-medicament.svg" %>
-          <p class="p-3"><%= treatment.content %></p>
-      </div>
-      <div class="check">
-        <%= radio_button_tag :test, nil, nil, class:"my-checkbox" %>
-      </div>
-    </div>
-  </div>
- <% end %>
-
-
-<%= link_to "Ajouter un soin", new_consultation_treatment_path(@consultation), class:"btn btn-add-treatment" %>
-
-
-<% @notes.each do |note| %>
-  <div class="card-note">
-  <div class="top-note">
-      <h5>Notes :</h5>
-      <div class="note-content">
-        <p><%= note.content %></p>
-        <i class="fa-regular fa-star"></i>
-      </div>
-    </div>
-      <%= link_to "Ajouter une note", new_consultation_note_path(@consultation), class:"btn btn-add"%>
-  </div>
-<% end %>
-
-<%= link_to "Terminer la consultation", consultations_path,class:"btn btn-submit" %>

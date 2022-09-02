@@ -1,5 +1,26 @@
-.top-note{
-  h5{
-    color: $oxford-blue;
+
+
+.show-consultation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-block: 48px;
+
+
+  .card-consult{
+    margin-bottom: 27px;
+  }
+
+  #checkbox-custom{
+    margin-bottom: 18px;
+  }
+
+  .btn-add-treatment{
+    margin-top: 17px;
+  }
+  .top-note{
+    h5{
+      color: $oxford-blue;
+    }
   }
 }
