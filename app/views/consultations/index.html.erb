@@ -1,4 +1,4 @@
-<h1 class="d-flex justify-content-center"> <%= Date.today.strftime('%A %d %b') %> </h1>
+<h1 class="d-flex justify-content-center m-3"> <%= Date.today.strftime('%A %d %b') %> </h1>
 
 <!-- <ul>
   <% @consultations.each do |consultation| %>
@@ -16,47 +16,31 @@
 
   <% @consultations.each do |consultation| %>
     <div class="card-consult-calendar d-flex justify-content-evenly">
-     <%= consultation.start_date.strftime("%I:%M") %>
-      <div class="card-consult">
-        <div class="card-consult-header">
-          <%= image_tag "avatar_homme.svg" %>
-          <div class="card-info">
-            <div class="card-patient-name">
-              <%= consultation.patient.first_name %> <%= consultation.patient.last_name %>
-            </div>
-            <div class="info-adresse">
-              <i class="fa-solid fa-location-dot"></i>
-              <div class="text-adresse"> <%= consultation.patient.address %> </div>
+      <%= consultation.start_date.strftime("%I:%M") %>
+
+      <%# LINK %>
+      <%= link_to consultation_path(consultation.id) do %>
+        <div class="card-consult">
+
+          <div class="card-consult-header">
+            <%= image_tag "avatar_homme.svg" %>
+            <div class="card-info">
+              <div class="card-patient-name">
+                <%= consultation.patient.first_name %> <%= consultation.patient.last_name %>
+              </div>
+              <div class="info-adresse">
+                <i class="fa-solid fa-location-dot"></i>
+                <div class="text-adresse"> <%= consultation.patient.address %></div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="card-traitement">
-        <% consultation.treatments.each do |treatment| %>
-              <div class="tag-soins prelevement"><%= treatment.category %></div>
-          <% end %>
-        </div>
-      </div>
-    </div>
 
+          <div class="card-traitement">
+            <% consultation.treatments.each do |treatment| %>
+              <div class="tag-soins <%= treatment.category.downcase %>"> <%= treatment.category %></div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
   <% end %>
-
-
-
-<div class="card-consult">
-  <div class="card-consult-header">
-    <%= image_tag "avatar_homme.svg" %>
-    <div class="card-info">
-      <div class="card-patient-name">
-        Raphaël Hamou
-      </div>
-       <div class="info-adresse">
-        <i class="fa-solid fa-location-dot"></i>
-        <div class="text-adresse">6 rue Bonamie - Nantes</div>
-      </div>
-    </div>
-  </div>
-  <div class="card-traitement">
-    <div class="tag-soins prelevement">Prélèvement</div>
-    <div class="tag-soins medicament">Médicament</div>
-  </div>
-</div>
