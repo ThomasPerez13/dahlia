@@ -4,8 +4,6 @@
 <h3>Titre h3 : Voilà ce que ça donne </h3>
 <p>Text normal : Voilà ce que ça donne </p>
 
-
-
 <%# Login %>
 <h3>Login</h3>
 <div class="card">
@@ -26,7 +24,6 @@
   </form>
 </div>
 
-
 <%#Buttons%>
 <h3>Buttons</h3>
 <a class="btn btn-submit" href="#">Primary button</a>
@@ -34,9 +31,25 @@
 <a class="btn btn-add" href="#">tertiary button</a>
 <a class="btn btn-create" href="#">+</a>
 
+<%# Checkbox treatment %>
+<h3>Checkbox</h3>
+<div id="checkbox-custom" class="checkbox-container">
+  <div class="checkbox-wrapper">
+    <div class="d-flex">
+      <%= image_tag "picto-medicament.svg" %>
+      <p class="p-3">Soin à écrire</p>
+    </div>
+    <div class="check">
+      <%= radio_button_tag :test, nil, nil, class:"my-checkbox" %>
+    </div>
+  </div>
+</div>
+
+
+
 <%# Input %>
 <h3>Input</h3>
-<div class="input-g">
+<div id="input-custom" class="input-g">
   <input required="" type="text" name="text" autocomplete="off" class="input">
   <label class="user-label">First Name</label>
 </div>
