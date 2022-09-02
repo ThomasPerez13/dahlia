@@ -1,15 +1,13 @@
 .container_center {
-height: 100%;
+  text-align: center;
 }
 
 .container_logo {
-  height: 100%;
-  text-align: center;
-  display: flex;
-  justify-content: center;
+  display: inline-block;
 }
 
 .logo_home {
+  margin-top: 50%;
   width: 300px;
   border-radius: 50%;
   border: $magnolia 1px solid;
