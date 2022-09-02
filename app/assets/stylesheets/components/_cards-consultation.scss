@@ -1,0 +1,92 @@
+
+.card-done {
+  height: min-content;
+  width: min-content;
+  background: #FFFFFF;
+  opacity: 0.5;
+  border-radius: 20px;
+}
+
+.card-consult-done {
+  left: 0%;
+  right: 0.81%;
+  top: 0%;
+  bottom: 0%;
+  opacity: 0.8;
+  border-radius: 20px;
+  background: $white;
+  padding: 8px;
+  width: 248px;
+  height: 80px;
+}
+
+.card-consult {
+  left: 0%;
+  right: 0.81%;
+  top: 0%;
+  bottom: 0%;
+  opacity: 0.8;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  background: $white;
+  padding: 8px;
+  width: 248px;
+  height: 80px;
+}
+
+.card-consult-header{
+  background: $white;
+  display: flex;
+  align-items: center;
+  border-radius: 20px 20px 0px 0px;
+}
+
+.card-consult-header img, svg {
+  width: 32px;
+  height: 32px;
+}
+
+.card-info {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  align-items: flex-start;
+  justify-content: space-around;
+  height: 35px;
+  width: 100%;
+}
+
+.card-patient-name {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  color: $oxford-blue
+}
+
+.fa-solid .fa-location-dot {
+  color: $gray;
+}
+
+.info-adresse {
+  display: flex;
+}
+
+.text-adresse {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 20px;
+  color: $gray;
+  margin-left: 10px;
+}
+
+.card-traitement {
+  display: flex;
+  margin-top: 4px
+}
