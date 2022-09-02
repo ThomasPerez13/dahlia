@@ -1,1 +1,17 @@
-// Specific CSS for your home-page
+.container_center {
+height: 100%;
+}
+
+.container_logo {
+  height: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.logo_home {
+  width: 300px;
+  border-radius: 50%;
+  border: $magnolia 1px solid;
+  overflow: hidden;
+}

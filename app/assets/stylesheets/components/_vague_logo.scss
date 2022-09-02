@@ -1,0 +1,14 @@
+.vague_logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+.navbar-brand img {
+  width: 40px;
+  border-radius: 50%;
+  border: $magnolia 1px solid;
+  position: absolute;
+  right: 172px;
+  top: 58px;
+}
