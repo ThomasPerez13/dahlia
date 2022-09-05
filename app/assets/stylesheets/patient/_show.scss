@@ -1,0 +1,22 @@
+.container-patient{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+
+  .card-consult{
+    margin-top: 34px;
+  }
+
+  .tab-patient{
+    margin-top: 20px;
+  }
+
+  .info-patient{
+    margin-top: 30px;
+  }
+
+  .btn-submit{
+    margin-top: 30px;
+  }
+}
