@@ -1,0 +1,10 @@
+<div class="container d-flex justify-content-center">
+  <div class="w-50 mt-4">
+    <%= simple_form_for(@note) do |f| %>
+       <%= hidden_field_tag 'consultation_id', params[:consultation_id] %>
+      <%= f.input :favorite %>
+      <%= f.input :content %>
+      <%= f.button :submit, "Enregistrer", class: "btn btn-add" %>
+    <% end %>
+  </div>
+</div>

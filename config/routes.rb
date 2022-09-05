@@ -10,15 +10,18 @@ get "/component", to: "pages#component"
     resources :notes, only: [:new]
     resources :treatments, only: [:new]
   end
+
   resources :patients, only: [:index, :show, :edit, :create, :new, :update] do
     resources :consultations, only: [:index]
   end
+
   resources :notes, only: [:create] do
     member do
       patch :add_to_favorites
       patch :remove_from_favorites
     end
   end
+
   resources :treatments, only: [:create] do
     member do
       patch :mark_as_done

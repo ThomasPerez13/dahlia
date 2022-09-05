@@ -33,6 +33,7 @@
 <a class="btn btn-add-treatment" href="#">Secondary button</a>
 <a class="btn btn-add" href="#">tertiary button</a>
 <a class="btn btn-create" href="#">+</a>
+<a class="btn btn-tab-patient" href="#">Consultation</a>
 
 <%# Checkbox treatment %>
 <h3>Checkbox</h3>
@@ -164,6 +165,37 @@
 </div>
 
 
+<%# Dropdown %>
+<h3>Dropdown</h3>
+  <a class="info-patient" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" >
+    Link with href <i class="fa-solid fa-chevron-down"></i>
+  </a>
+<div class="collapse" id="collapseExample">
+  <div class="card card-body">
+    Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+  </div>
+</div>
+
+<%# Tab %>
+<h3>Tab</h3>
+<div id="tab-patient">
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="btn btn-tab btn-patient active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Home</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="btn btn-tab btn-consult" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Profile</button>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+     Yooooo <%# render patient %>
+    </div>
+    <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+     Helloooo<%# render patient %>
+    </div>
+  </div>
+</div>
 
 
 <%# catégories soins %>
