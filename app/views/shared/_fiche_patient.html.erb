@@ -1,0 +1,44 @@
+ <a class="info-patient d-flex justify-content-between" data-bs-toggle="collapse" href="#info-perso" role="button" aria-expanded="false" aria-controls="collapseExample" >
+    Informations personnelles <i class="fa-solid fa-chevron-down"></i>
+  </a>
+  <div class="collapse" id="info-perso">
+    <div class="card card-body">
+      <%= @patient.tel_number %>
+      <%= @patient.email %>
+      <%= @patient.birth_day %>
+      <%# <%= @patient.gender %>
+    </div>
+  </div>
+
+  <a class="info-patient d-flex justify-content-between" data-bs-toggle="collapse" href="#info-med" role="button" aria-expanded="false" aria-controls="collapseExample" >
+    Informations médicales <i class="fa-solid fa-chevron-down"></i>
+  </a>
+  <div class="collapse" id="info-med">
+    <div class="card card-body">
+      <%= @patient.ss_number %>
+      <%= @patient.height %>
+      <%= @patient.weight %>
+      <%= @patient.blood_type %>
+    </div>
+  </div>
+
+  <a class="info-patient d-flex justify-content-between" data-bs-toggle="collapse" href="#info-emerg" role="button" aria-expanded="false" aria-controls="collapseExample" >
+    Contact urgence <i class="fa-solid fa-chevron-down"></i>
+  </a>
+  <div class="collapse" id="info-emerg">
+    <div class="card card-body">
+      <p>Proches</p>
+      <%= @patient.emergency_contact_name %>
+      <%= @patient.emergency_contact_tel %>
+      <p>Médecin référent</p>
+       <%= @patient.referring_doctor %>
+    </div>
+  </div>
+
+
+
+<%# => #<Patient id: 1, first_name: "Alexandre", last_name: "Roux", address: "12 rue du Pilori - Nantes",
+email: "alexandre.belhora@gmail.com", tel_number: "0635987645", ss_number: "1 85 05 78 006 084 36",
+ referring_doctor: "Dr. Durand", emergency_contact_name: "Adam", emergency_contact_tel: "0642473905",
+ birth_day: nil, height: 185, weight: 90, blood_type: "A+", referring_user_id: 2, created_at: "2022-09-02
+ 09:56:27.965361000 +0000", updated_at: "2022-09-02 09:56:27.965361000 +0000"> %>
