@@ -1,0 +1,27 @@
+<div class="container d-flex justify-content-center">
+  <div class="w-100 px-3">
+    <%= simple_form_for(@patient) do |f| %>
+      <%= f.input :first_name %>
+      <%= f.input :last_name %>
+      <%= f.input :address %>
+      <%= f.input :email %>
+      <%= f.input :tel_number %>
+      <%= f.input :ss_number ["Man", "Woman"] %>
+      <%= f.input :size, collection: ["XS", "S", "M", "L", "XL"] %>
+      <%= f.input :category, collection: ["Jackets", "Parkas", "Sweaters", "Cardigans", "T-shirt", "Tank top", "Shirt", "Hoodie", "Crop top", "Sport sweat" "Socks", "Shoes"] %>
+      <%= f.input :color, collection: ["Black", "White", "Blue", "Green", "Purple", "Pink", "Yellow", "Orange", "Brown", "Red"] %>
+      <%= f.button :submit, "Create a clothe", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+
+
+
+:ss_number
+:referring_doctor
+:emergency_contact_name
+:emergency_contact_tel
+:birth_day
+:height
+:weight
+:blood_type
