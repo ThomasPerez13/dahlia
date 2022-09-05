@@ -15,8 +15,11 @@ class ConsultationsController < ApplicationController
   def create
     @consultation = Consultation.new(consultation_params)
     @consultation.user = current_user
-    @consultation.save
-    redirect_to consultation_path(@consultation)
+    if @consultation.save
+      redirect_to consultation_path(@consultation)
+    else
+      render :new
+    end
   end
 
   private
