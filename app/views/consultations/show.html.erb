@@ -34,22 +34,21 @@
     </div>
   <% end %>
 
-
   <%= link_to "Ajouter un soin", new_consultation_treatment_path(@consultation), class:"btn btn-add-treatment" %>
 
-
-  <% @notes.each do |note| %>
-    <div class="card-note">
+  <%# notes %>
+  <div class="card-note">
     <div class="top-note">
-        <h5>Notes :</h5>
+      <h5>Notes :</h5>
+      <% @notes.each do |note| %>
         <div class="note-content">
           <p><%= note.content %></p>
           <i class="fa-regular fa-star"></i>
         </div>
-      </div>
-        <%= link_to "Ajouter une note", new_consultation_note_path(@consultation), class:"btn btn-add"%>
+      <% end %>
+      <%= link_to "Ajouter une note", new_consultation_note_path(@consultation), class:"btn btn-add"%>
     </div>
-  <% end %>
-
+  </div>
   <%= link_to "Terminer la consultation", consultations_path,class:"btn btn-submit" %>
 </div>
+
