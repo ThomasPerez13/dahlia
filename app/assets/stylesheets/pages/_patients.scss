@@ -1,0 +1,12 @@
+.additional-information-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+
+  .additional-info {
+    background-color: #ffffff;
+    border-radius: 30px;
+    padding: 15px 30px;
+  }
+}
