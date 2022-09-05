@@ -1,4 +1,6 @@
 <div class="show-consultation">
+
+<%= link_to patient_path(@consultation.patient) do %>
   <div class="card-consult">
     <div class="card-consult-header">
       <%= image_tag "avatar_homme.svg" %>
@@ -18,7 +20,7 @@
         <% end %>
     </div>
   </div>
-
+<% end %>
 
   <% @consultation.treatments.each do |treatment| %>
     <div id="checkbox-custom" class="checkbox-container" >
@@ -33,7 +35,6 @@
       </div>
     </div>
   <% end %>
-
 
   <%= link_to "Ajouter un soin", new_consultation_treatment_path(@consultation), class:"btn btn-add-treatment" %>
 

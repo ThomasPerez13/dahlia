@@ -1,0 +1,26 @@
+<div class="card-consult">
+    <div class="card-consult-header">
+      <%= image_tag "avatar_homme.svg" %>
+      <div class="card-info">
+        <div class="card-patient-name">
+          <%= @patient.first_name %>  <%= @patient.last_name %>
+        </div>
+        <div class="info-adresse">
+          <i class="fa-solid fa-location-dot"></i>
+          <div class="text-adresse"><%= @patient.address %></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="additional-information-container">
+  <div class="additional-info">
+    <p>Informations personelles</p>
+  </div>
+  <div class="additional-info">
+    <p>Informations personelles</p>
+  </div>
+  <div class="additional-info">
+    <p>Informations personelles</p>
+  </div>
+</div>
