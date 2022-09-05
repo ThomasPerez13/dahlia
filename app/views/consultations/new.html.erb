@@ -1,0 +1,28 @@
+<h3 class="d-flex justify-content-center mt-4 mb-3"> Informations sur la consultation </h3>
+
+<div class="d-flex justify-content-center m-3">
+  <div id="input-custom" class="input-g">
+    <%= simple_form_for @consultation do |f| %>
+      <%= f.input :start_date,
+                  as: :datetime,
+                  html5: true,
+                  label: "Date & heure",
+                  input_html: { class:"datefield-without-calendar"} %>
+      <%= f.input :patient_id,
+                  collection: Patient.where(referring_user_id: current_user),
+                  label_method: :display_full_name,
+                  value_method: :id
+      %>
+      <div class="d-flex justify-content-center">
+        <%= f.button :submit, "Créer une consultation", class: "btn-submit" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="text-center">
+  <p>Votre patient n'apparait pas dans la liste? Créez le !</p>
+  <%= link_to new_patient_path do %>
+    <a class="btn btn-add-treatment" href="#">Créer un patient</a>
+  <% end %>
+</div>
