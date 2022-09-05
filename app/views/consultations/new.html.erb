@@ -1,0 +1,9 @@
+<a class="btn btn-add-treatment" href="#">Secondary button</a>
+
+<%= simple_form_for @consultation do |f| %>
+  <%= f.input :start_date, as: :date %>
+  <%= f.input :patient_id, collection: Patient.where(referring_user_id: current_user), label_method: :display_full_name, value_method: :id %>
+  <p>Votre patient n'apparait pas dans la liste? Créez le !</p>
+    <%= link_to "Créer un patient", new_patient_path %>
+  <%= f.submit %>
+<% end %>
