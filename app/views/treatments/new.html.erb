@@ -1,0 +1,13 @@
+<h1 class="text-center">Ajouter un soin</h1>
+
+<div class="d-flex justify-content-center m-3">
+  <div id="input-custom" class="input-g">
+    <%= simple_form_for  [:consultation, @treatment] do |f| %>
+      <%= f.input :category, collection: Treatment::CATEGORY %>
+      <%= f.input :content %>
+      <div class="d-flex justify-content-center">
+        <%= f.button :submit, "Créer un traitement", class: "btn-submit" %>
+      </div>
+    <% end %>
+  </div>
+</div>

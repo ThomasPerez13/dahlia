@@ -8,7 +8,7 @@ get "/component", to: "pages#component"
 
   resources :consultations, only: [:index, :show, :new, :create] do
     resources :notes, only: [:new]
-    resources :treatments, only: [:new]
+    resources :treatments, only: [:new, :create]
   end
 
   resources :patients, only: [:index, :show, :edit, :create, :new, :update] do
@@ -22,9 +22,9 @@ get "/component", to: "pages#component"
     end
   end
 
-  resources :treatments, only: [:create] do
-    member do
-      patch :mark_as_done
-    end
-  end
+  # resources :treatments, only: [:create] do
+  #   member do
+  #     patch :mark_as_done
+  #   end
+  # end
 end
