@@ -1,22 +1,23 @@
-
 <% @consultations.each do |consultation| %>
-  <div class="card-consult">
-    <div class="card-consult-header">
-      <%= image_tag "avatar_homme.svg" %>
-      <div class="card-info">
-        <div class="card-patient-name">
-          <%= @patient.first_name %>  <%= @patient.last_name %>
-        </div>
-        <div class="info-adresse">
-          <i class="fa-solid fa-location-dot"></i>
-          <div class="text-adresse"><%= @patient.address %></div>
+  <%= link_to consultation_path(consultation.id) do %>
+    <div class="card-consult">
+      <div class="card-consult-header">
+        <%= image_tag "avatar_homme.svg" %>
+        <div class="card-info">
+          <div class="card-patient-name">
+            <%= @patient.first_name %>  <%= @patient.last_name %>
+          </div>
+          <div class="info-adresse">
+            <i class="fa-solid fa-location-dot"></i>
+            <div class="text-adresse"><%= @patient.address %></div>
+          </div>
         </div>
       </div>
+      <div class="card-traitement">
+        <% consultation.treatments.each do |treatment| %>
+          <div class="tag-soins <%= treatment.category.downcase %>"> <%= treatment.category %></div>
+        <% end %>
+      </div>
     </div>
-    <div class="card-traitement">
-      <% consultation.treatments.each do |treatment| %>
-        <div class="tag-soins <%= treatment.category.downcase %>"> <%= treatment.category %></div>
-      <% end %>
-    </div>
-  </div>
+  <% end %>
 <% end %>
