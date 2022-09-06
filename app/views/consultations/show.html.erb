@@ -52,7 +52,11 @@
         <div class="note-content"  data-controller="star">
           <p><%= note.content %></p>
           <%= link_to add_to_favorites_note_path(note), data: { turbo_method: "PATCH"}  do %>
-            <i data-star-target="starIcon" data-action="click->star#changeStarClass" class="fa-regular fa-star"></i>
+            <% if note.favorite == true %>
+              <i data-star-target="starIcon" data-action="click->star#changeStarClass" class="fa-solid fa-star"></i>
+            <% else %>
+               <i data-star-target="starIcon" data-action="click->star#changeStarClass" class="fa-regular fa-star"></i>
+            <% end %>
           <% end %>
         </div>
       <% end %>

@@ -7,21 +7,12 @@ class ConsultationsController < ApplicationController
     @consultation = Consultation.find(params[:id])
     @patient = @consultation.patient
     @consultations = @patient.consultations
+    @latest_consultations = @consultations.where(start_date: ..Time.zone.now).order(:start_date).last(2)
+    @notes_from_previous_consultations = @latest_consultations.map { |consultation| consultation.notes }.flatten
 
-    @second_to_last_consultation = @consultations[-2]
-    @no_favorite_notes = @second_to_last_consultation.notes
-    # @notes = @consultations.map do |consultation|
-    #   consultation.notes
-    # end
-    # @favorite_notes = @notes.select do |note|
-    #   note.favorite
-    # end
+    @favorite_notes = Note.joins(:creation_consultation).where(favorite: true, creation_consultation: { patient_id: @patient.id })
 
-    consultations = Consultation.where(patient: @patient).pluck(:id)
-    @favorite_notes = Note.where(favorite: true, creation_consultation: consultations)
-
-    @final_notes = Note.where(creation_consultation: @consultation)
-    # @final_notes = @favorite_notes + @no_favorite_notes
+    @final_notes = @favorite_notes + @notes_from_previous_consultations
   end
 
   def new
