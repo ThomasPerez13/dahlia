@@ -1,14 +1,28 @@
 <div class="container-sm">
-  <h3>Patients du cabient </h3>
-  <%= form_with url: patients_path, method: :get, class: "d-flex" do %>
-    <%= text_field_tag :query,
-      params[:query],
+
+<h1 class="h2 my-3 d-flex justify-content-center">Patients du cabinet </h1>
+
+<div data-controller="search-patients">
+  <%= form_with url: patients_path,
+    method: :get,
+    html: {class: "mb-4", data: {search_patients_target: "form"}} do |f|
+  %>
+    <%= f.text_field :query,
       class: "form-control",
-      placeholder: "Find a patient"
+      placeholder: "Nom du patient",
+      value: params[:query],
+      data: {
+        search_patients_target: "input",
+        action: "keyup->search-patients#update"
+      }
     %>
-    <%= submit_tag "Search", class: "btn btn-primary" %>
   <% end %>
-  <div id="cards-index-patients">
+
+
+
+
+
+  <div id="cards-index-patients" data-search-patients-target="list">
     <% @patients.each do |patient| %>
       <%= link_to patient_path(patient.id) do %>
         <div class="d-flex justify-content-center">
