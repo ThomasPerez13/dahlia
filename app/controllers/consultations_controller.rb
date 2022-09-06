@@ -8,16 +8,20 @@ class ConsultationsController < ApplicationController
     @patient = @consultation.patient
     @consultations = @patient.consultations
 
-
     @second_to_last_consultation = @consultations[-2]
     @no_favorite_notes = @second_to_last_consultation.notes
-    @notes = @consultations.map do |consultation|
-      consultation.notes
-    end
-    @favorite_notes = @notes.select do |note|
-      note.favorite
-    end
-    @final_notes = @favorite_notes + @no_favorite_notes
+    # @notes = @consultations.map do |consultation|
+    #   consultation.notes
+    # end
+    # @favorite_notes = @notes.select do |note|
+    #   note.favorite
+    # end
+
+    consultations = Consultation.where(patient: @patient).pluck(:id)
+    @favorite_notes = Note.where(favorite: true, creation_consultation: consultations)
+
+    @final_notes = Note.where(creation_consultation: @consultation)
+    # @final_notes = @favorite_notes + @no_favorite_notes
   end
 
   def new
