@@ -1,8 +1,17 @@
 class PatientsController < ApplicationController
+  def index
+    @patients = Patient.all
+    if params[:query].present?
+      @patients = @patients.where("first_name ILIKE ?", "%#{params[:query]}%")
+    else
+      @patients
+    end
+  end
+
   def show
     @patient = Patient.find(params[:id])
     @consultations = @patient.consultations
-    # @treatments = 
+    # @treatments =
   end
 
   def new
@@ -12,7 +21,7 @@ class PatientsController < ApplicationController
   def create
     @patient = Patient.new(params_patient)
     @patient.referring_user = current_user
-    
+
     if @patient.save
       redirect_to patient_path(@patient)
     else
@@ -38,14 +47,5 @@ class PatientsController < ApplicationController
       :weight,
       :blood_type
     )
-  end
-
-  def index
-    @patients = Patient.where(referring_user: current_user)
-    if params[:query].present?
-      @patients = @patients.where("first_name ILIKE ?", "%#{params[:query]}%")
-    else
-      @patients
-    end
   end
 end
