@@ -29,8 +29,10 @@
           <%= image_tag "picto-medicament.svg" %>
             <p class="p-3"><%= treatment.content %></p>
         </div>
-        <div class="check">
-          <%= radio_button_tag :test, nil, nil, class:"my-checkbox" %>
+        <div class="check" data-controller="form">
+          <%= simple_form_for treatment, url: treatment_path(treatment), method: :patch, html: { data: { controller: "form" } } do |f| %>
+            <%= f.input :done, as: :boolean, label: false, input_html: { data: { action: "change->form#submit" } }%>
+          <% end %>
         </div>
       </div>
     </div>
@@ -59,5 +61,4 @@
     </div>
   </div>
   <%= link_to "Terminer la consultation", consultations_path, class:"btn btn-submit" %>
-
 </div>
