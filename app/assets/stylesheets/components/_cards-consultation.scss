@@ -92,3 +92,27 @@
   display: flex;
   margin-top: 4px
 }
+
+.card-consult-index-patients {
+  left: 0%;
+  right: 0.81%;
+  top: 0%;
+  bottom: 0%;
+  opacity: 0.8;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  background: #fff;
+  padding: 8px;
+  width: 352px;
+  height: 54px;
+  margin-bottom: 15px;
+
+  .card-patient-name {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 15px;
+    color: #0B2545;
+  }
+}
