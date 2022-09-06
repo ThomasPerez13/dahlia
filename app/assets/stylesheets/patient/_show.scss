@@ -19,4 +19,41 @@
   .btn-submit{
     margin-top: 30px;
   }
+
+  .last-consultations{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    color: $oxford-blue;
+  }
+  h3{
+    font-size: 16px;
+  }
+
+  .info-picto{
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center;
+  }
+
+  .fa-solid{
+    margin-left: 10px;
+    margin-right: 20px;
+  }
+
+  .info-picto-emergency{
+    display: flex;
+    align-items: baseline;
+  }
+
+  .proche-emergency{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    margin-left: 44px;
+  }
+
+  .doctor-emergency{
+    margin-left: 44px;
+  }
 }

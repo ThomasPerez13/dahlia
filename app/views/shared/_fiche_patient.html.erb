@@ -3,10 +3,22 @@
   </a>
   <div class="collapse" id="info-perso">
     <div class="card card-body">
-      <%= @patient.tel_number %>
-      <%= @patient.email %>
-      <%= @patient.birth_day %>
-      <%# <%= @patient.gender %>
+      <div class= info-picto>
+        <i class="fa-solid fa-phone"></i>
+        <%= @patient.tel_number %>
+      </div>
+      <div class= info-picto>
+        <i class="fa-solid fa-envelope"></i>
+        <%= @patient.email %>
+      </div>
+      <div class= info-picto>
+        <i class="fa-solid fa-cake-candles"></i>
+        <%= @patient.birth_day %>
+      </div>
+      <div class= info-picto>
+        <i class="fa-solid fa-venus-mars"></i>
+        <%= @patient.gender %>
+      </div>
     </div>
   </div>
 
@@ -15,10 +27,22 @@
   </a>
   <div class="collapse" id="info-med">
     <div class="card card-body">
-      <%= @patient.ss_number %>
-      <%= @patient.height %>
-      <%= @patient.weight %>
-      <%= @patient.blood_type %>
+      <div class= info-picto>
+        <i class="fa-solid fa-address-card"></i>
+        <%= @patient.ss_number %>
+      </div>
+      <div class= info-picto>
+        <i class="fa-solid fa-ruler"></i>
+         <%= @patient.height %><p>kg</p>
+      </div>
+      <div class= info-picto>
+        <i class="fa-solid fa-weight-scale"></i>
+        <%= @patient.weight %>
+      </div>
+      <div class= info-picto>
+        <i class="fa-solid fa-droplet"></i>
+        <%= @patient.blood_type %>
+      </div>
     </div>
   </div>
 
@@ -27,11 +51,23 @@
   </a>
   <div class="collapse" id="info-emerg">
     <div class="card card-body">
-      <p>Proches</p>
-      <%= @patient.emergency_contact_name %>
-      <%= @patient.emergency_contact_tel %>
-      <p>Médecin référent</p>
-       <%= @patient.referring_doctor %>
+      <div class= info-picto-emergency>
+        <i class="fa-solid fa-user"></i>
+        <h6>Proches</h6>
+      </div>
+      <div class="proche-emergency">
+        <div class= info-picto>
+          <%= @patient.emergency_contact_name %>
+        </div>
+        <div class= info-picto>
+          <%= @patient.emergency_contact_tel %>
+        </div>
+      </div>
+      <div class= info-picto-emergency>
+        <i class="fa-solid fa-user-doctor"></i>
+          <h6>Médecin référent</h6>
+      </div>
+        <div class="doctor-emergency"><%= @patient.referring_doctor %></div>
     </div>
   </div>
 
