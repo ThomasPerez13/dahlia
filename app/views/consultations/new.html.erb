@@ -22,7 +22,5 @@
 
 <div class="text-center">
   <p>Votre patient n'apparait pas dans la liste? Créez le !</p>
-  <%= link_to new_patient_path do %>
-    <a class="btn btn-add-treatment" href="#">Créer un patient</a>
-  <% end %>
+  <%= link_to "Créer un patient", new_patient_path,class:"btn btn-add-treatment" %>
 </div>
