@@ -27,6 +27,13 @@ class NotesController < ApplicationController
     @note.save
   end
 
+  def show
+    @consultation = Consultation.find(params[:id])
+    @patient = @consultation.patient
+    @consultations = @patient.consultations
+    @second_to_last_consultation = @consultations[-2]
+  end
+
   private
 
   def params_note
