@@ -5,7 +5,19 @@ class ConsultationsController < ApplicationController
 
   def show
     @consultation = Consultation.find(params[:id])
-    @notes = @consultation.notes
+    @patient = @consultation.patient
+    @consultations = @patient.consultations
+
+
+    @second_to_last_consultation = @consultations[-2]
+    @no_favorite_notes = @second_to_last_consultation.notes
+    @notes = @consultations.map do |consultation|
+      consultation.notes
+    end
+    @favorite_notes = @notes.select do |note|
+      note.favorite
+    end
+    @final_notes = @favorite_notes + @no_favorite_notes
   end
 
   def new
