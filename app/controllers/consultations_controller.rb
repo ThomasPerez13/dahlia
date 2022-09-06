@@ -7,8 +7,8 @@ class ConsultationsController < ApplicationController
     @consultation = Consultation.find(params[:id])
     @patient = @consultation.patient
     @consultations = @patient.consultations
-    @latest_consultations = @consultations.where(start_date: ..Time.zone.now).order(:start_date).last(2)
-    @notes_from_previous_consultations = @latest_consultations.map { |consultation| consultation.notes }.flatten
+    @latest_consultations = @consultations.where(start_date: ...@consultation.start_date).order(:start_date).last
+    @notes_from_previous_consultations = @latest_consultations.nil? ? [] : @latest_consultations.notes
 
     @favorite_notes = Note.joins(:creation_consultation).where(favorite: true, creation_consultation: { patient_id: @patient.id })
 
