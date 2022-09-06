@@ -1,18 +1,7 @@
-<h1 class="d-flex justify-content-center m-3"> <%= Date.today.strftime('%A %d %b') %> </h1>
-
-<!-- <ul>
-  <% @consultations.each do |consultation| %>
-    <li><%= consultation.patient.first_name %></li>
-    <li><%= consultation.patient.last_name %></li>
-    <li><%= consultation.patient.address %></li>
-    <% consultation.treatments.each do |treatment| %>
-      <li> <%= treatment.category %></li>
-    <% end %>
-    <li></li>
-  <% end %>
-</ul> -->
-
-
+<div class="d-flex justify-content-around">
+  <h1 class="d-flex justify-content-center m-3"> <%= Date.today.strftime('%A %d %b') %> </h1>
+  <%= link_to "+", new_patient_path,class:"btn btn-create mt-3" %>
+</div>
 
   <% @consultations.each do |consultation| %>
     <div class="card-consult-calendar d-flex justify-content-evenly">
