@@ -1,4 +1,8 @@
 
+.form-check-input:checked {
+  background-color: #1EDD88 !important;
+  border-color: #1EDD88 !important;
+}
 
 .show-consultation {
   display: flex;
@@ -17,6 +21,15 @@
 
   .btn-add-treatment{
     margin-top: 17px;
+  }
+
+  p {
+    text-align: left;
+    margin-top: 10px;
+  }
+
+  .form-check{
+    margin-top: 20px;
   }
   .top-note{
     h5{
