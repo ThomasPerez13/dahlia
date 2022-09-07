@@ -1,10 +1,16 @@
 class PatientsController < ApplicationController
   def index
-    @patients = Patient.all
+    @patients = Patient.all.order(last_name: :asc)
     if params[:query].present?
-      @patients = @patients.where("first_name ILIKE ?", "%#{params[:query]}%")
-    else
-      @patients = @patients.order(last_name: :asc)
+      @patients_last_name = @patients.where("last_name ILIKE ?", "%#{params[:query]}%")
+      @patients_first_name = @patients.where("first_name ILIKE ?", "%#{params[:query]}%")
+      @patients = @patients_first_name + @patients_last_name
+      @patients.uniq
+    end
+
+    respond_to do |format|
+      format.html # Follow regular flow of Rails
+      format.text { render partial: "patients/list", locals: {patients: @patients}, formats: [:html] }
     end
   end
 

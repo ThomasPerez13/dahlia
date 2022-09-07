@@ -4,6 +4,11 @@
 
 import { application } from "./application"
 
-
 import FormController from "./form_controller"
 application.register("form", FormController)
+
+import SearchPatientsController from "./search_patients_controller"
+application.register("search-patients", SearchPatientsController)
+
+import StarController from "./star_controller"
+application.register("star", StarController)
