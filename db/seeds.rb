@@ -58,16 +58,26 @@ coralie_monjeau = Patient.create!(first_name: "Coralie", last_name: "Monjeau", a
 puts "loading consultations..."
 
 # Consultations de Isabelle le 12 septembre 2022
-consultation1_isa = Consultation.create!(patient: alexandre, user: isabelle, start_date: DateTime.parse("22/09/12 07:00"))
-consultation2_isa = Consultation.create!(patient: catherine, user: isabelle, start_date: DateTime.parse("22/09/12 07:30"))
-consultation3_isa = Consultation.create!(patient: florent, user: isabelle, start_date: DateTime.parse("22/09/12 08:00"))
-consultation4_isa = Consultation.create!(patient: louise, user: isabelle, start_date: DateTime.parse("22/09/12 08:30"))
-consultation5_isa = Consultation.create!(patient: zdenek_rousseau, user: isabelle, start_date: DateTime.parse("22/09/12 09:00"))
-consultation6_isa = Consultation.create!(patient: alexandre, user: isabelle, start_date: DateTime.parse("22/09/12 09:30"))
-consultation7_isa = Consultation.create!(patient: catherine, user: isabelle, start_date: DateTime.parse("22/09/12 10:00"))
-consultation8_isa = Consultation.create!(patient: florent, user: isabelle, start_date: DateTime.parse("22/09/12 10:30"))
-consultation9_isa = Consultation.create!(patient: louise, user: isabelle, start_date: DateTime.parse("22/09/12 11:00"))
-consultation10_isa = Consultation.create!(patient: zdenek_rousseau, user: isabelle, start_date: DateTime.parse("22/09/12 11:30"))
+consultation1_isa = Consultation.create!(patient: alexandre, user: isabelle, start_date: DateTime.parse("22/09/07 07:00"))
+consultation2_isa = Consultation.create!(patient: catherine, user: isabelle, start_date: DateTime.parse("22/09/07 07:30"))
+consultation3_isa = Consultation.create!(patient: florent, user: isabelle, start_date: DateTime.parse("22/09/07 08:00"))
+consultation4_isa = Consultation.create!(patient: louise, user: isabelle, start_date: DateTime.parse("22/09/07 08:30"))
+consultation5_isa = Consultation.create!(patient: zdenek_rousseau, user: isabelle, start_date: DateTime.parse("22/09/07 09:00"))
+consultation6_isa = Consultation.create!(patient: alexandre, user: isabelle, start_date: DateTime.parse("22/09/07 09:30"))
+consultation7_isa = Consultation.create!(patient: catherine, user: isabelle, start_date: DateTime.parse("22/09/07 10:00"))
+consultation8_isa = Consultation.create!(patient: florent, user: isabelle, start_date: DateTime.parse("22/09/07 10:30"))
+consultation9_isa = Consultation.create!(patient: louise, user: isabelle, start_date: DateTime.parse("22/09/07 11:00"))
+consultation10_isa = Consultation.create!(patient: zdenek_rousseau, user: isabelle, start_date: DateTime.parse("22/09/07 11:30"))
+consultation11_isa = Consultation.create!(patient: alexandre, user: isabelle, start_date: DateTime.parse("22/09/08 07:00"))
+consultation12_isa = Consultation.create!(patient: catherine, user: isabelle, start_date: DateTime.parse("22/09/08 07:30"))
+consultation13_isa = Consultation.create!(patient: florent, user: isabelle, start_date: DateTime.parse("22/09/08 08:00"))
+consultation14_isa = Consultation.create!(patient: louise, user: isabelle, start_date: DateTime.parse("22/09/08 08:30"))
+consultation15_isa = Consultation.create!(patient: zdenek_rousseau, user: isabelle, start_date: DateTime.parse("22/09/08 09:00"))
+consultation16_isa = Consultation.create!(patient: alexandre, user: isabelle, start_date: DateTime.parse("22/09/08 09:30"))
+consultation17_isa = Consultation.create!(patient: catherine, user: isabelle, start_date: DateTime.parse("22/09/08 10:00"))
+consultation18_isa = Consultation.create!(patient: florent, user: isabelle, start_date: DateTime.parse("22/09/08 10:30"))
+consultation19_isa = Consultation.create!(patient: louise, user: isabelle, start_date: DateTime.parse("22/09/08 11:00"))
+consultation20_isa = Consultation.create!(patient: zdenek_rousseau, user: isabelle, start_date: DateTime.parse("22/09/08 11:30"))
 
 # Consultations de Nicolas
 consultation_catherine = Consultation.create!(patient: catherine, user: nicolas, start_date: "01/09/22")
@@ -114,3 +124,34 @@ Treatment.create!(category: "Perfusion", done: false, content: "Poser la perfusi
 
 Treatment.create!(category: "Injection", done: false, content: "Renouveler le pansement", consultation: consultation10_isa)
 Treatment.create!(category: "Pansement", done: false, content: "Renouveler le pansement", consultation: consultation10_isa)
+
+Treatment.create!(category: "Pansement", done: false, content: "Renouveler le pansement", consultation: consultation11_isa)
+Treatment.create!(category: "Perfusion", done: false, content: "Poser la perfusion", consultation: consultation11_isa)
+Treatment.create!(category: "Injection", done: false, content: "Injecter 12 mg d'insuline", consultation: consultation11_isa)
+
+Treatment.create!(category: "Prélèvement", done: false, content: "Prélever 5ml de sang", consultation: consultation12_isa)
+Treatment.create!(category: "Hygiène", done: false, content: "Nettoyer la plaie", consultation: consultation12_isa)
+
+Treatment.create!(category: "Médicament", done: false, content: "Lui administrer 2mg de doliprane", consultation: consultation13_isa)
+Treatment.create!(category: "Diabétique", done: false, content: "Lui administrer 10mg de Glucophage", consultation: consultation13_isa)
+
+Treatment.create!(category: "Pansement", done: false, content: "Renouveler le pansement", consultation: consultation14_isa)
+Treatment.create!(category: "Autre", done: false, content: "Poser 4 points de suture", consultation: consultation14_isa)
+
+Treatment.create!(category: "Injection", done: false, content: "Injecter 12 mg d'insuline", consultation: consultation15_isa)
+Treatment.create!(category: "Perfusion", done: false, content: "Poser la perfusion", consultation: consultation15_isa)
+
+Treatment.create!(category: "Pansement", done: false, content: "Renouveler le pansement", consultation: consultation16_isa)
+Treatment.create!(category: "Injection", done: false, content: "Injecter 12 mg d'insuline", consultation: consultation16_isa)
+
+Treatment.create!(category: "Prélèvement", done: false, content: "Prélever 5ml de sang", consultation: consultation17_isa)
+Treatment.create!(category: "Médicament", done: false, content: "Lui administrer 2mg de doliprane", consultation: consultation17_isa)
+
+Treatment.create!(category: "Médicament", done: false, content: "Lui administrer 2mg de doliprane", consultation: consultation18_isa)
+Treatment.create!(category: "Autre", done: false, content: "Poser 4 points de suture", consultation: consultation18_isa)
+
+Treatment.create!(category: "Hygiène", done: false, content: "Nettoyer la plaie", consultation: consultation19_isa)
+Treatment.create!(category: "Perfusion", done: false, content: "Poser la perfusion", consultation: consultation19_isa)
+
+Treatment.create!(category: "Injection", done: false, content: "Renouveler le pansement", consultation: consultation20_isa)
+Treatment.create!(category: "Pansement", done: false, content: "Renouveler le pansement", consultation: consultation20_isa)
