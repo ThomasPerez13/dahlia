@@ -1,27 +1,29 @@
-<h3>Mes patients</h1>
+<div>
+  <div class="container-sm">
+    <h1 class="h2 my-3 d-flex justify-content-center">Patients du cabinet </h1>
+    <div data-controller="search-patients">
+      <%= simple_form_for :query, url: patients_path, method: :get,
+        html: {class: "mb-4"}, data: { search_patients_target: "form"}  do |f| %>
+        <div class="input-group">
 
-<%= form_with url: patients_path, method: :get, class: "d-flex" do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Find a patient"
-  %>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
-<% end %>
-
-<% @patients.each do |patient| %>
-  <%= link_to patient_path(patient.id) do %>
-    <div class="d-flex justify-content-center ">
-      <div class="card-consult-index-patients">
-        <div class="card-consult-header">
-          <%= image_tag "avatar_homme.svg" %>
-          <div class="card-info">
-            <div class="card-patient-name">
-              <%= patient.first_name %> <%= patient.last_name %>
-            </div>
-          </div>
         </div>
-      </div>
-    </div>
-  <% end %>
-<% end %>
+        <%# <%= f.label "Chercher un patient", class:"" %>
+        <%= f.input :query,
+          label: "Chercher un patient",
+          placeholder: " ",
+          required: false,
+          wrapper_html: { class:"input-groupe" },
+          input_html: {
+            class:"input",
+            data: {
+              search_patients_target: "input",
+              action: "keyup->search-patients#update"
+            }
+          },
+          label_html: {class:"user-label"},
+          value: params[:query]
+        %>
+      <% end %>
+      <%= render "list", patients: @patients %>
+  </div>
+</div>
