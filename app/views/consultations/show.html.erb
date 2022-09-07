@@ -23,11 +23,31 @@
 <% end %>
 
   <% @consultation.treatments.each do |treatment| %>
+    <i class="fal fa-ball-pile"></i>
     <div id="checkbox-custom" class="checkbox-container" >
       <div class="checkbox-wrapper">
         <div class="d-flex">
-          <%= image_tag "picto-medicament.svg" %>
-            <p class="p-3"><%= treatment.content %></p>
+          <% case treatment.category  %>
+          <% when "Injection" %>
+            <%= image_tag "picto-categories/picto-injection.svg" %>
+          <% when "Pansement" %>
+            <%= image_tag "picto-categories/picto-pansement.svg" %>
+          <% when "Prélèvement" %>
+            <%= image_tag "picto-categories/picto-prélèvement.svg" %>
+          <% when "Perfusion" %>
+            <%= image_tag "picto-categories/picto-perfusion.svg" %>
+          <% when "Hygiène" %>
+            <%= image_tag "picto-categories/picto-hygiene.svg" %>
+          <% when "Aide domicile" %>
+            <%= image_tag "picto-categories/picto-domicile.svg" %>
+          <% when "Médicament" %>
+            <%= image_tag "picto-categories/picto-medicament.svg" %>
+          <% when "Diabétique" %>
+            <%= image_tag "picto-categories/picto-diabete.svg" %>
+          <% when "Autre" %>
+            <%= image_tag "picto-categories/picto-nurse.svg" %>
+          <% end %>
+          <p class="p-3"><%= treatment.content %></p>
         </div>
         <div class="check" data-controller="form">
           <%= simple_form_for treatment, url: treatment_path(treatment), method: :patch, html: { data: { controller: "form" } } do |f| %>
@@ -63,8 +83,5 @@
       <%= link_to "Ajouter une note", new_consultation_note_path(@consultation), class:"btn btn-add"%>
     </div>
   </div>
-  <%= link_to "Terminer la consultation", consultations_path, class:"btn btn-submit" %>
+  <%= link_to "Fermer la consultation", consultations_path, class:"btn btn-submit" %>
 </div>
-
-
-<%= @favorite_notes %>
