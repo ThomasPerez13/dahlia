@@ -4,6 +4,11 @@
 
 import { application } from "./application"
 
-
 import FormController from "./form_controller"
 application.register("form", FormController)
+
+import SeeAllController from "./see_all_controller"
+application.register("see-all", SeeAllController)
+
+import StarController from "./star_controller"
+application.register("star", StarController)
