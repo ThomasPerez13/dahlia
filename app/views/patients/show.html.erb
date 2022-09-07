@@ -31,14 +31,14 @@
       </div>
       <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
         <div class="last-consultations">
-          <h3>Consultations <%= @patient.first_name %></h3>
+          <h3> Dernières consultations</h3>
           <%= link_to "+", new_consultation_path,class:"btn btn-create" %>
         </div>
         <%= render "shared/consultations_patient" %>
       </div>
     </div>
-
   </div>
+
   <% unless @last_consultation.nil? %>
     <%= link_to "Dernière consultation", consultation_path(@last_consultation),class:"btn btn-submit" %>
   <% end %>
