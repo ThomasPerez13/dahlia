@@ -65,17 +65,20 @@
 }
 
 .btn-calendar {
-  height: 30px;
   background-color: $magnolia;
-  width: 30px;
   border-radius: 50px;
-  font-size: 30px;
   font-weight: bold;
   display: grid;
   place-content: center;
   color: $purpureus;
   padding: 0px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  width: 60px;
+  height: 60px;
+  left: 43px;
+  top: 146px;
+  margin-bottom: 20px;
+  font-size: 40px;
 }
 
 .btn-create:hover {
