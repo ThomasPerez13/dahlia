@@ -1,0 +1,22 @@
+  <div id="cards-index-patients" data-search-patients-target="list">
+    <% @patients.each do |patient| %>
+      <%= link_to patient_path(patient.id) do %>
+        <div class="d-flex justify-content-center">
+          <div class="card-index-patients">
+            <div class="card-consult-header">
+              <% if patient.gender == "Homme" %>
+                <%= image_tag "avatar_homme.svg" %>
+              <% else %>
+                <%= image_tag "avatar_femme.svg" %>
+              <% end %>
+              <div class="card-info">
+                <div class="card-patient-name">
+                  <%= patient.first_name %> <%= patient.last_name %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
