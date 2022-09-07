@@ -19,7 +19,14 @@
 
 .input:focus {
   outline: none;
-  border: 1.5px solid black;
+  border-color: black;
+  outline: 0;
+  box-shadow: none;
+  // border: 1.5px solid black;
+}
+
+.input:focus-visible{
+  outline: none;
 }
 
 .user-label {
@@ -42,3 +49,4 @@
 .datefield-without-calendar::-webkit-calendar-picker-indicator {
   display: none;
 }
+
