@@ -7,12 +7,21 @@
                   as: :datetime,
                   html5: true,
                   label: "Date & heure",
-                  input_html: { class:"datefield-without-calendar"} %>
+                  input_html: { class:"datefield-without-calendar"},
+                  placeholder: " ",
+                  wrapper_html: { class:"input-groupe" },
+                  input_html: { class:"input" },
+                  label_html: { class:"user-label" } %>
+      <div id="test">
       <%= f.input :patient_id,
-                  collection: Patient.where(referring_user_id: current_user),
+                  collection: Patient.all.order(last_name: :asc),
                   label_method: :display_full_name,
-                  value_method: :id
-      %>
+                  value_method: :id,
+                  placeholder: " ",
+                  wrapper_html: { class:"input-groupe" },
+                  input_html: { class:"input" },
+                  label_html: { class:"user-label" } %>
+      </div>
       <div class="d-flex justify-content-center">
         <%= f.button :submit, "Créer une consultation", class: "btn-submit" %>
       </div>
