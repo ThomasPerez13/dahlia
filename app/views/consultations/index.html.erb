@@ -6,8 +6,6 @@
   <% @consultations.each do |consultation| %>
     <div class="card-consult-calendar d-flex justify-content-evenly">
       <%= consultation.start_date.strftime("%I:%M") %>
-
-      <%# LINK %>
       <%= link_to consultation_path(consultation.id) do %>
         <div class="card-consult">
           <div class="card-consult-header">
@@ -22,7 +20,6 @@
               </div>
             </div>
           </div>
-
           <div class="card-traitement">
             <% consultation.treatments.each do |treatment| %>
               <div class="tag-soins <%= treatment.category.downcase %>"> <%= treatment.category %></div>

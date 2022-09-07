@@ -5,6 +5,11 @@
 $body-font: "Roboto", "sans-serif";
 $headers-font: "Montserrat", "sans-serif";
 
+.container-sm {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
 h1 {
   font-size: 40px;
   font-family: $headers-font;
@@ -27,14 +32,3 @@ p {
   font-family: $body-font;
   color: $oxford-blue;
 }
-
-
-// To use a font file (.woff) uncomment following lines
-// @font-face {
-//   font-family: "Font Name";
-//   src: font-url('FontFile.eot');
-//   src: font-url('FontFile.eot?#iefix') format('embedded-opentype'),
-//        font-url('FontFile.woff') format('woff'),
-//        font-url('FontFile.ttf') format('truetype')
-// }
-// $my-font: "Font Name";

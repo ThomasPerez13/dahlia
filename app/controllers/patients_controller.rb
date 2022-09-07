@@ -4,7 +4,7 @@ class PatientsController < ApplicationController
     if params[:query].present?
       @patients = @patients.where("first_name ILIKE ?", "%#{params[:query]}%")
     else
-      @patients
+      @patients = @patients.order(last_name: :asc)
     end
   end
 

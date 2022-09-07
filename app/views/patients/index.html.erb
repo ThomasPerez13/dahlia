@@ -1,27 +1,47 @@
-<h3>Mes patients</h1>
+<div class="container-sm">
 
-<%= form_with url: patients_path, method: :get, class: "d-flex" do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Find a patient"
+<h1 class="h2 my-3 d-flex justify-content-center">Patients du cabinet </h1>
+
+<div data-controller="search-patients">
+  <%= form_with url: patients_path,
+    method: :get,
+    html: {class: "mb-4", data: {search_patients_target: "form"}} do |f|
   %>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
-<% end %>
+    <%= f.text_field :query,
+      class: "form-control",
+      placeholder: "Nom du patient",
+      value: params[:query],
+      data: {
+        search_patients_target: "input",
+        action: "keyup->search-patients#update"
+      }
+    %>
+  <% end %>
 
-<% @patients.each do |patient| %>
-  <%= link_to patient_path(patient.id) do %>
-    <div class="d-flex justify-content-center ">
-      <div class="card-consult-index-patients">
-        <div class="card-consult-header">
-          <%= image_tag "avatar_homme.svg" %>
-          <div class="card-info">
-            <div class="card-patient-name">
-              <%= patient.first_name %> <%= patient.last_name %>
+
+
+
+
+  <div id="cards-index-patients" data-search-patients-target="list">
+    <% @patients.each do |patient| %>
+      <%= link_to patient_path(patient.id) do %>
+        <div class="d-flex justify-content-center">
+          <div class="card-index-patients">
+            <div class="card-consult-header">
+              <% if patient.gender == "Homme" %>
+                <%= image_tag "avatar_homme.svg" %>
+              <% else %>
+                <%= image_tag "avatar_femme.svg" %>
+              <% end %>
+              <div class="card-info">
+                <div class="card-patient-name">
+                  <%= patient.first_name %> <%= patient.last_name %>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  <% end %>
-<% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
