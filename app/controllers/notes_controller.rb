@@ -7,7 +7,7 @@ class NotesController < ApplicationController
     @note = Note.new(params_note)
     @note.creation_consultation = Consultation.find(params[:consultation_id].to_i)
     @note.save # Will raise ActiveModel::ForbiddenAttributesError
-    redirect_to consultations_path(Consultation.find(params[:consultation_id]))
+    redirect_to consultation_path(params[:consultation_id])
   end
 
   def add_to_favorites
@@ -25,6 +25,13 @@ class NotesController < ApplicationController
     @note = Note.find(params[:id])
     @note.favorite = false
     @note.save
+  end
+
+  def show
+    @consultation = Consultation.find(params[:id])
+    @patient = @consultation.patient
+    @consultations = @patient.consultations
+    @second_to_last_consultation = @consultations[-2]
   end
 
   private
