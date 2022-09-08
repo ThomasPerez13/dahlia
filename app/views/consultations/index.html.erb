@@ -14,25 +14,70 @@
     <div class="d-flex justify-content-evenly">
       <%= consultation.start_date.strftime("%I:%M") %>
       <%= link_to consultation_path(consultation.id) do %>
-        <div class="card-consult">
-          <div class="card-consult-header">
-            <%= image_tag "avatar_homme.svg" %>
-            <div class="card-info">
-              <div class="card-patient-name">
-                <%= consultation.patient.first_name %> <%= consultation.patient.last_name %>
+
+        <% if consultation.done? == false %>
+
+        <%# Beggning of the undone card %>
+
+          <div class="card-consult">
+            <div class="card-consult-header">
+              <% if consultation.patient.gender == "Homme" %>
+                  <%= image_tag "avatar_homme.svg" %>
+                <% else %>
+                  <%= image_tag "avatar_femme.svg" %>
+                <% end %>
+              <div class="card-info">
+                <div class="card-patient-name">
+                  <%= consultation.patient.first_name %> <%= consultation.patient.last_name %>
+                </div>
+                <div class="info-adresse">
+                  <i class="fa-solid fa-location-dot"></i>
+                  <div class="text-adresse"> <%= consultation.patient.address %></div>
+                </div>
               </div>
-              <div class="info-adresse">
-                <i class="fa-solid fa-location-dot"></i>
-                <div class="text-adresse"> <%= consultation.patient.address %></div>
+            </div>
+            <div class="card-traitement">
+              <% consultation.treatments.each do |treatment| %>
+                <div class="tag-soins <%= treatment.category.downcase %>"> <%= treatment.category %></div>
+              <% end %>
+            </div>
+          </div>
+
+        <%# End of the undone card %>
+
+        <% else %>
+
+        <%# Beggining of the done card %>
+          <div class="card-done">
+            <div class="card-consult-done">
+              <div class="card-consult-header">
+                <% if consultation.patient.gender == "Homme" %>
+                    <%= image_tag "avatar_homme.svg" %>
+                  <% else %>
+                    <%= image_tag "avatar_femme.svg" %>
+                  <% end %>
+                <div class="card-info">
+                  <div class="card-patient-name">
+                    <%= consultation.patient.first_name %> <%= consultation.patient.last_name %>
+                  </div>
+                  <div class="info-adresse">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <div class="text-adresse"> <%= consultation.patient.address %></div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-traitement">
+                <% consultation.treatments.each do |treatment| %>
+                  <div class="tag-soins <%= treatment.category.downcase %>"> <%= treatment.category %></div>
+                <% end %>
               </div>
             </div>
           </div>
-          <div class="card-traitement">
-            <% consultation.treatments.each do |treatment| %>
-              <div class="tag-soins <%= treatment.category.downcase %>"> <%= treatment.category %></div>
-            <% end %>
-          </div>
-        </div>
+
+
+        <%# End of the done card %>
+
+        <% end %>
       <% end %>
     </div>
   <% end %>
