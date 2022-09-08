@@ -1,17 +1,25 @@
 class PatientsController < ApplicationController
   def index
-    @patients = Patient.all
+    @patients = Patient.all.order(last_name: :asc)
     if params[:query].present?
-      @patients = @patients.where("first_name ILIKE ?", "%#{params[:query]}%")
-    else
-      @patients = @patients.order(last_name: :asc)
+      @patients_last_name = @patients.where("last_name ILIKE ?", "%#{params[:query]}%")
+      @patients_first_name = @patients.where("first_name ILIKE ?", "%#{params[:query]}%")
+      @patients = @patients_first_name + @patients_last_name
+      @patients.uniq
+    end
+
+    respond_to do |format|
+      format.html # Follow regular flow of Rails
+      format.text { render partial: "patients/list", locals: {patients: @patients}, formats: [:html] }
     end
   end
 
   def show
     @patient = Patient.find(params[:id])
-    @consultations = @patient.consultations
-    @last_consultation = @consultations.where(start_date: ..Time.zone.now).order(:start_date).last
+    @consultations = @patient.consultations.where(start_date: ..Time.zone.now).order(:start_date)
+    @last_3_consultations = @consultations.last(3)
+    @consultations -= @last_3_consultations
+    @last_consultation = @consultations.last
   end
 
   def new
@@ -21,7 +29,7 @@ class PatientsController < ApplicationController
   def create
     @patient = Patient.new(params_patient)
     @patient.referring_user = current_user
-
+    
     if @patient.save
       redirect_to patient_path(@patient)
     else
