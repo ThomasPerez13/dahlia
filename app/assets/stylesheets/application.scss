@@ -10,8 +10,8 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
-@import "consultation/show";
-@import "patient/show";
+@import "consultation/index";
+@import "patient/index";
 
 body {
   background-color: $background;
