@@ -15,7 +15,7 @@ Patient.destroy_all
 User.destroy_all
 
 puts "loading users..."
-isabelle = User.create!(first_name: "Isabelle", last_name: "Choyer", email: "isabelle.choyer@gmail.com", tel_number: "0638475647", password: "isabelle123")
+isabelle = User.create!(first_name: "Thomas", last_name: "Perez", email: "thomas.perez@gmail.com", tel_number: "0638475647", password: "thomas123")
 nicolas = User.create!(first_name: "Nicolas", last_name: "Hali", email: "nicolas.hali@gmail.com", tel_number: "0628493845", password: "nicolas123")
 cecile = User.create!(first_name: "Cécile", last_name: "Lagarde", email: "cecile.lagarde@gmail.com", tel_number: "0629384756", password: "cecile123")
 
@@ -58,26 +58,32 @@ coralie_monjeau = Patient.create!(first_name: "Coralie", last_name: "Monjeau", a
 puts "loading consultations..."
 
 # Consultations de Isabelle le 12 septembre 2022
-consultation1_isa = Consultation.create!(patient: alexandre, user: isabelle, start_date: DateTime.parse("22/09/07 07:00 +0200"))
-consultation2_isa = Consultation.create!(patient: catherine, user: isabelle, start_date: DateTime.parse("22/09/07 07:30 +0200"))
-consultation3_isa = Consultation.create!(patient: florent, user: isabelle, start_date: DateTime.parse("22/09/07 08:00 +0200"))
-consultation4_isa = Consultation.create!(patient: louise, user: isabelle, start_date: DateTime.parse("22/09/07 08:30 +0200"))
-consultation5_isa = Consultation.create!(patient: zdenek_rousseau, user: isabelle, start_date: DateTime.parse("22/09/07 09:00 +0200"))
-consultation6_isa = Consultation.create!(patient: alexandre, user: isabelle, start_date: DateTime.parse("22/09/07 09:30 +0200"))
-consultation7_isa = Consultation.create!(patient: catherine, user: isabelle, start_date: DateTime.parse("22/09/07 10:00 +0200"))
-consultation8_isa = Consultation.create!(patient: florent, user: isabelle, start_date: DateTime.parse("22/09/07 10:30 +0200"))
-consultation9_isa = Consultation.create!(patient: louise, user: isabelle, start_date: DateTime.parse("22/09/07 11:00 +0200"))
-consultation10_isa = Consultation.create!(patient: zdenek_rousseau, user: isabelle, start_date: DateTime.parse("22/09/07 11:30 +0200"))
-consultation11_isa = Consultation.create!(patient: alexandre, user: isabelle, start_date: DateTime.parse("22/09/08 07:00 +0200"))
-consultation12_isa = Consultation.create!(patient: catherine, user: isabelle, start_date: DateTime.parse("22/09/08 07:30 +0200"))
-consultation13_isa = Consultation.create!(patient: florent, user: isabelle, start_date: DateTime.parse("22/09/08 08:00 +0200"))
-consultation14_isa = Consultation.create!(patient: louise, user: isabelle, start_date: DateTime.parse("22/09/08 08:30 +0200"))
-consultation15_isa = Consultation.create!(patient: zdenek_rousseau, user: isabelle, start_date: DateTime.parse("22/09/08 09:00 +0200"))
-consultation16_isa = Consultation.create!(patient: alexandre, user: isabelle, start_date: DateTime.parse("22/09/08 09:30 +0200"))
-consultation17_isa = Consultation.create!(patient: catherine, user: isabelle, start_date: DateTime.parse("22/09/08 10:00 +0200"))
-consultation18_isa = Consultation.create!(patient: florent, user: isabelle, start_date: DateTime.parse("22/09/08 10:30 +0200"))
-consultation19_isa = Consultation.create!(patient: louise, user: isabelle, start_date: DateTime.parse("22/09/08 11:00 +0200"))
-consultation20_isa = Consultation.create!(patient: zdenek_rousseau, user: isabelle, start_date: DateTime.parse("22/09/08 11:30 +0200"))
+consultation1_isa = Consultation.create!(patient: alexandre, user: isabelle, start_date: DateTime.parse("22/09/09 07:00 +0200"))
+consultation2_isa = Consultation.create!(patient: catherine, user: isabelle, start_date: DateTime.parse("22/09/09 07:30 +0200"))
+consultation3_isa = Consultation.create!(patient: florent, user: isabelle, start_date: DateTime.parse("22/09/09 08:00 +0200"))
+consultation4_isa = Consultation.create!(patient: louise, user: isabelle, start_date: DateTime.parse("22/09/09 08:30 +0200"))
+consultation5_isa = Consultation.create!(patient: zdenek_rousseau, user: isabelle, start_date: DateTime.parse("22/09/09 09:00 +0200"))
+consultation6_isa = Consultation.create!(patient: louise, user: isabelle, start_date: DateTime.parse("22/09/09 09:30 +0200"))
+consultation7_isa = Consultation.create!(patient: catherine, user: isabelle, start_date: DateTime.parse("22/09/09 10:00 +0200"))
+consultation8_isa = Consultation.create!(patient: florent, user: isabelle, start_date: DateTime.parse("22/09/09 10:30 +0200"))
+consultation9_isa = Consultation.create!(patient: louise, user: isabelle, start_date: DateTime.parse("22/09/09 11:00 +0200"))
+consultation10_isa = Consultation.create!(patient: zdenek_rousseau, user: isabelle, start_date: DateTime.parse("22/09/09 11:30 +0200"))
+consultation11_isa = Consultation.create!(patient: alexandre, user: isabelle, start_date: DateTime.parse("22/09/10 07:00 +0200"))
+consultation12_isa = Consultation.create!(patient: catherine, user: isabelle, start_date: DateTime.parse("22/09/10 07:30 +0200"))
+consultation13_isa = Consultation.create!(patient: florent, user: isabelle, start_date: DateTime.parse("22/09/10 08:00 +0200"))
+consultation14_isa = Consultation.create!(patient: louise, user: isabelle, start_date: DateTime.parse("22/09/10 08:30 +0200"))
+consultation15_isa = Consultation.create!(patient: zdenek_rousseau, user: isabelle, start_date: DateTime.parse("22/09/10 09:00 +0200"))
+consultation16_isa = Consultation.create!(patient: alexandre, user: isabelle, start_date: DateTime.parse("22/09/10 09:30 +0200"))
+consultation17_isa = Consultation.create!(patient: catherine, user: isabelle, start_date: DateTime.parse("22/09/10 10:00 +0200"))
+consultation18_isa = Consultation.create!(patient: florent, user: isabelle, start_date: DateTime.parse("22/09/10 10:30 +0200"))
+consultation19_isa = Consultation.create!(patient: louise, user: isabelle, start_date: DateTime.parse("22/09/10 11:00 +0200"))
+consultation01_isa = Consultation.create!(patient: alexandre, user: isabelle, start_date: DateTime.parse("22/09/08 07:00 +0200"))
+consultation20_isa = Consultation.create!(patient: zdenek_rousseau, user: isabelle, start_date: DateTime.parse("22/09/11 11:30 +0200"))
+
+consultation01_tho = Consultation.create!(patient: zdenek_rousseau, user: isabelle, start_date: DateTime.parse("22/09/05 11:30 +0200"))
+consultation02_tho= Consultation.create!(patient: zdenek_rousseau, user: isabelle, start_date: DateTime.parse("22/09/01 11:30 +0200"))
+consultation03_tho= Consultation.create!(patient: zdenek_rousseau, user: isabelle, start_date: DateTime.parse("22/08/28 11:30 +0200"))
+consultation04_tho= Consultation.create!(patient: zdenek_rousseau, user: isabelle, start_date: DateTime.parse("22/08/23 11:30 +0200"))
 
 # Consultations de Nicolas
 consultation_catherine = Consultation.create!(patient: catherine, user: nicolas, start_date: "01/09/22")
@@ -87,10 +93,11 @@ consultation_florent = Consultation.create!(patient: florent, user: cecile, star
 
 puts "loading notes..."
 
-note_alexandre = Note.create!(content: "Le pansement se décolle facilement, penser à bien appuyer lors de la mise en place", favorite: false, creation_consultation: consultation1_isa)
-note_catherine = Note.create!(content: "Patient sensible lors des piqures, le rassurer et injecter délicatement", favorite: true, creation_consultation: consultation2_isa)
-note_florent = Note.create!(content: "Lui faire penser d'appeler sa petite fille par son prénom et non par celui de sa femme", favorite: false, creation_consultation: consultation3_isa)
 
+note_catherine = Note.create!(content: "Patient sensible lors des piqures, le rassurer et injecter délicatement", favorite: true, creation_consultation: consultation1_isa)
+note_alexandre = Note.create!(content: "Demander au médecin référent une ordonnance pour médicaments", favorite: false, creation_consultation: consultation01_isa)
+note_florent = Note.create!(content: "Lui faire penser d'appeler sa petite fille par son prénom et non par celui de sa femme", favorite: false, creation_consultation: consultation3_isa)
+note_rousseau = Note.create!(content: "Bien vérifier l'état d'infection de la plaie", favorite: false, creation_consultation: consultation01_tho)
 puts "loading treatments..."
 
 # / DONE /TODO: Créer des traitements pour les 10 consultations d'isabelle le 12 septembre 2022
@@ -155,3 +162,16 @@ Treatment.create!(category: "Perfusion", done: false, content: "Poser la perfusi
 
 Treatment.create!(category: "Injection", done: false, content: "Renouveler le pansement", consultation: consultation20_isa)
 Treatment.create!(category: "Pansement", done: false, content: "Renouveler le pansement", consultation: consultation20_isa)
+
+
+Treatment.create!(category: "Prélèvement", done: false, content: "Prélever 5ml de sang", consultation: consultation01_tho)
+Treatment.create!(category: "Médicament", done: false, content: "Lui administrer 2mg de doliprane", consultation: consultation01_tho)
+
+Treatment.create!(category: "Médicament", done: false, content: "Lui administrer 2mg de doliprane", consultation: consultation02_tho)
+Treatment.create!(category: "Autre", done: false, content: "Poser 4 points de suture", consultation: consultation02_tho)
+
+Treatment.create!(category: "Hygiène", done: false, content: "Nettoyer la plaie", consultation: consultation03_tho)
+Treatment.create!(category: "Perfusion", done: false, content: "Poser la perfusion", consultation: consultation03_tho)
+
+Treatment.create!(category: "Injection", done: false, content: "Renouveler le pansement", consultation: consultation04_tho)
+Treatment.create!(category: "Pansement", done: false, content: "Renouveler le pansement", consultation: consultation04_tho)
