@@ -87,6 +87,7 @@ consultation_florent = Consultation.create!(patient: florent, user: cecile, star
 
 puts "loading notes..."
 
+
 note_catherine = Note.create!(content: "Patient sensible lors des piqures, le rassurer et injecter délicatement", favorite: true, creation_consultation: consultation1_isa)
 note_alexandre = Note.create!(content: "Demander au médecin référent une ordonnance pour médicaments", favorite: false, creation_consultation: consultation1_isa)
 note_florent = Note.create!(content: "Lui faire penser d'appeler sa petite fille par son prénom et non par celui de sa femme", favorite: false, creation_consultation: consultation3_isa)
