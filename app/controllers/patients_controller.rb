@@ -16,9 +16,10 @@ class PatientsController < ApplicationController
 
   def show
     @patient = Patient.find(params[:id])
-    @consultations = @patient.consultations
-    @last_3_consultations = @consultations.where(start_date: ..Time.zone.now).order(:start_date).last(3)
-    @last_consultation = @consultations.where(start_date: ..Time.zone.now).order(:start_date).last
+    @consultations = @patient.consultations.where(start_date: ..Time.zone.now).order(:start_date)
+    @last_3_consultations = @consultations.last(3)
+    @consultations -= @last_3_consultations
+    @last_consultation = @consultations.last
   end
 
   def new
