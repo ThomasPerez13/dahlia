@@ -87,7 +87,7 @@ consultation_florent = Consultation.create!(patient: florent, user: cecile, star
 
 puts "loading notes..."
 
-note_alexandre = Note.create!(content: "Le pansement se décolle facilement, penser à bien appuyer lors de la mise en place", favorite: false, creation_consultation: consultation1_isa)
+note_alexandre = Note.create!(content: "Le  se décolle facilement, penser à bien appuyer lors de la mise en place", favorite: false, creation_consultation: consultation1_isa)
 note_catherine = Note.create!(content: "Patient sensible lors des piqures, le rassurer et injecter délicatement", favorite: true, creation_consultation: consultation2_isa)
 note_florent = Note.create!(content: "Lui faire penser d'appeler sa petite fille par son prénom et non par celui de sa femme", favorite: false, creation_consultation: consultation3_isa)
 
