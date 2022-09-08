@@ -1,10 +1,13 @@
 <div class="container_index_consult">
-  <%= link_to "+", new_patient_path, class:"btn btn-create mt-3" %>
 
-  <div class="d-flex justify-content-evenly">
-    <%= link_to "<", consultations_path(next_date: params[:current_day] - 1.day ), class:"btn btn-calendar" %>
+  <div class="d-flex justify-content-evenly m-3">
+    <%= link_to consultations_path(next_date: params[:current_day] - 1.day ), class:"btn btn-calendar" do %>
+      <i class="fas fa-caret-left"></i>
+    <% end %>
     <h1 class="d-flex justify-content-center m-3 date"> <%= params[:current_day].strftime('%A %d %b') %> </h1>
-    <%= link_to ">", consultations_path(next_date: params[:current_day] + 1.day ), class:"btn btn-calendar" %>
+    <%= link_to consultations_path(next_date: params[:current_day] + 1.day ), class:"btn btn-calendar" do %>
+      <i class="fas fa-caret-right"></i>
+    <% end %>
   </div>
 
   <% @consultations.each do |consultation| %>
