@@ -29,7 +29,7 @@ class PatientsController < ApplicationController
   def create
     @patient = Patient.new(params_patient)
     @patient.referring_user = current_user
-
+    
     if @patient.save
       redirect_to patient_path(@patient)
     else

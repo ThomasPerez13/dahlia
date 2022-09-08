@@ -22,7 +22,6 @@ class ConsultationsController < ApplicationController
 
   def create
     @consultation = Consultation.new(consultation_params)
-    @consultation.user = current_user
     if @consultation.save
       redirect_to consultation_path(@consultation)
     else
@@ -33,6 +32,6 @@ class ConsultationsController < ApplicationController
   private
 
   def consultation_params
-    params.require(:consultation).permit(:start_date, :patient_id)
+    params.require(:consultation).permit(:start_date, :patient_id, :user_id)
   end
 end
