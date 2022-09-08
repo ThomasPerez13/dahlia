@@ -16,9 +16,10 @@ class PatientsController < ApplicationController
 
   def show
     @patient = Patient.find(params[:id])
-    @consultations = @patient.consultations.where(start_date: ..Time.zone.now).order(:start_date)
-    @last_3_consultations = @consultations.last(3)
-    @consultations -= @last_3_consultations
+    @consultations = @patient.consultations
+    @former_consultations = @patient.consultations.where(start_date: ..Time.zone.now).order(:start_date)
+    @last_3_consultations = @former_consultations.last(3)
+    @former_consultations -= @last_3_consultations
     @last_consultation = @consultations.last
   end
 
@@ -29,7 +30,7 @@ class PatientsController < ApplicationController
   def create
     @patient = Patient.new(params_patient)
     @patient.referring_user = current_user
-    
+
     if @patient.save
       redirect_to patient_path(@patient)
     else
