@@ -2,7 +2,12 @@
   <div class="w-75 mt-4 h-25">
     <%= simple_form_for(@note) do |f| %>
        <%= hidden_field_tag 'consultation_id', params[:consultation_id] %>
-      <%= f.input :favorite, as: :radio_buttons, collection: [["Indeterminé", true], ["Prochaine séance", false]], label: "Durée", placeholder: " " %>
+      <%= f.input :favorite,
+                  as: :radio_buttons,
+                  collection: [["Indeterminé", true], ["Prochaine séance", false]],
+                  label: "Durée",
+                  placeholder: " ",
+                  required: true %>
       <%= f.input :content, label: "Note", placeholder: " ",
                   wrapper_html: { class:"input-groupe" },
                   input_html: { class:"input"},
