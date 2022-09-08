@@ -11,7 +11,7 @@
   </div>
 
   <% @consultations.each do |consultation| %>
-    <div class="card-consult-calendar d-flex justify-content-evenly">
+    <div class="d-flex justify-content-evenly">
       <%= consultation.start_date.strftime("%I:%M") %>
       <%= link_to consultation_path(consultation.id) do %>
         <div class="card-consult">

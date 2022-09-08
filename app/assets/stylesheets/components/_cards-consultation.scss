@@ -33,7 +33,8 @@
   width: 248px;
   height: 80px;
   margin-bottom: 15px;
-  margin-left: 30px
+  margin-left: 30px;
+  padding-bottom: 5px;
 }
 
 .card-consult-header{
@@ -67,7 +68,8 @@
   font-weight: 700;
   font-size: 12px;
   line-height: 15px;
-  color: $oxford-blue
+  color: $oxford-blue;
+  margin-bottom: 3px;
 }
 
 .fa-solid .fa-location-dot {
@@ -76,6 +78,8 @@
 
 .info-adresse {
   display: flex;
+  align-items: center;
+  margin-bottom: 6px                ;
 }
 
 .text-adresse {
@@ -86,6 +90,7 @@
   line-height: 20px;
   color: $gray;
   margin-left: 10px;
+  line-height: 120%;
 }
 
 .card-traitement {
