@@ -85,7 +85,6 @@ consultation02_tho= Consultation.create!(patient: zdenek_rousseau, user: isabell
 consultation03_tho= Consultation.create!(patient: zdenek_rousseau, user: isabelle, start_date: DateTime.parse("22/08/28 11:30 +0200"))
 consultation04_tho= Consultation.create!(patient: zdenek_rousseau, user: isabelle, start_date: DateTime.parse("22/08/23 11:30 +0200"))
 
-
 # Consultations de Nicolas
 consultation_catherine = Consultation.create!(patient: catherine, user: nicolas, start_date: "01/09/22")
 
