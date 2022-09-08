@@ -4,7 +4,7 @@
        <%= hidden_field_tag 'consultation_id', params[:consultation_id] %>
       <%= f.input :favorite,
                   as: :radio_buttons,
-                  collection: [["Indeterminé", true], ["Prochaine séance", false]],
+                  collection: [["Permanent", true], ["Prochaine séance", false]],
                   label: "Durée",
                   placeholder: " ",
                   required: true %>
