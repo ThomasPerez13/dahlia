@@ -23,7 +23,7 @@
 <% end %>
 
 <div data-controller="see-all">
-  <a class="btn btn-create"  data-see-all-target="button" data-action="click->see-all#revealContent">+</a>
+  <a class="btn btn-afficher"  data-see-all-target="button" data-action="click->see-all#revealContent">Afficher +</a>
   <div class="d-none" data-see-all-target="content">
     <% @consultations.each do |consultation| %>
       <%= link_to consultation_path(consultation.id) do %>

@@ -57,4 +57,22 @@
   .doctor-emergency{
     margin-left: 44px;
   }
+
+
+  .btn-afficher{
+  height: 20px;
+  background-color: $background;
+  width: 80px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: bold;
+  display: grid;
+  place-content: center;
+  color: $purpureus;
+  padding: 0px;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+  border: solid $purpureus;
+  margin-left: 195px;
+  margin-top: 20px;
+  }
 }

@@ -7,10 +7,10 @@ export default class extends Controller {
   revealContent() {
     this.contentTarget.classList.toggle("d-none")
 
-    if(this.buttonTarget.innerHTML === "+") {
-      this.buttonTarget.innerHTML = "-"
+    if(this.buttonTarget.innerHTML === "Afficher +") {
+      this.buttonTarget.innerHTML = "Afficher -"
     } else {
-      this.buttonTarget.innerHTML = "+"
+      this.buttonTarget.innerHTML = "Afficher +"
     }
   }
 
