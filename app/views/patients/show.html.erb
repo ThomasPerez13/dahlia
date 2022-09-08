@@ -1,8 +1,12 @@
 <div class="container-patient">
-  <div class="position-cards">
-    <div class="card-consult">
+  <%# <div class="position-cards"> %>
+    <div class="card-show-patient">
         <div class="card-consult-header">
-          <%= image_tag "avatar_homme.svg" %>
+          <% if @patient.gender == "Homme" %>
+            <%= image_tag "avatar_homme.svg" %>
+          <% else %>
+            <%= image_tag "avatar_femme.svg" %>
+          <% end %>
           <div class="card-info">
             <div class="card-patient-name">
               <%= @patient.first_name %>  <%= @patient.last_name %>
@@ -14,7 +18,7 @@
           </div>
         </div>
     </div>
-  </div>
+  <%# </div> %>
 
 
   <div id="tab-patient">

@@ -123,3 +123,72 @@
 
 // cards top show patient
 
+.card-show-patient {
+  left: 0%;
+  right: 0.81%;
+  top: 0%;
+  bottom: 0%;
+  opacity: 0.8;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  background: $white;
+  padding: 8px;
+  width: 85%;
+  height: 100%;
+  margin-bottom: 15px;
+  margin-top: 40px;
+
+  .card-consult-header {
+    background: #fff;
+    display: flex;
+    align-items: center;
+    border-radius: 20px 20px 20px 20px;
+    height: 100%;
+  }
+  .card-consult-header img, svg {
+    width: 55px;
+    height: 57px;
+  }
+  .card-info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    align-items: flex-start;
+    justify-content: space-around;
+    height: 100%;
+    width: 100%;
+  }
+  .card-patient-name {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 15px;
+    color: #0B2545;
+  }
+  .info-adresse {
+    margin-top: 6px;
+    .fa-solid {
+      display: flex;
+      margin-left: 0px;
+      margin-right: 5px;
+      align-items: center;
+      font-size: 15px;
+    }
+
+    .text-adresse {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+    color: #7A7979;
+    margin-left: 0px;
+
+    }
+  }
+
+}
