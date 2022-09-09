@@ -1,0 +1,83 @@
+.category-wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.category-item {
+  flex: 0 0 30%;
+}
+
+.category-selector {
+  position: absolute;
+  transform: scale(0);
+}
+
+.category-selector + label {
+  display: block;
+  cursor: pointer;
+  box-sizing: border-box;
+  width: 100%;
+  font-size: 14px;
+  text-align: center;
+  font-weight: 600;
+  padding: 60px 10px 10px 10px;
+  border: 1px solid #EAEAEA;
+  border-radius: 4px;
+  background-color: white;
+  margin-top: 10px;
+  border-radius: 20px;
+}
+
+.category-selector:checked + label {
+  color: $oxford-blue !important;
+}
+
+
+.treatment_category + label {
+  color: $oxford-blue;
+  background-size: 30%;
+  background-repeat: no-repeat;
+  background-position: 50% 25%;
+}
+
+#treatment_category_pansement + label {
+  background-image: asset-url("picto-categories/picto-pansement.svg");
+}
+
+#treatment_category_diabétique + label {
+  background-image: asset-url("picto-categories/picto-diabete.svg");
+}
+
+#treatment_category_injection + label {
+  background-image: asset-url("picto-categories/picto-injection.svg");
+}
+
+#treatment_category_prélèvement + label {
+  background-image: asset-url("picto-categories/picto-prelevement.svg");
+}
+
+#treatment_category_perfusion + label {
+  background-image: asset-url("picto-categories/picto-perfusion.svg");
+}
+
+#treatment_category_hygiène + label {
+  background-image: asset-url("picto-categories/picto-hygiene.svg");
+}
+
+#treatment_category_médicament + label {
+  background-image: asset-url("picto-categories/picto-medicament.svg");
+}
+
+#treatment_category_aide_domicile + label {
+  background-image: asset-url("picto-categories/picto-domicile.svg");
+}
+
+#treatment_category_autre + label {
+  background-image: asset-url("picto-categories/picto-nurse.svg");
+}
+
+.treatment_category:checked + label {
+  background-color: #A75AA2;
+  border-color: $magnolia;
+}
