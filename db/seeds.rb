@@ -96,7 +96,7 @@ puts "loading notes..."
 note_catherine = Note.create!(content: "Patient sensible lors des piqures, le rassurer et injecter délicatement", favorite: true, creation_consultation: consultation1_isa)
 note_alexandre = Note.create!(content: "Demander au médecin référent une ordonnance pour médicaments", favorite: false, creation_consultation: consultation01_isa)
 note_florent = Note.create!(content: "Lui faire penser d'appeler sa petite fille par son prénom et non par celui de sa femme", favorite: false, creation_consultation: consultation3_isa)
-note_rousseau = Note.create!(content: "Bien vérifier l'état d'infection de la plaie", favorite: false, creation_consultation: consultation01_tho)
+note_rousseau = Note.create!(content: "Attention chien méchant, attendre au portail", favorite: true, creation_consultation: consultation01_tho)
 puts "loading treatments..."
 
 # / DONE /TODO: Créer des traitements pour les 10 consultations d'isabelle le 12 septembre 2022
