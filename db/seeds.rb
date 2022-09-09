@@ -62,7 +62,6 @@ consultation1_isa = Consultation.create!(patient: alexandre, user: isabelle, sta
 consultation2_isa = Consultation.create!(patient: catherine, user: isabelle, start_date: DateTime.parse("22/09/09 07:30 +0200"))
 consultation3_isa = Consultation.create!(patient: florent, user: isabelle, start_date: DateTime.parse("22/09/09 08:00 +0200"))
 consultation4_isa = Consultation.create!(patient: louise, user: isabelle, start_date: DateTime.parse("22/09/09 08:30 +0200"))
-consultation5_isa = Consultation.create!(patient: zdenek_rousseau, user: isabelle, start_date: DateTime.parse("22/09/09 09:00 +0200"))
 consultation6_isa = Consultation.create!(patient: louise, user: isabelle, start_date: DateTime.parse("22/09/09 09:30 +0200"))
 consultation7_isa = Consultation.create!(patient: catherine, user: isabelle, start_date: DateTime.parse("22/09/09 10:00 +0200"))
 consultation8_isa = Consultation.create!(patient: florent, user: isabelle, start_date: DateTime.parse("22/09/09 10:30 +0200"))
@@ -113,9 +112,6 @@ Treatment.create!(category: "Diabétique", done: false, content: "Lui administre
 
 Treatment.create!(category: "Pansement", done: false, content: "Renouveler le pansement", consultation: consultation4_isa)
 Treatment.create!(category: "Autre", done: false, content: "Poser 4 points de suture", consultation: consultation4_isa)
-
-Treatment.create!(category: "Injection", done: false, content: "Injecter 12 mg d'insuline", consultation: consultation5_isa)
-Treatment.create!(category: "Perfusion", done: false, content: "Poser la perfusion", consultation: consultation5_isa)
 
 Treatment.create!(category: "Pansement", done: false, content: "Renouveler le pansement", consultation: consultation6_isa)
 Treatment.create!(category: "Injection", done: false, content: "Injecter 12 mg d'insuline", consultation: consultation6_isa)
