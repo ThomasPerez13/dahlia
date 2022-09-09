@@ -1,7 +1,5 @@
 // CSS Cards index consultation//
 .card-done {
-  height: min-content;
-  width: min-content;
   background: #FFFFFF;
   opacity: 0.5;
   border-radius: 20px;
@@ -19,7 +17,6 @@
   width: 248px;
   height: 80px;
   margin-bottom: 16px;
-  margin-left: 30px;
   padding-bottom: 5px;
   padding-top: 10px;
 }
@@ -37,7 +34,6 @@
   width: 248px;
   height: 80px;
   margin-bottom: 16px;
-  margin-left: 30px;
   padding-bottom: 5px;
   padding-top: 10px;
 }
@@ -79,8 +75,9 @@
   margin-bottom: 3px;
 }
 
-.fa-solid .fa-location-dot {
+.fa-location-dot {
   color: $gray;
+  font-size: 12px;
 }
 
 .info-adresse {
