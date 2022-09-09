@@ -1,6 +1,9 @@
 <div>
   <div class="container-sm">
-    <h1 class="h2 my-3 d-flex justify-content-center">Patients du cabinet </h1>
+    <div class="d-flex justify-content-between align-items-center">
+      <h1 class="h2 my-3 d-flex justify-content-center">Patients du cabinet</h1>
+      <%= link_to "+", new_patient_path,class:"btn btn-create" %>
+    </div>
     <div data-controller="search-patients">
       <%= simple_form_for :query, url: patients_path, method: :get,
         html: {class: "mb-4"}, data: { search_patients_target: "form"}  do |f| %>
