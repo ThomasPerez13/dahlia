@@ -7,7 +7,6 @@ class Consultation < ApplicationRecord
 
   validates :start_date, presence: true
 
-
   def done?
     treatments.all? do |treatment|
       treatment.done == true
