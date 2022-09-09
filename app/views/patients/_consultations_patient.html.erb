@@ -1,0 +1,61 @@
+<div class="card-consult-show-patient">
+  <% @last_3_consultations.each do |consultation| %>
+    <%= link_to consultation_path(consultation.id) do %>
+      <div class="card-consult">
+        <div class="card-consult-header">
+          <% if @patient.gender == "Homme" %>
+            <%= image_tag "avatar_homme.svg" %>
+          <% else %>
+            <%= image_tag "avatar_femme.svg" %>
+          <% end %>
+          <div class="card-info">
+            <div class="card-patient-name">
+              <%= @patient.first_name %>  <%= @patient.last_name %>
+            </div>
+            <div class="info-adresse">
+              <div class="text-date"><%=l(consultation.start_date, format: "%A %d %b %H:%M")%></div>
+            </div>
+          </div>
+        </div>
+        <div class="card-traitement">
+          <% consultation.treatments.each do |treatment| %>
+            <div class="tag-soins <%= treatment.category.downcase %>"> <%= treatment.category %></div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+<div data-controller="see-all">
+  <a class="btn btn-afficher"  data-see-all-target="button" data-action="click->see-all#revealContent">Afficher +</a>
+  <div class="d-none" data-see-all-target="content">
+    <div class="card-consult-show-patient">
+      <% @consultations.each do |consultation| %>
+        <%= link_to consultation_path(consultation.id) do %>
+          <div class="card-consult">
+            <div class="card-consult-header">
+            <% if @patient.gender == "Homme" %>
+              <%= image_tag "avatar_homme.svg" %>
+            <% else %>
+              <%= image_tag "avatar_femme.svg" %>
+            <% end %>
+            <div class="card-info">
+                <div class="card-patient-name">
+                  <%= @patient.first_name %>  <%= @patient.last_name %>
+                </div>
+                <div class="info-adresse">
+                  <div class="text-date"><%=l(consultation.start_date, format: "%A %d %b %H:%M")%></div>
+                </div>
+              </div>
+            </div>
+            <div class="card-traitement">
+              <% consultation.treatments.each do |treatment| %>
+                <div class="tag-soins <%= treatment.category.downcase %>"> <%= treatment.category %></div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
