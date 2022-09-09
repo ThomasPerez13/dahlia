@@ -4,15 +4,17 @@
     <%= link_to consultations_path(next_date: params[:current_day] - 1.day ), class:"btn btn-calendar" do %>
       <i class="fas fa-caret-left"></i>
     <% end %>
-    <h1 class="d-flex justify-content-center m-3 date"> <%= params[:current_day].strftime('%A %d %b') %> </h1>
+    <h1 class="d-flex justify-content-center m-3 date"> <%= l(params[:current_day], format: '%A %d %b') %> </h1>
+    <%# <h2> <%= t("hello_with_name", name: "Martin") %>
     <%= link_to consultations_path(next_date: params[:current_day] + 1.day ), class:"btn btn-calendar" do %>
       <i class="fas fa-caret-right"></i>
     <% end %>
   </div>
 
   <% @consultations.each do |consultation| %>
-    <div class="d-flex justify-content-evenly">
-      <%= consultation.start_date.strftime("%I:%M") %>
+    <div class="card-consult-calendar d-flex justify-content-evenly">
+      <%= l(consultation.start_date, format: "%H:%M") %>
+
       <%= link_to consultation_path(consultation.id) do %>
 
         <% if consultation.done? == false %>
