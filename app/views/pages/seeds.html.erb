@@ -22,7 +22,7 @@
 
 <table class="table table-bordered ">
   <tr>
-  <td style="font-weight:bold; width:40px">#</td>
+  <td style="font-weight:bold; width:40px">Id</td>
     <% User.order(:last_name).each do |user| %>
       <td style="width:40px"><%= user.id %></td>
     <% end %>
@@ -73,7 +73,7 @@
 
 <table class="table table-bordered">
   <tr>
-    <td style="font-weight:bold; width:40px">#</td>
+    <td style="font-weight:bold; width:40px">Id</td>
     <% Patient.order(:last_name).each do |patient| %>
       <td style="width:40px"><%= patient.id %></td>
     <% end %>
@@ -192,6 +192,12 @@
 
 <table class="table table-bordered ">
   <tr>
+  <td style="background-color:LavenderBlush">Id</td>
+    <% Consultation.includes(:patient).order("patients.last_name").each do |consultation| %>
+      <td style="background-color:LavenderBlush"> <%= consultation.id %></td>
+    <% end %>
+  </tr>
+  <tr>
   <td style="background-color:LavenderBlush">patient</td>
     <% Consultation.includes(:patient).order("patients.last_name").each do |consultation| %>
       <td style="background-color:LavenderBlush"> <span class="caps"><%= consultation.patient.last_name %></span> <%= consultation.patient.first_name %></td>
@@ -224,6 +230,12 @@
 <h2> <%= Treatment.count %> Treatments</h2>
 
 <table class="table table-bordered border">
+  <tr>
+  <td style="">Id</td>
+    <% Treatment.order(:category).each do |treatment| %>
+      <td style=""><%= treatment.id %></td>
+    <% end %>
+  </tr>
   <tr>
   <td style="">category</td>
     <% Treatment.order(:category).each do |treatment| %>
