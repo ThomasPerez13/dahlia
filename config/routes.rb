@@ -6,6 +6,9 @@ Rails.application.routes.draw do
 
   get "/component", to: "pages#component"
 
+  get "/seeds", to: "pages#seeds" # Seeds
+
+
   resources :consultations, only: [:index, :show, :new, :create] do
     resources :notes, only: [:new]
     resources :treatments, only: [:new, :create]
