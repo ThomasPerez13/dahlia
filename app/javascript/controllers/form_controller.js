@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["form", "edittreatment"]
+  static targets = ["form"]
   submit(event) {
     event.preventDefault()
     this.element.submit()
