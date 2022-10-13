@@ -1,5 +1,9 @@
 <div class="container-sm show-consultation">
 
+  <%# Button to edit the consultation date %>
+  <%= link_to "Modifier la date de consultation", consultation_path(@consultation), class:"btn btn-submit" %>
+
+
   <%= link_to patient_path(@consultation.patient) do %>
     <div class="card-consult">
       <div class="card-consult-header">
