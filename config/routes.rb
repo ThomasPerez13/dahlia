@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   resources :consultations, only: [:index, :show, :new, :create] do
     resources :notes, only: [:new]
-    resources :treatments, only: [:new, :create]
+    resources :treatments, only: [:new, :create, :edit, :update]
   end
 
   resources :patients, only: [:index, :show, :edit, :create, :new, :update] do
