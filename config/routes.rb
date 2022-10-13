@@ -23,4 +23,5 @@ Rails.application.routes.draw do
   end
 
   resources :treatments, only: [:update]
-end
+  end
+
