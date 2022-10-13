@@ -8,4 +8,14 @@ class TeamsController < ApplicationController
       @members << membership.user
     end
   end
+
+  def new
+    @team = Team.new
+  end
+
+  private
+
+  def team_params
+    params.require(:team).permit(:name, :number_membership)
+  end
 end
