@@ -4,10 +4,11 @@
     <%= link_to "+", new_team_path,class:"btn btn-create" %>
     <% @teams.each do |team| %>
       <%= team.name %>
-      <% @members.each do |member| %>
-        <%= member.first_name %>
-        <%= member.last_name %>
+      <% team.memberships.each do |membership| %>
+        <%= membership.user.first_name %>
+        <%= membership.user.last_name %>
       <% end%>
+      <br>
     <% end%>
   </div>
 </div>

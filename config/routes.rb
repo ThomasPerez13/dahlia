@@ -24,5 +24,7 @@ Rails.application.routes.draw do
 
   resources :treatments, only: [:update]
 
-  resources :teams, only: [:index, :new, :create]
+  resources :teams, only: %i[index new create] do
+    resources :memberships, only: %i[new create]
+  end
 end
