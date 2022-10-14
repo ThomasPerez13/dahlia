@@ -1,5 +1,34 @@
 <div class="container-sm show-consultation">
 
+  <%# Button to edit the consultation date - START %>
+  <div class="" data-controller="edit">
+    <div>
+      <button class="btn btn-submit" data-action="click->edit#displayForm">Modifier la date de consultation</button>
+    </div>
+
+    <div class="d-none" data-edit-target="form">
+      <%= simple_form_for @consultation do |f| %>
+
+        <div class="consultation_new">
+          <%= f.input :start_date, label: "Date & heure", placeholder: " ",
+                      as: :datetime,
+                      html5: true,
+                      label: false,
+                      required: false,
+                      wrapper_html: { class:" datefield-without-calendar"},
+                      input_html: { class:"input" },
+                      label_html: { class:"user-label" } %>
+        </div>
+
+        <div class="d-flex justify-content-center">
+          <%= f.button :submit, "Confirmer le changement", class: "btn btn-submit" %>
+        </div>
+
+      <% end %>
+    </div>
+  </div>
+  <%# Button to edit the consultation date - END %>
+
   <%= link_to patient_path(@consultation.patient) do %>
     <div class="card-consult">
       <div class="card-consult-header">
