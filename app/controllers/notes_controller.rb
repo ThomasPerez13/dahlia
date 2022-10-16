@@ -34,6 +34,22 @@ class NotesController < ApplicationController
     @second_to_last_consultation = @consultations[-2]
   end
 
+  def edit
+    @note = Note.find(params[:id])
+  end
+
+  def update
+    @note = Note.find(params[:id])
+    @note.update(params_note)
+    redirect_to consultation_path(@note.creation_consultation)
+  end
+
+  def destroy
+    @note = Note.find(params[:id])
+    @note.destroy
+    redirect_to consultation_path(@note.creation_consultation), status: :see_other
+  end
+
   private
 
   def params_note

@@ -18,12 +18,12 @@ Rails.application.routes.draw do
     resources :consultations, only: [:index]
   end
 
-  resources :notes, only: [:create] do
+  resources :notes, only: [:create, :edit, :update, :destroy] do
     member do
       patch :add_to_favorites
       patch :remove_from_favorites
     end
   end
-
+  
   resources :treatments, only: [:update]
 end
