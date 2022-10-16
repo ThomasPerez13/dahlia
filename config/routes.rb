@@ -11,8 +11,9 @@ Rails.application.routes.draw do
 
   resources :consultations, only: [:index, :show, :new, :create, :edit, :update] do
     resources :notes, only: [:new]
-    resources :treatments, only: [:new, :create, :edit, :update]
+    resources :treatments, only: [:new, :create]
   end
+  resources :treatments, only: [:edit, :update, :destroy]
 
   resources :patients, only: [:index, :show, :edit, :create, :new, :update] do
     resources :consultations, only: [:index]
@@ -24,6 +25,4 @@ Rails.application.routes.draw do
       patch :remove_from_favorites
     end
   end
-
-  resources :treatments, only: [:update]
 end

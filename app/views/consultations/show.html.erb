@@ -78,16 +78,23 @@
         </div>
         <div class="check d-flex align-items-center" data-controller="form">
 
+
           <%= simple_form_for treatment, url: treatment_path(treatment), html: { data: { controller: "form", 'turbo-method': :patch } } do |f| %>
             <%= f.input :done, as: :boolean, label: false, input_html: { data: { action: "change->form#submit" } }%>
           <% end %>
 
 
           <%# Edit treament icon - START %>
-          <%= link_to edit_consultation_treatment_path(@consultation, treatment) do %>
+          <%= link_to edit_treatment_path(treatment), class:"p-2" do %>
             <i class='fa-solid fa-pen-to-square'></i>
           <% end %>
           <%# Edit treament icon - END %>
+
+          <%# Delete treament icon - START %>
+          <%= link_to treatment_path(treatment), data: {turbo_method: :delete, turbo_confirm: "Supprimer ?"} do %>
+            <i class="fa-solid fa-trash"></i>
+          <% end %>
+          <%# Delete treament icon - END %>
 
 
         </div>
