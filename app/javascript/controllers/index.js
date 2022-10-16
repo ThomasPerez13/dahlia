@@ -4,19 +4,20 @@
 
 import { application } from "./application"
 
+import CalendarController from "./calendar_controller"
+application.register("calendar", CalendarController)
+
+import EditController from "./edit_controller"
+application.register("edit", EditController)
+
 import FormController from "./form_controller"
 application.register("form", FormController)
-
-
-import SeeAllController from "./see_all_controller"
-application.register("see-all", SeeAllController)
 
 import SearchPatientsController from "./search_patients_controller"
 application.register("search-patients", SearchPatientsController)
 
+import SeeAllController from "./see_all_controller"
+application.register("see-all", SeeAllController)
 
 import StarController from "./star_controller"
 application.register("star", StarController)
-
-import EditController from "./edit_controller"
-application.register("edit", EditController)
