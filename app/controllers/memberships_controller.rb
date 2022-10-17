@@ -2,7 +2,9 @@ class MembershipsController < ApplicationController
   def new
     @team = Team.find(params[:team_id])
     @memberships = []
-    @team.number_membership.times do
+    member_to_add = @team.number_membership - @team.memberships.count
+    member_to_add += 1 if @team.memberships.where(email: current_user.email) != []
+    member_to_add.times do
       @memberships << Membership.new
     end
   end
@@ -18,7 +20,8 @@ class MembershipsController < ApplicationController
       membership.team = team
       membership.user = user.first
       membership.save
-      add_creator_membership if team.number_membership == team.memberships.count
+      add_creator_membership if (team.number_membership == team.memberships.count) && (team.memberships.where(email: current_user.email) == [] )
+      redirect_to teams_path, status: :see_other if (team.number_membership + 1 == team.memberships.count)
     end
   end
 
@@ -30,7 +33,6 @@ class MembershipsController < ApplicationController
     membership.team = Team.find(params[:team_id])
     membership.user = current_user
     membership.save
-    redirect_to teams_path, status: :see_other
   end
 
   def membership_params

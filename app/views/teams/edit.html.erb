@@ -2,10 +2,10 @@
   <%= simple_form_for(@team) do |f| %>
     <%= f.input :name, label: "Nom du groupe :", placeholder: " "%>
     <%= f.input :area, label: "Zone géographique :", placeholder: " "%>
-    <%= f.input :number_membership, label: "Nombre de membres à ajouter :", placeholder: " "%>
+    <%= f.input :nb_member_to_add, label: "Nombre de membres à ajouter :", placeholder: " "%>
 
     <div class="d-flex justify-content-center">
-      <%= f.button :submit, "Ajouter un groupe", class: "btn-submit" %>
+      <%= f.button :submit, "Modifier", class: "btn-submit" %>
     </div>
   <% end %>
 </div>

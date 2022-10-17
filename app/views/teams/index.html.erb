@@ -9,7 +9,9 @@
         <%= membership.user.first_name %>
         <%= membership.user.last_name %>
       <% end%>
-      <%= link_to "Ajouter des membres", new_team_path,class:"btn-add-treatment" %>
+      <% if current_user == team.creator %>
+        <%= link_to "Modifier le groupe",  edit_team_path(team),class:"btn-add-treatment" %>
+      <% end%>
       <br>
     <% end%>
   </div>

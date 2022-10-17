@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_17_085851) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_17_095405) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -72,6 +72,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_17_085851) do
     t.datetime "updated_at", null: false
     t.integer "number_membership"
     t.string "area"
+    t.integer "nb_member_to_add"
     t.index ["creator_id"], name: "index_teams_on_creator_id"
   end
 
