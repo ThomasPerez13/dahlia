@@ -11,10 +11,15 @@ class MembershipsController < ApplicationController
     membership = Membership.new(membership_params)
     team = Team.find(params[:team_id])
     user = User.where(email: membership.email)
-    membership.team = team
-    membership.user = user.first
-    membership.save
-    add_creator_membership if team.number_membership == team.memberships.count
+    if user == []
+      redirect_to new_team_membership_path(team), status: :see_other
+      flash.alert = "Aucun utilisateur n'est inscrit avec cet email"
+    else
+      membership.team = team
+      membership.user = user.first
+      membership.save
+      add_creator_membership if team.number_membership == team.memberships.count
+    end
   end
 
   private
