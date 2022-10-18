@@ -13,9 +13,9 @@ class MembershipsController < ApplicationController
     membership = Membership.new(membership_params)
     team = Team.find(params[:team_id])
     user = User.where(email: membership.email)
-    if user == []
+    if user == [] || team.memberships.where(email: membership.email) != []
       redirect_to new_team_membership_path(team), status: :see_other
-      flash.alert = "Aucun utilisateur n'est inscrit avec cet email"
+      flash.alert = "L'utilisateur n'est pas inscrit ou il est déjà dans le groupe"
     else
       membership.team = team
       membership.user = user.first
