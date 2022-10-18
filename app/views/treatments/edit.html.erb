@@ -2,7 +2,7 @@
 
 <div class="d-flex justify-content-center m-3">
   <div id="input-custom" class="input-g">
-    <%= simple_form_for  [:consultation, @treatment] do |f| %>
+    <%= simple_form_for  [@treatment] do |f| %>
       <%= f.input :content, label: "contenu", placeholder: " ",
         wrapper_html: { class:"input-groupe" },
         input_html: { class:"input"},
