@@ -34,10 +34,6 @@ class ConsultationsController < ApplicationController
     end
   end
 
-  def edit
-    @consultation = Consultation.find(params[:id])
-  end
-
   def update
     @consultation = Consultation.find(params[:id])
     @consultation.update(consultation_params)
