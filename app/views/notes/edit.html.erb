@@ -1,0 +1,18 @@
+<div class="container-add-note">
+  <div class="w-75 mt-4 h-25">
+    <%= simple_form_for(@note) do |f| %>
+       <%= hidden_field_tag 'consultation_id', params[:consultation_id] %>
+      <%= f.input :favorite,
+                  as: :radio_buttons,
+                  collection: [["Permanent", true], ["Prochaine séance", false]],
+                  label: "Durée",
+                  placeholder: " ",
+                  required: true %>
+      <%= f.input :content, label: "Note", placeholder: " ",
+                  wrapper_html: { class:"input-groupe" },
+                  input_html: { class:"input"},
+                  label_html: {class:"user-label"} %>
+      <%= f.button :submit, "Modifier la note", class: "btn btn-add" %>
+    <% end %>
+  </div>
+</div>
