@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get "/seeds", to: "pages#seeds" # Seeds
 
 
-  resources :consultations, only: [:index, :show, :new, :create, :edit, :update] do
+  resources :consultations, only: [:index, :show, :new, :create, :update] do
     resources :notes, only: [:new]
     resources :treatments, only: [:new, :create]
   end
