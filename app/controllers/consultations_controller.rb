@@ -34,6 +34,12 @@ class ConsultationsController < ApplicationController
     end
   end
 
+  def update
+    @consultation = Consultation.find(params[:id])
+    @consultation.update(consultation_params)
+    redirect_to consultation_path(@consultation)
+  end
+
   private
 
   def consultation_params
