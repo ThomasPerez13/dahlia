@@ -17,3 +17,6 @@ application.register("search-patients", SearchPatientsController)
 
 import StarController from "./star_controller"
 application.register("star", StarController)
+
+import EditController from "./edit_controller"
+application.register("edit", EditController)

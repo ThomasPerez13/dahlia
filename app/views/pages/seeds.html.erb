@@ -1,0 +1,275 @@
+<style>
+  table {
+    font-size: 12px;
+    text-align:center;
+  }
+  tr {
+    display: block;
+    float: left;
+  }
+  th, td {
+    display: block;
+    height:95px;
+    width:95px;
+    word-break:break-word;
+  }
+  .caps{
+    text-transform: uppercase;
+  }
+</style>
+
+<h2> <%= User.count %> Users</h2>
+
+<table class="table table-bordered ">
+  <tr>
+  <td style="font-weight:bold; width:40px">Id</td>
+    <% User.order(:last_name).each do |user| %>
+      <td style="width:40px"><%= user.id %></td>
+    <% end %>
+  </tr>
+  <tr>
+  <td style="font-weight:bold">last_name</td>
+    <% User.order(:last_name).each do |user| %>
+      <td class="caps"><%= user.last_name %></td>
+    <% end %>
+  </tr>
+  <tr>
+  <td style="font-weight:bold">first_name</td>
+    <% User.order(:last_name).each do |user| %>
+      <td><%= user.first_name %></td>
+    <% end %>
+  </tr>
+
+
+  <tr>
+  <td style="font-weight:bold">email</td>
+    <% User.order(:last_name).each do |user| %>
+      <td><%= user.email %></td>
+    <% end %>
+  </tr>
+
+  <tr>
+  <td style="font-weight:bold">tel_number</td>
+    <% User.order(:last_name).each do |user| %>
+      <td><%= user.tel_number %></td>
+    <% end %>
+  </tr>
+
+  <tr>
+  <td style="font-weight:bold">password</td>
+    <% User.order(:last_name).each do |user| %>
+      <td><%= user.password %></td>
+    <% end %>
+  </tr>
+  <tr>
+  <td style="font-weight:bold;  background-color:LavenderBlush">consultations</td>
+    <% User.order(:last_name).each do |user| %>
+      <td style=" background-color:LavenderBlush"><%= user.consultations.count %></td>
+    <% end %>
+  </tr>
+</table>
+
+<h2> <%= Patient.count %> Patients</h2>
+
+<table class="table table-bordered">
+  <tr>
+    <td style="font-weight:bold; width:40px">Id</td>
+    <% Patient.order(:last_name).each do |patient| %>
+      <td style="width:40px"><%= patient.id %></td>
+    <% end %>
+  </tr>
+  <tr>
+    <td style="font-weight:bold">last_name</td>
+    <% Patient.order(:last_name).each do |patient| %>
+      <td style="" class="caps"><%= patient.last_name %></td>
+    <% end %>
+  </tr>
+  <tr>
+    <td style="font-weight:bold">first_name</td>
+    <% Patient.order(:last_name).each do |patient| %>
+      <td><%= patient.first_name %></td>
+    <% end %>
+  </tr>
+    <tr>
+    <td style="font-weight:bold">address</td>
+    <% Patient.order(:last_name).each do |patient| %>
+      <td><%= patient.address %></td>
+    <% end %>
+  </tr>
+  <tr>
+    <td style="font-weight:bold">email</td>
+    <% Patient.order(:last_name).each do |patient| %>
+      <td><%= patient.email %></td>
+    <% end %>
+  </tr>
+  <tr>
+    <td style="font-weight:bold">tel_number</td>
+    <% Patient.order(:last_name).each do |patient| %>
+      <td><%= patient.tel_number %></td>
+    <% end %>
+  </tr>
+  <tr>
+    <td style="font-weight:bold">ss_number</td>
+    <% Patient.order(:last_name).each do |patient| %>
+      <td><%= patient.ss_number %></td>
+    <% end %>
+  </tr>
+  <tr>
+    <td style="font-weight:bold">referring_doctor</td>
+    <% Patient.order(:last_name).each do |patient| %>
+      <td><%= patient.referring_doctor %></td>
+    <% end %>
+  </tr>
+  <tr>
+    <td style="font-weight:bold">emergency_contact_name</td>
+    <% Patient.order(:last_name).each do |patient| %>
+      <td><%= patient.emergency_contact_name %></td>
+    <% end %>
+  </tr>
+  <tr>
+    <td style="font-weight:bold">emergency_contact_tel</td>
+    <% Patient.order(:last_name).each do |patient| %>
+      <td><%= patient.emergency_contact_tel %></td>
+    <% end %>
+  </tr>
+  <tr>
+    <td style="font-weight:bold">birth_day</td>
+    <% Patient.order(:last_name).each do |patient| %>
+      <td><%= patient.birth_day %></td>
+    <% end %>
+  </tr>
+  <tr>
+    <td style="font-weight:bold; width:40px">height</td>
+    <% Patient.order(:last_name).each do |patient| %>
+      <td style="width:40px"><%= patient.height %></td>
+    <% end %>
+  </tr>
+  <tr>
+    <td style="font-weight:bold; width:40px">weight</td>
+    <% Patient.order(:last_name).each do |patient| %>
+      <td style="width:40px"><%= patient.weight %></td>
+    <% end %>
+  </tr>
+  <tr>
+    <td style="font-weight:bold; width:40px">blood_type</td>
+    <% Patient.order(:last_name).each do |patient| %>
+      <td style="width:40px"><%= patient.blood_type %></td>
+    <% end %>
+  </tr>
+  <tr>
+    <td style="background-color:LavenderBlush; width:70px">referring_user</td>
+    <% Patient.order(:last_name).each do |patient| %>
+      <td style="background-color:LavenderBlush; width:70px"> <span class="caps"><%= patient.referring_user.last_name %></span> <%= patient.referring_user.first_name %></td>
+    <% end %>
+  </tr>
+  <tr>
+    <td style="font-weight:bold; width:70px">gender</td>
+    <% Patient.order(:last_name).each do |patient| %>
+      <td style="width:70px"><%= patient.gender %></td>
+    <% end %>
+  </tr>
+  <tr>
+    <td style="font-weight:bold; width:70px; background-color:LavenderBlush">cons.</td>
+    <% Patient.order(:last_name).each do |patient| %>
+      <td style="width:70px; background-color:LavenderBlush"><%= patient.consultations.count %></td>
+    <% end %>
+  </tr>
+  <td style="font-weight:bold; width:70px; background-color:LavenderBlush">treat.</td>
+    <% Patient.order(:last_name).each do |patient| %>
+      <td style="width:70px; background-color:LavenderBlush">
+        <% treatments = 0 %>
+        <% patient.consultations.each do |consultation| %>
+          <% treatments+= consultation.treatments.count %>
+        <% end %>
+        <%= treatments %>
+      </td>
+    <% end %>
+  </tr>
+
+</table>
+
+<h2> <%= Consultation.count %> Consultations</h2>
+
+<table class="table table-bordered ">
+  <tr>
+  <td style="background-color:LavenderBlush">Id</td>
+    <% Consultation.includes(:patient).order("patients.last_name").each do |consultation| %>
+      <td style="background-color:LavenderBlush"> <%= consultation.id %></td>
+    <% end %>
+  </tr>
+  <tr>
+  <td style="background-color:LavenderBlush">patient</td>
+    <% Consultation.includes(:patient).order("patients.last_name").each do |consultation| %>
+      <td style="background-color:LavenderBlush"> <span class="caps"><%= consultation.patient.last_name %></span> <%= consultation.patient.first_name %></td>
+    <% end %>
+  </tr>
+  <tr>
+  <td style="background-color:LavenderBlush">user</td>
+    <% Consultation.includes(:patient).order("patients.last_name").each do |consultation| %>
+      <td style="background-color:LavenderBlush"> <span class="caps"><%= consultation.user.last_name %></span> <%= consultation.user.first_name %></td>
+    <% end %>
+  </tr>
+  <tr>
+  <td style="font-weight:bold">start_date</td>
+    <% Consultation.includes(:patient).order("patients.last_name").each do |consultation| %>
+      <td><%= consultation.start_date %></td>
+    <% end %>
+  </tr>
+  <tr>
+  <td style="font-weight:bold; background-color:LavenderBlush; width:300px">treatments</td>
+    <% Consultation.includes(:patient).order("patients.last_name").each do |consultation| %>
+      <td style="background-color:LavenderBlush; width:300px">
+        <% consultation.treatments.each do |treatment| %>
+          <%= treatment.content %><br>
+        <% end %>
+      </td>
+    <% end %>
+  </tr>
+</table>
+
+<h2> <%= Treatment.count %> Treatments</h2>
+
+<table class="table table-bordered border">
+  <tr>
+  <td style="">Id</td>
+    <% Treatment.order(:category).each do |treatment| %>
+      <td style=""><%= treatment.id %></td>
+    <% end %>
+  </tr>
+  <tr>
+  <td style="">category</td>
+    <% Treatment.order(:category).each do |treatment| %>
+      <td style=""><%= treatment.category %></td>
+    <% end %>
+  </tr>
+  <tr>
+  <td style="">done?</td>
+    <% Treatment.order(:category).each do |treatment| %>
+      <td style=""><%= treatment.done %></td>
+    <% end %>
+  </tr>
+  <tr>
+  <td style="font-weight:bold">content</td>
+    <% Treatment.order(:category).each do |treatment| %>
+      <td><%= treatment.content %></td>
+    <% end %>
+  </tr>
+  <td style="font-weight:bold; width:300px; background-color:LavenderBlush">consultation</td>
+    <% Treatment.order(:category).each do |treatment| %>
+      <td style="width:300px; background-color:LavenderBlush">
+        Patient:
+        <span class="caps"><%= treatment.consultation.patient.last_name %></span>
+        <%= treatment.consultation.patient.first_name %>
+        <br>
+
+        User:
+        <span class="caps"><%= treatment.consultation.user.last_name %></span>
+         <%= treatment.consultation.user.first_name %>
+        <br>
+
+        Date: <%= treatment.consultation.start_date %>
+
+      </td>
+    <% end %>
+  </tr>
+</table>
