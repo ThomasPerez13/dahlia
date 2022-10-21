@@ -1,6 +1,9 @@
 <div class="container_index_consult m-3">
   <h4>My calendar</h4>
   <div data-controller="calendar">
+    <button data-action="click->calendar#today">Aujourd'hui</button>
+    <button data-action="click->calendar#previous">jour d'avant</button>
+    <button data-action="click->calendar#next">jour suivant</button>
     <div id="calendar" data-calendar-target="myCalendar" style="height: 600px;">
       <%= tag.div nil, data: {schedules: @consultations .to_json}%>
     </div>

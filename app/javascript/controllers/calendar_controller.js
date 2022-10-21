@@ -79,6 +79,8 @@ export default class extends Controller {
       // milestone: false,
       taskView: false,
       scheduleView: ['time'],
+      useCreationPopup: true,
+      useDetailPopup: true,
       timezone: {
         zones: [
           {
@@ -103,7 +105,7 @@ export default class extends Controller {
       }
     };
 
-    this.calendar = new Calendar(this.container, this.options);
+    return new Calendar(this.container, this.options);
     // console.log(document.getElementsByClassName("tui-view-15"));
     // // console.log(document.getElementsByClassName("tui-view-10").classList);
     // // console.log(document.getElementsByClassName("tui-view-12").classList);
@@ -112,5 +114,21 @@ export default class extends Controller {
     // // document.getElementsByClassName("tui-view-12").classList.add("d-none");
   }
 
+  today() {
+    console.log("today action");
+    this.calendar = this.displayCalendarWeek()
+    this.calendar.today();
+  };
 
+  previous() {
+    console.log("previous action");
+    this.calendar = this.displayCalendarWeek()
+    this.calendar.move(-1);
+  };
+
+  next() {
+    console.log("next action");
+    this.calendar = this.displayCalendarWeek()
+    this.calendar.move(1);
+  }
 };
