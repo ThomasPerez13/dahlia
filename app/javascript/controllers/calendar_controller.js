@@ -1,5 +1,8 @@
 import { Controller } from "@hotwired/stimulus";
 import Calendar from "tui-calendar";
+import 'tui-time-picker/dist/tui-time-picker.css';
+import "tui-calendar/dist/tui-calendar.css";
+// import Rails from "@rails/ujs";
 
 
 // Connects to data-controller="calendar"
@@ -23,7 +26,7 @@ export default class extends Controller {
         borderColor: 'red',
 
       milestone: true,    // Can be also ['milestone', 'task']
-      scheduleView: true,  // Can be also ['allday', 'time']
+      scheduleView: ['time'],  // Can be also ['allday', 'time']
       useCreationPopup: true,
       useDetailPopup: true,
       template: {
@@ -60,8 +63,7 @@ export default class extends Controller {
       month: {
           daynames: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
           startDayOfWeek: 0,
-          narrowWeekend: true
-      },
+          narrowWeekend: true,      },
       week: {
           daynames: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
           startDayOfWeek: 0,
@@ -74,13 +76,16 @@ export default class extends Controller {
     this.container = document.getElementById('calendar');
     this.options = {
       defaultView: 'day',
-      milestone: false,
+      // milestone: false,
+      taskView: false,
+      scheduleView: ['time'],
       timezone: {
         zones: [
           {
-            timezoneName: 'Europe/London',
-            displayLabel: 'London',
-          },
+            timezoneName: "Europe/Paris",
+            displayLabel: "GMT+02:00",
+            tooltip: "Paris",
+          }
         ],
       },
       calendars: [
@@ -90,8 +95,22 @@ export default class extends Controller {
           backgroundColor: '#03bd9e',
         }
       ],
+      week: {
+        daynames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
+        hourStart: 7,
+        hourEnd: 19,
+        showNowIndicator: false
+      }
     };
 
     this.calendar = new Calendar(this.container, this.options);
+    // console.log(document.getElementsByClassName("tui-view-15"));
+    // // console.log(document.getElementsByClassName("tui-view-10").classList);
+    // // console.log(document.getElementsByClassName("tui-view-12").classList);
+    // document.getElementsByClassName("tui-view-15").style.display="none !important";
+    // // document.getElementsByClassName("tui-view-10").classList.add("d-none");
+    // // document.getElementsByClassName("tui-view-12").classList.add("d-none");
   }
+
+
 };
