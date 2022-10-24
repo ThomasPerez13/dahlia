@@ -1,8 +1,8 @@
 class ConsultationsController < ApplicationController
   def index
     # use with simple calendar form
-    #  today_date = params.fetch(:start_date, Date.today).to_date
-    #  @consultations = Consultation.where(user: current_user, start_date: today_date.beginning_of_week..today_date.end_of_week)
+    today_date = params.fetch(:start_date, Date.today).to_date
+    @consultations = Consultation.where(user: current_user, start_date: today_date.beginning_of_week..today_date.end_of_week)
     # use with table html
 
     # params[:next_date] ||= Date.today.to_s
