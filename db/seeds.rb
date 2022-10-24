@@ -2,6 +2,8 @@ Note.destroy_all
 Treatment.destroy_all
 Consultation.destroy_all
 Patient.destroy_all
+Membership.destroy_all
+Team.destroy_all
 User.destroy_all
 
 puts "loading users..."

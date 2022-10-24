@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_05_083452) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_17_095405) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -23,6 +23,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_05_083452) do
     t.datetime "updated_at", null: false
     t.index ["patient_id"], name: "index_consultations_on_patient_id"
     t.index ["user_id"], name: "index_consultations_on_user_id"
+  end
+
+  create_table "memberships", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "team_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "email"
+    t.index ["team_id"], name: "index_memberships_on_team_id"
+    t.index ["user_id"], name: "index_memberships_on_user_id"
   end
 
   create_table "notes", force: :cascade do |t|
@@ -55,6 +65,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_05_083452) do
     t.index ["referring_user_id"], name: "index_patients_on_referring_user_id"
   end
 
+  create_table "teams", force: :cascade do |t|
+    t.string "name"
+    t.bigint "creator_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "number_membership"
+    t.string "area"
+    t.integer "nb_member_to_add"
+    t.index ["creator_id"], name: "index_teams_on_creator_id"
+  end
+
   create_table "treatments", force: :cascade do |t|
     t.string "category"
     t.string "sub_category"
@@ -83,7 +104,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_05_083452) do
 
   add_foreign_key "consultations", "patients"
   add_foreign_key "consultations", "users"
+  add_foreign_key "memberships", "teams"
+  add_foreign_key "memberships", "users"
   add_foreign_key "notes", "consultations", column: "creation_consultation_id"
   add_foreign_key "patients", "users", column: "referring_user_id"
+  add_foreign_key "teams", "users", column: "creator_id"
   add_foreign_key "treatments", "consultations"
 end

@@ -13,11 +13,21 @@ class TreatmentsController < ApplicationController
     end
   end
 
+  def edit
+    @treatment = Treatment.find(params[:id])
+  end
+
   def update
     @treatment = Treatment.find(params[:id])
     params[:treatment][:done] == "1" ? @treatment.done = true : @treatment.done = false
-    @treatment.save
-    # redirect_to consultation_path(Consultation.find(params[:consultation_id]))
+    @treatment.update(params_treatment)
+    redirect_to consultation_path(@treatment.consultation)
+
+  end
+  def destroy
+    @treatment = Treatment.find(params[:id])
+    @treatment.destroy
+    redirect_to consultation_path(@treatment.consultation), status: :see_other
   end
 
   private
