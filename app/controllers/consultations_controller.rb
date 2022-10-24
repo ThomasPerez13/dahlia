@@ -12,8 +12,25 @@ class ConsultationsController < ApplicationController
 
     today_date = params.fetch(:start_date, Date.today).to_date
     @consultations = Consultation.where(user: current_user, start_date: today_date.beginning_of_day..today_date.end_of_day)
+    # render json: @consultations
     # raise
   end
+
+  # data-schedules="[{"id":252,"start_date":"2022-10-24T09:00:00.000+02:00","duration_in_min":30,"
+  #                    patient_id":62,"user_id":13,"created_at":"2022-10-24T19:06:00.168+02:00","
+  #                    updated_at":"2022-10-24T19:06:00.168+02:00"},
+  #                  {"id":253,"start_date":"2022-10-24T11:00:00.000+02:00","duration_in_min":30,"
+  #                    patient_id":63,"user_id":13,"created_at":"2022-10-24T19:06:00.173+02:00","
+  #                    updated_at":"2022-10-24T19:06:00.173+02:00"},
+  #                  {"id":254,"start_date":"2022-10-24T14:00:00.000+02:00","duration_in_min":30,"
+  #                    patient_id":64,"user_id":13,"created_at":"2022-10-24T19:06:00.176+02:00","
+  #                    updated_at":"2022-10-24T19:06:00.176+02:00"},
+  #                  {"id":255,"start_date":"2022-10-24T16:00:00.000+02:00","duration_in_min":30,"
+  #                    patient_id":65,"user_id":13,"created_at":"2022-10-24T19:06:00.180+02:00","
+  #                    updated_at":"2022-10-24T19:06:00.180+02:00"},
+  #                  {"id":256,"start_date":"2022-10-24T18:00:00.000+02:00","duration_in_min":30,"
+  #                    patient_id":66,"user_id":13,"created_at":"2022-10-24T19:06:00.183+02:00","
+  #                    updated_at":"2022-10-24T19:06:00.183+02:00"}]"
 
   def show
     @consultation = Consultation.find(params[:id])

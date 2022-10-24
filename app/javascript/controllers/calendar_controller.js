@@ -12,7 +12,8 @@ export default class extends Controller {
   connect() {
     console.log("welcom to our calendar controller");
     console.log(this.myCalendarTarget);
-    this.displayCalendarWeek()
+    // this.displayCalendarWeek()
+    this.getCalendardata()
   }
 
   displayCalendarMonth() {
@@ -82,6 +83,37 @@ export default class extends Controller {
       scheduleView: ['time'],
       useCreationPopup: true,
       useDetailPopup: true,
+      template: {
+
+        popupDetailRepeat: function(schedule) {
+          return 'Repeat : ' + schedule.recurrenceRule;
+        },
+
+        popupStateFree: function() {
+          return 'Free';
+        },
+          milestone: function(schedule) {
+              return '<span style="color:red;"><i class="fa fa-flag"></i> ' + schedule.title + '</span>';
+          },
+          milestoneTitle: function() {
+              return 'Milestone';
+          },
+          task: function(schedule) {
+              return '&nbsp;&nbsp;#' + schedule.title;
+          },
+          taskTitle: function() {
+              return '<label><input type="checkbox" />Task</label>';
+          },
+          // allday: function(schedule) {
+          //     return schedule.title + ' <i class="fa fa-refresh"></i>';
+          // },
+          alldayTitle: function() {
+              return 'All Day';
+          },
+          // time: function(schedule) {
+          //     return schedule.title + ' <i class="fa fa-refresh"></i>' + schedule.start;
+          // }
+      },
       timezone: {
         zones: [
           {
@@ -114,6 +146,42 @@ export default class extends Controller {
     // // document.getElementsByClassName("tui-view-10").classList.add("d-none");
     // // document.getElementsByClassName("tui-view-12").classList.add("d-none");
   }
+
+  getCalendardata(){
+    this.schedules = JSON.parse(document.querySelector("#calendar").dataset.schedules);
+    console.log(this.schedules);
+    window.schedules = this.schedules;
+    console.log(window.schedules);
+    this.calendar = this.displayCalendarWeek();
+    this.schedules.forEach(schedule => {
+      console.log(schedule.id);
+      console.log(schedule.patient_id);
+      console.log(schedule.duration_in_min);
+      console.log(typeof(schedule.start_date));
+      console.log(schedule.dueDateClass);
+    this.calendar.createSchedules([
+    {
+      id: schedule.id,
+      calendarId: '1',
+      title: schedule.patient_id,
+      category: 'time',
+      // dueDateClass: schedule.dueDateClass,
+      // location: schedule.location,
+      start: schedule.start_date,
+      end:  new Date(new Date(schedule.start_date).setMinutes(new Date (schedule.start_date).getMinutes() + 30))
+      // new Date(nowTest.setMinutes(nowTest.getMinutes() + 30))
+    }
+    ])
+    });
+  }
+
+//   "id": 252,
+// "start_date": "2022-10-24T09:00:00.000+02:00",
+// "duration_in_min": 30,
+// "patient_id": 62,
+// "user_id": 13,
+// "created_at": "2022-10-24T19:06:00.168+02:00",
+// "updated_at": "2022-10-24T19:06:00.168+02:00"
 
   today() {
     console.log("today action");
