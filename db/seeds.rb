@@ -54,6 +54,13 @@ puts "loading consultations..."
 
 # CONSULTATIONS
 # CONSULTATIONS DE THOMAS
+# consultation du jour
+cons_thomas_alexandre_today = Consultation.create!(patient: alexandre, user: thomas, start_date: DateTime.parse("#{Date.today} 09:00 +0200"))
+cons_thomas_catherine_today = Consultation.create!(patient: catherine, user: thomas, start_date: DateTime.parse("#{Date.today} 11:00 +0200"))
+cons_thomas_florent_today = Consultation.create!(patient: florent, user: thomas, start_date: DateTime.parse("#{Date.today} 14:00 +0200"))
+cons_thomas_louise_today = Consultation.create!(patient: louise, user: thomas, start_date: DateTime.parse("#{Date.today} 16:00 +0200"))
+cons_thomas_emma_today = Consultation.create!(patient: emma, user: thomas, start_date: DateTime.parse("#{Date.today} 18:00 +0200"))
+
 # Consultations du lundi
 
 cons_thomas_alexandre_mon = Consultation.create!(patient: alexandre, user: thomas, start_date: DateTime.parse("#{Date.today.next_occurring(:monday).strftime} 09:00 +0200"))
@@ -196,6 +203,10 @@ puts "loading treatments..."
 
 # Alexandre, Simone et Zdenek - plaie à panser et nettoyer + doliprane
 # Thomas > Alexandre
+Treatment.create!(category: "Pansement", done: false, content: "Renouveler le pansement", consultation: cons_thomas_alexandre_today)
+Treatment.create!(category: "Hygiène", done: false, content: "Nettoyer la plaie", consultation: cons_thomas_alexandre_today)
+Treatment.create!(category: "Médicament", done: false, content: "Administrer 2mg de doliprane", consultation: cons_thomas_alexandre_today)
+
 Treatment.create!(category: "Pansement", done: false, content: "Renouveler le pansement", consultation: cons_thomas_alexandre_mon)
 Treatment.create!(category: "Hygiène", done: false, content: "Nettoyer la plaie", consultation: cons_thomas_alexandre_mon)
 Treatment.create!(category: "Médicament", done: false, content: "Administrer 2mg de doliprane", consultation: cons_thomas_alexandre_mon)
@@ -261,6 +272,9 @@ Treatment.create!(category: "Médicament", done: false, content: "Administrer 2m
 
 # Catherine, Armand, Bellamy - Perfusion + Insuline
 # Thomas > Catherine
+Treatment.create!(category: "Perfusion", done: false, content: "Poser la perfusion", consultation: cons_thomas_catherine_today)
+Treatment.create!(category: "Injection", done: false, content: "Injecter 12 mg d'insuline", consultation: cons_thomas_catherine_today)
+
 Treatment.create!(category: "Perfusion", done: false, content: "Poser la perfusion", consultation: cons_thomas_catherine_mon)
 Treatment.create!(category: "Injection", done: false, content: "Injecter 12 mg d'insuline", consultation: cons_thomas_catherine_mon)
 
@@ -311,6 +325,9 @@ Treatment.create!(category: "Injection", done: false, content: "Injecter 12 mg d
 
 # Florent, Peppin, Aubrey - Prise de sang + Glucophage
 # Thomas > Florent
+Treatment.create!(category: "Prélèvement", done: false, content: "Prélever 5ml de sang", consultation: cons_thomas_florent_today)
+Treatment.create!(category: "Diabétique", done: false, content: "Administrer 10mg de Glucophage", consultation: cons_thomas_florent_today)
+
 Treatment.create!(category: "Prélèvement", done: false, content: "Prélever 5ml de sang", consultation: cons_thomas_florent_mon)
 Treatment.create!(category: "Diabétique", done: false, content: "Administrer 10mg de Glucophage", consultation: cons_thomas_florent_mon)
 
@@ -362,6 +379,7 @@ Treatment.create!(category: "Diabétique", done: false, content: "Administrer 10
 
 # Louise, Joseph, Ancelina - Prise de sang
 # Thomas > Louise
+Treatment.create!(category: "Prélèvement", done: false, content: "Prélever 5ml de sang", consultation: cons_thomas_louise_today)
 Treatment.create!(category: "Prélèvement", done: false, content: "Prélever 5ml de sang", consultation: cons_thomas_louise_mon)
 Treatment.create!(category: "Prélèvement", done: false, content: "Prélever 5ml de sang", consultation: cons_thomas_louise_tue)
 Treatment.create!(category: "Prélèvement", done: false, content: "Prélever 5ml de sang", consultation: cons_thomas_louise_wed)
@@ -385,6 +403,7 @@ Treatment.create!(category: "Prélèvement", done: false, content: "Prélever 5m
 
 # Emma, Clémentine, Ginette - Points de suture
 # Thomas > Emma
+Treatment.create!(category: "Autre", done: false, content: "Poser 4 points de suture", consultation: cons_thomas_emma_today)
 Treatment.create!(category: "Autre", done: false, content: "Poser 4 points de suture", consultation: cons_thomas_emma_mon)
 Treatment.create!(category: "Autre", done: false, content: "Poser 4 points de suture", consultation: cons_thomas_emma_tue)
 Treatment.create!(category: "Autre", done: false, content: "Poser 4 points de suture", consultation: cons_thomas_emma_wed)

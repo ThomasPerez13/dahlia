@@ -4,8 +4,9 @@
     <button data-action="click->calendar#today">Aujourd'hui</button>
     <button data-action="click->calendar#previous">jour d'avant</button>
     <button data-action="click->calendar#next">jour suivant</button>
-    <div id="calendar" data-calendar-target="myCalendar" style="height: 600px;">
-      <%= tag.div nil, data: {schedules: @consultations .to_json}%>
+    <div  id="calendar" data-calendar-target="myCalendar" style="height: 600px;" data-schedules=<%= consultations.to_json %>>
+      <%# <%= tag.div nil, data: {schedules: @consultations .to_json}%>
+      <%# <%= raise %>
     </div>
 </div>
 </div>

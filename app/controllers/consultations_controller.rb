@@ -1,14 +1,18 @@
 class ConsultationsController < ApplicationController
   def index
     # use with simple calendar form
-    today_date = params.fetch(:start_date, Date.today).to_date
-    @consultations = Consultation.where(user: current_user, start_date: today_date.beginning_of_week..today_date.end_of_week)
-    # use with table html
+    # today_date = params.fetch(:start_date, Date.today).to_date
+    # @consultations = Consultation.where(user: current_user, start_date: today_date.beginning_of_week..today_date.end_of_week)
 
-    # params[:next_date] ||= Date.today.to_s
-    # date = Date.parse(params[:next_date])
-    # params[:current_day] ||= date
-    # @consultations = Consultation.where(user: current_user).where(start_date: params[:current_day].beginning_of_day..params[:current_day].end_of_day).order(:start_date)
+    # use with default display calendar (first try)
+    #  params[:next_date] ||= Date.today.to_s
+    #  date = Date.parse(params[:next_date])
+    #  params[:current_day] ||= date
+    #  @consultations = Consultation.where(user: current_user).where(start_date: params[:current_day].beginning_of_day..params[:current_day].end_of_day).order(:start_date)
+
+    today_date = params.fetch(:start_date, Date.today).to_date
+    @consultations = Consultation.where(user: current_user, start_date: today_date.beginning_of_day..today_date.end_of_day)
+    # raise
   end
 
   def show

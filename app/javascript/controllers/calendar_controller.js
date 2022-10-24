@@ -75,6 +75,8 @@ export default class extends Controller {
   displayCalendarWeek() {
     this.container = document.getElementById('calendar');
     this.options = {
+      id: "1",
+      name: "My Calendar",
       defaultView: 'day',
       taskView: false,
       scheduleView: ['time'],
