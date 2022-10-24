@@ -123,12 +123,21 @@ export default class extends Controller {
   previous() {
     console.log("previous action");
     this.calendar = this.displayCalendarWeek()
-    this.calendar.move(-1);
+    this.dayToMove = this.#getTheDate()
+    this.calendar.move(this.dayToMove - 1);
   };
 
   next() {
     console.log("next action");
     this.calendar = this.displayCalendarWeek()
-    this.calendar.move(1);
+    this.dayToMove = this.#getTheDate()
+    this.calendar.move(this.dayToMove + 1);
+  }
+
+  #getTheDate() {
+    this.displayedDates = document.getElementsByClassName("tui-full-calendar-dayname-date");
+    this.displayDate = this.displayedDates[this.displayedDates.length - 1].innerText;
+    this.getToday = new Date().getUTCDate()
+    return this.displayDate - this.getToday;
   }
 };
