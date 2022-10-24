@@ -11,7 +11,7 @@ export default class extends Controller {
 
   connect() {
     console.log("welcom to our calendar controller");
-    console.log(this.myCalendarTarget);
+    // console.log(this.myCalendarTarget);
     // this.displayCalendarWeek()
     this.getCalendardata()
   }
@@ -81,7 +81,7 @@ export default class extends Controller {
       defaultView: 'day',
       taskView: false,
       scheduleView: ['time'],
-      useCreationPopup: true,
+      // useCreationPopup: true,
       useDetailPopup: true,
       template: {
 
@@ -150,20 +150,20 @@ export default class extends Controller {
   getCalendardata(){
     this.schedules = JSON.parse(document.querySelector("#calendar").dataset.schedules);
     console.log(this.schedules);
-    window.schedules = this.schedules;
-    console.log(window.schedules);
+    // window.schedules = this.schedules;
+    // console.log(window.schedules);
     this.calendar = this.displayCalendarWeek();
     this.schedules.forEach(schedule => {
-      console.log(schedule.id);
-      console.log(schedule.patient_id);
-      console.log(schedule.duration_in_min);
-      console.log(typeof(schedule.start_date));
-      console.log(schedule.dueDateClass);
+      // console.log(schedule.id);
+      console.log(schedule.first_name);
+      // console.log(schedule.duration_in_min);
+      // console.log(typeof(schedule.start_date));
+      // console.log(schedule.dueDateClass);
     this.calendar.createSchedules([
     {
       id: schedule.id,
       calendarId: '1',
-      title: schedule.patient_id,
+      title: schedule.first_name + " " + schedule.last_name,
       category: 'time',
       // dueDateClass: schedule.dueDateClass,
       // location: schedule.location,
@@ -185,31 +185,37 @@ export default class extends Controller {
 
   today() {
     console.log("today action");
-    this.calendar = this.displayCalendarWeek();
+    this.calendar = this.getCalendardata();
     this.calendar.today();
     this.#removeCalendar();
   };
 
   previous() {
     console.log("previous action");
+    // console.log(this.#getTheDate());
     this.calendar = this.displayCalendarWeek();
     this.dayToMove = this.#getTheDate();
-    this.calendar.move(this.dayToMove - 1);
+    this.calendar.move(-this.dayToMove);
     this.#removeCalendar();
   };
 
   next() {
     console.log("next action");
+    // console.log(this.#getTheDate());
     this.calendar = this.displayCalendarWeek();
     this.dayToMove = this.#getTheDate();
-    this.calendar.move(this.dayToMove + 1);
+    this.calendar.move(this.dayToMove);
     this.#removeCalendar();
   }
 
   #getTheDate() {
     this.displayedDates = document.getElementsByClassName("tui-full-calendar-dayname-date");
     this.displayDate = this.displayedDates[this.displayedDates.length - 1].innerText;
+    console.log(this.displayedDates[this.displayedDates.length - 1].innerText);
+    console.log(this.displayedDates.length);
     this.getToday = new Date().getUTCDate();
+    console.log(this.getToday);
+    console.log(this.getToday - this.displayDate);
     return this.displayDate - this.getToday;
   }
 

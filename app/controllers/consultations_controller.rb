@@ -11,9 +11,19 @@ class ConsultationsController < ApplicationController
     #  @consultations = Consultation.where(user: current_user).where(start_date: params[:current_day].beginning_of_day..params[:current_day].end_of_day).order(:start_date)
 
     today_date = params.fetch(:start_date, Date.today).to_date
-    @consultations = Consultation.where(user: current_user, start_date: today_date.beginning_of_day..today_date.end_of_day)
-    # render json: @consultations
+    @consultations = Consultation.where(user: current_user,
+                                        start_date: today_date.beginning_of_day..today_date.end_of_day)
+    @card_infos =  @consultations.map do |data|
+      { start_date: DateTime.parse(data.start_date.to_s).iso8601, duration_in_min: data.duration_in_min,
+        first_name: data.patient.first_name, last_name: data.patient.last_name }
+    end
+
+    # data not fit because of string element
+     # address: data.patient.address, treatments: data.treatments.map(&:category)
+    # @patients = @consultations.map(&:patient)
+    # render json: @card_infos
     # raise
+    # render json: @consultations
   end
 
   # data-schedules="[{"id":252,"start_date":"2022-10-24T09:00:00.000+02:00","duration_in_min":30,"
