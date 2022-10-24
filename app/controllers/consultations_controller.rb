@@ -23,6 +23,7 @@ class ConsultationsController < ApplicationController
 
   def new
     @consultation = Consultation.new
+    members_of_all_my_team
   end
 
   def create
@@ -41,6 +42,24 @@ class ConsultationsController < ApplicationController
   end
 
   private
+
+  def members_of_all_my_team
+    teams = []
+    members_of_team = []
+    users_of_team = []
+    current_user.memberships.each do |membership|
+      teams << membership.team
+    end
+    teams.each do |team|
+      members_of_team << team.memberships
+    end
+    members_of_team.each do |members|
+      members.each do |member|
+        users_of_team << member.user
+      end
+    end
+    @users_of_team = users_of_team.uniq
+  end
 
   def consultation_params
     params.require(:consultation).permit(:start_date, :patient_id, :user_id)
