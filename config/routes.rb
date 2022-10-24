@@ -25,4 +25,8 @@ Rails.application.routes.draw do
       patch :remove_from_favorites
     end
   end
+
+  resources :teams, only: %i[index new create edit update] do
+    resources :memberships, only: %i[new create update]
+  end
 end

@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :patients, foreign_key: :referring_user_id
   has_many :consultations
+  has_many :memberships
+  has_many :teams_as_creator, foreign_key: :creator_id, class_name: "team"
 
   validates :first_name, presence: true
   validates :last_name, presence: true
@@ -15,5 +17,5 @@ class User < ApplicationRecord
   def display_full_name
     "#{first_name} #{last_name}"
   end
-  
+
 end
