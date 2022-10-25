@@ -178,44 +178,16 @@ export default class extends Controller {
 
   today() {
     console.log("today action");
-    this.calendar = this.displayCalendarWeek();
     this.calendar.today();
-    this.#removeCalendar();
   };
 
   previous() {
     console.log("previous action");
-    // console.log(this.#getTheDate());
-    this.calendar = this.displayCalendarWeek();
-    this.dayToMove = this.#getTheDate();
-    this.calendar.move(-this.dayToMove);
-    this.#removeCalendar();
+    this.calendar.prev();
   };
 
   next() {
     console.log("next action");
-    // console.log(this.#getTheDate());
-    this.calendar = this.displayCalendarWeek();
-    this.dayToMove = this.#getTheDate();
-    this.calendar.move(this.dayToMove);
-    this.#removeCalendar();
-  }
-
-  #getTheDate() {
-    this.displayedDates = document.getElementsByClassName("tui-full-calendar-dayname-date");
-    this.displayDate = this.displayedDates[this.displayedDates.length - 1].innerText;
-    console.log(this.displayedDates[this.displayedDates.length - 1].innerText);
-    console.log(this.displayedDates.length);
-    this.getToday = new Date().getUTCDate();
-    console.log(this.getToday);
-    console.log(this.getToday - this.displayDate);
-    return this.displayDate - this.getToday;
-  }
-
-  #removeCalendar() {
-    this.calendarLayoutElement = document.getElementsByClassName('tui-full-calendar-layout');
-    this.calendarPreviousDate = this.calendarLayoutElement[0];
-    // this.calendarPreviousDate.classList.add("d-none");
-    this.calendarPreviousDate.parentNode.removeChild(this.calendarPreviousDate);
+    this.calendar.next();
   }
 };
