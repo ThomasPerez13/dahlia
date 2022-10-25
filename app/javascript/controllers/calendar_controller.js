@@ -15,7 +15,30 @@ export default class extends Controller {
     // this.displayCalendarWeek()
     this.calendar = this.displayCalendarWeek()
     this.getCalendarData()
+    // this.editBtn = document.getElementsByClassName("tui-full-calendar-popup-edit");
+    // console.log(this.editBtn);
+    // document.addEventListener("click", this.myCustomEvent())
+    // console.log(document.getElementById("calendar"));
+    // document.getElementById("calendar").addEventListener("click", this.myCustomEvent());
   }
+
+  myCustomEvent() {
+    console.log("you click on calendar");
+    this.editButton = document.getElementsByClassName("tui-full-calendar-popup-edit")[0];
+    if(this.editButton){
+        console.log("hello beniben");
+        console.log(this.editButton);
+        // data-action="click->calendar#editConsultation"
+        // this.editButton.addEventListener("mousedown", this.editConsultations())
+        this.clickListener = this.editConsultation.bind(this);
+        this.editButton.addEventListener('click', this.clickListener);
+    }
+  }
+
+  editConsultation() {
+    console.log("let's go edit this consultation");
+  }
+
 
   displayCalendarMonth() {
     this.calendar = new Calendar(document.getElementById('calendar'), {
@@ -29,8 +52,9 @@ export default class extends Controller {
 
       milestone: true,    // Can be also ['milestone', 'task']
       scheduleView: ['time'],  // Can be also ['allday', 'time']
-      useCreationPopup: true,
+      // useCreationPopup: true,
       useDetailPopup: true,
+      // useFormPopup: false,
       template: {
 
         popupDetailRepeat: function(schedule) {
@@ -83,7 +107,9 @@ export default class extends Controller {
       taskView: false,
       scheduleView: ['time'],
       // useCreationPopup: true,
+      useFormPopup: false,
       useDetailPopup: true,
+      // isReadOnly: true,
       template: {
 
         popupDetailRepeat: function(schedule) {
@@ -190,4 +216,12 @@ export default class extends Controller {
     console.log("next action");
     this.calendar.next();
   }
+
+  // updateCalendarConsultations() {
+  //   this.calendar.on('beforeUpdateEvent', function ({ event, changes }) {
+  //     const { id, calendarId } = event;
+
+  //     this.calendar.updateEvent(id, calendarId, changes);
+  //   });
+  // }
 };
