@@ -13,7 +13,8 @@ export default class extends Controller {
     console.log("welcom to our calendar controller");
     // console.log(this.myCalendarTarget);
     // this.displayCalendarWeek()
-    this.getCalendardata()
+    this.calendar = this.displayCalendarWeek()
+    this.getCalendarData()
   }
 
   displayCalendarMonth() {
@@ -147,32 +148,24 @@ export default class extends Controller {
     // // document.getElementsByClassName("tui-view-12").classList.add("d-none");
   }
 
-  getCalendardata(){
-    this.schedules = JSON.parse(document.querySelector("#calendar").dataset.schedules);
-    console.log(this.schedules);
-    // window.schedules = this.schedules;
-    // console.log(window.schedules);
-    this.calendar = this.displayCalendarWeek();
-    this.schedules.forEach(schedule => {
-      // console.log(schedule.id);
-      console.log(schedule.first_name);
-      // console.log(schedule.duration_in_min);
-      // console.log(typeof(schedule.start_date));
-      // console.log(schedule.dueDateClass);
-    this.calendar.createSchedules([
-    {
-      id: schedule.id,
-      calendarId: '1',
-      title: schedule.first_name + " " + schedule.last_name,
-      category: 'time',
-      // dueDateClass: schedule.dueDateClass,
-      // location: schedule.location,
-      start: schedule.start_date,
-      end:  new Date(new Date(schedule.start_date).setMinutes(new Date (schedule.start_date).getMinutes() + 30))
-      // new Date(nowTest.setMinutes(nowTest.getMinutes() + 30))
-    }
-    ])
-    });
+  getCalendarData() {
+    this.url = "/consultations.json"
+    fetch(this.url)
+    .then(response =>response.json())
+    .then(response =>response.forEach(consultation => {
+      this.calendar.createSchedules([
+        {
+          id: consultation.id,
+          calendarId: '1',
+          title: consultation.first_name + " " + consultation.last_name,
+          category: 'time',
+          // dueDateClass: consultation.dueDateClass,
+          location: consultation.address,
+          start: consultation.start_date,
+          end:  new Date(new Date(consultation.start_date).setMinutes(new Date (consultation.start_date).getMinutes() + 30))
+        }
+      ])
+    }))
   }
 
 //   "id": 252,
@@ -185,7 +178,7 @@ export default class extends Controller {
 
   today() {
     console.log("today action");
-    this.calendar = this.getCalendardata();
+    this.calendar = this.displayCalendarWeek();
     this.calendar.today();
     this.#removeCalendar();
   };
