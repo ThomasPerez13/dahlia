@@ -10,9 +10,8 @@ class ConsultationsController < ApplicationController
     #  params[:current_day] ||= date
     #  @consultations = Consultation.where(user: current_user).where(start_date: params[:current_day].beginning_of_day..params[:current_day].end_of_day).order(:start_date)
 
-    today_date = params.fetch(:start_date, Date.today).to_date
-    @consultations = Consultation.where(user: current_user,
-                                        start_date: today_date.beginning_of_day..today_date.end_of_day)
+    # today_date = params.fetch(:start_date, Date.today).to_date
+    @consultations = Consultation.where(user: current_user)
   end
 
   def show
