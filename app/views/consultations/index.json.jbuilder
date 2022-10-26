@@ -6,4 +6,5 @@ json.array! @consultations do |consultation|
   json.last_name consultation.patient.last_name
   json.address consultation.patient.address
   json.treatments consultation.treatments.map(&:category)
+  json.url consultation_path(consultation)
 end

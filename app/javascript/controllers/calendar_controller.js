@@ -2,6 +2,7 @@ import { Controller } from "@hotwired/stimulus";
 import Calendar from "tui-calendar";
 import 'tui-time-picker/dist/tui-time-picker.css';
 import "tui-calendar/dist/tui-calendar.css";
+// needed if we want to modify consultation with the popup  
 // import Rails from "@rails/ujs";
 
 
@@ -11,92 +12,50 @@ export default class extends Controller {
 
   connect() {
     console.log("welcom to our calendar controller");
-    // console.log(this.myCalendarTarget);
-    // this.displayCalendarWeek()
     this.calendar = this.displayCalendarWeek()
     this.getCalendarData()
-    // this.editBtn = document.getElementsByClassName("tui-full-calendar-popup-edit");
-    // console.log(this.editBtn);
-    // document.addEventListener("click", this.myCustomEvent())
-    // console.log(document.getElementById("calendar"));
-    // document.getElementById("calendar").addEventListener("click", this.myCustomEvent());
+    this.updatedCalendarSchedule()
   }
 
-  myCustomEvent() {
-    console.log("you click on calendar");
-    this.editButton = document.getElementsByClassName("tui-full-calendar-popup-edit")[0];
-    if(this.editButton){
-        console.log("hello beniben");
-        console.log(this.editButton);
-        // data-action="click->calendar#editConsultation"
-        // this.editButton.addEventListener("mousedown", this.editConsultations())
-        this.clickListener = this.editConsultation.bind(this);
-        this.editButton.addEventListener('click', this.clickListener);
-    }
-  }
+  // getConsultationId(){
+  //   let calendar = this.calendar;
+  //   console.log(calendar);
+  //   calendar.on('clickSchedule', function(event) {
+  //     // this.consultation = event.schedule;
+  //     // console.log(event.schedule.id);
+  //   });
+  // }
 
-  editConsultation() {
-    console.log("let's go edit this consultation");
-  }
+  // updatedCalendarSchedule(){
+  //   let calendar = this.calendar;
+  //   calendar.on('beforeUpdateSchedule', function(event) {
+  //     console.log("coucou le chat");
+  //     console.log(event.schedule);
+  //     let schedule = event.schedule;
+  //     let changes = event.changes;
+  //     let formUpdate = new FormData()
+  //     if (changes.end) {
+  //     formUpdate.append("end", changes.end._date)
+  //     }
+  //     if (changes.start) {
+  //     formUpdate.append("start", changes.start._date)
+  //     }
+  //     if (changes.title) {
+  //     formUpdate.append("title", changes.title)
+  //     }
+  //     if (changes.category) {
+  //     formUpdate.append("category", changes.category)
+  //     }
+  //     calendar.updateSchedule(schedule.id, schedule.calendarId, changes);
 
+  //     Rails.ajax({
+  //     type: "PATCH",
+  //     url: '/schedules/'+ schedule.id,
+  //     data: formUpdate
+  //     })
 
-  displayCalendarMonth() {
-    this.calendar = new Calendar(document.getElementById('calendar'), {
-      id: "1",
-      name: "My Calendar",
-      defaultView: 'month',
-      color: '#00a9ff',
-        bgColor: '#00a9ff',
-        dragBgColor: '#00a9ff',
-        borderColor: 'red',
-
-      milestone: true,    // Can be also ['milestone', 'task']
-      scheduleView: ['time'],  // Can be also ['allday', 'time']
-      // useCreationPopup: true,
-      useDetailPopup: true,
-      // useFormPopup: false,
-      template: {
-
-        popupDetailRepeat: function(schedule) {
-          return 'Repeat : ' + schedule.recurrenceRule;
-        },
-
-        popupStateFree: function() {
-          return 'Free';
-        },
-          milestone: function(schedule) {
-              return '<span style="color:red;"><i class="fa fa-flag"></i> ' + schedule.title + '</span>';
-          },
-          milestoneTitle: function() {
-              return 'Milestone';
-          },
-          task: function(schedule) {
-              return '&nbsp;&nbsp;#' + schedule.title;
-          },
-          taskTitle: function() {
-              return '<label><input type="checkbox" />Task</label>';
-          },
-          allday: function(schedule) {
-              return schedule.title + ' <i class="fa fa-refresh"></i>';
-          },
-          alldayTitle: function() {
-              return 'All Day';
-          },
-          time: function(schedule) {
-              return schedule.title + ' <i class="fa fa-refresh"></i>' + schedule.start;
-          }
-      },
-      month: {
-          daynames: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-          startDayOfWeek: 0,
-          narrowWeekend: true,      },
-      week: {
-          daynames: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-          startDayOfWeek: 0,
-          narrowWeekend: true
-      }
-    });
-  }
+  //   });
+  // }
 
   displayCalendarWeek() {
     this.container = document.getElementById('calendar');
@@ -106,10 +65,10 @@ export default class extends Controller {
       defaultView: 'day',
       taskView: false,
       scheduleView: ['time'],
-      // useCreationPopup: true,
+      useCreationPopup: true,
       useFormPopup: false,
       useDetailPopup: true,
-      // isReadOnly: true,
+      isReadOnly: false,
       template: {
 
         popupDetailRepeat: function(schedule) {
@@ -119,27 +78,9 @@ export default class extends Controller {
         popupStateFree: function() {
           return 'Free';
         },
-          milestone: function(schedule) {
-              return '<span style="color:red;"><i class="fa fa-flag"></i> ' + schedule.title + '</span>';
-          },
-          milestoneTitle: function() {
-              return 'Milestone';
-          },
-          task: function(schedule) {
-              return '&nbsp;&nbsp;#' + schedule.title;
-          },
-          taskTitle: function() {
-              return '<label><input type="checkbox" />Task</label>';
-          },
-          // allday: function(schedule) {
-          //     return schedule.title + ' <i class="fa fa-refresh"></i>';
-          // },
-          alldayTitle: function() {
-              return 'All Day';
-          },
-          // time: function(schedule) {
-          //     return schedule.title + ' <i class="fa fa-refresh"></i>' + schedule.start;
-          // }
+        popupDetailBody: function(model) {
+          return `<a href="${model.body}">Détail de la consultation</a>`;
+        }
       },
       timezone: {
         zones: [
@@ -166,12 +107,6 @@ export default class extends Controller {
     };
 
     return new Calendar(this.container, this.options);
-    // console.log(document.getElementsByClassName("tui-view-15"));
-    // // console.log(document.getElementsByClassName("tui-view-10").classList);
-    // // console.log(document.getElementsByClassName("tui-view-12").classList);
-    // document.getElementsByClassName("tui-view-15").style.display="none !important";
-    // // document.getElementsByClassName("tui-view-10").classList.add("d-none");
-    // // document.getElementsByClassName("tui-view-12").classList.add("d-none");
   }
 
   getCalendarData() {
@@ -188,25 +123,20 @@ export default class extends Controller {
           // dueDateClass: consultation.dueDateClass,
           location: consultation.address,
           start: consultation.start_date,
-          end:  new Date(new Date(consultation.start_date).setMinutes(new Date (consultation.start_date).getMinutes() + 30))
+          end:  new Date(new Date(consultation.start_date).setMinutes(new Date (consultation.start_date).getMinutes() + 30)),
+          body:  consultation.url
         }
       ])
     }))
   }
 
-//   "id": 252,
-// "start_date": "2022-10-24T09:00:00.000+02:00",
-// "duration_in_min": 30,
-// "patient_id": 62,
-// "user_id": 13,
-// "created_at": "2022-10-24T19:06:00.168+02:00",
-// "updated_at": "2022-10-24T19:06:00.168+02:00"
-
+  // display today on the clendar
   today() {
     console.log("today action");
     this.calendar.today();
   };
 
+  // display the next or the previous day on the clendar
   previous() {
     console.log("previous action");
     this.calendar.prev();
@@ -216,12 +146,4 @@ export default class extends Controller {
     console.log("next action");
     this.calendar.next();
   }
-
-  // updateCalendarConsultations() {
-  //   this.calendar.on('beforeUpdateEvent', function ({ event, changes }) {
-  //     const { id, calendarId } = event;
-
-  //     this.calendar.updateEvent(id, calendarId, changes);
-  //   });
-  // }
 };

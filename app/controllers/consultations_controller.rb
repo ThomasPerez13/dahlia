@@ -12,6 +12,7 @@ class ConsultationsController < ApplicationController
 
     # today_date = params.fetch(:start_date, Date.today).to_date
     @consultations = Consultation.where(user: current_user)
+    # raise
   end
 
   def show
