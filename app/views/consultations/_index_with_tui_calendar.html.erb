@@ -5,7 +5,10 @@
       <button data-action="click->calendar#previous"><</button>
       <button data-action="click->calendar#today">Aujourd'hui</button>
       <button data-action="click->calendar#next">></button>
+      <button id="display-day" class="d-none" data-action="click->calendar#dayView">afficher le jour</button>
+      <button id="display-week" data-action="click->calendar#weekView">afficher la semaine</button>
     </div>
+    <div class="text-center mb-3"><p id="month"></p></div>
     <div  id="calendar" data-calendar-target="myCalendar" data-action="click->calendar#myCustomEvent" style="height: 600px;">
     </div>
 </div>
