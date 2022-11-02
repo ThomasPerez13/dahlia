@@ -1,14 +1,21 @@
 class ConsultationsController < ApplicationController
   def index
-    params[:next_date] ||= Date.today.to_s
-    date = Date.parse(params[:next_date])
-    params[:current_day] ||= date
-    @consultations = Consultation.where(user: current_user).where(start_date: params[:current_day].beginning_of_day..params[:current_day].end_of_day).order(:start_date)
+    # use with first code of calendar and partial :
+    # <%#= render "index_with_table_html" %> in index.html.erb
+    #  params[:next_date] ||= Date.today.to_s
+    #  date = Date.parse(params[:next_date])
+    #  params[:current_day] ||= date
+    #  @consultations = Consultation.where(user: current_user).where(start_date: params[:current_day].beginning_of_day..params[:current_day].end_of_day).order(:start_date)
+
+    # Use with Toast UI calendar and partial :
+    # <%= render "index_with_tui_calendar", card_infos: @card_infos, consultations: @consultations %> in index.html.erb
+    @consultations = Consultation.where(user: current_user)
   end
 
   def show
     @consultation = Consultation.find(params[:id])
     @patient = @consultation.patient
+    members_of_all_my_team
     @consultations = @patient.consultations
     @latest_consultation = @consultations.where(start_date: ...@consultation.start_date).order(:start_date).last
     if @latest_consultation == nil
@@ -23,6 +30,7 @@ class ConsultationsController < ApplicationController
 
   def new
     @consultation = Consultation.new
+    members_of_all_my_team
   end
 
   def create
@@ -34,7 +42,31 @@ class ConsultationsController < ApplicationController
     end
   end
 
+  def update
+    @consultation = Consultation.find(params[:id])
+    @consultation.update(consultation_params)
+    redirect_to consultation_path(@consultation)
+  end
+
   private
+
+  def members_of_all_my_team
+    teams = []
+    members_of_team = []
+    users_of_team = []
+    current_user.memberships.each do |membership|
+      teams << membership.team
+    end
+    teams.each do |team|
+      members_of_team << team.memberships
+    end
+    members_of_team.each do |members|
+      members.each do |member|
+        users_of_team << member.user
+      end
+    end
+    @users_of_team = users_of_team.uniq
+  end
 
   def consultation_params
     params.require(:consultation).permit(:start_date, :patient_id, :user_id)
