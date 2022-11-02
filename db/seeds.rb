@@ -11,6 +11,7 @@ thomas = User.create!(first_name: "Thomas", last_name: "Perez", email: "thomas.p
 nicolas = User.create!(first_name: "Nicolas", last_name: "Hali", email: "nicolas.hali@gmail.com", tel_number: "0628493845", password: "nicolas123")
 cecile = User.create!(first_name: "Cécile", last_name: "Lagarde", email: "cecile.lagarde@gmail.com", tel_number: "0629384756", password: "cecile123")
 
+
 puts "loading patients..."
 
 # PATIENTS
