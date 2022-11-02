@@ -1,50 +1,160 @@
 <h3 class="d-flex justify-content-center mt-4 mb-3"> Informations sur la consultation </h3>
-<div class="new_consult" >
-  <div class="d-flex justify-content-center m-3" >
-    <div >
-      <%= simple_form_for @consultation do |f| %>
-        <div class="consultation_new">
-          <%= f.input :patient_id,
-                      collection: Patient.all.order(last_name: :asc),
-                      label: " Patient(e) ",
-                      label_method: :display_full_name,
-                      value_method: :id,
-                      placeholder: " ",
-                      wrapper_html: { class:"input-groupe" },
-                      input_html: { class:"input" },
-                      label_html: { class:"user-label" } %>
-        </div>
-        <div class="consultation_new">
-          <%= f.input :start_date, label: "Date & heure", placeholder: " ",
-                      as: :datetime,
-                      html5: true,
-                      label: false,
-                      required: false,
-                      wrapper_html: { class:" datefield-without-calendar"},
-                      input_html: { class:"input" },
-                      label_html: { class:"user-label" } %>
-        </div>
-        <div class="consultation_new">
-          <%= f.input :user_id,
-                      collection: @users_of_team,
-                      label: " Infirmier(e) ",
-                      label_method: :display_full_name,
-                      value_method: :id,
-                      selected: current_user,
-                      placeholder: " ",
-                      wrapper_html: { class:"input-groupe" },
-                      input_html: { class:"input" },
-                      label_html: { class:"user-label" } %>
-        </div>
-        <div class="text-center">
-          <p>Votre patient n'apparait pas dans la liste? Créez le !</p>
-          <%= link_to "Créer un patient", new_patient_path,class:"btn btn-add-treatment"%>
-        </div>
 
-        <div class="d-flex justify-content-center">
-          <%= f.button :submit, "Créer une consultation", class: "btn-submit" %>
+ <div id="tab-patient">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="btn btn-tab btn-patient active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Consultation ponctuelle</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="btn btn-tab btn-consult" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Consultation régulière</button>
+      </li>
+    </ul>
+
+    <div class="tab-content" id="myTabContent">
+
+      <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+        <%# Here to create a one-time consultation %>
+        <div class="new_consult" >
+          <div class="d-flex justify-content-center m-3" >
+            <div >
+              <%= simple_form_for @consultation do |f| %>
+                <div class="consultation_new">
+                  <%= f.input :patient_id,
+                              collection: Patient.all.order(last_name: :asc),
+                              label: " Patient(e) ",
+                              label_method: :display_full_name,
+                              value_method: :id,
+                              placeholder: " ",
+                              wrapper_html: { class:"input-groupe" },
+                              input_html: { class:"input" },
+                              label_html: { class:"user-label" } %>
+                </div>
+                <div class="consultation_new">
+                  <%= f.input :start_date, label: "Date & heure", placeholder: " ",
+                              as: :datetime,
+                              html5: true,
+                              label: false,
+                              required: false,
+                              wrapper_html: { class:" datefield-without-calendar"},
+                              input_html: { class:"input" },
+                              label_html: { class:"user-label" } %>
+                </div>
+                <div class="consultation_new">
+                  <%= f.input :user_id,
+                              collection: @users_of_team,
+                              label: " Infirmier(e) ",
+                              label_method: :display_full_name,
+                              value_method: :id,
+                              selected: current_user,
+                              placeholder: " ",
+                              wrapper_html: { class:"input-groupe" },
+                              input_html: { class:"input" },
+                              label_html: { class:"user-label" } %>
+                </div>
+                <div class="text-center">
+                  <p>Votre patient n'apparait pas dans la liste? Créez le !</p>
+                  <%= link_to "Créer un patient", new_patient_path,class:"btn btn-add-treatment"%>
+                </div>
+
+                <div class="d-flex justify-content-center">
+                  <%= f.button :submit, "Créer une consultation", class: "btn-submit" %>
+                </div>
+              <% end %>
+            </div>
+          </div>
         </div>
-      <% end %>
+      </div>
+
+      <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+        <%# Here to create a recurring consultation %>
+        <div class="new_consult" >
+          <div class="d-flex justify-content-center m-3" >
+            <div >
+              <%= simple_form_for @consultation do |f| %>
+                <div class="consultation_new">
+                  <%= f.input :patient_id,
+                              collection: Patient.all.order(last_name: :asc),
+                              label: " Patient(e) ",
+                              label_method: :display_full_name,
+                              value_method: :id,
+                              placeholder: " ",
+                              wrapper_html: { class:"input-groupe" },
+                              input_html: { class:"input" },
+                              label_html: { class:"user-label" } %>
+                </div>
+                <div class="d-flex">
+                  <div class="consultation_new">
+                    <%= f.input :start_date, label: "Date & heure", placeholder: " ",
+                                as: :date,
+                                html5: true,
+                                label: false,
+                                required: false,
+                                wrapper_html: { class:" datefield-without-calendar"},
+                                input_html: { class:"input" },
+                                label_html: { class:"user-label" } %>
+                  </div>
+                  <div class="consultation_new">
+                    <%= f.input :start_date, label: "Date & heure", placeholder: " ",
+                                as: :date,
+                                html5: true,
+                                label: false,
+                                required: false,
+                                wrapper_html: { class:" datefield-without-calendar"},
+                                input_html: { class:"input" },
+                                label_html: { class:"user-label" } %>
+                  </div>
+                </div>
+                <div class="consultation_new">
+                  <%= f.input :patient_id,
+                              collection: ["Toutes les semaines"],
+                              label: " Fréquence ",
+                              placeholder: " ",
+                              wrapper_html: { class:"input-groupe" },
+                              input_html: { class:"input" },
+                              label_html: { class:"user-label" } %>
+                </div>
+                <div class="d-flex align-items-center">
+
+                  <%= f.simple_fields_for :patient_id do |day| %>
+
+                    <%= f.input :patient_id, as: :boolean, include_hidden: false %>
+
+                    <%= day.input :name, label: "Date & heure", placeholder: " ",
+                                as: :time,
+                                html5: true,
+                                label: false,
+                                required: false,
+                                wrapper_html: { class:" datefield-without-calendar"},
+                                input_html: { class:"input" },
+                                label_html: { class:"user-label" } %>
+                  <% end %>
+
+                </div>
+                <div class="consultation_new">
+                  <%= f.input :user_id,
+                              collection: @users_of_team,
+                              label: " Infirmier(e) ",
+                              label_method: :display_full_name,
+                              value_method: :id,
+                              selected: current_user,
+                              placeholder: " ",
+                              wrapper_html: { class:"input-groupe" },
+                              input_html: { class:"input" },
+                              label_html: { class:"user-label" } %>
+                </div>
+                <div class="text-center">
+                  <p>Votre patient n'apparait pas dans la liste? Créez le !</p>
+                  <%= link_to "Créer un patient", new_patient_path,class:"btn btn-add-treatment"%>
+                </div>
+
+                <div class="d-flex justify-content-center">
+                  <%= f.button :submit, "Créer une consultation", class: "btn-submit" %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
-</div>
