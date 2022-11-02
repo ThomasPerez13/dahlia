@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_17_095405) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_02_170134) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -21,7 +21,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_17_095405) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "recurrence_id"
     t.index ["patient_id"], name: "index_consultations_on_patient_id"
+    t.index ["recurrence_id"], name: "index_consultations_on_recurrence_id"
     t.index ["user_id"], name: "index_consultations_on_user_id"
   end
 
@@ -65,6 +67,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_17_095405) do
     t.index ["referring_user_id"], name: "index_patients_on_referring_user_id"
   end
 
+  create_table "recurrences", force: :cascade do |t|
+    t.date "start_date"
+    t.date "end_date"
+    t.string "frequency"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "teams", force: :cascade do |t|
     t.string "name"
     t.bigint "creator_id", null: false
@@ -103,6 +113,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_17_095405) do
   end
 
   add_foreign_key "consultations", "patients"
+  add_foreign_key "consultations", "recurrences"
   add_foreign_key "consultations", "users"
   add_foreign_key "memberships", "teams"
   add_foreign_key "memberships", "users"
