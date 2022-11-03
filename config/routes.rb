@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'recurrences/new'
+  get 'recurrences/create'
   devise_for :users
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -13,6 +15,7 @@ Rails.application.routes.draw do
     resources :notes, only: [:new]
     resources :treatments, only: [:new, :create]
   end
+  resources :recurrences, only: [:new, :create]
   resources :treatments, only: [:edit, :update, :destroy]
 
   resources :patients, only: [:index, :show, :edit, :create, :new, :update] do

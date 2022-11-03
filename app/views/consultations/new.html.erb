@@ -70,7 +70,7 @@
         <div class="new_consult" >
           <div class="d-flex justify-content-center m-3" >
             <div >
-              <%= simple_form_for @consultation do |f| %>
+              <%= simple_form_for [@recurrence] do |f| %>
                 <div class="consultation_new">
                   <%= f.input :patient_id,
                               collection: Patient.all.order(last_name: :asc),
@@ -94,7 +94,7 @@
                                 label_html: { class:"user-label" } %>
                   </div>
                   <div class="consultation_new">
-                    <%= f.input :start_date, label: "Date & heure", placeholder: " ",
+                    <%= f.input :end_date, label: "Date & heure", placeholder: " ",
                                 as: :date,
                                 html5: true,
                                 label: false,
@@ -105,7 +105,7 @@
                   </div>
                 </div>
                 <div class="consultation_new">
-                  <%= f.input :patient_id,
+                  <%= f.input :frequency,
                               collection: ["Toutes les semaines"],
                               label: " Fréquence ",
                               placeholder: " ",
@@ -113,23 +113,41 @@
                               input_html: { class:"input" },
                               label_html: { class:"user-label" } %>
                 </div>
-                <div class="d-flex align-items-center">
 
-                  <%= f.simple_fields_for :patient_id do |day| %>
 
-                    <%= f.input :patient_id, as: :boolean, include_hidden: false %>
+                <% for day_of_week in [:monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday] do %>
+                    <%= f.simple_fields_for :week do |day| %>
+                        <%= day.simple_fields_for day_of_week do |d| %>
 
-                    <%= day.input :name, label: "Date & heure", placeholder: " ",
-                                as: :time,
-                                html5: true,
-                                label: false,
-                                required: false,
-                                wrapper_html: { class:" datefield-without-calendar"},
-                                input_html: { class:"input" },
-                                label_html: { class:"user-label" } %>
+
+                      <div class="d-flex align-items-center">
+
+                        <%= d.input :boolean, as: :boolean, include_hidden: false, label: false, required: false %>
+                        <%= d.label day_of_week, required: false %>
+
+                        <%= d.input :time, placeholder: " ",
+                                  as: :time,
+                                  html5: true,
+                                  label: false,
+                                  required: false,
+                                  wrapper_html: { class:" datefield-without-calendar"},
+                                  input_html: { class:"input" },
+                                  label_html: { class:"user-label" } %>
+
+                      <% end %>
+                       <% end %>
+                      <%#= f.input duration_in_min,
+                                    as: :text,
+                                    html5: true,
+                                    label: " Durée en min",
+                                    required: false,
+                                    placeholder: " ",
+                                    wrapper_html: { class:" input-groupe"},
+                                    input_html: { class:"input" },
+                                    label_html: { class:"user-label" } %>
+                    </div>
                   <% end %>
 
-                </div>
                 <div class="consultation_new">
                   <%= f.input :user_id,
                               collection: @users_of_team,

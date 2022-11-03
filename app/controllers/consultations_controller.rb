@@ -30,6 +30,7 @@ class ConsultationsController < ApplicationController
 
   def new
     @consultation = Consultation.new
+    @recurrence = Recurrence.new
     members_of_all_my_team
   end
 
