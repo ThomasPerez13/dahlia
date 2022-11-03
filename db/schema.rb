@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_02_174005) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_03_141715) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -74,7 +74,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_02_174005) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.jsonb "week"
-    t.string "patient"
+    t.bigint "patient_id"
+    t.index ["patient_id"], name: "index_recurrences_on_patient_id"
   end
 
   create_table "teams", force: :cascade do |t|
@@ -121,6 +122,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_02_174005) do
   add_foreign_key "memberships", "users"
   add_foreign_key "notes", "consultations", column: "creation_consultation_id"
   add_foreign_key "patients", "users", column: "referring_user_id"
+  add_foreign_key "recurrences", "patients"
   add_foreign_key "teams", "users", column: "creator_id"
   add_foreign_key "treatments", "consultations"
 end
