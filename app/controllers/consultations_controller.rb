@@ -31,10 +31,18 @@ class ConsultationsController < ApplicationController
   def new
     @consultation = Consultation.new
     members_of_all_my_team
+    @consultation.build_consultation_group # Create a consultation_group (nested in the "new consultation" form)
   end
 
   def create
     @consultation = Consultation.new(consultation_params)
+
+    if params[:consultation][:recurring]
+      @consultation_group = ConsultationGroup.new(start_date: @consultation.start_date, end_date: params[:consultation][:consultation_groups][:end_date], frequency: "weekly")
+      @consultation_group.save
+      @consultation.consultation_group = @consultation_group
+    end
+    raise
     if @consultation.save
       redirect_to consultation_path(@consultation)
     else
@@ -69,6 +77,6 @@ class ConsultationsController < ApplicationController
   end
 
   def consultation_params
-    params.require(:consultation).permit(:start_date, :patient_id, :user_id)
+    params.require(:consultation).permit(:start_date, :patient_id, :user_id, :recurring, consultation_group_attributes: :end_date)
   end
 end
