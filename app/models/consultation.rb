@@ -1,6 +1,7 @@
 class Consultation < ApplicationRecord
   belongs_to :patient
   belongs_to :user
+  belongs_to :consultation_group
 
   has_many :notes, foreign_key: :creation_consultation_id
   has_many :treatments
