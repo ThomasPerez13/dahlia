@@ -1,0 +1,2 @@
+class ConsultationGroup < ApplicationRecord
+end
