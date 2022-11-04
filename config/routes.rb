@@ -30,5 +30,4 @@ Rails.application.routes.draw do
   resources :teams, only: %i[index new create edit update] do
     resources :memberships, only: %i[new create update]
   end
-  resources :consultation_groups, only: [:create]
 end
