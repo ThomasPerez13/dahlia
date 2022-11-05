@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_04_111108) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_05_125739) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "consultation_groups", force: :cascade do |t|
-    t.date "start_date"
-    t.date "end_date"
+    t.datetime "start_date", precision: nil
+    t.datetime "end_date", precision: nil
     t.string "frequency"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
