@@ -63,8 +63,8 @@ class ConsultationsController < ApplicationController
   def create_recurring_consultations(consultation, consultation_group)
     frequency = 7 if consultation_group.frequency == "weekly"
     start_date_of_recurring_consultation = consultation_group.start_date.advance(days: "+#{frequency}".to_i)
-    
-    while Consultation.last.start_date < consultation_group.end_date
+
+    while Consultation.last.start_date.end_of_day < consultation_group.end_date.end_of_day
       Consultation.create(
         patient: consultation.patient,
         user: consultation.user,
