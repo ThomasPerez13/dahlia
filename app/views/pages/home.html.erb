@@ -1,7 +1,10 @@
-<div class="container_center">
-  <div class="container_logo">
-    <div class="logo_home">
-      <%= image_tag "logo_et_dahlia.png", class: "w-100" %>
+<%= link_to  new_user_session_path, data: {turbo_method: :get} do %>
+  <div class="container_center">
+    <div class="container_image">
+      <%= image_tag "logo-blanc.svg" %>
+    </div>
+    <div class="container_title">
+      <h1>Dahlia</h1>
     </div>
   </div>
-</div>
+<% end %>
