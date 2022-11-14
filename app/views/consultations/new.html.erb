@@ -24,6 +24,45 @@
                       input_html: { class:"input" },
                       label_html: { class:"user-label" } %>
         </div>
+
+
+        <%# START - Checkbox and end_date field to make the consultation recurrent %>
+          <%# Checkbox %>
+          <div class="" data-controller="edit">
+            <div>
+              <div class="consultation_new" data-action="click->edit#displayForm">
+                <%= f.input :recurring,
+                            as: :boolean,
+                            checked_value: true,
+                            boolean_style: :inline,
+                            include_hidden: false,
+                            label: " Soin régulier ?",
+                            placeholder: " ",
+                            wrapper_html: { class:"input-groupe" },
+                            input_html: { class:"" },
+                            label_html: { class:"" } %>
+              </div>
+            </div>
+
+            <div class="d-none" data-edit-target="form">
+              <%# end_date %>
+              <%= f.simple_fields_for :consultation_groups do |m| %>
+                <div class="consultation_new">
+                  <%= m.input :end_date, label: "Date & heure", placeholder: " ",
+                              as: :date,
+                              html5: true,
+                              label: false,
+                              required: false,
+                              wrapper_html: { class:" datefield-without-calendar"},
+                              input_html: { class:"input" },
+                              label_html: { class:"user-label" } %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <%# END - Checkbox and end_date field to make the consultation recurrent %>
+
+
         <div class="consultation_new">
           <%= f.input :user_id,
                       collection: @users_of_team,
