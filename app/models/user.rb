@@ -8,9 +8,9 @@ class User < ApplicationRecord
   has_many :memberships
   has_many :teams_as_creator, foreign_key: :creator_id, class_name: "team"
 
-  validates :first_name, presence: true
-  validates :last_name, presence: true
-  validates :tel_number, presence: true
+  # validates :first_name, presence: true
+  # validates :last_name, presence: true
+  # validates :tel_number, presence: true
   validates :email, presence: true, format: { with: /\A.*@.*\.com\z/ }
 
 
