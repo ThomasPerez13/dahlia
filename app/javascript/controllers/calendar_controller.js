@@ -15,7 +15,7 @@ export default class extends Controller {
     this.calendar = this.displayCalendar()
     this.getCalendarData()
     // this.updatedCalendarSchedule()
-    this.displayMonth()
+    this.displayDate()
   }
 
   displayCalendar() {
@@ -97,23 +97,33 @@ export default class extends Controller {
   today() {
     // console.log("today action");
     this.calendar.today();
-    this.displayMonth()
+    this.displayDate();
   };
 
   // display the next or the previous day on the clendar
   previous() {
     // console.log("previous action");
     this.calendar.prev();
-    this.displayMonth()
+    this.displayDate();
   };
 
   next() {
     // console.log("next action");
     this.calendar.next();
-    this.displayMonth()
+    this.displayDate();
   };
 
-  displayMonth() {
+  catchDay() {
+    this.date = this.calendar.getDate().getDay();
+    this.dayDisplay = document.getElementById('day');
+    this.dayDisplay.innerText = this.day()[this.date]
+  }
+  catchDate() {
+    this.date = this.calendar.getDate().getDate();
+    this.dateDisplay = document.getElementById('date');
+    this.dateDisplay.innerText = this.date
+  }
+  catchMonth() {
     this.date = this.calendar.getDate().getMonth();
     this.monthDisplay = document.getElementById('month');
     this.monthDisplay.innerText = this.month()[this.date]
@@ -124,22 +134,33 @@ export default class extends Controller {
   "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre" ]
   }
 
-  dayView() {
-    this.calendar.changeView('day');
-    this.hideBtn()
+  day() {
+    return  [ "Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi",
+  "Samedi" ]
   }
 
-  weekView() {
-    this.calendar.changeView('week');
-    this.hideBtn()
+  displayDate() {
+    this.catchDay();
+    this.catchDate();
+    this.catchMonth();
   }
 
-  hideBtn() {
-    this.displayWeekBtn = document.getElementById('display-week');
-    this.displayDayBtn = document.getElementById('display-day');
-    this.displayWeekBtn.classList.toggle("d-none");
-    this.displayDayBtn.classList.toggle("d-none");
-  }
+  // dayView() {
+  //   this.calendar.changeView('day');
+  //   this.hideBtn()
+  // }
+
+  // weekView() {
+  //   this.calendar.changeView('week');
+  //   this.hideBtn()
+  // }
+
+  // hideBtn() {
+  //   this.displayWeekBtn = document.getElementById('display-week');
+  //   this.displayDayBtn = document.getElementById('display-day');
+  //   this.displayWeekBtn.classList.toggle("d-none");
+  //   this.displayDayBtn.classList.toggle("d-none");
+  // }
 
   // getConsultationId(){
   //   let calendar = this.calendar;
