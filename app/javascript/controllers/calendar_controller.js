@@ -115,17 +115,17 @@ export default class extends Controller {
 
   catchDay() {
     this.date = this.calendar.getDate().getDay();
-    this.dayDisplay = document.getElementById('day');
+    this.dayDisplay = document.getElementById('calendar-day');
     this.dayDisplay.innerText = this.day()[this.date]
   }
   catchDate() {
     this.date = this.calendar.getDate().getDate();
-    this.dateDisplay = document.getElementById('date');
+    this.dateDisplay = document.getElementById('calendar-date');
     this.dateDisplay.innerText = this.date
   }
   catchMonth() {
     this.date = this.calendar.getDate().getMonth();
-    this.monthDisplay = document.getElementById('month');
+    this.monthDisplay = document.getElementById('calendar-month');
     this.monthDisplay.innerText = this.month()[this.date]
   }
 
@@ -144,23 +144,6 @@ export default class extends Controller {
     this.catchDate();
     this.catchMonth();
   }
-
-  // dayView() {
-  //   this.calendar.changeView('day');
-  //   this.hideBtn()
-  // }
-
-  // weekView() {
-  //   this.calendar.changeView('week');
-  //   this.hideBtn()
-  // }
-
-  // hideBtn() {
-  //   this.displayWeekBtn = document.getElementById('display-week');
-  //   this.displayDayBtn = document.getElementById('display-day');
-  //   this.displayWeekBtn.classList.toggle("d-none");
-  //   this.displayDayBtn.classList.toggle("d-none");
-  // }
 
   // getConsultationId(){
   //   let calendar = this.calendar;
