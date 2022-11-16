@@ -44,14 +44,16 @@
   padding: 0;
 }
 
+
+.tui-full-calendar-dayname-container {
+  display: none;
+}
+
+
 .tui-full-calendar-dayname-date {
   font-size: 12px;
 }
 
 .tui-full-calendar-dayname-name {
   font-size: 8px;
-}
-
-#month {
-  font-weight: bold;
 }
