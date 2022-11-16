@@ -8,7 +8,7 @@ import "tui-calendar/dist/tui-calendar.css";
 
 // Connects to data-controller="calendar"
 export default class extends Controller {
-  static targets = ["myCalendar"]
+  static targets = ["myCalendar", "todayAction"]
 
   connect() {
     // console.log("welcom to our calendar controller");
@@ -113,6 +113,14 @@ export default class extends Controller {
     this.displayDate();
   };
 
+  hideTodayAction() {
+    this.todayActionTarget.classList.add("d-none")
+  }
+
+  showTodayAction() {
+    this.todayActionTarget.classList.remove("d-none")
+  }
+
   catchDay() {
     this.date = this.calendar.getDate().getDay();
     this.dayDisplay = document.getElementById('calendar-day');
@@ -143,6 +151,16 @@ export default class extends Controller {
     this.catchDay();
     this.catchDate();
     this.catchMonth();
+    this.showTodayAction();
+    this.compareDate()
+  }
+
+  compareDate() {
+    this.todayDate = new Date()
+    this.calendarDate = this.calendar.getDate()
+    if (this.todayDate.getDate() === this.calendarDate.getDate() && this.todayDate.getMonth() === this.calendarDate.getMonth()) {
+      this.hideTodayAction()
+    }
   }
 
   // getConsultationId(){
