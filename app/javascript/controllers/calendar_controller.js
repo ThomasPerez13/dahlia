@@ -8,14 +8,14 @@ import "tui-calendar/dist/tui-calendar.css";
 
 // Connects to data-controller="calendar"
 export default class extends Controller {
-  static targets = ["myCalendar"]
+  static targets = ["myCalendar", "todayAction"]
 
   connect() {
     // console.log("welcom to our calendar controller");
     this.calendar = this.displayCalendar()
     this.getCalendarData()
     // this.updatedCalendarSchedule()
-    this.displayMonth()
+    this.displayDate()
   }
 
   displayCalendar() {
@@ -97,25 +97,43 @@ export default class extends Controller {
   today() {
     // console.log("today action");
     this.calendar.today();
-    this.displayMonth()
+    this.displayDate();
   };
 
   // display the next or the previous day on the clendar
   previous() {
     // console.log("previous action");
     this.calendar.prev();
-    this.displayMonth()
+    this.displayDate();
   };
 
   next() {
     // console.log("next action");
     this.calendar.next();
-    this.displayMonth()
+    this.displayDate();
   };
 
-  displayMonth() {
+  hideTodayAction() {
+    this.todayActionTarget.classList.add("d-none")
+  }
+
+  showTodayAction() {
+    this.todayActionTarget.classList.remove("d-none")
+  }
+
+  catchDay() {
+    this.date = this.calendar.getDate().getDay();
+    this.dayDisplay = document.getElementById('calendar-day');
+    this.dayDisplay.innerText = this.day()[this.date]
+  }
+  catchDate() {
+    this.date = this.calendar.getDate().getDate();
+    this.dateDisplay = document.getElementById('calendar-date');
+    this.dateDisplay.innerText = this.date
+  }
+  catchMonth() {
     this.date = this.calendar.getDate().getMonth();
-    this.monthDisplay = document.getElementById('month');
+    this.monthDisplay = document.getElementById('calendar-month');
     this.monthDisplay.innerText = this.month()[this.date]
   }
 
@@ -124,21 +142,25 @@ export default class extends Controller {
   "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre" ]
   }
 
-  dayView() {
-    this.calendar.changeView('day');
-    this.hideBtn()
+  day() {
+    return  [ "Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi",
+  "Samedi" ]
   }
 
-  weekView() {
-    this.calendar.changeView('week');
-    this.hideBtn()
+  displayDate() {
+    this.catchDay();
+    this.catchDate();
+    this.catchMonth();
+    this.showTodayAction();
+    this.compareDate()
   }
 
-  hideBtn() {
-    this.displayWeekBtn = document.getElementById('display-week');
-    this.displayDayBtn = document.getElementById('display-day');
-    this.displayWeekBtn.classList.toggle("d-none");
-    this.displayDayBtn.classList.toggle("d-none");
+  compareDate() {
+    this.todayDate = new Date()
+    this.calendarDate = this.calendar.getDate()
+    if (this.todayDate.getDate() === this.calendarDate.getDate() && this.todayDate.getMonth() === this.calendarDate.getMonth()) {
+      this.hideTodayAction()
+    }
   }
 
   // getConsultationId(){

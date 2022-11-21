@@ -1,15 +1,22 @@
-<div class="container_index_consult m-3">
-  <h4>Mes prochaines consultations</h4>
+<div class="consultation-page-content">
   <div data-controller="calendar">
-    <div class="text-center mb-3">
-      <button data-action="click->calendar#previous"><</button>
-      <button data-action="click->calendar#today">Aujourd'hui</button>
-      <button data-action="click->calendar#next">></button>
-      <button id="display-day" class="d-none" data-action="click->calendar#dayView">afficher le jour</button>
-      <button id="display-week" data-action="click->calendar#weekView">afficher la semaine</button>
+    <div data-calendar-target="todayAction" class="calendar-today-action">
+      <button class="calendar-today-btn" data-action="click->calendar#today">Aujourd'hui</button>
     </div>
-    <div class="text-center mb-3"><p id="month"></p></div>
+    <div class="calendar-action-date">
+      <div class="calendar-previous-day">
+        <button class="calendar-next-previous-btn" data-action="click->calendar#previous"><</button>
+      </div>
+      <div>
+        <div class="text-center"><p id="calendar-day"></p></div>
+        <div class="text-center"><p id="calendar-date"></p></div>
+        <div class="text-center"><p id="calendar-month"></p></div>
+      </div>
+      <div class="calendar-next-day">
+        <button class="calendar-next-previous-btn" data-action="click->calendar#next">></button>
+      </div>
+    </div>
     <div  id="calendar" data-calendar-target="myCalendar" data-action="click->calendar#myCustomEvent" style="height: 600px;">
     </div>
-</div>
+  </div>
 </div>
