@@ -6,7 +6,10 @@
 <div class="collapse" id="info-perso">
   <div class="patient-profile-section-detail">
     <div class="patient-profile-section-detail-item">
-      <i class="fa-solid fa-phone"></i> <span><%= @patient.tel_number %></span>
+      <i class="fa-solid fa-location-dot"></i><span><%= @patient.address %></span>
+    </div>
+    <div class="patient-profile-section-detail-item">
+      <i class="fa-solid fa-phone"></i><span><%= @patient.tel_number %></span>
     </div>
     <div class="patient-profile-section-detail-item">
       <i class="fa-solid fa-envelope"></i>
@@ -14,7 +17,7 @@
     </div>
     <div class="patient-profile-section-detail-item">
       <i class="fa-solid fa-cake-candles"></i>
-      <span><%= @patient.birth_day %></span>
+      <span><%= @patient.birth_day.strftime("%d/%m/%Y") %></span>
     </div>
     <div class="patient-profile-section-detail-item">
       <i class="fa-solid fa-venus-mars"></i>
@@ -30,20 +33,16 @@
 <div class="collapse" id="info-med">
   <div class="patient-profile-section-detail">
     <div class="patient-profile-section-detail-item">
-      <i class="fa-solid fa-address-card"></i>
-      <span><%= @patient.ss_number %></span>
+      <i class="fa-solid fa-address-card"></i><span><%= @patient.ss_number %></span>
     </div>
     <div class="patient-profile-section-detail-item">
-      <i class="fa-solid fa-ruler"></i>
-      <span><%= @patient.height %></span> <p>cm</p>
+      <i class="fa-solid fa-ruler"></i><span><%= @patient.height %></span><span>&nbspcm</span>
     </div>
     <div class="patient-profile-section-detail-item">
-      <i class="fa-solid fa-weight-scale"></i>
-      <span><%= @patient.weight %></span> <p>kg</p>
+      <i class="fa-solid fa-weight-scale"></i><span><%= @patient.weight %></span><span>&nbspkg</span>
     </div>
     <div class="patient-profile-section-detail-item">
-      <i class="fa-solid fa-droplet"></i>
-      <span><%= @patient.blood_type %></span>
+      <i class="fa-solid fa-droplet"></i><span><%= @patient.blood_type %></span>
     </div>
   </div>
 </div>
@@ -55,22 +54,17 @@
 <div class="collapse" id="info-emerg">
   <div class="patient-profile-section-detail">
     <div class="patient-profile-section-detail-item">
-      <i class="fa-solid fa-user"></i>
-      <h6>Proches</h6>
-    </div>
-    <div class="proche-emergency">
-      <div class="patient-profile-section-detail-item">
-        <span><%= @patient.emergency_contact_name %></span>
-      </div>
-      <div class="patient-profile-section-detail-item">
-        <span><%= @patient.emergency_contact_tel %></span>
-      </div>
+      <i class="fa-solid fa-user"></i><span>Proches</span>
     </div>
     <div class="patient-profile-section-detail-item">
-      <i class="fa-solid fa-user-doctor"></i>
-        <h6>Médecin référent</h6>
+      <span><%= @patient.emergency_contact_name %> <%= @patient.emergency_contact_tel %></span>
     </div>
-      <div class="doctor-emergency"><%= @patient.referring_doctor %></div>
+    <div class="patient-profile-section-detail-item">
+      <i class="fa-solid fa-user-doctor"></i><span>Médecin référent</span>
+    </div>
+    <div class="patient-profile-section-detail-item">
+      <span><%= @patient.referring_doctor %></span>
+    </div>
   </div>
 </div>
 <hr>
