@@ -54,8 +54,8 @@
       border-top-left-radius: 16px;
       border-top-right-radius: 16px;
       background-color: white;
-      color: coral;
-      border-bottom: 3px solid coral;
+      color: $rose-femme;
+      border-bottom: 3px solid $rose-femme;
     }
 
     #nav-profile {
@@ -80,7 +80,7 @@
       align-items: baseline;
       i {
         padding-right: 30px;
-        color: coral;
+        color: $rose-femme;
         font-size: 16px;
       }
     }
