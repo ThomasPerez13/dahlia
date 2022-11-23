@@ -38,19 +38,40 @@ $light-gray: #F4F4F4;
 
 // V2 DAHLIA
 
+  // Palette principale:
 
-// Palette principale
+    $rose: #F28476;
+    $light-rose: #FFF2F1;
+    $turquoise: #00ACB8;
 
-  $rose: #F28476;
-  $light-rose: #FFF2F1;
-  $turquoise: #00ACB8;
+  //  Palette secondaire:
 
-  //  Palette secondaire
-  $grey: #969696;
-  $rose-femme: #FACEC8;
-  $bleu-homme: #99DEE3;
-  $green: #BAF7BA;
-  $dark-grey: #dddddd;
-  $light-grey-typo: #a5a5a5;
-  $grey-typo: #545454;
-  $light-grey: #f1f3f2;
+    $grey: #969696;
+    $rose-femme: #FACEC8;
+    $bleu-homme: #99DEE3;
+    $green: #BAF7BA;
+    $dark-grey: #dddddd;
+    $light-grey-typo: #a5a5a5;
+    $grey-typo: #545454;
+    $light-grey: #f1f3f2;
+
+  // Palette tags:
+
+    $medicament-background: #F9E4B2;
+    $medicament-font: #EAC986;
+    $prelevement-background: #F7B2B2;
+    $prelevement-font: #EF8686;
+    $injection-background: #D4B3F2;
+    $injection-font: #AF83DD;
+    $perfusion-background: #B2F7F7;
+    $perfusion-font: #5ED1CE;
+    $aide-background: #C6C4C4;
+    $aide-font: #8E8E8E;
+    $pansement-background: #F4B3DD;
+    $pansement-font: #E082C3;
+    $hygiene-background: #B3C5F4;
+    $hygiene-font: #6197F7;
+    $diabete-background: #EDB4EA;
+    $diabete-font: #D186D1;
+    $autre-background: #BBEAB5;
+    $autre-font: #82D875;
