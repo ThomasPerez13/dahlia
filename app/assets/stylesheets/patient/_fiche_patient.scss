@@ -1,0 +1,101 @@
+.patient-show-main-container {
+
+  .patient-show-container-top { //First tier of the page
+    height: 30vh;
+
+    .back-arrow img {
+      margin-top: 10px;
+      margin-left: 10px;
+      width: 10px;
+    }
+
+    .patient-avatar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px;
+
+      img {
+        width: 100px;
+        border-radius: 80%;
+        margin-bottom: 10px;
+      }
+
+      .patient-first-name {
+        font-style: italic;
+      }
+
+      .patient-last-name {
+        font-weight: bold;
+        font-size: large;
+        text-transform: uppercase;
+      }
+    }
+  }
+  .patient-show-container-middle { // Second tier of the page
+    padding-bottom: 5em;
+
+    .nav {
+      align-items: stretch;
+      background-color: lightgrey;
+      border-top-left-radius: 16px;
+      border-top-right-radius: 16px;
+      margin-bottom: -20px;
+    }
+    .nav-tabs .nav-link {
+      border-top-left-radius: 16px;
+      border-top-right-radius: 16px;
+      background-color: lightgrey;
+      color:grey;
+      text-transform: uppercase;
+    }
+
+    .nav-tabs .nav-link.active {
+      border-top-left-radius: 16px;
+      border-top-right-radius: 16px;
+      background-color: white;
+      color: $rose-femme;
+      border-bottom: 3px solid $rose-femme;
+    }
+
+    #nav-profile {
+      background-color: white;
+    }
+
+    .patient-profile-section {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px;
+    }
+    .patient-profile-section-detail {
+      display: flex;
+      flex-direction: column;
+      padding-left: 30px;
+      // padding-top: 20px;
+      padding-bottom: 15px;
+      align-items: start;
+    }
+    .patient-profile-section-detail-item {
+      display: flex;
+      align-items: baseline;
+      i {
+        padding-right: 30px;
+        color: $rose-femme;
+        font-size: 16px;
+      }
+    }
+    .bottom-link {
+      text-align: center;
+      background-color: #F9F6FA;
+      a {
+      text-decoration: underline;
+      color: lightgrey;
+      font-size: 12px;
+      }
+    }
+
+    hr {
+      margin: 0;
+    }
+}
+}

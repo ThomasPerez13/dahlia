@@ -1,80 +1,70 @@
- <a class="info-patient d-flex justify-content-between" data-bs-toggle="collapse" href="#info-perso" role="button" aria-expanded="false" aria-controls="collapseExample" >
-    Informations personnelles <i class="fa-solid fa-chevron-down"></i>
-  </a>
-  <div class="collapse" id="info-perso">
-    <div class="card card-body">
-      <div class= info-picto>
-        <i class="fa-solid fa-phone"></i>
-        <%= @patient.tel_number %>
-      </div>
-      <div class= info-picto>
-        <i class="fa-solid fa-envelope"></i>
-        <%= @patient.email %>
-      </div>
-      <div class= info-picto>
-        <i class="fa-solid fa-cake-candles"></i>
-        <%= @patient.birth_day %>
-      </div>
-      <div class= info-picto>
-        <i class="fa-solid fa-venus-mars"></i>
-        <%= @patient.gender %>
-      </div>
+<br>
+<div class="patient-profile-section" data-bs-toggle="collapse" data-bs-target="#info-perso">
+  <span>Informations personnelles</span> <i class="fa-solid fa-chevron-down"></i>
+</div>
+
+<div class="collapse" id="info-perso">
+  <div class="patient-profile-section-detail">
+    <div class="patient-profile-section-detail-item">
+      <i class="fa-solid fa-location-dot"></i><span><%= @patient.address %></span>
+    </div>
+    <div class="patient-profile-section-detail-item">
+      <i class="fa-solid fa-phone"></i><span><%= @patient.tel_number %></span>
+    </div>
+    <div class="patient-profile-section-detail-item">
+      <i class="fa-solid fa-envelope"></i>
+      <span><%= @patient.email %></span>
+    </div>
+    <div class="patient-profile-section-detail-item">
+      <i class="fa-solid fa-cake-candles"></i>
+      <span><%= @patient.birth_day.strftime("%d/%m/%Y") %></span>
+    </div>
+    <div class="patient-profile-section-detail-item">
+      <i class="fa-solid fa-venus-mars"></i>
+      <span><%= @patient.gender %></span>
     </div>
   </div>
+</div>
+<hr>
+<div class="patient-profile-section" data-bs-toggle="collapse" data-bs-target="#info-med">
+  <span>Informations médicales</span> <i class="fa-solid fa-chevron-down"></i>
+</div>
 
-  <a class="info-patient d-flex justify-content-between" data-bs-toggle="collapse" href="#info-med" role="button" aria-expanded="false" aria-controls="collapseExample" >
-    Informations médicales <i class="fa-solid fa-chevron-down"></i>
-  </a>
-  <div class="collapse" id="info-med">
-    <div class="card card-body">
-      <div class= info-picto>
-        <i class="fa-solid fa-address-card"></i>
-        <%= @patient.ss_number %>
-      </div>
-      <div class= info-picto>
-        <i class="fa-solid fa-ruler"></i>
-        <%= @patient.height %> <p>cm</p>
-      </div>
-      <div class= info-picto>
-        <i class="fa-solid fa-weight-scale"></i>
-        <%= @patient.weight %> <p>kg</p>
-      </div>
-      <div class= info-picto>
-        <i class="fa-solid fa-droplet"></i>
-        <%= @patient.blood_type %>
-      </div>
+<div class="collapse" id="info-med">
+  <div class="patient-profile-section-detail">
+    <div class="patient-profile-section-detail-item">
+      <i class="fa-solid fa-address-card"></i><span><%= @patient.ss_number %></span>
+    </div>
+    <div class="patient-profile-section-detail-item">
+      <i class="fa-solid fa-ruler"></i><span><%= @patient.height %></span><span>&nbspcm</span>
+    </div>
+    <div class="patient-profile-section-detail-item">
+      <i class="fa-solid fa-weight-scale"></i><span><%= @patient.weight %></span><span>&nbspkg</span>
+    </div>
+    <div class="patient-profile-section-detail-item">
+      <i class="fa-solid fa-droplet"></i><span><%= @patient.blood_type %></span>
     </div>
   </div>
+</div>
+<hr>
+<div class="patient-profile-section" data-bs-toggle="collapse" data-bs-target="#info-emerg" >
+  <span>Contact urgence</span> <i class="fa-solid fa-chevron-down"></i>
+</div>
 
-  <a class="info-patient d-flex justify-content-between" data-bs-toggle="collapse" href="#info-emerg" role="button" aria-expanded="false" aria-controls="collapseExample" >
-    Contact urgence <i class="fa-solid fa-chevron-down"></i>
-  </a>
-  <div class="collapse" id="info-emerg">
-    <div class="card card-body">
-      <div class= info-picto-emergency>
-        <i class="fa-solid fa-user"></i>
-        <h6>Proches</h6>
-      </div>
-      <div class="proche-emergency">
-        <div class= info-picto>
-          <%= @patient.emergency_contact_name %>
-        </div>
-        <div class= info-picto>
-          <%= @patient.emergency_contact_tel %>
-        </div>
-      </div>
-      <div class= info-picto-emergency>
-        <i class="fa-solid fa-user-doctor"></i>
-          <h6>Médecin référent</h6>
-      </div>
-        <div class="doctor-emergency"><%= @patient.referring_doctor %></div>
+<div class="collapse" id="info-emerg">
+  <div class="patient-profile-section-detail">
+    <div class="patient-profile-section-detail-item">
+      <i class="fa-solid fa-user"></i><span>Proches</span>
+    </div>
+    <div class="patient-profile-section-detail-item">
+      <span><%= @patient.emergency_contact_name %> <%= @patient.emergency_contact_tel %></span>
+    </div>
+    <div class="patient-profile-section-detail-item">
+      <i class="fa-solid fa-user-doctor"></i><span>Médecin référent</span>
+    </div>
+    <div class="patient-profile-section-detail-item">
+      <span><%= @patient.referring_doctor %></span>
     </div>
   </div>
-
-
-
-<%# => #<Patient id: 1, first_name: "Alexandre", last_name: "Roux", address: "12 rue du Pilori - Nantes",
-email: "alexandre.belhora@gmail.com", tel_number: "0635987645", ss_number: "1 85 05 78 006 084 36",
- referring_doctor: "Dr. Durand", emergency_contact_name: "Adam", emergency_contact_tel: "0642473905",
- birth_day: nil, height: 185, weight: 90, blood_type: "A+", referring_user_id: 2, created_at: "2022-09-02
- 09:56:27.965361000 +0000", updated_at: "2022-09-02 09:56:27.965361000 +0000"> %>
+</div>
+<hr>
