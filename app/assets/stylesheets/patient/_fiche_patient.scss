@@ -16,19 +16,21 @@
       padding: 30px;
 
       img {
-        width: 100px;
+        width: 120px;
         border-radius: 80%;
         margin-bottom: 10px;
       }
 
       .patient-first-name {
         font-style: italic;
+        color: $grey-typo;
       }
 
       .patient-last-name {
         font-weight: bold;
-        font-size: large;
+        font-size: 20px;
         text-transform: uppercase;
+        color: $grey-typo;
       }
     }
   }
@@ -37,16 +39,17 @@
 
     .nav {
       align-items: stretch;
-      background-color: lightgrey;
+      background-color: $dark-grey;
       border-top-left-radius: 16px;
       border-top-right-radius: 16px;
-      margin-bottom: -20px;
+      // margin-bottom: -20px;
+      height: 20px;
     }
     .nav-tabs .nav-link {
       border-top-left-radius: 16px;
       border-top-right-radius: 16px;
-      background-color: lightgrey;
-      color:grey;
+      background-color: $dark-grey;
+      color:$light-grey-typo;
       text-transform: uppercase;
     }
 
@@ -54,8 +57,8 @@
       border-top-left-radius: 16px;
       border-top-right-radius: 16px;
       background-color: white;
-      color: $rose-femme;
-      border-bottom: 3px solid $rose-femme;
+      color: $rose;
+      border-bottom: 3px solid $rose;
     }
 
     #nav-profile {
@@ -71,7 +74,6 @@
       display: flex;
       flex-direction: column;
       padding-left: 30px;
-      // padding-top: 20px;
       padding-bottom: 15px;
       align-items: start;
     }
@@ -80,16 +82,16 @@
       align-items: baseline;
       i {
         padding-right: 30px;
-        color: $rose-femme;
+        color: $rose;
         font-size: 16px;
       }
     }
     .bottom-link {
       text-align: center;
-      background-color: #F9F6FA;
+      background-color: $light-grey;
       a {
       text-decoration: underline;
-      color: lightgrey;
+      color: $light-grey-typo;
       font-size: 12px;
       }
     }
