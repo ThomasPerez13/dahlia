@@ -1,6 +1,5 @@
 import { Controller } from "@hotwired/stimulus";
 import Calendar from "tui-calendar";
-import CustomEvents from 'tui-code-snippet/customEvents/customEvents';
 // import 'tui-time-picker/dist/tui-time-picker.css';
 // import "tui-calendar/dist/tui-calendar.css";
 // needed if we want to modify consultation with the popup
@@ -17,31 +16,31 @@ export default class extends Controller {
     this.getCalendarData()
     // this.updatedCalendarSchedule()
     this.displayDate()
-    this.changeTheme()
   }
 
   displayCalendar() {
+    // this.container = this.myCalendarTarget;
     this.container = document.getElementById('calendar');
 
     this.options = {
-      id: "cal1",
+      id: "1",
       name: "My Calendar",
       defaultView: 'day',
       taskView: false,
       scheduleView: ['time'],
-      useCreationPopup: true,
+      useCreationPopup: false,
       useFormPopup: false,
       useDetailPopup: true,
-      isReadOnly: false,
+      isReadOnly: true,
       template: {
 
         popupDetailRepeat: function(schedule) {
           return 'Repeat : ' + schedule.recurrenceRule;
         },
 
-        popupStateFree: function() {
-          return 'Free';
-        },
+        // popupStateFree: function() {
+        //   return 'Free';
+        // },
         popupDetailBody: function(model) {
           return `<a href="${model.body}">Détail de la consultation</a>`;
         }
@@ -61,7 +60,7 @@ export default class extends Controller {
           name: 'Personal',
           backgroundColor: '#ffffff',
           bgColor: "#ffffff",
-          borderColor :"000000",
+          borderColor :"#000000",
           color: "#000000",
           dragBgColor: "#ffffff"
         }
@@ -79,17 +78,10 @@ export default class extends Controller {
     return new Calendar(this.container, this.options);
   }
 
-  changeTheme() {
-    console.log(this.calendar);
-    this.calendar.setTheme({
-      common: {
-        backgroundColor: 'black',
-      },
-    });
-  }
-
   getCalendarData() {
+    // console.log("Couuuuuucoooooou");
     this.url = "/consultations.json"
+    // this.avatar = `try to display avatar in consultation`
     fetch(this.url)
     .then(response =>response.json())
     .then(response =>response.forEach(consultation => {
@@ -97,13 +89,11 @@ export default class extends Controller {
         {
           id: consultation.id,
           calendarId: 'cal1',
-          title: consultation.first_name + " " + consultation.last_name,
-          // title: consultation.start_date.getTime() + "-" + new Date(new Date(consultation.start_date).setMinutes(new Date (consultation.start_date).getMinutes() + 30)).getTime() + " " +,
+          title: `${consultation.start_time} - ${consultation.end_time} ${consultation.first_name} ${consultation.last_name}`,
           category: 'time',
-          // dueDateClass: consultation.dueDateClass,
           location: consultation.address,
           start: consultation.start_date,
-          end:  new Date(new Date(consultation.start_date).setMinutes(new Date (consultation.start_date).getMinutes() + 30)),
+          end:  consultation.end_date,
           body:  consultation.url
         }
       ])
@@ -220,3 +210,40 @@ export default class extends Controller {
   //   });
   // }
 };
+
+
+// theme: {
+//   week: {
+//     dayName: {
+//       borderLeft: 'none',
+//       borderTop: '1px dotted red',
+//       borderBottom: '1px dotted red',
+//       backgroundColor: 'rgba(81, 92, 230, 0.05)',
+//     },
+//     dayGrid: {
+//       backgroundColor: 'rgba(81, 92, 230, 0.05)',
+//     },
+//     dayGridLeft: {
+//       borderRight: 'none',
+//       backgroundColor: 'rgba(81, 92, 230, 0.05)',
+//       width: '144px',
+//     },
+//     timeGridLeft: {
+//       borderRight: 'none',
+//       backgroundColor: 'rgba(81, 92, 230, 0.05)',
+//       width: '144px',
+//     },
+//     timeGridLeftAdditionalTimezone: {
+//       backgroundColor: '#e5e5e5',
+//     },
+//     timeGridHalfHourLine: {
+//       borderBottom: '1px dotted #e5e5e5',
+//     },
+//     nowIndicatorPast: {
+//       border: '1px dashed red',
+//     },
+//     futureTime: {
+//       color: 'red',
+//     },
+//   },
+// },
