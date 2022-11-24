@@ -1,69 +1,42 @@
-<div class="consultation-card-red">
-</div>
-
-
-
-
-
-
-<div class="card-consult-show-patient">
-  <% @last_3_consultations.each do |consultation| %>
-    <%= link_to consultation_path(consultation.id) do %>
-      <div class="card-consult">
-        <div class="card-consult-header">
-          <% if @patient.gender == "Homme" %>
-            <%= image_tag "avatar_homme.svg" %>
-          <% else %>
-            <%= image_tag "avatar_femme.svg" %>
-          <% end %>
-          <div class="card-info">
-            <div class="card-patient-name">
-              <%= @patient.first_name %>  <%= @patient.last_name %>
-            </div>
-            <div class="info-adresse">
-              <div class="text-date"><%=l(consultation.start_date, format: "%A %d %b %H:%M")%></div>
-            </div>
-          </div>
-        </div>
-        <div class="card-traitement">
-          <% consultation.treatments.each do |treatment| %>
-            <div class="tag-soins <%= treatment.category.downcase %>"> <%= treatment.category %></div>
-          <% end %>
-        </div>
-      </div>
-    <% end %>
-  <% end %>
-</div>
 <div data-controller="see-all">
-  <a class="btn btn-afficher"  data-see-all-target="button" data-action="click->see-all#revealContent">Afficher +</a>
-  <div class="d-none" data-see-all-target="content">
-    <div class="card-consult-show-patient">
-      <% @consultations.each do |consultation| %>
-        <%= link_to consultation_path(consultation.id) do %>
-          <div class="card-consult">
-            <div class="card-consult-header">
-            <% if @patient.gender == "Homme" %>
-              <%= image_tag "avatar_homme.svg" %>
-            <% else %>
-              <%= image_tag "avatar_femme.svg" %>
-            <% end %>
-            <div class="card-info">
-                <div class="card-patient-name">
-                  <%= @patient.first_name %>  <%= @patient.last_name %>
-                </div>
-                <div class="info-adresse">
-                  <div class="text-date"><%=l(consultation.start_date, format: "%A %d %b %H:%M")%></div>
-                </div>
-              </div>
-            </div>
-            <div class="card-traitement">
-              <% consultation.treatments.each do |treatment| %>
-                <div class="tag-soins <%= treatment.category.downcase %>"> <%= treatment.category %></div>
-              <% end %>
-            </div>
+  <div class="" data-see-all-target="first3consultations">
+    <% @last_3_consultations.each do |consultation| %>
+      <%= link_to consultation_path(consultation.id) do %>
+        <div class="consultation-card-pink">
+          <div class="consultation-card-pink-date">
+            <%=l(consultation.start_date, format: "%A %d %b %H:%M").to_s.capitalize%>
           </div>
-        <% end %>
+          <div class="consultation-card-pink-text">
+            <% consultation.treatments.each do |treatment| %>
+              <%= image_tag "picto-categories/picto-#{treatment.category.downcase}.svg" %>
+              <span><%= treatment.content %></span>
+            <% end %>
+          </div>
+        </div>
       <% end %>
-    </div>
+    <% end %>
+  </div>
+
+  <br>
+  <%# Below: "Afficher plus" link %>
+  <div class="bottom-link">
+    <a  data-see-all-target="button" data-action="click->see-all#revealContent">Afficher plus</a>
+  </div>
+  <div class="d-none" data-see-all-target="allconsultations">
+    <% @consultations.each do |consultation| %>
+      <%= link_to consultation_path(consultation.id) do %>
+        <div class="consultation-card-pink" >
+          <div class="consultation-card-pink-date">
+            <%=l(consultation.start_date, format: "%A %d %b %H:%M").to_s.capitalize%>
+          </div>
+          <div class="consultation-card-pink-text">
+            <% consultation.treatments.each do |treatment| %>
+              <%= image_tag "picto-categories/picto-#{treatment.category.downcase}.svg" %>
+              <span><%= treatment.content %></span>
+            <% end %>
+          </div>
+      </div>
+      <% end %>
+    <% end %>
   </div>
 </div>
