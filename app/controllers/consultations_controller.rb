@@ -10,6 +10,7 @@ class ConsultationsController < ApplicationController
     # Use with Toast UI calendar and partial :
     # <%= render "index_with_tui_calendar", card_infos: @card_infos, consultations: @consultations %> in index.html.erb
     @consultations = Consultation.where(user: current_user)
+    # raise
   end
 
   def show

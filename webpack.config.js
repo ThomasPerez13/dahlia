@@ -1,5 +1,6 @@
 const path    = require("path")
 const webpack = require("webpack")
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   mode: "production",
@@ -23,5 +24,26 @@ module.exports = {
     new webpack.optimize.LimitChunkCountPlugin({
       maxChunks: 1
     })
-  ]
+  ],
+  entry: {
+    application: "./app/javascript/application.js"
+  },
+  output: {
+      path: path.resolve(__dirname, "app/assets/builds"),
+      filename: 'tuiCalendar.bundle.js'
+  },
+  plugins: [
+      new MiniCssExtractPlugin(
+          {
+              filename: 'tuiCalendar.css'
+          })
+  ],
+  module: {
+      rules: [
+          {
+              test: /\.css$/i,
+              use: [MiniCssExtractPlugin.loader, 'css-loader'],
+          },
+      ]
+  }
 }

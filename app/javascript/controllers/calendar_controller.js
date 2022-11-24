@@ -1,7 +1,8 @@
 import { Controller } from "@hotwired/stimulus";
 import Calendar from "tui-calendar";
-import 'tui-time-picker/dist/tui-time-picker.css';
-import "tui-calendar/dist/tui-calendar.css";
+import CustomEvents from 'tui-code-snippet/customEvents/customEvents';
+// import 'tui-time-picker/dist/tui-time-picker.css';
+// import "tui-calendar/dist/tui-calendar.css";
 // needed if we want to modify consultation with the popup
 // import Rails from "@rails/ujs";
 
@@ -16,12 +17,14 @@ export default class extends Controller {
     this.getCalendarData()
     // this.updatedCalendarSchedule()
     this.displayDate()
+    this.changeTheme()
   }
 
   displayCalendar() {
     this.container = document.getElementById('calendar');
+
     this.options = {
-      id: "1",
+      id: "cal1",
       name: "My Calendar",
       defaultView: 'day',
       taskView: false,
@@ -56,7 +59,11 @@ export default class extends Controller {
         {
           id: 'cal1',
           name: 'Personal',
-          backgroundColor: '#03bd9e',
+          backgroundColor: '#ffffff',
+          bgColor: "#ffffff",
+          borderColor :"000000",
+          color: "#000000",
+          dragBgColor: "#ffffff"
         }
       ],
       week: {
@@ -72,6 +79,15 @@ export default class extends Controller {
     return new Calendar(this.container, this.options);
   }
 
+  changeTheme() {
+    console.log(this.calendar);
+    this.calendar.setTheme({
+      common: {
+        backgroundColor: 'black',
+      },
+    });
+  }
+
   getCalendarData() {
     this.url = "/consultations.json"
     fetch(this.url)
@@ -80,8 +96,9 @@ export default class extends Controller {
       this.calendar.createSchedules([
         {
           id: consultation.id,
-          calendarId: '1',
+          calendarId: 'cal1',
           title: consultation.first_name + " " + consultation.last_name,
+          // title: consultation.start_date.getTime() + "-" + new Date(new Date(consultation.start_date).setMinutes(new Date (consultation.start_date).getMinutes() + 30)).getTime() + " " +,
           category: 'time',
           // dueDateClass: consultation.dueDateClass,
           location: consultation.address,
