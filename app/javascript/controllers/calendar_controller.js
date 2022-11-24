@@ -8,7 +8,7 @@ import Calendar from "tui-calendar";
 
 // Connects to data-controller="calendar"
 export default class extends Controller {
-  static targets = ["myCalendar", "todayAction"]
+  static targets = ["myCalendar", "todayAction", "menAvatar", "womenAvatar"]
 
   connect() {
     // console.log("welcom to our calendar controller");
@@ -16,12 +16,13 @@ export default class extends Controller {
     this.getCalendarData()
     // this.updatedCalendarSchedule()
     this.displayDate()
+    // this.changeTheme()
+    this.addAvatar()
   }
 
   displayCalendar() {
     // this.container = this.myCalendarTarget;
     this.container = document.getElementById('calendar');
-
     this.options = {
       id: "1",
       name: "My Calendar",
@@ -32,19 +33,6 @@ export default class extends Controller {
       useFormPopup: false,
       useDetailPopup: true,
       isReadOnly: true,
-      template: {
-
-        popupDetailRepeat: function(schedule) {
-          return 'Repeat : ' + schedule.recurrenceRule;
-        },
-
-        // popupStateFree: function() {
-        //   return 'Free';
-        // },
-        popupDetailBody: function(model) {
-          return `<a href="${model.body}">Détail de la consultation</a>`;
-        }
-      },
       timezone: {
         zones: [
           {
@@ -53,6 +41,17 @@ export default class extends Controller {
             tooltip: "Paris",
           }
         ],
+      },
+      template: {
+        popupDetailRepeat: function(schedule) {
+          return 'Repeat : ' + schedule.recurrenceRule;
+        },
+        time(event) {
+          return `<div class='d-flex align-items-center' id='avatar-${event.id}'><span style="color: black;">${event.title}</span></div>`;
+        },
+        popupDetailBody: function(model) {
+          return `<a href="${model.body}">Détail de la consultation</a>`;
+        }
       },
       calendars: [
         {
@@ -71,7 +70,6 @@ export default class extends Controller {
         hourEnd: 19,
         showNowIndicator: false,
         workweek: true
-        // narrowWeekend: true
       }
     };
 
@@ -79,9 +77,7 @@ export default class extends Controller {
   }
 
   getCalendarData() {
-    // console.log("Couuuuuucoooooou");
     this.url = "/consultations.json"
-    // this.avatar = `try to display avatar in consultation`
     fetch(this.url)
     .then(response =>response.json())
     .then(response =>response.forEach(consultation => {
@@ -100,24 +96,34 @@ export default class extends Controller {
     }))
   }
 
+  // changeTheme() {
+  //   this.calendar.setOptions({
+  //     template: {
+  //       timegridDisplayTime({ time }) {
+  //         return `sub timezone: ${time}`;
+  //       },
+  //     },
+  //   });
+  // }
+
   // display today on the clendar
   today() {
-    // console.log("today action");
     this.calendar.today();
     this.displayDate();
+    this.addAvatar()
   };
 
   // display the next or the previous day on the clendar
   previous() {
-    // console.log("previous action");
     this.calendar.prev();
     this.displayDate();
+    this.addAvatar()
   };
 
   next() {
-    // console.log("next action");
     this.calendar.next();
     this.displayDate();
+    this.addAvatar()
   };
 
   hideTodayAction() {
@@ -168,6 +174,27 @@ export default class extends Controller {
     if (this.todayDate.getDate() === this.calendarDate.getDate() && this.todayDate.getMonth() === this.calendarDate.getMonth()) {
       this.hideTodayAction()
     }
+  }
+
+  getAvatar(target) {
+    this.img = document.createElement("img");
+    this.img.src = `${target.getAttribute ('src')}`;
+    this.img.setAttribute("style", "height:18px; padding-right:12px; margin-top: 1px;");
+    return this.img
+  }
+
+  addAvatar() {
+    this.url = "/consultations.json"
+    fetch(this.url)
+    .then(response =>response.json())
+    .then(response =>response.forEach(consultation => {
+      this.avatarSection = document.getElementById(`avatar-${consultation.id}`)
+      if(this.avatarSection !== null && consultation.gender === "Homme") {
+        this.avatarSection.prepend(this.getAvatar(this.menAvatarTarget))
+      } else if(this.avatarSection !== null && consultation.gender === "Femme") {
+        this.avatarSection.prepend(this.getAvatar(this.womenAvatarTarget))
+      }
+    }))
   }
 
   // getConsultationId(){
