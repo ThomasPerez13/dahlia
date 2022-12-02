@@ -1,7 +1,5 @@
 import { Controller } from "@hotwired/stimulus";
-import Calendar from "tui-calendar";
-// import 'tui-time-picker/dist/tui-time-picker.css';
-// import "tui-calendar/dist/tui-calendar.css";
+import Calendar from "@toast-ui/calendar";
 // needed if we want to modify consultation with the popup
 // import Rails from "@rails/ujs";
 
@@ -16,7 +14,7 @@ export default class extends Controller {
     this.getCalendarData()
     // this.updatedCalendarSchedule()
     this.displayDate()
-    // this.changeTheme()
+    this.changeTheme()
     this.addAvatar()
   }
 
@@ -27,12 +25,21 @@ export default class extends Controller {
       id: "1",
       name: "My Calendar",
       defaultView: 'day',
-      taskView: false,
-      scheduleView: ['time'],
       useCreationPopup: false,
       useFormPopup: false,
       useDetailPopup: true,
       isReadOnly: true,
+      calendars: [
+        {
+          id: 'cal1',
+          name: 'Personal',
+          backgroundColor: '#ffffff',
+          bgColor: "#ffffff",
+          borderColor :"#000000",
+          color: "#000000",
+          dragBgColor: "#ffffff"
+        }
+      ],
       timezone: {
         zones: [
           {
@@ -53,22 +60,13 @@ export default class extends Controller {
           return `<a href="${model.body}">Détail de la consultation</a>`;
         }
       },
-      calendars: [
-        {
-          id: 'cal1',
-          name: 'Personal',
-          backgroundColor: '#ffffff',
-          bgColor: "#ffffff",
-          borderColor :"#000000",
-          color: "#000000",
-          dragBgColor: "#ffffff"
-        }
-      ],
       week: {
         daynames: ['Di', 'Lu', 'Ma', 'Me', 'Je', 'Ve', 'Sa'],
         hourStart: 7,
         hourEnd: 19,
-        showNowIndicator: false,
+        taskView: false,
+        showNowIndicator: true,
+        eventView: ['time'],
         workweek: true
       }
     };
@@ -81,7 +79,7 @@ export default class extends Controller {
     fetch(this.url)
     .then(response =>response.json())
     .then(response =>response.forEach(consultation => {
-      this.calendar.createSchedules([
+      this.calendar.createEvents([
         {
           id: consultation.id,
           calendarId: 'cal1',
@@ -96,15 +94,15 @@ export default class extends Controller {
     }))
   }
 
-  // changeTheme() {
-  //   this.calendar.setOptions({
-  //     template: {
-  //       timegridDisplayTime({ time }) {
-  //         return `sub timezone: ${time}`;
-  //       },
-  //     },
-  //   });
-  // }
+  changeTheme() {
+    this.calendar.setTheme({
+      week: {
+        nowIndicatorLabel: {
+          color: 'green',
+        },
+      },
+    });
+  }
 
   // display today on the clendar
   today() {
