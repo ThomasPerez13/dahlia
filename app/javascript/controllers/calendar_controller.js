@@ -35,7 +35,7 @@ export default class extends Controller {
           name: 'Personal',
           backgroundColor: '#ffffff',
           bgColor: "#ffffff",
-          borderColor :"#000000",
+          borderColor :"#ffffff",
           color: "#000000",
           dragBgColor: "#ffffff"
         }
