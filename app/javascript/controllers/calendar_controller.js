@@ -65,8 +65,8 @@ export default class extends Controller {
         popupDetailAttendees({ attendees = [] }) {
           return `<div class='list-treatments-popup-detail'>${attendees.join('')}</div>`;
         },
-        popupDetailState({ state }) {
-          return ``;
+        popupDetailState() {
+          return `<div class='d-none'></div>`;
         },
         popupDetailBody: function(model) {
           return `<a href="${model.body}">Détail de la consultation</a>`;
