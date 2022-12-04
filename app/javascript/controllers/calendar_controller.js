@@ -9,7 +9,6 @@ export default class extends Controller {
   static targets = ["myCalendar", "todayAction", "menAvatar", "womenAvatar"]
 
   connect() {
-    // console.log("welcom to our calendar controller");
     this.calendar = this.displayCalendar()
     this.getCalendarData()
     // this.updatedCalendarSchedule()
@@ -19,12 +18,13 @@ export default class extends Controller {
   }
 
   displayCalendar() {
-    // this.container = this.myCalendarTarget;
-    this.container = document.getElementById('calendar');
+    this.container = this.myCalendarTarget;
+    // this.container = document.getElementById('calendar');
     this.options = {
       id: "1",
       name: "My Calendar",
       defaultView: 'day',
+      usageStatistics: false,
       useCreationPopup: false,
       useFormPopup: false,
       useDetailPopup: true,
@@ -32,7 +32,7 @@ export default class extends Controller {
       calendars: [
         {
           id: 'cal1',
-          name: 'Personal',
+          // name: 'Personal',
           backgroundColor: '#ffffff',
           bgColor: "#ffffff",
           borderColor :"#ffffff",
@@ -54,7 +54,19 @@ export default class extends Controller {
           return 'Repeat : ' + schedule.recurrenceRule;
         },
         time(event) {
-          return `<div class='d-flex align-items-center' id='avatar-${event.id}'><span style="color: black;">${event.title}</span></div>`;
+          return `<div class='d-flex align-items-center' id='avatar-${event.id}'>
+                    <div>
+                      <p style="color: black; margin-bottom: 0px;"><strong>${event.title}</strong></p>
+                      <p style="color: black; margin-bottom: 0px;"><span style="color: black;">${event.location}</span></p>
+                      <div class='d-flex'>${event.state}</div>
+                    </div>
+                  </div>`;
+        },
+        popupDetailAttendees({ attendees = [] }) {
+          return `<div class='list-treatments-popup-detail'>${attendees.join('')}</div>`;
+        },
+        popupDetailState({ state }) {
+          return ``;
         },
         popupDetailBody: function(model) {
           return `<a href="${model.body}">Détail de la consultation</a>`;
@@ -74,6 +86,22 @@ export default class extends Controller {
     return new Calendar(this.container, this.options);
   }
 
+  changeTheme() {
+    this.calendar.setTheme({
+      week: {
+        nowIndicatorLabel: {
+          color: 'green',
+        },
+        timeGridHalfHourLine: {
+          borderBottom: '1px dotted rgb(229, 229, 229)',
+        },
+        timeGridLeft: {
+          width: '40px',
+        },
+      },
+    });
+  }
+
   getCalendarData() {
     this.url = "/consultations.json"
     fetch(this.url)
@@ -83,25 +111,18 @@ export default class extends Controller {
         {
           id: consultation.id,
           calendarId: 'cal1',
-          title: `${consultation.start_time} - ${consultation.end_time} ${consultation.first_name} ${consultation.last_name}`,
+          title: `${consultation.first_name} ${consultation.last_name}`,
           category: 'time',
           location: consultation.address,
           start: consultation.start_date,
           end:  consultation.end_date,
-          body:  consultation.url
+          attendees: consultation.array_treatments,
+          state: consultation.string_treatments,
+          body:  consultation.url,
+          isReadOnly: true
         }
       ])
     }))
-  }
-
-  changeTheme() {
-    this.calendar.setTheme({
-      week: {
-        nowIndicatorLabel: {
-          color: 'green',
-        },
-      },
-    });
   }
 
   // display today on the clendar
@@ -177,7 +198,7 @@ export default class extends Controller {
   getAvatar(target) {
     this.img = document.createElement("img");
     this.img.src = `${target.getAttribute ('src')}`;
-    this.img.setAttribute("style", "height:18px; padding-right:12px; margin-top: 1px;");
+    this.img.setAttribute("style", "height:72px; padding-right: 4px;");
     return this.img
   }
 

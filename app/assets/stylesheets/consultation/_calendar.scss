@@ -63,3 +63,88 @@
   border-right: solid 1px #dee2e6;
   border-bottom: solid 1px #dee2e6;
 }
+
+// event content
+
+.toastui-calendar-event-time .toastui-calendar-event-time-content, .toastui-calendar-event-time .toastui-calendar-travel-time {
+  font-size: 12px;
+  overflow: hidden;
+  padding: 0px;
+  vertical-align: center;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+// Treatments in pop-up details
+
+.toastui-calendar-detail-item-indent {
+  padding-left: 0px !important;
+  text-indent: 0px !important;
+}
+
+.toastui-calendar-ic-user-b {
+  display: none !important;
+}
+
+.list-treatments-popup-detail {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px 2px;
+}
+
+// Treatments %W[Injection Pansement Prélèvement Perfusion Hygiène Médicament Diabétique Aide\ domicile Autre]
+
+.toastui-calendar-ic-state-b {
+  display: none !important;
+}
+
+.treatements {
+  border-radius: 20px;
+  margin: 0px 2px;
+  padding: 0px 4px;
+}
+
+.treatement-category-injection {
+  background-color: $injection-background;
+  color: $injection-font;
+}
+
+.treatement-category-pansement {
+  background-color: $pansement-background;
+  color: $pansement-font;
+}
+
+.treatement-category-prelevement {
+  background-color: $prelevement-background;
+  color: $prelevement-font;
+}
+
+.treatement-category-perfusion {
+  background-color: $perfusion-background;
+  color: $perfusion-font;
+}
+
+.treatement-category-hygiene {
+  background-color: $hygiene-background;
+  color: $hygiene-font;
+}
+
+.treatement-category-medicament {
+  background-color: $medicament-background;
+  color: $medicament-font;
+}
+
+.treatement-category-diabetique {
+  background-color: $diabete-background;
+  color: $diabete-font;
+}
+
+.treatement-category-aide-domicile {
+  background-color: $aide-background;
+  color: $aide-font;
+}
+
+.treatement-category-autre {
+  background-color: $autre-background;
+  color: $autre-font;
+}
