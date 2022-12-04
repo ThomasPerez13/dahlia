@@ -56,6 +56,13 @@ ginette = Patient.create!(first_name: "Ginette", last_name: "Retif", address: "4
 puts "loading consultations..."
 
 # CONSULTATIONS
+
+# Consultations passées (patient Alexandre, infirmier Thomas uniquement)
+cons_thomas_alexandre_past1 = Consultation.create!(patient: alexandre, user: thomas, start_date: DateTime.parse("#{Date.today.prev_day} 09:00 +0200"))
+cons_thomas_alexandre_past2 = Consultation.create!(patient: alexandre, user: thomas, start_date: DateTime.parse("#{Date.today.prev_day.prev_day} 09:00 +0200"))
+cons_thomas_alexandre_past3 = Consultation.create!(patient: alexandre, user: thomas, start_date: DateTime.parse("#{Date.today.prev_day.prev_day.prev_day} 09:00 +0200"))
+
+
 # CONSULTATIONS DE THOMAS
 # consultation du jour
 cons_thomas_alexandre_today = Consultation.create!(patient: alexandre, user: thomas, start_date: DateTime.parse("#{Date.today} 09:00 +0200"))
