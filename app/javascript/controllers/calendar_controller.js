@@ -198,7 +198,7 @@ export default class extends Controller {
   getAvatar(target) {
     this.img = document.createElement("img");
     this.img.src = `${target.getAttribute ('src')}`;
-    this.img.setAttribute("style", "height:72px; padding-right: 4px;");
+    this.img.setAttribute("style", "height:72px; padding-right: 12px; padding-left: 12px;");
     return this.img
   }
 
