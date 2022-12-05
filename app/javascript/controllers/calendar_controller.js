@@ -94,7 +94,13 @@ export default class extends Controller {
     this.calendar.setTheme({
       week: {
         nowIndicatorLabel: {
-          color: 'green',
+          color: '#545454',
+        },
+        nowIndicatorBullet: {
+          backgroundColor: '#F28476',
+        },
+        nowIndicatorToday: {
+          border: '1px solid #F28476',
         },
         timeGridHalfHourLine: {
           borderBottom: '1px dotted rgb(229, 229, 229)',
