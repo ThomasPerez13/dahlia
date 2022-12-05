@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 148px;
 }
 
 .calendar-today-action {
@@ -19,22 +20,26 @@
   background-color: $rose;
   color: white;
   border: none;
-  font-size: 48px;
+  font-family: monospace;
+  font-size: 80px;
   margin-right: 24px;
   margin-left: 24px;
+  font-weight: lighter;
 }
 
 #calendar-day {
   margin: 8px 0px 0px 0px;
   padding: 0;
-  font-weight: bold;
+  font-size: 24px;
+  color: black;
+  letter-spacing: 4px;
 }
 
 #calendar-date {
   margin: 0;
   padding: 0;
   color: white;
-  font-size: 48px;
+  font-size: 60px;
   font-weight: bold;
   line-height: 0.7;
 }
@@ -42,6 +47,8 @@
 #calendar-month {
   margin: 0;
   padding: 0;
+  font-size: 20px;
+  color: #545454;
 }
 
 
