@@ -53,6 +53,9 @@ export default class extends Controller {
         popupDetailRepeat: function(schedule) {
           return 'Repeat : ' + schedule.recurrenceRule;
         },
+        timegridDisplayPrimaryTime({ time }) {
+          return `${time.getHours()}:${time.getMinutes()}0`;
+        },
         time(event) {
           return `<div class='d-flex align-items-center' id='avatar-${event.id}'>
                     <div>
@@ -63,7 +66,9 @@ export default class extends Controller {
                   </div>`;
         },
         popupDetailDate({ start, end }) {
-          return `🕛 ${start.getHours()}:${start.getMinutes()} à ${end.getHours()}:${end.getMinutes()}`;
+          const startMinutes = start.getMinutes() === 0 ? `${start.getMinutes()}0` : start.getMinutes()
+          const endMinutes = end.getMinutes() === 0 ? `${end.getMinutes()}0` : end.getMinutes()
+          return `🕛 ${start.getHours()}:${startMinutes} à ${end.getHours()}:${endMinutes}`;
         },
         popupDetailAttendees({ attendees = [] }) {
           return `<div class='list-treatments-popup-detail'>${attendees.join('')}</div>`;
@@ -99,7 +104,7 @@ export default class extends Controller {
           borderBottom: '1px dotted rgb(229, 229, 229)',
         },
         timeGridLeft: {
-          width: '40px',
+          width: '48px',
         },
       },
     });
@@ -218,6 +223,10 @@ export default class extends Controller {
       }
     }))
   }
+
+  // getMinutesEvent(minutes) {
+  //  return minutes === 0 ? `${minutes}0` : minutes
+  // }
 
   // getConsultationId(){
   //   let calendar = this.calendar;
