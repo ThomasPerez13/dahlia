@@ -23,8 +23,8 @@ class Consultation < ApplicationRecord
 
   def display_treatments
     html_treatments = transform_treatments_in_html
-    if transform_treatments_in_html.size > 3
-      html_treatments.first(3).push("<div class='treatements treatement-category-autre'><p style='margin-bottom: 0px;'><span>...</span></p></div>").join
+    if transform_treatments_in_html.size > 2
+      html_treatments.first(2).push("<div class='treatements treatement-category-autre'><p style='margin-bottom: 0px;'><span>...</span></p></div>").join
     else
       transform_treatments_in_html.join
     end

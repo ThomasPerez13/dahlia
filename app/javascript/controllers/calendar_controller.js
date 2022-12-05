@@ -57,10 +57,11 @@ export default class extends Controller {
           return `${time.getHours()}:${time.getMinutes()}0`;
         },
         time(event) {
+          const patientLocation = event.location.length > 39 ? `${event.location.substring(0,39)}...` : event.location
           return `<div class='d-flex align-items-center' id='avatar-${event.id}'>
                     <div>
                       <p style="color: black; margin-bottom: 0px;"><strong>${event.title}</strong></p>
-                      <p style="color: black; margin-bottom: 0px;"><span style="color: black;">${event.location}</span></p>
+                      <p style="color: black; margin-bottom: 0px;"><span style="color: black;">${patientLocation}</span></p>
                       <div class='d-flex'>${event.state}</div>
                     </div>
                   </div>`;
