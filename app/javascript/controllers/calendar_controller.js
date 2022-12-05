@@ -62,6 +62,9 @@ export default class extends Controller {
                     </div>
                   </div>`;
         },
+        popupDetailDate({ start, end }) {
+          return `🕛 ${start.getHours()}:${start.getMinutes()} à ${end.getHours()}:${end.getMinutes()}`;
+        },
         popupDetailAttendees({ attendees = [] }) {
           return `<div class='list-treatments-popup-detail'>${attendees.join('')}</div>`;
         },

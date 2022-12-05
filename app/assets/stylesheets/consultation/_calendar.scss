@@ -84,6 +84,13 @@
   justify-content: flex-start;
   align-items: center;
 }
+
+// Poupup detail
+
+.toastui-calendar-detail-container .toastui-calendar-content {
+  padding: 4px 0px;
+}
+
 // Treatments in pop-up details
 
 .toastui-calendar-detail-item-indent {
@@ -116,6 +123,7 @@
   border-radius: 20px;
   margin: 0px 2px;
   padding: 0px 4px;
+  text-align: center;
 }
 
 .treatement-category-injection {
