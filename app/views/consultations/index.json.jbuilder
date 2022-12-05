@@ -10,6 +10,5 @@ json.array! @consultations do |consultation|
   json.address consultation.patient.address
   json.array_treatments consultation.transform_treatments_in_html
   json.string_treatments consultation.display_treatments
-  # json.treatments consultation.treatments.map(&:category)
   json.url consultation_path(consultation)
 end

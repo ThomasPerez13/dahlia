@@ -1,7 +1,5 @@
 import { Controller } from "@hotwired/stimulus";
 import Calendar from "@toast-ui/calendar";
-// needed if we want to modify consultation with the popup
-// import Rails from "@rails/ujs";
 
 
 // Connects to data-controller="calendar"
@@ -11,7 +9,6 @@ export default class extends Controller {
   connect() {
     this.calendar = this.displayCalendar()
     this.getCalendarData()
-    // this.updatedCalendarSchedule()
     this.displayDate()
     this.changeTheme()
     this.addAvatar()
@@ -19,7 +16,6 @@ export default class extends Controller {
 
   displayCalendar() {
     this.container = this.myCalendarTarget;
-    // this.container = document.getElementById('calendar');
     this.options = {
       id: "1",
       name: "My Calendar",
@@ -32,7 +28,6 @@ export default class extends Controller {
       calendars: [
         {
           id: 'cal1',
-          // name: 'Personal',
           backgroundColor: '#ffffff',
           bgColor: "#ffffff",
           borderColor :"#ffffff",
@@ -162,6 +157,8 @@ export default class extends Controller {
     this.todayActionTarget.classList.remove("d-none")
   }
 
+  // display the date on the calendar header
+
   catchDay() {
     this.date = this.calendar.getDate().getDay();
     this.dayDisplay = document.getElementById('calendar-day');
@@ -204,6 +201,8 @@ export default class extends Controller {
     }
   }
 
+  // get the avatar to display in the event element
+
   getAvatar(target) {
     this.img = document.createElement("img");
     this.img.src = `${target.getAttribute ('src')}`;
@@ -224,85 +223,4 @@ export default class extends Controller {
       }
     }))
   }
-
-  // getMinutesEvent(minutes) {
-  //  return minutes === 0 ? `${minutes}0` : minutes
-  // }
-
-  // getConsultationId(){
-  //   let calendar = this.calendar;
-  //   console.log(calendar);
-  //   calendar.on('clickSchedule', function(event) {
-  //     // this.consultation = event.schedule;
-  //     // console.log(event.schedule.id);
-  //   });
-  // }
-
-  // updatedCalendarSchedule(){
-  //   let calendar = this.calendar;
-  //   calendar.on('beforeUpdateSchedule', function(event) {
-  //     console.log("coucou le chat");
-  //     console.log(event.schedule);
-  //     let schedule = event.schedule;
-  //     let changes = event.changes;
-  //     let formUpdate = new FormData()
-  //     if (changes.end) {
-  //     formUpdate.append("end", changes.end._date)
-  //     }
-  //     if (changes.start) {
-  //     formUpdate.append("start", changes.start._date)
-  //     }
-  //     if (changes.title) {
-  //     formUpdate.append("title", changes.title)
-  //     }
-  //     if (changes.category) {
-  //     formUpdate.append("category", changes.category)
-  //     }
-  //     calendar.updateSchedule(schedule.id, schedule.calendarId, changes);
-
-  //     Rails.ajax({
-  //     type: "PATCH",
-  //     url: '/schedules/'+ schedule.id,
-  //     data: formUpdate
-  //     })
-
-  //   });
-  // }
 };
-
-
-// theme: {
-//   week: {
-//     dayName: {
-//       borderLeft: 'none',
-//       borderTop: '1px dotted red',
-//       borderBottom: '1px dotted red',
-//       backgroundColor: 'rgba(81, 92, 230, 0.05)',
-//     },
-//     dayGrid: {
-//       backgroundColor: 'rgba(81, 92, 230, 0.05)',
-//     },
-//     dayGridLeft: {
-//       borderRight: 'none',
-//       backgroundColor: 'rgba(81, 92, 230, 0.05)',
-//       width: '144px',
-//     },
-//     timeGridLeft: {
-//       borderRight: 'none',
-//       backgroundColor: 'rgba(81, 92, 230, 0.05)',
-//       width: '144px',
-//     },
-//     timeGridLeftAdditionalTimezone: {
-//       backgroundColor: '#e5e5e5',
-//     },
-//     timeGridHalfHourLine: {
-//       borderBottom: '1px dotted #e5e5e5',
-//     },
-//     nowIndicatorPast: {
-//       border: '1px dashed red',
-//     },
-//     futureTime: {
-//       color: 'red',
-//     },
-//   },
-// },
