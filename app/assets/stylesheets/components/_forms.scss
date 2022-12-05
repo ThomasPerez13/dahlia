@@ -56,15 +56,72 @@
   background-color: white;
 }
 
-#user_email, #user_password, #user_first_name, #user_password_confirmation {
-  background-color: white;
-  border-radius: 75px;
+#user_email, #user_password, #user_first_name, #user_password_confirmation, #patient_first_name, #patient_last_name, #patient_address, #patient_email, #patient_tel_number, #patient_ss_number, #patient_referring_doctor, #patient_emergency_contact_name, #patient_emergency_contact_tel, #patient_height, #patient_weight {
+  background-color: white !important;
+  border-radius: 75px !important;
   border: 1px solid $grey;
   font-size: 16px;
-  height: 43px;
   text-align: center;
   color: $grey !important;
   width: 300px;
+}
+
+.patient_gender, .patient_birth_day, .patient_blood_type {
+  border: solid 1px $grey !important;
+  border-radius: 30px !important;
+  background: white !important;
+  padding: 1rem;
+  font-size: 16px;
+  color: $grey;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: 80px;
+  align-items: center;
+  width: 300px;
+
+  .col-form-label {
+    text-align: center;
+    font-size: 16px;
+    color: $grey !important;
+  }
+
+  .form-check-input {
+    border: 1px solid $grey;
+    background-color: white;
+  }
+
+  .form-select {
+    padding: 0px 3px !important;
+  }
+
+  .mb-3.date.optional.patient_birth_day {
+    border: solid 1px $grey !important;
+  }
+
+  #patient_birth_day_3i {
+    flex: 1;
+    text-align: center;
+    border: solid 1px $grey !important;
+  }
+
+  #patient_birth_day_2i {
+    flex: 5;
+    text-align: center;
+    border: solid 1px $grey !important;
+  }
+
+  #patient_birth_day_1i {
+    flex: 3;
+    text-align: center;
+    border: solid 1px $grey !important;
+  }
+}
+
+
+.form-check-input:checked {
+  background-color: $rose !important;
+  border-color: $rose !important;
 }
 
 #user_email:focus {

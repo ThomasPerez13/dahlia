@@ -1,22 +1,17 @@
+// AJOUTER UN PATIENT FORM
+
 .container_new_patient {
-  padding-top: 40px;
-  padding-bottom: 40px;
+  padding: 40px 25px;
+  background-color: white;
+
+  .new_patient {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
 }
 
 .simple_form .new_patient {
-  align-items: center;
-}
-
-.patient_gender {
-  border: solid 1.5px #9e9e9e;
-  border-radius: 1rem;
-  background: none;
-  padding: 1rem;
-  font-size: 1rem;
-  color: #9e9e9e;
-  display: flex;
-  flex-wrap: wrap;
-  column-gap: 80px;
   align-items: center;
 }
 
