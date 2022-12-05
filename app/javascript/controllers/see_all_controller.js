@@ -1,16 +1,17 @@
 import { Controller } from "@hotwired/stimulus"
 
-// Connects to data-controller="see-all"
 export default class extends Controller {
-  static targets = ["content", "button"]
+  static targets = ["allconsultations", "button", "first3consultations"]
 
   revealContent() {
-    this.contentTarget.classList.toggle("d-none")
+    this.allconsultationsTarget.classList.toggle("d-none")
+    this.first3consultationsTarget.classList.toggle("d-none")
 
-    if(this.buttonTarget.innerHTML === "Afficher +") {
-      this.buttonTarget.innerHTML = "Afficher -"
+
+    if(this.buttonTarget.innerHTML === "Afficher plus") {
+      this.buttonTarget.innerHTML = "Afficher moins"
     } else {
-      this.buttonTarget.innerHTML = "Afficher +"
+      this.buttonTarget.innerHTML = "Afficher plus"
     }
   }
 

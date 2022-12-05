@@ -1,8 +1,10 @@
+<%# HOME PAGE %>
+
 <% if user_signed_in? %>
     <%= link_to consultations_path, data: {turbo_method: :get} do %>
       <div class="container_center">
         <div class="container_image">
-          <%= image_tag "logo-blanc.svg" %>
+          <%= image_tag "gif-fond.gif", data: { inject: { svg: "gif-fond.gif" } }, :width => 200 %>
         </div>
         <div class="container_title">
           <h1>Dahlia</h1>
@@ -13,7 +15,7 @@
     <%= link_to  new_user_session_path, data: {turbo_method: :get} do %>
       <div class="container_center">
         <div class="container_image">
-          <%= image_tag "logo-blanc.svg" %>
+          <%= image_tag "gif-fond.gif", data: { inject: { svg: "gif-fond.gif" } }, :width => 200 %>
         </div>
         <div class="container_title">
           <h1>Dahlia</h1>
