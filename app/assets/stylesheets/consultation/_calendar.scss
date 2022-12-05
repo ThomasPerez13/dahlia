@@ -1,3 +1,7 @@
+.calendar-header {
+  box-shadow: inset 2px -7px 11px rgba(80, 92, 51, 0.17);
+}
+
 .calendar-action-date {
   display: flex;
   justify-content: center;
@@ -65,11 +69,8 @@
   font-size: 8px;
 }
 
-.toastui-calendar-event-time-content {
-  border-top: solid 1px #dee2e6;
-  border-right: solid 1px #dee2e6;
-  border-bottom: solid 1px #d5d5d5;
-  // box-shadow: 0 2px 6px 0 rgb(0 0 0);
+.toastui-calendar-event-time {
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 }
 
 // event content
