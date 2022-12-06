@@ -1,8 +1,25 @@
 <div class="container-sm show-consultation">
 
+<%= link_to patient_path(@consultation.patient) do %>
+    <div class="card-consult">
+        <div class="card-info">
+          <div class="card-patient-name">
+            <%= @consultation.patient.first_name %>  <%= @consultation.patient.last_name %>
+          </div>
+          <div class="info-adresse">
+            <i class="fa-solid fa-location-dot"></i>
+            <div class="text-adresse"><%= @consultation.patient.address %></div>
+          </div>
+          <div class="text-date"><%=l(@consultation.start_date, format: "%A %d %b %H:%M")%></div>
+        </div>
+      <div class="card-traitement">
+      </div>
+    </div>
+  <% end %>
+
   <%# Button to edit the consultation date - START %>
   <div class="" data-controller="edit">
-    <div>
+    <div class="container-btn-date">
       <button class="btn btn-submit" data-action="click->edit#displayForm">Modifier la date de consultation</button>
     </div>
 
@@ -30,29 +47,11 @@
 
   <%# Button to edit the consultation date - END %>
 
-  <%= link_to patient_path(@consultation.patient) do %>
-    <div class="card-consult">
-      <div class="card-consult-header">
-        <%= image_tag "avatar_homme.svg" %>
-        <div class="card-info">
-          <div class="card-patient-name">
-            <%= @consultation.patient.first_name %>  <%= @consultation.patient.last_name %>
-          </div>
-          <div class="info-adresse">
-            <i class="fa-solid fa-location-dot"></i>
-            <div class="text-adresse"><%= @consultation.patient.address %></div>
-          </div>
-          <div class="text-date"><%=l(@consultation.start_date, format: "%A %d %b %H:%M")%></div>
-        </div>
-      </div>
-      <div class="card-traitement">
-      </div>
-    </div>
-  <% end %>
+
 
   <%# Button to edit the nurse in charge of the consultation %>
   <div data-controller="edit">
-    <div>
+    <div class="container-btn-nurse">
       <button class="btn btn-submit" data-action="click->edit#displayFormNurse">Modifier l'infirmier assigné</button>
     </div>
 
@@ -74,7 +73,7 @@
       <% end %>
     </div>
   </div>
-
+ <h5 class="text-center">SOINS À PRODIGUER :</h5>
   <% @consultation.treatments.each do |treatment| %>
     <i class="fal fa-ball-pile"></i>
     <div id="checkbox-custom" class="checkbox-container">
@@ -128,7 +127,7 @@
     </div>
   <% end %>
 
-  <%= link_to "Ajouter un soin", new_consultation_treatment_path(@consultation), class:"btn btn-add-treatment" %>
+  <%= link_to "+", new_consultation_treatment_path(@consultation), class:"btn btn-add-treatment" %>
 
   <%# notes %>
 
@@ -136,7 +135,7 @@
 
   <div class="card-note">
     <div class="top-note">
-      <h5>Notes :</h5>
+      <h5>NOTES</h5>
       <% @final_notes.each do |note| %>
         <div class="note-content"  data-controller="star">
           <p><%= note.content %></p>
@@ -168,8 +167,7 @@
 
         </div>
       <% end %>
-      <%= link_to "Ajouter une note", new_consultation_note_path(@consultation), class:"btn btn-add"%>
+      <%= link_to "+", new_consultation_note_path(@consultation), class:"btn btn-add-note"%>
     </div>
   </div>
-  <%= link_to "Fermer la consultation", consultations_path, class:"btn btn-submit" %>
 </div>
