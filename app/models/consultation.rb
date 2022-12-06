@@ -10,6 +10,7 @@ class Consultation < ApplicationRecord
   validates :start_date, presence: true
 
 
+
   def transform_treatments_in_html
     substitution = {
       "é" => "e",
@@ -29,6 +30,7 @@ class Consultation < ApplicationRecord
       transform_treatments_in_html.join
     end
   end
+
 
   def done?
     treatments.all? do |treatment|

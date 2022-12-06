@@ -1,6 +1,6 @@
 <div data-controller="see-all">
   <div class="" data-see-all-target="first3consultations">
-    <% @last_3_consultations.each do |consultation| %>
+    <% @last_3_consultations.reverse.each do |consultation| %>
       <%= link_to consultation_path(consultation.id) do %>
         <div class="consultation-card-pink">
           <div class="consultation-card-pink-date">
@@ -8,7 +8,7 @@
           </div>
           <div class="consultation-card-pink-text">
             <% consultation.treatments.each do |treatment| %>
-              <%= image_tag "picto-categories/picto-#{treatment.category.downcase}.svg" %>
+              <%#= image_tag "picto-categories/picto-#{@PICTOS[treatment.category]}.svg" %>
               <span><%= treatment.content %></span>
             <% end %>
           </div>
@@ -23,7 +23,7 @@
     <a  data-see-all-target="button" data-action="click->see-all#revealContent">Afficher plus</a>
   </div>
   <div class="d-none" data-see-all-target="allconsultations">
-    <% @consultations.each do |consultation| %>
+    <% @past_consultations.reverse.each do |consultation| %>
       <%= link_to consultation_path(consultation.id) do %>
         <div class="consultation-card-pink" >
           <div class="consultation-card-pink-date">
@@ -31,7 +31,7 @@
           </div>
           <div class="consultation-card-pink-text">
             <% consultation.treatments.each do |treatment| %>
-              <%= image_tag "picto-categories/picto-#{treatment.category.downcase}.svg" %>
+              <%#= image_tag "picto-categories/picto-#{@PICTOS[treatment.category]}.svg" %>
               <span><%= treatment.content %></span>
             <% end %>
           </div>

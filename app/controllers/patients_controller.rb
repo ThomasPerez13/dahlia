@@ -1,4 +1,5 @@
 class PatientsController < ApplicationController
+
   def index
     @patients = Patient.all.order(last_name: :asc)
     if params[:query].present?
