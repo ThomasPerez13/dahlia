@@ -1,7 +1,12 @@
+.calendar-header {
+  box-shadow: inset 2px -7px 11px rgba(80, 92, 51, 0.17);
+}
+
 .calendar-action-date {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 148px;
 }
 
 .calendar-today-action {
@@ -19,22 +24,26 @@
   background-color: $rose;
   color: white;
   border: none;
-  font-size: 48px;
+  font-family: monospace;
+  font-size: 80px;
   margin-right: 24px;
   margin-left: 24px;
+  font-weight: lighter;
 }
 
 #calendar-day {
   margin: 8px 0px 0px 0px;
   padding: 0;
-  font-weight: bold;
+  font-size: 24px;
+  color: black;
+  letter-spacing: 4px;
 }
 
 #calendar-date {
   margin: 0;
   padding: 0;
   color: white;
-  font-size: 48px;
+  font-size: 60px;
   font-weight: bold;
   line-height: 0.7;
 }
@@ -42,10 +51,12 @@
 #calendar-month {
   margin: 0;
   padding: 0;
+  font-size: 20px;
+  color: #545454;
 }
 
 
-.tui-full-calendar-dayname-container {
+.toastui-calendar-day-view-day-names {
   display: none;
 }
 
@@ -56,4 +67,106 @@
 
 .tui-full-calendar-dayname-name {
   font-size: 8px;
+}
+
+.toastui-calendar-event-time {
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+// event content
+
+.toastui-calendar-event-time .toastui-calendar-event-time-content, .toastui-calendar-event-time .toastui-calendar-travel-time {
+  font-size: 12px;
+  overflow: hidden;
+  padding: 0px !important;
+  vertical-align: center;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+// Poupup detail
+
+.toastui-calendar-detail-container .toastui-calendar-content {
+  padding: 4px 0px;
+}
+  
+// Treatments in pop-up details
+
+.toastui-calendar-detail-item-indent {
+  padding-left: 0px !important;
+  text-indent: 0px !important;
+}
+
+.toastui-calendar-ic-user-b {
+  display: none !important;
+}
+
+.list-treatments-popup-detail {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px 2px;
+  padding: 12px 0px;
+}
+
+.toastui-calendar-detail-container .toastui-calendar-calendar-dot {
+  display: none !important;
+}
+
+// Treatments Injection Pansement Prélèvement Perfusion Hygiène Médicament Diabétique Aide-domicile Autre
+
+.toastui-calendar-ic-state-b {
+  display: none !important;
+}
+
+.treatements {
+  border-radius: 20px;
+  margin: 0px 2px;
+  padding: 0px 4px;
+  text-align: center;
+}
+
+.treatement-category-injection {
+  background-color: $injection-background;
+  color: $injection-font;
+}
+
+.treatement-category-pansement {
+  background-color: $pansement-background;
+  color: $pansement-font;
+}
+
+.treatement-category-prelevement {
+  background-color: $prelevement-background;
+  color: $prelevement-font;
+}
+
+.treatement-category-perfusion {
+  background-color: $perfusion-background;
+  color: $perfusion-font;
+}
+
+.treatement-category-hygiene {
+  background-color: $hygiene-background;
+  color: $hygiene-font;
+}
+
+.treatement-category-medicament {
+  background-color: $medicament-background;
+  color: $medicament-font;
+}
+
+.treatement-category-diabetique {
+  background-color: $diabete-background;
+  color: $diabete-font;
+}
+
+.treatement-category-aide-domicile {
+  background-color: $aide-background;
+  color: $aide-font;
+}
+
+.treatement-category-autre {
+  background-color: $autre-background;
+  color: $autre-font;
 }

@@ -9,7 +9,11 @@
     <%= stylesheet_link_tag "application", media: 'all', "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
 
-    <%# <link rel="stylesheet" href="https://uicdn.toast.com/calendar/latest/toastui-calendar.min.css" /> %>
+    <!-- Toast UI calendar -->
+    <link rel="stylesheet" type="text/css" href="https://uicdn.toast.com/calendar/latest/toastui-calendar.min.css" />
+    <link rel="stylesheet" href="https://uicdn.toast.com/calendar/latest/toastui-calendar.min.css" />
+    <script src="https://uicdn.toast.com/calendar/latest/toastui-calendar.min.js"></script>
+
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
     <link rel="manifest" href="<%= asset_path 'manifest.json.erb' %>">

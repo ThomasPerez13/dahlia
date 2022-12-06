@@ -1,22 +1,26 @@
 <div class="consultation-page-content">
   <div data-controller="calendar">
-    <div data-calendar-target="todayAction" class="calendar-today-action">
-      <button class="calendar-today-btn" data-action="click->calendar#today">Aujourd'hui</button>
+    <div class="calendar-header">
+      <div data-calendar-target="todayAction" class="calendar-today-action">
+        <%= image_tag "icones/homme.svg", class: "d-none man-avatar", data:{calendar_target: "menAvatar"} %>
+        <%= image_tag "icones/femme.svg", class: "d-none woman-avatar", data:{calendar_target: "womenAvatar"} %>
+        <button class="calendar-today-btn" data-action="click->calendar#today">Aujourd'hui</button>
+      </div>
+      <div class="calendar-action-date">
+        <div class="calendar-previous-day">
+          <button class="calendar-next-previous-btn" data-action="click->calendar#previous"><</button>
+        </div>
+        <div>
+          <div class="text-center"><p id="calendar-day"></p></div>
+          <div class="text-center"><p id="calendar-date"></p></div>
+          <div class="text-center"><p id="calendar-month"></p></div>
+        </div>
+        <div class="calendar-next-day">
+          <button class="calendar-next-previous-btn" data-action="click->calendar#next">></button>
+        </div>
+      </div>
     </div>
-    <div class="calendar-action-date">
-      <div class="calendar-previous-day">
-        <button class="calendar-next-previous-btn" data-action="click->calendar#previous"><</button>
-      </div>
-      <div>
-        <div class="text-center"><p id="calendar-day"></p></div>
-        <div class="text-center"><p id="calendar-date"></p></div>
-        <div class="text-center"><p id="calendar-month"></p></div>
-      </div>
-      <div class="calendar-next-day">
-        <button class="calendar-next-previous-btn" data-action="click->calendar#next">></button>
-      </div>
-    </div>
-    <div  id="calendar" data-calendar-target="myCalendar" data-action="click->calendar#myCustomEvent" style="height: 600px;">
+    <div  id="calendar" data-calendar-target="myCalendar" style="height: 1000px;">
     </div>
   </div>
 </div>

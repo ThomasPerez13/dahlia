@@ -1,48 +1,40 @@
 import { Controller } from "@hotwired/stimulus";
-import Calendar from "tui-calendar";
-import 'tui-time-picker/dist/tui-time-picker.css';
-import "tui-calendar/dist/tui-calendar.css";
-// needed if we want to modify consultation with the popup
-// import Rails from "@rails/ujs";
+import Calendar from "@toast-ui/calendar";
 
 
 // Connects to data-controller="calendar"
 export default class extends Controller {
-  static targets = ["myCalendar", "todayAction"]
+  static targets = ["myCalendar", "todayAction", "menAvatar", "womenAvatar"]
 
   connect() {
-    // console.log("welcom to our calendar controller");
     this.calendar = this.displayCalendar()
     this.getCalendarData()
-    // this.updatedCalendarSchedule()
     this.displayDate()
+    this.changeTheme()
+    this.addAvatar()
   }
 
   displayCalendar() {
-    this.container = document.getElementById('calendar');
+    this.container = this.myCalendarTarget;
     this.options = {
       id: "1",
       name: "My Calendar",
       defaultView: 'day',
-      taskView: false,
-      scheduleView: ['time'],
-      useCreationPopup: true,
+      usageStatistics: false,
+      useCreationPopup: false,
       useFormPopup: false,
       useDetailPopup: true,
-      isReadOnly: false,
-      template: {
-
-        popupDetailRepeat: function(schedule) {
-          return 'Repeat : ' + schedule.recurrenceRule;
-        },
-
-        popupStateFree: function() {
-          return 'Free';
-        },
-        popupDetailBody: function(model) {
-          return `<a href="${model.body}">Détail de la consultation</a>`;
+      isReadOnly: true,
+      calendars: [
+        {
+          id: 'cal1',
+          backgroundColor: '#ffffff',
+          bgColor: "#ffffff",
+          borderColor :"#ffffff",
+          color: "#000000",
+          dragBgColor: "#ffffff"
         }
-      },
+      ],
       timezone: {
         zones: [
           {
@@ -52,24 +44,72 @@ export default class extends Controller {
           }
         ],
       },
-      calendars: [
-        {
-          id: 'cal1',
-          name: 'Personal',
-          backgroundColor: '#03bd9e',
+      template: {
+        popupDetailRepeat: function(schedule) {
+          return 'Repeat : ' + schedule.recurrenceRule;
+        },
+        timegridDisplayPrimaryTime({ time }) {
+          return `${time.getHours()}:${time.getMinutes()}0`;
+        },
+        time(event) {
+          const patientLocation = event.location.length > 39 ? `${event.location.substring(0,39)}...` : event.location
+          return `<div class='d-flex align-items-center' id='avatar-${event.id}'>
+                    <div>
+                      <p style="color: black; margin-bottom: 0px;"><strong>${event.title}</strong></p>
+                      <p style="color: black; margin-bottom: 0px;"><span style="color: black;">${patientLocation}</span></p>
+                      <div class='d-flex'>${event.state}</div>
+                    </div>
+                  </div>`;
+        },
+        popupDetailDate({ start, end }) {
+          const startMinutes = start.getMinutes() === 0 ? `${start.getMinutes()}0` : start.getMinutes()
+          const endMinutes = end.getMinutes() === 0 ? `${end.getMinutes()}0` : end.getMinutes()
+          return `🕛 ${start.getHours()}:${startMinutes} à ${end.getHours()}:${endMinutes}`;
+        },
+        popupDetailAttendees({ attendees = [] }) {
+          return `<div class='list-treatments-popup-detail'>${attendees.join('')}</div>`;
+        },
+        popupDetailState() {
+          return `<div class='d-none'></div>`;
+        },
+        popupDetailBody: function(model) {
+          return `<a href="${model.body}">Détail de la consultation</a>`;
         }
-      ],
+      },
       week: {
         daynames: ['Di', 'Lu', 'Ma', 'Me', 'Je', 'Ve', 'Sa'],
         hourStart: 7,
         hourEnd: 19,
-        showNowIndicator: false,
+        taskView: false,
+        showNowIndicator: true,
+        eventView: ['time'],
         workweek: true
-        // narrowWeekend: true
       }
     };
 
     return new Calendar(this.container, this.options);
+  }
+
+  changeTheme() {
+    this.calendar.setTheme({
+      week: {
+        nowIndicatorLabel: {
+          color: '#545454',
+        },
+        nowIndicatorBullet: {
+          backgroundColor: '#F28476',
+        },
+        nowIndicatorToday: {
+          border: '1px solid #F28476',
+        },
+        timeGridHalfHourLine: {
+          borderBottom: '1px dotted rgb(229, 229, 229)',
+        },
+        timeGridLeft: {
+          width: '48px',
+        },
+      },
+    });
   }
 
   getCalendarData() {
@@ -77,17 +117,19 @@ export default class extends Controller {
     fetch(this.url)
     .then(response =>response.json())
     .then(response =>response.forEach(consultation => {
-      this.calendar.createSchedules([
+      this.calendar.createEvents([
         {
           id: consultation.id,
-          calendarId: '1',
-          title: consultation.first_name + " " + consultation.last_name,
+          calendarId: 'cal1',
+          title: `${consultation.first_name} ${consultation.last_name}`,
           category: 'time',
-          // dueDateClass: consultation.dueDateClass,
           location: consultation.address,
           start: consultation.start_date,
-          end:  new Date(new Date(consultation.start_date).setMinutes(new Date (consultation.start_date).getMinutes() + 30)),
-          body:  consultation.url
+          end:  consultation.end_date,
+          attendees: consultation.array_treatments,
+          state: consultation.string_treatments,
+          body:  consultation.url,
+          isReadOnly: true
         }
       ])
     }))
@@ -95,22 +137,22 @@ export default class extends Controller {
 
   // display today on the clendar
   today() {
-    // console.log("today action");
     this.calendar.today();
     this.displayDate();
+    this.addAvatar()
   };
 
   // display the next or the previous day on the clendar
   previous() {
-    // console.log("previous action");
     this.calendar.prev();
     this.displayDate();
+    this.addAvatar()
   };
 
   next() {
-    // console.log("next action");
     this.calendar.next();
     this.displayDate();
+    this.addAvatar()
   };
 
   hideTodayAction() {
@@ -120,6 +162,8 @@ export default class extends Controller {
   showTodayAction() {
     this.todayActionTarget.classList.remove("d-none")
   }
+
+  // display the date on the calendar header
 
   catchDay() {
     this.date = this.calendar.getDate().getDay();
@@ -163,43 +207,26 @@ export default class extends Controller {
     }
   }
 
-  // getConsultationId(){
-  //   let calendar = this.calendar;
-  //   console.log(calendar);
-  //   calendar.on('clickSchedule', function(event) {
-  //     // this.consultation = event.schedule;
-  //     // console.log(event.schedule.id);
-  //   });
-  // }
+  // get the avatar to display in the event element
 
-  // updatedCalendarSchedule(){
-  //   let calendar = this.calendar;
-  //   calendar.on('beforeUpdateSchedule', function(event) {
-  //     console.log("coucou le chat");
-  //     console.log(event.schedule);
-  //     let schedule = event.schedule;
-  //     let changes = event.changes;
-  //     let formUpdate = new FormData()
-  //     if (changes.end) {
-  //     formUpdate.append("end", changes.end._date)
-  //     }
-  //     if (changes.start) {
-  //     formUpdate.append("start", changes.start._date)
-  //     }
-  //     if (changes.title) {
-  //     formUpdate.append("title", changes.title)
-  //     }
-  //     if (changes.category) {
-  //     formUpdate.append("category", changes.category)
-  //     }
-  //     calendar.updateSchedule(schedule.id, schedule.calendarId, changes);
+  getAvatar(target) {
+    this.img = document.createElement("img");
+    this.img.src = `${target.getAttribute ('src')}`;
+    this.img.setAttribute("style", "height:72px; padding-right: 12px; padding-left: 12px;");
+    return this.img
+  }
 
-  //     Rails.ajax({
-  //     type: "PATCH",
-  //     url: '/schedules/'+ schedule.id,
-  //     data: formUpdate
-  //     })
-
-  //   });
-  // }
+  addAvatar() {
+    this.url = "/consultations.json"
+    fetch(this.url)
+    .then(response =>response.json())
+    .then(response =>response.forEach(consultation => {
+      this.avatarSection = document.getElementById(`avatar-${consultation.id}`)
+      if(this.avatarSection !== null && consultation.gender === "Homme") {
+        this.avatarSection.prepend(this.getAvatar(this.menAvatarTarget))
+      } else if(this.avatarSection !== null && consultation.gender === "Femme") {
+        this.avatarSection.prepend(this.getAvatar(this.womenAvatarTarget))
+      }
+    }))
+  }
 };

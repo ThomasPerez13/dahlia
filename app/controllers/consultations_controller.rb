@@ -1,14 +1,5 @@
 class ConsultationsController < ApplicationController
   def index
-    # use with first code of calendar and partial :
-    # <%#= render "index_with_table_html" %> in index.html.erb
-    #  params[:next_date] ||= Date.today.to_s
-    #  date = Date.parse(params[:next_date])
-    #  params[:current_day] ||= date
-    #  @consultations = Consultation.where(user: current_user).where(start_date: params[:current_day].beginning_of_day..params[:current_day].end_of_day).order(:start_date)
-
-    # Use with Toast UI calendar and partial :
-    # <%= render "index_with_tui_calendar", card_infos: @card_infos, consultations: @consultations %> in index.html.erb
     @consultations = Consultation.where(user: current_user)
   end
 
