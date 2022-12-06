@@ -1,7 +1,6 @@
 // FORMULAIRES CSS
 
-// SESSION NEW FORM
-.session-new-general-div {
+.general-div {
   background-color: white;
   width: 100%;
   height: 100vh;
@@ -9,7 +8,16 @@
   align-items: center;
   flex-direction: column;
   justify-content: center;
+
+  h3 {
+    color: $rose;
+    line-height: 34px;
+    font-size: 28px;
+    text-align: center;
+    letter-spacing: 9px;
+  }
 }
+// SESSION NEW FORM
 
 .session_container_imag_title {
   padding: 0px 0px 40px 0px;
@@ -52,6 +60,12 @@
 .formulaire {
   padding: 20px 0px 40px 0px;
 }
+
+// NOUVELLE CONSULTATION FORM
+.new_consult {
+  padding-top: 10px;
+}
+
 
 // AJOUTER UN PATIENT FORM
 .container_new_patient {
