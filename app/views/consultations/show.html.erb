@@ -1,79 +1,62 @@
 <div class="container-sm show-consultation">
 
-<%= link_to patient_path(@consultation.patient) do %>
+  <%= link_to patient_path(@consultation.patient) do %>
     <div class="card-consult">
         <div class="card-info">
           <div class="card-patient-name">
             <%= @consultation.patient.first_name %>  <%= @consultation.patient.last_name %>
           </div>
-          <div class="info-adresse">
-            <i class="fa-solid fa-location-dot"></i>
-            <div class="text-adresse"><%= @consultation.patient.address %></div>
-          </div>
-          <div class="text-date"><%=l(@consultation.start_date, format: "%A %d %b %H:%M")%>
-          </div>
-        </div>
-      <div class="card-traitement">
-      </div>
-    </div>
   <% end %>
-
-  <%# Button to edit the consultation date - START %>
-  <div class="" data-controller="edit">
-    <div class="container-btn-date">
-      <button class="btn btn-submit" data-action="click->edit#displayForm">Modifier la date de consultation</button>
-    </div>
-
-    <div class="d-none" data-edit-target="form">
-      <%= simple_form_for @consultation do |f| %>
-
-        <div class="consultation_new">
-          <%= f.input :start_date, label: "Date & heure", placeholder: " ",
-                      as: :datetime,
-                      html5: true,
-                      label: false,
-                      required: false,
-                      wrapper_html: { class:" datefield-without-calendar"},
-                      input_html: { class:"input" },
-                      label_html: { class:"user-label" } %>
-        </div>
-
-        <div class="d-flex justify-content-center">
-          <%= f.button :submit, "Confirmer le changement", class: "btn btn-submit" %>
-        </div>
-
-      <% end %>
-    </div>
-  </div>
-
-  <%# Button to edit the consultation date - END %>
-
-
-
-  <%# Button to edit the nurse in charge of the consultation %>
-  <div data-controller="edit">
-    <div class="container-btn-nurse">
-      <button class="btn btn-submit" data-action="click->edit#displayFormNurse">Modifier l'infirmier assigné</button>
-    </div>
-
-    <div class="d-none" data-edit-target="formNurse">
-      <%= simple_form_for @consultation do |f| %>
-
-        <div class="consultation_new">
-          <%= f.input :user_id,
+    <%# click to edit the nurse in charge of the consultation - START %>
+          <div class="infirmier" data-controller="edit" data-action="click->edit#displayFormNurse">
+            <%= @consultation.user.first_name %>  <%= @consultation.user.last_name %>
+            <div class="d-none" data-edit-target="formNurse">
+              <%= simple_form_for @consultation do |f| %>
+                <div class="consultation_new">
+                  <%= f.input :user_id,
                       collection: @users_of_team,
                       label: " Infirmier(e) ",
                       label_method: :display_full_name,
                       value_method: :id %>
-        </div>
+                 </div>
 
-        <div class="d-flex justify-content-center">
-          <%= f.button :submit, "Confirmer le changement", class: "btn btn-submit" %>
-        </div>
+                <div class="d-flex justify-content-center">
+                  <%= f.button :submit, "Confirmer le changement", class: "btn btn-submit" %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+    <%# click to edit the nurse in charge of the consultation - End %>
+          <div class="info-adresse">
+            <i class="fa-solid fa-location-dot"></i>
+            <div class="text-adresse"><%= @consultation.patient.address %></div>
+            </div>
+    <%# click to edit the consultation date - START %>
+          <div class="text-date" data-controller="edit" data-action="click->edit#displayForm">
+            <%=l(@consultation.start_date, format: "%A %d %b %H:%M")%>
+            <div class="d-none" data-edit-target="form">
+              <%= simple_form_for @consultation do |f| %>
+                <div class="consultation_new">
+                  <%= f.input :start_date, label: "Date & heure", placeholder: " ",
+                        as: :datetime,
+                        html5: true,
+                        label: false,
+                        required: false,
+                        wrapper_html: { class:" datefield-without-calendar"},
+                        input_html: { class:"input" },
+                        label_html: { class:"user-label" } %>
+                </div>
+                <div class="d-flex justify-content-center">
+                  <%= f.button :submit, "Confirmer le changement", class: "btn btn-submit" %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+       </div>
+    <%# click to edit the consultation date - END %>
+<div class="card-traitement">
+</div></div>
 
-      <% end %>
-    </div>
-  </div>
  <h5 class="text-center">SOINS À PRODIGUER :</h5>
   <% @consultation.treatments.each do |treatment| %>
     <i class="fal fa-ball-pile"></i>
