@@ -75,21 +75,25 @@
       margin-left: 5px;
     }
     .infirmier {
-      font-family: 'Roboto';
-      font-style: normal;
-      font-weight: 400;
-      font-size: 13px;
-      color: white;
-      margin-left: 5px;
+      p {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 13px;
+        color: white;
+        margin: 0;
+      }
     }
 
     .text-date {
-      font-family: 'Roboto';
-      font-style: normal;
-      font-weight: 400;
-      font-size: 13px;
-      color: white;
-      margin-left: 5px;
+      p {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 13px;
+        color: white;
+        margin: 0;
+      }
     }
     .card-patient-name {
       font-family: 'Montserrat';
@@ -182,5 +186,8 @@
     h5{
       color: $rose;
     }
+  }
+  .was-validated .form-select[size="1"]:valid:not([multiple]), .form-select.is-valid:not([multiple]):not([size]), .form-select.is-valid[size="1"]:not([multiple]) {
+    margin-top: 87px;
   }
 }

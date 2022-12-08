@@ -8,8 +8,8 @@
           </div>
   <% end %>
     <%# click to edit the nurse in charge of the consultation - START %>
-          <div class="infirmier" data-controller="edit" data-action="click->edit#displayFormNurse">
-            <%= @consultation.user.first_name %>  <%= @consultation.user.last_name %>
+          <div class="infirmier" data-controller="edit">
+            <p data-action="click->edit#displayFormNurse"><%= @consultation.user.first_name %>  <%= @consultation.user.last_name %></p>
             <div class="d-none" data-edit-target="formNurse">
               <%= simple_form_for @consultation do |f| %>
                 <div class="consultation_new">
@@ -32,8 +32,8 @@
             <div class="text-adresse"><%= @consultation.patient.address %></div>
             </div>
     <%# click to edit the consultation date - START %>
-          <div class="text-date" data-controller="edit" data-action="click->edit#displayForm">
-            <%=l(@consultation.start_date, format: "%A %d %b %H:%M")%>
+          <div class="text-date" data-controller="edit">
+            <p data-action="click->edit#displayForm"><%=l(@consultation.start_date, format: "%A %d %b %H:%M")%></p>
             <div class="d-none" data-edit-target="form">
               <%= simple_form_for @consultation do |f| %>
                 <div class="consultation_new">
