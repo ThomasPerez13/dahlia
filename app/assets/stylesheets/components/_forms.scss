@@ -15,6 +15,7 @@
     font-size: 28px;
     text-align: center;
     letter-spacing: 9px;
+    padding-bottom: 20px;
   }
 }
 // SESSION NEW FORM
@@ -85,7 +86,7 @@
   background-color: white;
 }
 
-#user_email, #user_password, #user_first_name, #user_password_confirmation, #patient_first_name, #patient_last_name, #patient_address, #patient_email, #patient_tel_number, #patient_ss_number, #patient_referring_doctor, #patient_emergency_contact_name, #patient_emergency_contact_tel, #patient_height, #patient_weight {
+#user_email, #user_password, #user_first_name, #user_password_confirmation, #patient_first_name, #patient_last_name, #patient_address, #patient_email, #patient_tel_number, #patient_ss_number, #patient_referring_doctor, #patient_emergency_contact_name, #patient_emergency_contact_tel, #patient_height, #patient_weight, #consultation_patient_id, #consultation_start_date, #consultation_user_id {
   background-color: white !important;
   border-radius: 75px !important;
   border: 1px solid $grey;
