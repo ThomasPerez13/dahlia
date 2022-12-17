@@ -1,24 +1,54 @@
-
-
 .show-consultation {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-block: 23px;
+  margin-block: 0;
+  padding-block: 0;
+  padding-left: 0;
+  padding-right: 0;
+  background-color: white;
+  height: 100%;
+
+  .card-note {
+    width: 350px;
+    padding: 1.9rem 1.2rem;
+    text-align: center;
+    background-color: white;
+    border-radius: 20px;
+    margin: -33px;
+    border: 0px;
+  }
 
   .card-consult{
     margin-bottom: 27px;
     margin-left: 0px;
-    width: 300px;
+    width: 414px;
     padding-bottom: 0px;
     padding-top: 0px;
+    border-radius: 0px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    background-color: $rose;
+    height: 100px;
+
 
     .card-consult-header img, svg {
       width: 60px;
       height: 60px;
     }
 
-
+    .card-info {
+      display: flex;
+      flex-direction: column;
+      margin-left: 10px;
+      margin-right: 10px;
+      margin-top: 2px;
+      margin-bottom: 2px;
+      height: 35px;
+      width: 100%;
+      align-items: center;
+    }
     .card-consult-header {
       background: #fff;
       display: flex;
@@ -27,7 +57,7 @@
       height: 100%;
    }
     i.fa-solid.fa-location-dot {
-      color: $gray;
+      color: white;
       font-size: 14px;
     }
     .info-adresse {
@@ -41,24 +71,101 @@
       font-style: normal;
       font-weight: 400;
       font-size: 13px;
-      color: #7A7979;
+      color: white;
       margin-left: 5px;
+    }
+    .infirmier {
+      p {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 13px;
+        color: white;
+        margin: 0;
+      }
     }
 
     .text-date {
-      color: $oxford-blue;
-      font-size: 13px;
+      p {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 13px;
+        color: white;
+        margin: 0;
+      }
     }
-
-
+    .card-patient-name {
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 15px;
+      color: $autre;
+      margin-bottom: 3px;
+      margin-top: 11px;
+    }
   }
 
   #checkbox-custom{
     margin-bottom: 18px;
+
+    .checkbox-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
+      padding-left: 15px;
+      padding-right: 15px;
+      background-color: $light-gray;
+  }
+  }
+  .note-content {
+    margin-bottom: 0%;
+    background-color: white;
+    background-color: white;
+  }
+
+  .container-btn-date {
+    margin-bottom: -32px;
+
+  }
+  .btn {
+    color: white;
+    font-family: "Mulish", "sans-serif";
+    border-color: #F28476;
+    width: 159px;
+    border-radius: 29px;
+    background-color: #F28476;
+    height: 61px;
+    padding: 0px 0px 0px 0px;
+    margin: 20px;
+    margin-block: 33px;
+    min-width: min-content;
+    box-shadow: none;
   }
 
   .btn-add-treatment{
-    margin-top: 17px;
+    margin-top: 24px;
+    height: 35px;
+    background-color: $light-gray;
+    border-color: $light-gray;
+    color: $gray;
+    border-radius: 40px;
+    width: 76px;
+    box-shadow: none;
+    margin-top: 0;
+  }
+
+  .btn-add-note{
+    margin-top: 14px;
+    height: 35px;
+    background-color: white;
+    border-color: $light-gray;
+    color: $gray;
+    border-radius: 40px;
+    width: 76px;
+    box-shadow: none;
   }
 
   p {
@@ -67,13 +174,20 @@
     color: $gray;
     margin-left: 10px;
   }
+  h5 {
+    color: $rose;
+    font-family: $headers-font;
+  }
 
   .form-check{
     margin-top: 20px;
   }
   .top-note{
     h5{
-      color: $oxford-blue;
+      color: $rose;
     }
+  }
+  .was-validated .form-select[size="1"]:valid:not([multiple]), .form-select.is-valid:not([multiple]):not([size]), .form-select.is-valid[size="1"]:not([multiple]) {
+    margin-top: 87px;
   }
 }
