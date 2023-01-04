@@ -23,6 +23,10 @@ class PatientsController < ApplicationController
     @former_consultations = @past_consultations - @last_3_consultations
     @last_consultation = @past_consultations.last
 
+    @last_3_consultations_minus_one = @last_3_consultations.reverse.slice(0..-2)
+    @last_3_consultations_rest = @last_3_consultations.reverse.slice(-2.next..-1)
+    @past_consultations_minus_one = @past_consultations.reverse.slice(0..-2)
+    @past_consultations_rest = @past_consultations.reverse.slice(-2.next..-1)
   end
 
   def new
