@@ -6,22 +6,19 @@
 <div class="collapse" id="info-perso">
   <div class="patient-profile-section-detail">
     <div class="patient-profile-section-detail-item">
-      <i class="fa-solid fa-location-dot"></i><span><%= @patient.address %></span>
+      <%= image_tag "icones/pin.svg" %><span><%= @patient.address %></span>
     </div>
     <div class="patient-profile-section-detail-item">
-      <i class="fa-solid fa-phone"></i><span><%= @patient.tel_number %></span>
+      <%= image_tag "icones/phone.svg" %><span><%= @patient.tel_number %></span>
     </div>
     <div class="patient-profile-section-detail-item">
-      <i class="fa-solid fa-envelope"></i>
-      <span><%= @patient.email %></span>
+      <%= image_tag "icones/mail.svg" %><span><%= @patient.email %></span>
     </div>
     <div class="patient-profile-section-detail-item">
-      <i class="fa-solid fa-cake-candles"></i>
-      <span><%= @patient.birth_day.strftime("%d/%m/%Y") %></span>
+      <%= image_tag "icones/birth.svg" %><span><%= @patient.birth_day.strftime("%d/%m/%Y") %></span>
     </div>
     <div class="patient-profile-section-detail-item">
-      <i class="fa-solid fa-venus-mars"></i>
-      <span><%= @patient.gender %></span>
+      <%= image_tag "icones/genre.svg" %><span><%= @patient.gender %></span>
     </div>
   </div>
 </div>
