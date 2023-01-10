@@ -3,7 +3,7 @@
   <div class="w-75 mt-4 h-25">
     <%= simple_form_for(@note) do |f| %>
        <%= hidden_field_tag 'consultation_id', params[:consultation_id] %>
-      <%= f.input :content, label: "Details", placeholder: " ",
+       <%= f.input :content, label: "Details", placeholder: " ",
                   wrapper_html: { class:"input-groupe" },
                   input_html: { class:"input"},
                   label_html: {class:"user-label"} %>
