@@ -134,7 +134,13 @@
   letter-spacing: 4px;
 }
 
-.btn-link {
-  color: $rose;
-  text-decoration: solid;
+.details-new-consultation {
+  color: $grey-typo;
+  text-align: center;
+  font-style: italic;
+
+  a {
+    color: $rose;
+    text-decoration: underline;
+  }
 }

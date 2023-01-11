@@ -18,6 +18,7 @@
     padding-bottom: 20px;
   }
 }
+
 // SESSION NEW FORM
 
 .session_container_imag_title {
@@ -63,14 +64,22 @@
 }
 
 // NOUVELLE CONSULTATION FORM
-.new_consult {
-  padding-top: 10px;
+.new_consultation {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 50px;
+}
+
+#consultation_user_id {
+  margin-bottom: 30px;
 }
 
 
 // AJOUTER UN PATIENT FORM
 .container_new_patient {
-  padding: 40px 25px;
+  padding: 40px 25px 80px 25px;
   background-color: white;
 
   .new_patient {
