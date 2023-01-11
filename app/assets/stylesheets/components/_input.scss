@@ -83,10 +83,12 @@
   .user-label {
     position: absolute;
     left: 15px;
-    color: black;
+    color: $grey-typo;
+    font-family: $body-font;
     pointer-events: none;
     transform: translateY(-50%) scale(0.8) !important;
-    background-color: $background !important;
+    background-color: white !important;
+    padding: 0px 4px;
   }
 
   .datefield-without-calendar::-webkit-calendar-picker-indicator {
