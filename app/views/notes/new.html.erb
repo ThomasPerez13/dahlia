@@ -1,5 +1,5 @@
 <div class="container-add-note">
-  <h2 class="text-center">Ajouter une note</h2>
+  <h2 class="text-center">AJOUTER UNE NOTE</h2>
   <div class="w-75 mt-4 h-25">
     <%= simple_form_for(@note) do |f| %>
        <%= hidden_field_tag 'consultation_id', params[:consultation_id] %>
@@ -13,7 +13,7 @@
                   label: "Récurrence",
                   placeholder: " ",
                   required: true %>
-      <%= f.button :submit, "Ajouter une note", class: "btn btn-add" %>
+      <%= f.button :submit, "AJOUTER UNE NOTE", class: "btn btn-add" %>
     <% end %>
   </div>
 </div>
