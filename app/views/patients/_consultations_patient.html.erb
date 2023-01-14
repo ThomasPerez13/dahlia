@@ -1,42 +1,50 @@
 <div data-controller="see-all">
 
   <div class="" data-see-all-target="first3consultations">
-    <% @last_3_consultations_minus_one.each do |consultation| %>
-      <%= link_to consultation_path(consultation.id) do %>
-        <div class="consultation-card-pink">
-          <div class="consultation-card-pink-date">
-            <%=l(consultation.start_date, format: "%A %d %b %H:%M").to_s.capitalize%>
+    <% unless @last_3_consultations_minus_one.empty? %> <%# Lucie : on n'affiche rien si jamais le tableau des 3 dernières consultations est vide%>
+
+      <% @last_3_consultations_minus_one.each do |consultation| %>
+        <%= link_to consultation_path(consultation.id) do %>
+          <div class="consultation-card-pink">
+            <div class="consultation-card-pink-date">
+              <%=l(consultation.start_date, format: "%A %d %b %H:%M").to_s.capitalize%>
+            </div>
+            <div class="consultation-card-pink-text">
+              <% consultation.treatments.each do |treatment| %>
+                <%#= image_tag "picto-categories/picto-#{@PICTOS[treatment.category]}.svg" %>
+                <span><%= treatment.content %></span>
+              <% end %>
+            </div>
           </div>
-          <div class="consultation-card-pink-text">
-            <% consultation.treatments.each do |treatment| %>
-              <%#= image_tag "picto-categories/picto-#{@PICTOS[treatment.category]}.svg" %>
-              <span><%= treatment.content %></span>
-            <% end %>
-          </div>
-        </div>
+        <% end %>
       <% end %>
+
     <% end %>
 
     <%# Link to most ancient consultation with plus button %>
-    <% @last_3_consultations_rest.each do |consultation| %>
-      <%= link_to consultation_path(consultation.id) do %>
-        <div class="consultation-card-pink">
-          <div class="consultation-card-pink-date">
-            <%=l(consultation.start_date, format: "%A %d %b %H:%M").to_s.capitalize%>
+    <% unless @last_3_consultations_rest.nil? %> <%# Lucie : on n'affiche rien si jamais il n'y a pas de dernière consultation %>
+
+      <% @last_3_consultations_rest.each do |consultation| %>
+        <%= link_to consultation_path(consultation.id) do %>
+          <div class="consultation-card-pink">
+            <div class="consultation-card-pink-date">
+              <%=l(consultation.start_date, format: "%A %d %b %H:%M").to_s.capitalize%>
+            </div>
+            <div class="consultation-card-pink-text">
+              <% consultation.treatments.each do |treatment| %>
+                <%#= image_tag "picto-categories/picto-#{@PICTOS[treatment.category]}.svg" %>
+                <span><%= treatment.content %></span>
+              <% end %>
+            </div>
           </div>
-          <div class="consultation-card-pink-text">
-            <% consultation.treatments.each do |treatment| %>
-              <%#= image_tag "picto-categories/picto-#{@PICTOS[treatment.category]}.svg" %>
-              <span><%= treatment.content %></span>
-            <% end %>
-          </div>
+        <% end %>
+        <%# Plus button %>
+        <div class="plus-button">
+          <%#= image_tag "icones/add-btn.svg"%>
+          <%= link_to image_tag("icones/add-btn.svg"), new_consultation_path %>
         </div>
+
       <% end %>
-      <%# Plus button %>
-      <div class="plus-button">
-        <%#= image_tag "icones/add-btn.svg"%>
-        <%= link_to image_tag("icones/add-btn.svg"), new_consultation_path %>
-      </div>
 
     <% end %>
   </div>
@@ -48,42 +56,50 @@
   </div>
 
   <div class="d-none" data-see-all-target="allconsultations">
-    <% @past_consultations_minus_one.each do |consultation| %>
-      <%= link_to consultation_path(consultation.id) do %>
-        <div class="consultation-card-pink" >
-          <div class="consultation-card-pink-date">
-            <%=l(consultation.start_date, format: "%A %d %b %H:%M").to_s.capitalize%>
-          </div>
-          <div class="consultation-card-pink-text">
-            <% consultation.treatments.each do |treatment| %>
-              <%#= image_tag "picto-categories/picto-#{@PICTOS[treatment.category]}.svg" %>
-              <span><%= treatment.content %></span>
-            <% end %>
-          </div>
-      </div>
+    <% unless @last_3_consultations_minus_one.empty? %> <%# on n'affiche rien si jamais le tableau des 3 dernières consultations est vide%>
+
+      <% @past_consultations_minus_one.each do |consultation| %>
+        <%= link_to consultation_path(consultation.id) do %>
+          <div class="consultation-card-pink" >
+            <div class="consultation-card-pink-date">
+              <%=l(consultation.start_date, format: "%A %d %b %H:%M").to_s.capitalize%>
+            </div>
+            <div class="consultation-card-pink-text">
+              <% consultation.treatments.each do |treatment| %>
+                <%#= image_tag "picto-categories/picto-#{@PICTOS[treatment.category]}.svg" %>
+                <span><%= treatment.content %></span>
+              <% end %>
+            </div>
+        </div>
+        <% end %>
       <% end %>
-    <% end %>
+
+     <% end %>
 
     <%# Link to most ancient consultation with plus button %>
-    <% @past_consultations_rest.each do |consultation| %>
-      <%= link_to consultation_path(consultation.id) do %>
-        <div class="consultation-card-pink">
-          <div class="consultation-card-pink-date">
-            <%=l(consultation.start_date, format: "%A %d %b %H:%M").to_s.capitalize%>
+    <% unless @last_3_consultations_rest.nil? %> <%#  Lucie : on n'affiche rien si jamais il n'y a pas de dernière consultation %>
+
+      <% @past_consultations_rest.each do |consultation| %>
+        <%= link_to consultation_path(consultation.id) do %>
+          <div class="consultation-card-pink">
+            <div class="consultation-card-pink-date">
+              <%=l(consultation.start_date, format: "%A %d %b %H:%M").to_s.capitalize%>
+            </div>
+            <div class="consultation-card-pink-text">
+              <% consultation.treatments.each do |treatment| %>
+                <%#= image_tag "picto-categories/picto-#{@PICTOS[treatment.category]}.svg" %>
+                <span><%= treatment.content %></span>
+              <% end %>
+            </div>
           </div>
-          <div class="consultation-card-pink-text">
-            <% consultation.treatments.each do |treatment| %>
-              <%#= image_tag "picto-categories/picto-#{@PICTOS[treatment.category]}.svg" %>
-              <span><%= treatment.content %></span>
-            <% end %>
-          </div>
+        <% end %>
+        <%# Plus button %>
+        <div class="plus-button">
+          <%#= image_tag "icones/add-btn.svg"%>
+          <%= link_to image_tag("icones/add-btn.svg"), new_consultation_path %>
         </div>
       <% end %>
-      <%# Plus button %>
-      <div class="plus-button">
-        <%#= image_tag "icones/add-btn.svg"%>
-        <%= link_to image_tag("icones/add-btn.svg"), new_consultation_path %>
-      </div>
+
     <% end %>
   </div>
 </div>
