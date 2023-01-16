@@ -31,6 +31,10 @@
   font-weight: lighter;
 }
 
+.date-info {
+  text-align: center;
+}
+
 #calendar-day {
   margin: 8px 0px 0px 0px;
   padding: 0;
@@ -41,7 +45,7 @@
 
 #calendar-date {
   margin: 0;
-  padding: 0;
+  padding-right: 4px;
   color: white;
   font-size: 60px;
   font-weight: bold;
@@ -50,7 +54,7 @@
 
 #calendar-month {
   margin: 0;
-  padding: 0;
+  padding-right: 4px;
   font-size: 20px;
   color: #545454;
 }
@@ -90,7 +94,7 @@
 .toastui-calendar-detail-container .toastui-calendar-content {
   padding: 4px 0px;
 }
-  
+
 // Treatments in pop-up details
 
 .toastui-calendar-detail-item-indent {
