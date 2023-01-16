@@ -63,62 +63,66 @@
   <%# <div class="card-traitement"> %>
   </div>
 
- <h5 class="text-center">SOINS À PRODIGUER :</h5>
-  <% @consultation.treatments.each do |treatment| %>
-    <i class="fal fa-ball-pile"></i>
-    <div id="checkbox-custom" class="checkbox-container">
-      <div class="checkbox-wrapper">
-        <div class="d-flex">
-          <% case treatment.category  %>
-          <% when "Injection" %>
-            <%= image_tag "picto-categories/picto-injection.svg" %>
-          <% when "Pansement" %>
-            <%= image_tag "picto-categories/picto-pansement.svg" %>
-          <% when "Prélèvement" %>
-            <%= image_tag "picto-categories/picto-prelevement.svg" %>
-          <% when "Perfusion" %>
-            <%= image_tag "picto-categories/picto-perfusion.svg" %>
-          <% when "Hygiène" %>
-            <%= image_tag "picto-categories/picto-hygiene.svg" %>
-          <% when "Aide\ domicile" %>
-            <%= image_tag "picto-categories/picto-domicile.svg" %>
-          <% when "Médicament" %>
-            <%= image_tag "picto-categories/picto-medicament.svg" %>
-          <% when "Diabétique" %>
-            <%= image_tag "picto-categories/picto-diabete.svg" %>
-          <% when "Autre" %>
-            <%= image_tag "picto-categories/picto-nurse.svg" %>
-          <% end %>
-          <p class="p-3"><%= treatment.content %></p>
-        </div>
-        <div class="check d-flex align-items-center" data-controller="form">
+<div class="consultation-soin">
+  <h2>SOINS À PRODIGUER</h2>
+    <% @consultation.treatments.each do |treatment| %>
+      <i class="fal fa-ball-pile"></i>
+      <div id="consultation-card-soin" class="checkbox-container">
+        <div class="checkbox-wrapper">
+          <div class="d-flex">
+            <% case treatment.category  %>
+            <% when "Injection" %>
+              <%= image_tag "soins/injection.svg", class: "icones-soins" %>
+            <% when "Pansement" %>
+              <%= image_tag "soins/pansement.svg", class: "icones-soins" %>
+            <% when "Prélèvement" %>
+              <%= image_tag "soins/prelevement.svg", class: "icones-soins" %>
+            <% when "Perfusion" %>
+              <%= image_tag "soins/perfusion.svg", class: "icones-soins" %>
+            <% when "Hygiène" %>
+              <%= image_tag "soins/hygiene.svg", class: "icones-soins" %>
+            <% when "Aide\ domicile" %>
+              <%= image_tag "soins/aide.svg", class: "icones-soins" %>
+            <% when "Médicament" %>
+              <%= image_tag "soins/medicament.svg", class: "icones-soins" %>
+            <% when "Diabétique" %>
+              <%= image_tag "soins/diabete.svg", class: "icones-soins" %>
+            <% when "Autre" %>
+              <%= image_tag "soins/autre.svg", class: "icones-soins" %>
+            <% end %>
+            <div class="card-soin-text">
+              <p class="card-soin-categorie"><%= treatment.category %></p>
+              <p class="card-soin-contenu"><%= treatment.content %></p>
+            </div>
+          </div>
+          <div class="check d-flex align-items-center" data-controller="form">
 
 
-          <%= simple_form_for treatment, url: treatment_path(treatment), html: { data: { controller: "form", 'turbo-method': :patch } } do |f| %>
-            <%= f.input :done, as: :boolean, label: false, input_html: { data: { action: "change->form#submit" } }%>
-          <% end %>
+            <%= simple_form_for treatment, url: treatment_path(treatment), html: { data: { controller: "form", 'turbo-method': :patch } } do |f| %>
+              <%= f.input :done, as: :boolean, label: false, input_html: { data: { action: "change->form#submit" } }%>
+            <% end %>
 
 
-          <%# Edit treament icon - START %>
-          <%= link_to edit_treatment_path(treatment), class:"p-2" do %>
-            <i class='fa-solid fa-pen-to-square'></i>
-          <% end %>
-          <%# Edit treament icon - END %>
+            <%# Edit treament icon - START %>
+            <%= link_to edit_treatment_path(treatment), class:"p-2" do %>
+              <i class='fa-solid fa-pen-to-square'></i>
+            <% end %>
+            <%# Edit treament icon - END %>
 
-          <%# Delete treament icon - START %>
-          <%= link_to treatment_path(treatment), data: {turbo_method: :delete, turbo_confirm: "Supprimer ?"} do %>
-            <i class="fa-solid fa-trash"></i>
-          <% end %>
-          <%# Delete treament icon - END %>
+            <%# Delete treament icon - START %>
+            <%= link_to treatment_path(treatment), data: {turbo_method: :delete, turbo_confirm: "Supprimer ?"} do %>
+              <i class="fa-solid fa-trash"></i>
+            <% end %>
+            <%# Delete treament icon - END %>
 
 
+          </div>
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
 
-  <%= link_to "+", new_consultation_treatment_path(@consultation), class:"btn btn-add-treatment" %>
-
+    <%= link_to "+", new_consultation_treatment_path(@consultation), id:"consultation-card-soin" %>
+</div>
   <%# notes %>
 
   <%# TO DO : Afficher toutes les notes créées à la consultation d'avant %>
