@@ -1,0 +1,61 @@
+<div class="container_edit_patient w-100 px-3">
+  <h2 class="text-center">MODIFIER UN PATIENT</h2>
+  <div class="formulaire">
+    <%= simple_form_for(@patient) do |f| %>
+      <%= f.input :first_name, label: "Prénom", placeholder: " ",
+          wrapper_html: { class:"input-groupe" },
+          input_html: { class:"input"},
+          label_html: {class:"user-label"} %>
+      <%= f.input :last_name, label: "Nom de famille", placeholder: " ",
+          wrapper_html: { class:"input-groupe" },
+          input_html: { class:"input"},
+          label_html: {class:"user-label"} %>
+      <%= f.input :gender, as: :radio_buttons, collection: ["Homme", "Femme"], label: "Sexe", placeholder: " " %>
+      <%= f.input :address, label: "Adresse", placeholder: " ",
+          wrapper_html: { class:"input-groupe" },
+          input_html: { class:"input"},
+          label_html: {class:"user-label"} %>
+      <%= f.input :email, placeholder: " ",
+          wrapper_html: { class:"input-groupe" },
+          input_html: { class:"input"},
+          label_html: {class:"user-label"} %>
+      <%= f.input :tel_number, label: "Téléphone", placeholder: " ",
+          wrapper_html: { class:"input-groupe" },
+          input_html: { class:"input"},
+          label_html: {class:"user-label"} %>
+      <%= f.input :ss_number, label: "N° de sécurité sociale", placeholder: " ",
+          wrapper_html: { class:"input-groupe" },
+          input_html: { class:"input"},
+          label_html: {class:"user-label"} %>
+      <%= f.input :referring_doctor, label: "Docteur généraliste", placeholder: " ",
+          wrapper_html: { class:"input-groupe" },
+          input_html: { class:"input"},
+          label_html: {class:"user-label"} %>
+      <%= f.input :emergency_contact_name, label: "Contact d'urgence", placeholder: " ",
+          wrapper_html: { class:"input-groupe" },
+          input_html: { class:"input"},
+          label_html: {class:"user-label"} %>
+      <%= f.input :emergency_contact_tel, label: "N° d'urgence", placeholder: " ",
+          wrapper_html: { class:"input-groupe" },
+          input_html: { class:"input"},
+          label_html: {class:"user-label"} %>
+      <%= f.input :birth_day, label: "Date de naissance",
+                              start_year: Date.today.year - 100,
+                              end_year: Date.today.year, discard_day: false,
+                              order: [:day, :month, :year]  %>
+      <%= f.input :height, label: "Taille", placeholder: " ",
+          wrapper_html: { class:"input-groupe" },
+          input_html: { class:"input"},
+          label_html: {class:"user-label"} %>
+      <%= f.input :weight, label: "Poids", placeholder: " ",
+          wrapper_html: { class:"input-groupe" },
+          input_html: { class:"input"},
+          label_html: {class:"user-label"} %>
+      <%= f.input :blood_type, as: :radio_buttons, label: "Groupe sanguin", collection: Patient::BLOOD_TYPE %>
+  </div>
+
+    <div class="d-flex justify-content-center">
+      <%= f.button :submit, "MODIFIER LE PATIENT", class: "btn" %>
+    </div>
+  <% end %>
+</div>
