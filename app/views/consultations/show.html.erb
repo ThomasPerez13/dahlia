@@ -3,6 +3,7 @@
   <div class="consultation-card">
     <div class="return-bouton">
       <%= image_tag "icones/white-retour.svg" %>
+
     </div>
 
     <div class="card-info">
@@ -151,15 +152,14 @@
             <i class='fa-solid fa-pen-to-square'></i>
           <% end %>
           <%# Edit note icon - END %>
-
           <%# Delete note icon - START %>
           <%= link_to note_path(note), data: {turbo_method: :delete, turbo_confirm: "Supprimer ?"} do %>
             <i class='fa-solid fa-trash'></i>
           <% end %>
           <%# Delete note icon - END %>
         </div>
-        <%# New block of icones - END %>
 
+        <%# New block of icons - END %>
 
       </div>
     <% end %>
