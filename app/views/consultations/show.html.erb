@@ -131,7 +131,7 @@
 
   <div class="consultation-note">
     <h2>NOTES</h2>
-
+    
     <% @final_notes.each do |note| %>
       <div class="note-card"  data-controller="star">
         <p><%= note.content %></p>
@@ -151,7 +151,6 @@
             <i class='fa-solid fa-pen-to-square'></i>
           <% end %>
           <%# Edit note icon - END %>
-
           <%# Delete note icon - START %>
           <%= link_to note_path(note), data: {turbo_method: :delete, turbo_confirm: "Supprimer ?"} do %>
             <i class='fa-solid fa-trash'></i>
