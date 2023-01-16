@@ -18,13 +18,13 @@
         input_html: {class: 'category-selector treatment_category'},
         collection: Treatment::CATEGORY %>
 
-        <%= f.input :content, label: "", placeholder: "Détail du soin",
+        <%= f.input :content, :label => false, placeholder: "Détail du soin",
           wrapper_html: { class:"input-groupe" },
           input_html: { class:"input"},
           label_html: {class:"user-label"} %>
-        <div class="d-flex justify-content-center">
 
-        <%= f.button :submit, "CRÉER UN TRAITEMENT", class: "btn" %>
+        <div class="d-flex justify-content-center">
+          <%= f.button :submit, "CRÉER UN TRAITEMENT", class: "btn" %>
         </div>
       <% end %>
     </div>
