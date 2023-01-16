@@ -19,6 +19,11 @@
           <button class="calendar-next-previous-btn" data-action="click->calendar#next">></button>
         </div>
       </div>
+      <div class="add-consultation">
+        <%= link_to new_consultation_path do %>
+          <%= image_tag "icones/add-btn.svg" %>
+        <% end %>
+      </div>
     </div>
     <div  id="calendar" data-calendar-target="myCalendar" style="height: 1000px;">
     </div>
