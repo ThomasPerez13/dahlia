@@ -13,10 +13,12 @@
 @import "consultation/index";
 @import "patient/index";
 @import "notes/index";
+@import "team/index";
+@import "memberships/index";
 
 
 body {
-  background-color: $light-grey;
+  background-color: $background;
 }
 
 a {

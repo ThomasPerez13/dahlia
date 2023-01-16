@@ -1,9 +1,10 @@
-<div class="container_new_patient w-100 px-3">
+<div class="container-new-membership w-100 px-3">
+  <h2 class="text-center">MEMBRES DE L'EQUIPE</h2>
   <% @memberships.each do |membership| %>
     <%= simple_form_for [@team, membership] do |f| %>
       <%= f.input :email,
                   placeholder: 'Email du participant',
                   :label => false %>
-      <h2><%= f.button :submit, "Ajouter un participant", class: "btn-add-treatment" %></h2>
+      <%= f.button :submit, "AJOUTER", class: "btn-add-membership" %>
      <% end %>
   <% end %>

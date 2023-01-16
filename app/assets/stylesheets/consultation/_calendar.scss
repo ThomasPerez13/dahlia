@@ -1,5 +1,7 @@
 .calendar-header {
   box-shadow: inset 2px -7px 11px rgba(80, 92, 51, 0.17);
+  width: 100%;
+  height: 100%;
 }
 
 .calendar-action-date {
@@ -31,6 +33,10 @@
   font-weight: lighter;
 }
 
+.date-info {
+  text-align: center;
+}
+
 #calendar-day {
   margin: 8px 0px 0px 0px;
   padding: 0;
@@ -41,7 +47,7 @@
 
 #calendar-date {
   margin: 0;
-  padding: 0;
+  padding-right: 4px;
   color: white;
   font-size: 60px;
   font-weight: bold;
@@ -50,9 +56,14 @@
 
 #calendar-month {
   margin: 0;
-  padding: 0;
+  padding-right: 4px;
   font-size: 20px;
   color: #545454;
+}
+
+.add-consultation img {
+  height: 32px;
+  margin: 0 0 4px 4px;
 }
 
 
@@ -90,7 +101,7 @@
 .toastui-calendar-detail-container .toastui-calendar-content {
   padding: 4px 0px;
 }
-  
+
 // Treatments in pop-up details
 
 .toastui-calendar-detail-item-indent {
