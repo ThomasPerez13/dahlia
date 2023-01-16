@@ -78,8 +78,8 @@ export default class extends Controller {
       },
       week: {
         daynames: ['Di', 'Lu', 'Ma', 'Me', 'Je', 'Ve', 'Sa'],
-        hourStart: 7,
-        hourEnd: 19,
+        hourStart: 5,
+        hourEnd: 22,
         taskView: false,
         showNowIndicator: true,
         eventView: ['time'],
