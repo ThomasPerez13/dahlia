@@ -35,7 +35,9 @@
       <%# click to edit the nurse in charge of the consultation - End %>
       <div class="info-adresse">
         <i class="fa-solid fa-location-dot"></i>
-        <div class="text-adresse"><%= @consultation.patient.address %></div>
+        <div class="text-adresse">
+          <%= @consultation.patient.address %>
+        </div>
       </div>
       <%# click to edit the consultation date - START %>
       <div class="text-date" data-controller="edit">
@@ -60,11 +62,12 @@
       </div>
     </div>
     <%# click to edit the consultation date - END %>
-  <%# <div class="card-traitement"> %>
   </div>
+  <%# <div class="card-traitement"> %>
 
-<div class="consultation-soin">
-  <h2>SOINS À PRODIGUER</h2>
+
+  <div class="consultation-soin">
+    <h2>SOINS À PRODIGUER</h2>
     <% @consultation.treatments.each do |treatment| %>
       <i class="fal fa-ball-pile"></i>
       <div id="consultation-card-soin" class="checkbox-container">
@@ -97,11 +100,9 @@
           </div>
           <div class="check d-flex align-items-center" data-controller="form">
 
-
             <%= simple_form_for treatment, url: treatment_path(treatment), html: { data: { controller: "form", 'turbo-method': :patch } } do |f| %>
               <%= f.input :done, as: :boolean, label: false, input_html: { data: { action: "change->form#submit" } }%>
             <% end %>
-
 
             <%# Edit treament icon - START %>
             <%= link_to edit_treatment_path(treatment), class:"p-2" do %>
@@ -114,58 +115,60 @@
               <i class="fa-solid fa-trash"></i>
             <% end %>
             <%# Delete treament icon - END %>
-
-
           </div>
         </div>
       </div>
     <% end %>
-      <%= link_to new_consultation_treatment_path(@consultation) do%>
+    <%= link_to new_consultation_treatment_path(@consultation) do%>
       <div id="consultation-card-add-soin">
         <h2>+</h2>
       </div>
-      <% end %>
-    </div>
-</div>
+    <% end %>
+  </div>
   <%# notes %>
 
   <%# TO DO : Afficher toutes les notes créées à la consultation d'avant %>
 
-  <div class="card-note">
-    <div class="top-note">
-      <h5>NOTES :</h5>
-      <% @final_notes.each do |note| %>
-        <div class="note-content"  data-controller="star">
-          <p><%= note.content %></p>
+  <div class="consultation-note">
+    <h2>NOTES</h2>
+    
+    <% @final_notes.each do |note| %>
+      <div class="note-card"  data-controller="star">
+        <p><%= note.content %></p>
 
-          <%# New block of icons - START %>
-          <div class="d-flex align-items-center">
-            <%= link_to add_to_favorites_note_path(note), data: { turbo_method: "PATCH"}  do %>
-              <% if note.favorite == true %>
-                <i data-star-target="starIcon" data-action="click->star#changeStarClass" class="fa-solid fa-star"></i>
-              <% else %>
-                <i data-star-target="starIcon" data-action="click->star#changeStarClass" class="fa-regular fa-star"></i>
-              <% end %>
+        <%# New block of icons - START %>
+        <div class="d-flex align-items-center">
+          <%= link_to add_to_favorites_note_path(note), data: { turbo_method: "PATCH"}  do %>
+            <% if note.favorite == true %>
+              <i data-star-target="starIcon" data-action="click->star#changeStarClass" class="fa-solid fa-star"></i>
+            <% else %>
+              <i data-star-target="starIcon" data-action="click->star#changeStarClass" class="fa-regular fa-star"></i>
             <% end %>
+          <% end %>
 
-            <%# Edit note icon - START %>
-            <%= link_to edit_note_path(note), class:"p-2" do %>
-              <i class='fa-solid fa-pen-to-square'></i>
-            <% end %>
-            <%# Edit note icon - END %>
+          <%# Edit note icon - START %>
+          <%= link_to edit_note_path(note), class:"p-2" do %>
+            <i class='fa-solid fa-pen-to-square'></i>
+          <% end %>
+          <%# Edit note icon - END %>
 
-            <%# Delete note icon - START %>
-            <%= link_to note_path(note), data: {turbo_method: :delete, turbo_confirm: "Supprimer ?"} do %>
-              <i class='fa-solid fa-trash'></i>
-            <% end %>
-            <%# Delete note icon - END %>
-          </div>
-          <%# New block of icons - END %>
-
-
+          <%# Delete note icon - START %>
+          <%= link_to note_path(note), data: {turbo_method: :delete, turbo_confirm: "Supprimer ?"} do %>
+            <i class='fa-solid fa-trash'></i>
+          <% end %>
+          <%# Delete note icon - END %>
         </div>
-      <% end %>
-      <%= link_to "+", new_consultation_note_path(@consultation), class:"btn btn-add-note"%>
-    </div>
+        <%# New block of icons - END %>
+
+
+      </div>
+    <% end %>
+
+    <%= link_to new_consultation_note_path(@consultation) do%>
+      <div class="add-note-card">
+        <p>+</p>
+      </div>
+    <% end %>
   </div>
+
 </div>
