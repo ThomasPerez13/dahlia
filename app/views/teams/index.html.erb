@@ -1,9 +1,8 @@
-<div class="container_center">
-  <div class="container_logo">
-    <h1>Groupe d'infirmiers</h1>
-    <%= link_to "+", new_team_path,class:"btn btn-create" %>
+<div class="container-team-index">
+    <h2>GROUPE D'INFIRMIERS</h2>
+    <%= link_to "AJOUTER UN GROUPE", new_team_path,class:"btn-create-team" %>
     <% @teams.each do |team| %>
-      <h2>Groupe <%= team.area %></h2>
+      <h2 class="title-team">Groupe <%= team.area %></h2>
       <strong><%= team.name %></strong>
       <% team.memberships.each do |membership| %>
         <%= membership.user.first_name %>
@@ -11,7 +10,9 @@
       <% end%>
       <% if current_user == team.creator %>
         <br>
-        <%= link_to "Modifier le groupe",  edit_team_path(team),class:"btn-add-treatment" %>
+        <div class="d-flex justify-content-center">
+          <%= link_to "MODIFIER",  edit_team_path(team),class:"btn-edit-team" %>
+        </div>
       <% end%>
       <br>
       <br>
