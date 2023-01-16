@@ -38,9 +38,10 @@ class PatientsController < ApplicationController
     @patient.referring_user = current_user
 
     if @patient.save
-      redirect_to patient_path(@patient)
+      #redirect_to patient_path(@patient)
+      redirect_to patients_path
     else
-      render :new
+      render :new #, status: :unprocessable_entity
     end
   end
 

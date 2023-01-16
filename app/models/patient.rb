@@ -6,11 +6,12 @@ class Patient < ApplicationRecord
 
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :address, presence: true
-  validates :email, format: { with: /\A.*@.*\.com\z/ }
-  validates :tel_number, presence: true
-  validates :ss_number, uniqueness: true, presence: true
-  validates :blood_type, inclusion: { in: BLOOD_TYPE }
+  validates :gender, presence: true
+  #validates :address, presence: true
+  #validates :email, format: { with: /\A.*@.*\.com\z/ }
+  #validates :tel_number, presence: true
+  #validates :ss_number, uniqueness: true, presence: true
+  #validates :blood_type, inclusion: { in: BLOOD_TYPE }
 
   def display_full_name
     "#{first_name} #{last_name}"

@@ -1,36 +1,44 @@
 <div class="container_new_patient">
   <div class="session_container_imag_title">
     <div class="img_session">
-      <%= image_tag "logo-rose.svg", data: { inject: { svg: "svg/ligne.svg" } }, width: 100 %>
+      <%= image_tag "logo-rose.svg", data: { inject: { svg: "svg/ligne.svg" }}, width: 100 %>
     </div>
   </div>
-  <div class="formulaire">
-    <%= simple_form_for(@patient) do |f| %>
+  <%= simple_form_for(@patient, data: { turbo: :false }) do |f| %>
+    <div class="formulaire">
+      <%#, data: { turbo: :false }%>
+      <%#= f.error_notification %>
       <%= f.input :first_name, label: "Prénom", placeholder: " ",
           wrapper_html: { class:"input-groupe" },
           input_html: { class:"input"},
-          label_html: {class:"user-label"} %>
+          label_html: {class:"user-label"},
+          required: true %>
       <%= f.input :last_name, label: "Nom de famille", placeholder: " ",
           wrapper_html: { class:"input-groupe" },
           input_html: { class:"input"},
-          label_html: {class:"user-label"} %>
-      <%= f.input :gender, as: :radio_buttons, collection: ["Homme", "Femme"], label: "Sexe", placeholder: " " %>
+          label_html: {class:"user-label"},
+          required: true %>
+      <%= f.input :gender, as: :radio_buttons, collection: ["Homme", "Femme"], label: "Sexe", placeholder: " ", required: true %>
       <%= f.input :address, label: "Adresse", placeholder: " ",
           wrapper_html: { class:"input-groupe" },
           input_html: { class:"input"},
-          label_html: {class:"user-label"} %>
+          label_html: {class:"user-label"}
+          %>
       <%= f.input :email, placeholder: " ",
           wrapper_html: { class:"input-groupe" },
           input_html: { class:"input"},
-          label_html: {class:"user-label"} %>
+          label_html: {class:"user-label"}
+           %>
       <%= f.input :tel_number, label: "Téléphone", placeholder: " ",
           wrapper_html: { class:"input-groupe" },
           input_html: { class:"input"},
-          label_html: {class:"user-label"} %>
+          label_html: {class:"user-label"}
+           %>
       <%= f.input :ss_number, label: "N° de sécurité sociale", placeholder: " ",
           wrapper_html: { class:"input-groupe" },
           input_html: { class:"input"},
-          label_html: {class:"user-label"} %>
+          label_html: {class:"user-label"}
+           %>
       <%= f.input :referring_doctor, label: "Docteur généraliste", placeholder: " ",
           wrapper_html: { class:"input-groupe" },
           input_html: { class:"input"},
@@ -56,7 +64,7 @@
           input_html: { class:"input"},
           label_html: {class:"user-label"} %>
       <%= f.input :blood_type, as: :radio_buttons, label: "Groupe sanguin", collection: Patient::BLOOD_TYPE %>
-  </div>
+    </div>
 
     <div class="d-flex justify-content-center">
       <%= f.button :submit, "AJOUTER LE PATIENT", class: "btn" %>
