@@ -120,8 +120,12 @@
         </div>
       </div>
     <% end %>
-
-    <%= link_to "+", new_consultation_treatment_path(@consultation), id:"consultation-card-soin" %>
+      <%= link_to new_consultation_treatment_path(@consultation) do%>
+      <div id="consultation-card-add-soin">
+        <h2>+</h2>
+      </div>
+      <% end %>
+    </div>
 </div>
   <%# notes %>
 
