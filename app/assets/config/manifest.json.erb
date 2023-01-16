@@ -1,14 +1,14 @@
 {
   "background_color": "white",
-  "description": "Le Wagon is Europe's best coding bootcamp for creative people & entrepreneurs. Learn to code in 9 weeks with our fullstack coding bootcamp.",
+  "description": "Application faite par les infirmiers libéraux et pour les infirmier libéraux, qui facilite les transmissions, la centralisation et la protection des données patients.",
   "display": "fullscreen",
   "name": "Dahlia",
-  "icons": [
-    <% files = Dir.entries(Rails.root.join("app/assets/images/icons/")).select {|f| !File.directory? f} %>
+  "icones": [
+    <% files = Dir.entries(Rails.root.join("app/assets/images/icones/")).select {|f| !File.directory? f} %>
     <% files.each_with_index do |file, index| %>
       <% match = file.match(/.+-(?<size>\d{2,3}x\d{2,3}).png/) %>
       {
-        "src": "<%= image_path "icons/#{file}" %>",
+        "src": "<%= image_path "icones/#{file}" %>",
         "sizes": "<%= match && match[:size] %>",
         "type": "image/png"
       }<%= "," unless (files.size - 1) == index %>

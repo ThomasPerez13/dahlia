@@ -136,7 +136,7 @@
       <div class="note-card"  data-controller="star">
         <p><%= note.content %></p>
 
-        <%# New block of icons - START %>
+        <%# New block of icones - START %>
         <div class="d-flex align-items-center">
           <%= link_to add_to_favorites_note_path(note), data: { turbo_method: "PATCH"}  do %>
             <% if note.favorite == true %>
@@ -158,7 +158,7 @@
           <% end %>
           <%# Delete note icon - END %>
         </div>
-        <%# New block of icons - END %>
+        <%# New block of icones - END %>
 
 
       </div>
