@@ -1,0 +1,51 @@
+.container-team-index{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: white;
+  height: 100%;
+
+  h2{
+    margin: 75px 0 38px 15px;
+    font-family: $headers-font;
+
+  }
+  .title-team{
+    margin: 75px 0 4px 15px !important;
+    font-family: $headers-font;
+
+  }
+  .btn-edit-team {
+    color: white;
+    font-family: "Mulish", "sans-serif";
+    border-color: #F28476;
+    width: 155px;
+    border-radius: 29px;
+    background-color: #F28476;
+    height: 40px;
+    padding: 4px 15px 0px 15px;
+    margin: 0px;
+    margin-block: 19px;
+    min-width: -webkit-min-content;
+    min-width: -moz-min-content;
+    min-width: min-content;
+    box-shadow: none;
+    text-align: center;
+  }
+  .btn-create-team {
+    color: white;
+    font-family: "Mulish", "sans-serif";
+    border-color: #F28476;
+    width: 159px;
+    border-radius: 29px;
+    background-color: #F28476;
+    height: 61px;
+    padding: 4px 15px 0px 15px;
+    margin: 45px;
+    margin-block: 0px;
+    min-width: min-content;
+    box-shadow: none;
+    text-align: center;
+  }
+
+}
