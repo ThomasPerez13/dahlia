@@ -52,10 +52,7 @@
           input_html: { class:"input"},
           label_html: {class:"user-label"} %>
       <%= f.input :blood_type, as: :radio_buttons, label: "Groupe sanguin", collection: Patient::BLOOD_TYPE %>
-  </div>
-
-    <div class="d-flex justify-content-center">
-      <%= f.button :submit, "MODIFIER LE PATIENT", class: "btn" %>
+      <%= f.button :submit, "MODIFIER LE PATIENT", class: "btn-edit" %>
     </div>
   <% end %>
 </div>
