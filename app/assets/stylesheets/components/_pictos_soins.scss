@@ -21,63 +21,71 @@
   font-size: 14px;
   text-align: center;
   font-weight: 600;
-  padding: 60px 10px 10px 10px;
+  padding: 72px 10px 15px 10px;
   border: 1px solid #EAEAEA;
-  border-radius: 4px;
   background-color: white;
-  margin-top: 10px;
-  border-radius: 20px;
+  margin-bottom: 15px;
+  border-radius: 35px;
 }
 
 .category-selector:checked + label {
-  color: $oxford-blue !important;
+  color: white !important;
 }
 
 
 .treatment_category + label {
-  color: $oxford-blue;
-  background-size: 30%;
+  color: $grey-typo;
+  background-size: 50%;
   background-repeat: no-repeat;
   background-position: 50% 25%;
+  border: solid 1px $grey !important;
+  font-family: $headers-font;
 }
 
 #treatment_category_pansement + label {
-  background-image: asset-url("picto-categories/picto-pansement.svg");
+  background-image: asset-url("soins/pansement.svg");
 }
 
 #treatment_category_diabétique + label {
-  background-image: asset-url("picto-categories/picto-diabete.svg");
+  background-image: asset-url("soins/diabete.svg");
 }
 
 #treatment_category_injection + label {
-  background-image: asset-url("picto-categories/picto-injection.svg");
+  background-image: asset-url("soins/injection.svg");
 }
 
 #treatment_category_prélèvement + label {
-  background-image: asset-url("picto-categories/picto-prelevement.svg");
+  background-image: asset-url("soins/prelevement.svg");
 }
 
 #treatment_category_perfusion + label {
-  background-image: asset-url("picto-categories/picto-perfusion.svg");
+  background-image: asset-url("soins/perfusion.svg");
 }
 
 #treatment_category_hygiène + label {
-  background-image: asset-url("picto-categories/picto-hygiene.svg");
+  background-image: asset-url("soins/hygiene.svg");
 }
 
 #treatment_category_médicament + label {
-  background-image: asset-url("picto-categories/picto-medicament.svg");
+  background-image: asset-url("soins/medicament.svg");
 }
 
 #treatment_category_aide_domicile + label {
-  background-image: asset-url("picto-categories/picto-domicile.svg");
+  background-image: asset-url("soins/aide.svg");
 }
 
 #treatment_category_autre + label {
-  background-image: asset-url("picto-categories/picto-nurse.svg");
+  background-image: asset-url("soins/autre.svg");
 }
 
 .treatment_category:checked + label {
-  background-color: #A75AA2;
-  border-color: $magnolia;
+  background-color: $grey-typo;
+  color: white;
+}
+
+#treatment_content {
+  text-align: center !important;
+  height: 15vh !important;
+  border-radius: 25px !important;
+  font-size: 18px !important;
 }
