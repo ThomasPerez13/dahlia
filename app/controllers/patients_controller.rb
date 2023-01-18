@@ -45,6 +45,16 @@ class PatientsController < ApplicationController
     end
   end
 
+  def edit
+    @patient = Patient.find(params[:id])
+  end
+
+  def update
+    @patient = Patient.find(params[:id])
+    @patient.update(params_patient)
+    redirect_to patient_path(@patient), status: :see_other
+  end
+
   private
 
   def params_patient
