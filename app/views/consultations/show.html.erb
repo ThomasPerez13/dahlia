@@ -3,7 +3,6 @@
   <div class="consultation-card">
     <div class="return-bouton">
       <%= image_tag "icones/white-retour.svg" %>
-
     </div>
 
     <div class="card-info">
@@ -100,6 +99,7 @@
             </div>
           </div>
           <div class="check d-flex align-items-center" data-controller="form">
+
 
             <%= simple_form_for treatment, url: treatment_path(treatment), html: { data: { controller: "form", 'turbo-method': :patch } } do |f| %>
               <%= f.input :done, as: :boolean, label: false, input_html: { data: { action: "change->form#submit" } }%>
