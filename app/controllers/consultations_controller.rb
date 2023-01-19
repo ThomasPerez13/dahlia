@@ -28,15 +28,19 @@ class ConsultationsController < ApplicationController
   def create
     @consultation = Consultation.new(consultation_params)
 
-    if params[:consultation][:recurring]
+    if params[:consultation][:recurring].nil?
+      @consultation.recurring = false
+      @consultation.user = current_user if @consultation.user.nil? # To check later
+    else
       @consultation_group = ConsultationGroup.new(start_date: @consultation.start_date, end_date: params[:consultation][:consultation_groups][:end_date], frequency: "weekly")
       @consultation_group.save
       @consultation.consultation_group = @consultation_group
       @consultation.user = current_user if @consultation.user.nil? # To check later
+      create_recurring_consultations(@consultation, @consultation_group)
     end
 
+
     if @consultation.save
-      create_recurring_consultations(@consultation, @consultation_group)
       redirect_to consultation_path(@consultation)
     else
       render :new
