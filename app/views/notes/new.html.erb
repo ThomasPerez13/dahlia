@@ -6,7 +6,7 @@
 
   <h3>AJOUTER UNE NOTE</h3>
 
-  <div class="note-container ">
+  <div class="note-container">
     <%= simple_form_for(@note) do |f| %>
       <%= hidden_field_tag 'consultation_id', params[:consultation_id] %>
       <%= f.input :content, label: "Details", placeholder: " ",
