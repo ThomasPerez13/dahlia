@@ -3,7 +3,7 @@
 .general-div {
   background-color: white;
   width: 100%;
-  height: 100vh;
+  height: 93vh;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -235,5 +235,7 @@ fieldset.mb-3.radio_buttons.optional.patient_blood_type {
 }
 
 
-// TREATMENTS NEW
-
+// NOTE FORM
+.note-container {
+  margin-top: 5vh;
+}
