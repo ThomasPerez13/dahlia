@@ -24,7 +24,7 @@
   <body>
     <%= render "shared/flashes" %>
     <%= yield %>
-    <%= render "shared/navbar_dahlia" unless current_page?('/') unless current_page?('/users/sign_in') unless current_page?('/users/sign_up') %>
+    <%= render "shared/navbar_dahlia" unless current_page?('/') || controller.controller_name == 'sessions' || controller.controller_name == 'registrations' %>
 
   </body>
 </html>
