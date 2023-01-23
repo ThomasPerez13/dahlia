@@ -14,6 +14,18 @@
                   autofocus: true,
                   :label => false,
                   input_html: { autocomplete: "Email" }%>
+      <%= f.input :first_name,
+                  placeholder: 'prénom',
+                  required: true,
+                  autofocus: true,
+                  :label => false,
+                  input_html: { autocomplete: "Prénom :" }%>
+      <%= f.input :last_name,
+                  placeholder: 'Nom de famille',
+                  required: true,
+                  autofocus: true,
+                  :label => false,
+                  input_html: { autocomplete: "Nom de famille :" }%>
       <%= f.input :password,
                   required: true,
                   placeholder: 'Mot de passe (6 caractères)',

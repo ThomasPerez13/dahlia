@@ -24,7 +24,8 @@
   <body>
     <%= render "shared/flashes" %>
     <%= yield %>
-    <%= render "shared/navbar_dahlia" unless current_page?('/') unless current_page?('/users/sign_in') unless current_page?('/users/sign_up') %>
+    <!-- do not display navbar on home page, on sign_up page or on registration page -->
+    <%= render "shared/navbar_dahlia" unless current_page?('/') || controller.controller_name == 'sessions' || controller.controller_name == 'registrations' %>
 
   </body>
 </html>
