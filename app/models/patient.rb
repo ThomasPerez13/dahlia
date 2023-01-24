@@ -13,6 +13,22 @@ class Patient < ApplicationRecord
   #validates :ss_number, uniqueness: true, presence: true
   #validates :blood_type, inclusion: { in: BLOOD_TYPE }
 
+  # Class method to select patient by nurses team
+  # used with patients_controller #index and consultations_controller #new
+  def self.select_patient_by_group(user)
+    teams = []
+    patients = user.patients
+    user.memberships.each do |membership|
+      teams << membership.team
+    end
+    teams.each do |team|
+      team.memberships.each do |membership|
+        patients << membership.user.patients
+      end
+    end
+    patients.order(last_name: :asc)
+  end
+
   def display_full_name
     "#{first_name} #{last_name}"
   end
