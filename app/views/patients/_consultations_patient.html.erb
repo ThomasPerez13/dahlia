@@ -48,6 +48,11 @@
 
     <% end %>
   </div>
+  <% if @last_3_consultations_rest == nil %>
+    <div class="text-center link-ajout-consu">
+    <%= link_to "ajouter une consulation", new_consultation_path %>
+    </div>
+  <% end %>
 
   <br>
   <%# Below: "Afficher plus" link %>
