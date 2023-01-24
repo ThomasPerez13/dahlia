@@ -39,7 +39,7 @@
     height: 170px;
   }
   .was-validated .form-check-input:valid ~ .form-check-label, .form-check-input.is-valid ~ .form-check-label {
-    color: #7A7979;
+    color: #7A7979 !important;
   }
   .was-validated .form-control:valid, .form-control.is-valid {
     border-color: #9E9E9E;

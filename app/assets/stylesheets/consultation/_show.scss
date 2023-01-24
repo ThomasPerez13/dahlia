@@ -242,6 +242,7 @@
   }
   .was-validated .form-select[size="1"]:valid:not([multiple]), .form-select.is-valid:not([multiple]):not([size]), .form-select.is-valid[size="1"]:not([multiple]) {
     margin-top: 87px;
+    color: #7A7979 !important;
   }
 }
 
