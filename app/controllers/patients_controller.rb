@@ -1,17 +1,8 @@
 class PatientsController < ApplicationController
 
   def index
-    teams = []
-    patients = current_user.patients
-    current_user.memberships.each do |membership|
-      teams << membership.team
-    end
-    teams.each do |team|
-      team.memberships.each do |membership|
-        patients << membership.user.patients
-      end
-    end
-    @patients = patients.order(last_name: :asc)
+    # 
+    @patients = Patient.select_patient_by_group(current_user)
     if params[:query].present?
       @patients_last_name = @patients.where("last_name ILIKE ?", "%#{params[:query]}%")
       @patients_first_name = @patients.where("first_name ILIKE ?", "%#{params[:query]}%")
