@@ -8,6 +8,8 @@
   align-items: center;
   flex-direction: column;
   justify-content: center;
+  overflow: auto;
+
 
   h3 {
     color: $rose;
@@ -64,16 +66,33 @@
 // }
 
 // NOUVELLE CONSULTATION FORM
+
+.consultation_new_title {
+  padding-top: 16px;
+}
+
 .new_consultation {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  padding-top: 50px;
+  padding-top: 32px;
 }
 
 #consultation_user_id {
-  margin-bottom: 30px;
+  margin-bottom: 12px;
+}
+
+.details-new-consultation {
+  color: $grey-typo;
+  text-align: center;
+  font-style: italic;
+  padding-bottom: 8px;
+
+  a {
+    color: $rose;
+    text-decoration: underline;
+  }
 }
 
 

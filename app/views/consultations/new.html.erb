@@ -1,10 +1,10 @@
 <%# AJOUT CONSULTATION PAGE %>
 <div class="general-div">
-  <h3> NOUVELLE <br> CONSULTATION </h3>
+  <h3 class="consultation_new_title"> NOUVELLE <br> CONSULTATION </h3>
         <%= simple_form_for @consultation do |f| %>
           <div class="consultation_new">
             <%= f.input :patient_id,
-                        collection: Patient.all.order(last_name: :asc),
+                        collection: Patient.select_patient_by_group(current_user),
                         label: " Patient(e) ",
                         label_method: :display_full_name,
                         value_method: :id,
