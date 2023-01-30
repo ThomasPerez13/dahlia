@@ -220,9 +220,8 @@ puts "loading treatments..."
 
 # Alexandre, Simone et Zdenek - plaie à panser et nettoyer + doliprane
 # Thomas > Alexandre
-Treatment.create!(category: "Pansement", done: false, content: "Renouveler le pansement", consultation: cons_thomas_alexandre_today)
-Treatment.create!(category: "Hygiène", done: false, content: "Nettoyer la plaie", consultation: cons_thomas_alexandre_today)
-Treatment.create!(category: "Médicament", done: false, content: "Administrer 2mg de doliprane", consultation: cons_thomas_alexandre_today)
+Treatment.create!(category: "Diabétique", done: false, content: "Mesure de la glycémie", consultation: cons_thomas_alexandre_today)
+Treatment.create!(category: "Diabétique", done: false, content: "Injection d'insuline", consultation: cons_thomas_alexandre_today)
 
 Treatment.create!(category: "Pansement", done: false, content: "Renouveler le pansement", consultation: cons_thomas_alexandre_mon)
 Treatment.create!(category: "Hygiène", done: false, content: "Nettoyer la plaie", consultation: cons_thomas_alexandre_mon)
@@ -289,8 +288,8 @@ Treatment.create!(category: "Médicament", done: false, content: "Administrer 2m
 
 # Catherine, Armand, Bellamy - Perfusion + Insuline
 # Thomas > Catherine
-Treatment.create!(category: "Perfusion", done: false, content: "Poser la perfusion", consultation: cons_thomas_catherine_today)
-Treatment.create!(category: "Injection", done: false, content: "Injecter 12 mg d'insuline", consultation: cons_thomas_catherine_today)
+Treatment.create!(category: "Diabétique", done: false, content: "Mesure de la glycémie", consultation: cons_thomas_catherine_today)
+Treatment.create!(category: "Diabétique", done: false, content: "Injection d'insuline", consultation: cons_thomas_catherine_today)
 
 Treatment.create!(category: "Perfusion", done: false, content: "Poser la perfusion", consultation: cons_thomas_catherine_mon)
 Treatment.create!(category: "Injection", done: false, content: "Injecter 12 mg d'insuline", consultation: cons_thomas_catherine_mon)
@@ -446,8 +445,10 @@ puts "loading notes..."
 
 # NOTES
 # Notes des consultations de Thomas
+Note.create!(content: "Craint les piqûres, ne pas hésitez à rassurer", favorite: true, creation_consultation: cons_thomas_alexandre_today)
 note_alexandre = Note.create!(content: "Demander au médecin référent une ordonnance pour médicaments", favorite: false, creation_consultation: cons_thomas_alexandre_mon)
-note_catherine = Note.create!(content: "Patient sensible lors des piqures, rassurer et injecter délicatement", favorite: true, creation_consultation: cons_thomas_catherine_mon)
+Note.create!(content: "Craint les piqûres, ne pas hésitez à rassurer", favorite: true, creation_consultation: cons_thomas_catherine_today)
+note_catherine = Note.create!(content: "Patient sensible lors des piqures, rassurer et injecter délicatement", favorite: false, creation_consultation: cons_thomas_catherine_mon)
 note_florent = Note.create!(content: "Lui faire penser d'appeler sa petite fille par son prénom et non par celui de sa femme", favorite: false, creation_consultation: cons_thomas_florent_mon)
 note_louise = Note.create!(content: "Attention chien méchant, attendre au portail", favorite: true, creation_consultation: cons_thomas_louise_mon)
 note_emma = Note.create!(content: "Rassurer la patiente pendant la suture", favorite: true, creation_consultation: cons_thomas_emma_mon)
