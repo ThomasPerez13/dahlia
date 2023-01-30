@@ -11,9 +11,16 @@ thomas = User.create!(first_name: "Thomas", last_name: "Perez", email: "thomas.p
 nicolas = User.create!(first_name: "Nicolas", last_name: "Hali", email: "nicolas.hali@gmail.com", tel_number: "0628493845", password: "nicolas123")
 cecile = User.create!(first_name: "Cécile", last_name: "Lagarde", email: "cecile.lagarde@gmail.com", tel_number: "0629384756", password: "cecile123")
 
+puts "loading teams..."
+firstteam = Team.create(name: "DOM-TOM", creator: thomas, number_membership: 3, area: "La réunion")
+
+puts "loading memberships..."
+Membership.create(user: thomas, team: firstteam, email: "thomas.perez@gmail.com")
+Membership.create(user: nicolas, team: firstteam, email: "nicolas.hali@gmail.com")
+Membership.create(user: cecile, team: firstteam, email: "cecile.lagarde@gmail.com")
+
 
 puts "loading patients..."
-
 # PATIENTS
 # Patients de Thomas
 alexandre = Patient.create!(first_name: "Alexandre", last_name: "Roux", address: "12 rue du Pilori, Nantes", email: "alexandre.belhora@gmail.com", tel_number: "0635987645", ss_number: "195114400608436",
