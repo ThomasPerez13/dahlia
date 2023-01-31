@@ -220,6 +220,7 @@ puts "loading treatments..."
 
 # Alexandre, Simone et Zdenek - plaie à panser et nettoyer + doliprane
 # Thomas > Alexandre
+Treatment.create!(category: "Diabétique", done: true, content: "Mesure de la glycémie", consultation: cons_thomas_alexandre_past1)
 Treatment.create!(category: "Diabétique", done: false, content: "Mesure de la glycémie", consultation: cons_thomas_alexandre_today)
 Treatment.create!(category: "Diabétique", done: false, content: "Injection d'insuline", consultation: cons_thomas_alexandre_today)
 
