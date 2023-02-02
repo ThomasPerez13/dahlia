@@ -29,7 +29,7 @@
       <% end %>
 
       <div class="details-new-consultation">
-        <%= link_to "Supprimer le soin"%></p>
+        <%= link_to "Supprimer le soin", treatment_path(@treatment), data: {turbo_method: :delete, turbo_confirm: "Voulez-vous vraiment supprimer le soin?"}%></p>
       </div>
     </div>
   </div>
