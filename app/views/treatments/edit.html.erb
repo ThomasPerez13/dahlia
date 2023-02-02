@@ -29,7 +29,9 @@
       <% end %>
 
       <div class="destroy-treatment" data-controller="modal-confirmation-to-destroy">
-        <%= link_to "Supprimer le soin", treatment_path(@treatment), data: {turbo_method: :delete, turbo_confirm: "Voulez-vous vraiment supprimer le soin?"}, class: "btn"%></p>
+        <!-- <%= link_to "Supprimer le soin", treatment_path(@treatment), data: {turbo_method: :delete, turbo_confirm: "Voulez-vous vraiment supprimer le soin?"}, class: "btn"%> -->
+        <!-- <%= link_to "Supprimer le soin", "#", data: { action:"click->modal-confirmation-to-destroy#displayModal" }, class: "btn"%> -->
+        <p class="btn" data-action="click->modal-confirmation-to-destroy#displayModal">Supprimer le soin</p>
       </div>
     </div>
   </div>
