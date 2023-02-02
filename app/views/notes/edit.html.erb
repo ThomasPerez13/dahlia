@@ -23,7 +23,7 @@
     <% end %>
 
     <div class="details-new-consultation">
-      <%= link_to "Supprimer la note"%></p>
+      <%= link_to "Supprimer la note", note_path(@note), data: {turbo_method: :delete, turbo_confirm: "Voulez-vous vraiment supprimer la note?"}%></p>
     </div>
   </div>
 </div>
