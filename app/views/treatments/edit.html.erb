@@ -28,8 +28,8 @@
         </div>
       <% end %>
 
-      <div class="details-new-consultation">
-        <%= link_to "Supprimer le soin", treatment_path(@treatment), data: {turbo_method: :delete, turbo_confirm: "Voulez-vous vraiment supprimer le soin?"}%></p>
+      <div class="destroy-treatment" data-controller="modal-confirmation-to-destroy">
+        <%= link_to "Supprimer le soin", treatment_path(@treatment), data: {turbo_method: :delete, turbo_confirm: "Voulez-vous vraiment supprimer le soin?"}, class: "btn"%></p>
       </div>
     </div>
   </div>
