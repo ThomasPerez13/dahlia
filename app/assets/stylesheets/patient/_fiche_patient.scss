@@ -43,7 +43,7 @@
       border-top-left-radius: 16px;
       border-top-right-radius: 16px;
       // margin-bottom: -20px;
-      height: 20px;
+      // height: 20px;
     }
     .nav-tabs .nav-link {
       border-top-left-radius: 16px;
@@ -94,12 +94,14 @@
     }
     .bottom-link {
       text-align: center;
-      background-color: $light-grey;
-      a {
-      text-decoration: underline;
-      color: $light-grey-typo;
-      font-size: 17px;
-      }
+      background-color: $background;
+      margin-top: 2vh;
+
+        a {
+        text-decoration: underline;
+        color: $light-grey-typo;
+        font-size: 17px;
+        }
     }
 
     hr {
@@ -143,13 +145,11 @@
       }
     }
     .link-ajout-consu {
-      font-weight: bold;
-      font-size: 18px;
-      margin-top: 27px;
-      margin-bottom: -17px;
+      margin: 100px;
+
       a {
-        text-decoration: underline;
-        color: #F28476;;
+        text-decoration: none;
+        color: white;
         }
     }
   }
