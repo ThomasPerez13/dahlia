@@ -13,6 +13,9 @@ application.register("edit", EditController)
 import FormController from "./form_controller"
 application.register("form", FormController)
 
+import ModalConfirmationToDestroyController from "./modal_confirmation_to_destroy_controller"
+application.register("modal-confirmation-to-destroy", ModalConfirmationToDestroyController)
+
 import SearchPatientsController from "./search_patients_controller"
 application.register("search-patients", SearchPatientsController)
 
