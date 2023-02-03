@@ -28,7 +28,7 @@
         </div>
       <% end %>
 
-      <div class="destroy-treatment" data-controller="modal-confirmation-to-destroy">
+      <div class="destroy-element" data-controller="modal-confirmation-to-destroy">
         <p class="btn" data-action="click->modal-confirmation-to-destroy#displayModal">Supprimer le soin</p>
         <%= render "shared/destroy_confirmation_modal", path: treatment_path(@treatment), message: "Voulez-vous vraiment supprimer le soin?" %>
       </div>
