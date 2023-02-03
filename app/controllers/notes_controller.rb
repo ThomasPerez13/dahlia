@@ -47,7 +47,7 @@ class NotesController < ApplicationController
   def destroy
     @note = Note.find(params[:id])
     @note.destroy
-    redirect_to consultation_path(@note.creation_consultation), status: :see_other
+    redirect_to consultation_path(@note.creation_consultation), status: :see_other, info: "La note a bien été supprimée"
   end
 
   private
