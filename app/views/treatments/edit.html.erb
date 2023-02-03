@@ -30,18 +30,9 @@
 
       <div class="destroy-treatment" data-controller="modal-confirmation-to-destroy">
         <p class="btn" data-action="click->modal-confirmation-to-destroy#displayModal">Supprimer le soin</p>
-
-        <div class="modal-confirmation-destroy d-none" data-modal-confirmation-to-destroy-target="modal">
-          <div class="message-confirmation-destroy">
-            <p>Voulez-vous vraiment supprimer le soin?</p>
-          </div>
-          <!-- <div class="d-flex justify-content-around align-items-center"> -->
-          <div class="select-confirmation-destroy">
-            <%= link_to "Oui", treatment_path(@treatment), data: {turbo_method: :delete}, class:"btn" %>
-            <%= link_to "Non", "#", data: { action:"click->modal-confirmation-to-destroy#displayModal" }, class:"btn" %>
-          </div>
-        </div>
+        <%= render "shared/destroy_confirmation_modal", path: treatment_path(@treatment) %>
       </div>
     </div>
   </div>
 </div>
+  
