@@ -19,11 +19,13 @@
                   label: "Récurrence",
                   placeholder: " ",
                   required: true %>
-      <%= f.button :submit, "MODIFIER LA NOTE", class: "btn" %>
+      <div class="d-flex justify-content-center">
+        <%= f.button :submit, "MODIFIER LA NOTE", class: "btn" %>
+      </div>
     <% end %>
 
     <div class="destroy-element" data-controller="modal-confirmation-to-destroy">
-      <p class="btn" data-action="click->modal-confirmation-to-destroy#displayModal">Supprimer la note</p>
+      <p class="btn" data-action="click->modal-confirmation-to-destroy#displayModal">SUPPRIMER LA NOTE</p>
       <%= render "shared/destroy_confirmation_modal", path: note_path(@note), message: "Voulez-vous vraiment supprimer la note?" %>
     </div>
   </div>
