@@ -1,0 +1,21 @@
+.modal-confirmation-destroy {
+  border: solid black;
+  padding: 10px;
+  width: 90%;
+  position: fixed;
+  background: white;
+  z-index: 9;
+  top: 24px;
+}
+
+.message-confirmation-destroy p {
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.select-confirmation-destroy {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
