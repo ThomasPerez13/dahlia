@@ -1,9 +1,11 @@
-<div class="modal-confirmation-destroy d-none" data-modal-confirmation-to-destroy-target="modal">
-  <div class="message-confirmation-destroy">
-    <p><%= message %></p>
-  </div>
-  <div class="select-confirmation-destroy">
-    <%= link_to "Oui", path, data: {turbo_method: :delete}, class:"btn" %>
-    <%= link_to "Non", "#", data: { action:"click->modal-confirmation-to-destroy#displayModal" }, class:"btn" %>
+<div class="modal-container d-none" data-modal-confirmation-to-destroy-target="modal">
+  <div class="modal-confirmation-destroy">
+    <div class="message-confirmation-destroy">
+      <p><%= message %></p>
+    </div>
+    <div class="select-confirmation-destroy">
+      <%= link_to "Oui", path, data: {turbo_method: :delete}, class:"btn" %>
+      <%= link_to "Non", "#", data: { action:"click->modal-confirmation-to-destroy#displayModal" }, class:"btn" %>
+    </div>
   </div>
 </div>
