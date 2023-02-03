@@ -63,7 +63,7 @@
   <div class="d-none" data-see-all-target="allconsultations">
     <% unless @last_3_consultations_minus_one.empty? %> <%# on n'affiche rien si jamais le tableau des 3 dernières consultations est vide%>
 
-      <% @past_consultations_minus_one.each do |consultation| %>
+      <% @all_consultations_minus_one.each do |consultation| %>
         <%= link_to consultation_path(consultation.id) do %>
           <div class="consultation-card-pink" >
             <div class="consultation-card-pink-date">
@@ -84,7 +84,7 @@
     <%# Link to most ancient consultation with plus button %>
     <% unless @last_3_consultations_rest.nil? %> <%#  Lucie : on n'affiche rien si jamais il n'y a pas de dernière consultation %>
 
-      <% @past_consultations_rest.each do |consultation| %>
+      <% @all_consultations_rest.each do |consultation| %>
         <%= link_to consultation_path(consultation.id) do %>
           <div class="consultation-card-pink">
             <div class="consultation-card-pink-date">
