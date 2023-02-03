@@ -9,9 +9,9 @@
 
     <div class="patient-avatar">
       <% if @patient.gender == "Homme" %>
-          <%= image_tag "avatar_homme.svg" %>
+          <%= image_tag "icones/homme.svg" %>
       <% else %>
-          <%= image_tag "avatar_femme.svg" %>
+          <%= image_tag "icones/femme.svg" %>
       <% end %>
 
       <span class="patient-first-name"><%= @patient.first_name %></span>
