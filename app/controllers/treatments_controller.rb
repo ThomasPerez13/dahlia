@@ -24,10 +24,11 @@ class TreatmentsController < ApplicationController
     redirect_to consultation_path(@treatment.consultation)
 
   end
+
   def destroy
     @treatment = Treatment.find(params[:id])
     @treatment.destroy
-    redirect_to consultation_path(@treatment.consultation), status: :see_other
+    redirect_to consultation_path(@treatment.consultation), status: :see_other, info: "Le soin a bien été supprimé"
   end
 
   private
