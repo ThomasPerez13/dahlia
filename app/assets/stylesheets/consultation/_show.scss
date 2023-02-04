@@ -106,6 +106,22 @@
       }
     }
 
+    .consultation-edit-date-form {
+      background-color: white;
+      border: solid black;
+      width: 90%;
+      height: 32%;
+      margin: auto;
+    }
+
+    .consultation-edit-date-text-information {
+      color: black !important;
+      text-align: center;
+      font-size: 14px !important;
+      font-weight: bold !important;
+      margin-top: 12px !important;
+    }
+
     .card-patient-name-consultation {
       font-family: $headers-font;
       text-align: center;
@@ -215,7 +231,7 @@
     background-color: #F28476;
     height: 61px;
     padding: 0px 0px 0px 0px;
-    margin: 20px;
+    margin: 8px;
     min-width: min-content;
     box-shadow: none;
   }

@@ -44,23 +44,26 @@
         </div>
         <%# click to edit the consultation date - START %>
         <div class="text-date" data-controller="edit">
-          <p data-action="click->edit#displayForm"><%=l(@consultation.start_date, format: "%A %d %b %H:%M")%></p>
-          <div class="d-none" data-edit-target="form">
-            <%= simple_form_for @consultation do |f| %>
-              <div class="consultation_new">
-                <%= f.input :start_date, label: "Date & heure", placeholder: " ",
-                      as: :datetime,
-                      html5: true,
-                      label: false,
-                      required: false,
-                      wrapper_html: { class:" datefield-without-calendar"},
-                      input_html: { class:"input" },
-                      label_html: { class:"user-label" } %>
-              </div>
-              <div class="d-flex justify-content-center">
-                <%= f.button :submit, "Confirmer le changement", class: "btn btn-submit" %>
-              </div>
-            <% end %>
+          <p data-action="click->edit#displayFormDate"><%=l(@consultation.start_date, format: "%A %d %b %H:%M")%></p>
+          <div class="modal-container d-none" data-edit-target="formDate">
+            <div class="consultation-edit-date-form">
+              <p class="consultation-edit-date-text-information">Sélectionner la nouvelle date</p>
+              <%= simple_form_for @consultation do |f| %>
+                <div class="consultation_new">
+                  <%= f.input :start_date, label: "Date & heure", placeholder: " ",
+                        as: :datetime,
+                        html5: true,
+                        label: false,
+                        required: false,
+                        wrapper_html: { class:" datefield-without-calendar"},
+                        input_html: { class:"input" },
+                        label_html: { class:"user-label" } %>
+                </div>
+                <div class="d-flex justify-content-center" data-action="click->edit#displayFormDate">
+                  <%= f.button :submit, "Confirmer le changement", class: "btn btn-submit" %>
+                </div>
+              <% end %>
+            </div>
           </div>
         </div>
             </div>
