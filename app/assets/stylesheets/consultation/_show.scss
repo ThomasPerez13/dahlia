@@ -42,6 +42,13 @@
       align-items: center;
     }
 
+    .consultation-details-patient {
+      margin-bottom: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
     i.fa-solid.fa-location-dot {
       color: white;
       font-size: 14px;
@@ -71,6 +78,22 @@
       }
     }
 
+    .consultation-edit-nurse-form {
+      background-color: white;
+      border: solid black;
+      width: 90%;
+      height: 30%;
+      margin: auto;
+    }
+
+    .consultation-edit-nurse-text-information {
+      color: black !important;
+      text-align: center;
+      font-size: 14px !important;
+      font-weight: bold !important;
+      margin-top: 12px !important;
+    }
+
     .text-date {
       p {
         font-family: $headers-font;
@@ -79,7 +102,24 @@
         font-size: 14px;
         color: white;
         margin: 0;
+        padding-bottom: 8px;
       }
+    }
+
+    .consultation-edit-date-form {
+      background-color: white;
+      border: solid black;
+      width: 90%;
+      height: 32%;
+      margin: auto;
+    }
+
+    .consultation-edit-date-text-information {
+      color: black !important;
+      text-align: center;
+      font-size: 14px !important;
+      font-weight: bold !important;
+      margin-top: 12px !important;
     }
 
     .card-patient-name-consultation {
@@ -95,8 +135,7 @@
 
       h1 {
         color: $dark-rose;
-        font-size: 36px;
-        margin-bottom: 15px !important;
+        font-size: 24px;
       }
     }
   }
@@ -192,8 +231,7 @@
     background-color: #F28476;
     height: 61px;
     padding: 0px 0px 0px 0px;
-    margin: 20px;
-    margin-block: 33px;
+    margin: 8px;
     min-width: min-content;
     box-shadow: none;
   }

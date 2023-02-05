@@ -80,7 +80,12 @@
 }
 
 #consultation_user_id {
-  margin-bottom: 12px;
+  margin: 12px auto;
+}
+
+#consultation_start_date {
+  margin: 4px auto !important;
+  background-image: none;
 }
 
 .details-new-consultation {
