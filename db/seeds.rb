@@ -73,7 +73,7 @@ cons_thomas_alexandre_past3 = Consultation.create!(patient: alexandre, user: tho
 # CONSULTATIONS DE THOMAS
 # consultation du jour
 cons_thomas_alexandre_today = Consultation.create!(patient: alexandre, user: thomas, start_date: DateTime.parse("#{Date.today} 07:00 +0100"))
-cons_thomas_joseph_today = Consultation.create!(patient: joseph, user: thomas, start_date: DateTime.parse("#{Date.today} 08:30 +0100"))
+# cons_thomas_joseph_today = Consultation.create!(patient: joseph, user: thomas, start_date: DateTime.parse("#{Date.today} 08:30 +0100"))
 cons_thomas_catherine_today = Consultation.create!(patient: catherine, user: thomas, start_date: DateTime.parse("#{Date.today} 10:00 +0100"))
 cons_thomas_florent_today = Consultation.create!(patient: florent, user: thomas, start_date: DateTime.parse("#{Date.today} 11:00 +0100"))
 cons_thomas_jade_today = Consultation.create!(patient: jade, user: thomas, start_date: DateTime.parse("#{Date.today} 13:00 +0100"))
@@ -93,16 +93,17 @@ cons_thomas_catherine_mon_aft = Consultation.create!(patient: catherine, user: t
 cons_thomas_florent_mon_aft = Consultation.create!(patient: florent, user: thomas, start_date: DateTime.parse("#{Date.today.next_occurring(:monday).strftime} 16:00 +0100"))
 cons_thomas_alexandre_mon_aft = Consultation.create!(patient: alexandre, user: thomas, start_date: DateTime.parse("#{Date.today.next_occurring(:monday).strftime} 18:30:00 +0100"))
 
-puts "loading consultation each monday during one month at 08:30 for Joseph..."
+puts "loading consultation every other monday during two month at 08:30 for Joseph..."
 
 # add recuring consultation for Joseph
-recurrence_joseph_consultation = ConsultationGroup.create!(start_date: cons_thomas_joseph_mon.start_date, end_date: cons_thomas_joseph_mon.start_date.next_month, frequency: "weekly")
+recurrence_joseph_consultation = ConsultationGroup.create!(start_date: cons_thomas_joseph_mon.start_date, end_date: cons_thomas_joseph_mon.start_date.next_month.next_month, frequency: "two weeks")
 cons_thomas_joseph_mon.recurring = true
 cons_thomas_joseph_mon.consultation_group = recurrence_joseph_consultation
 
 
 def create_recurring_consultations(consultation, consultation_group)
   frequency = 7 if consultation_group.frequency == "weekly"
+  frequency = 14 if consultation_group.frequency == "two weeks"
   start_date_of_recurring_consultation = consultation_group.start_date.advance(days: "+#{frequency}".to_i)
 
   while Consultation.last.start_date.advance(days: "+#{frequency}".to_i).end_of_day <= consultation_group.end_date.end_of_day
@@ -122,7 +123,7 @@ create_recurring_consultations(cons_thomas_joseph_mon, recurrence_joseph_consult
 
 # Consultations du mardi
 cons_thomas_alexandre_tue = Consultation.create!(patient: alexandre, user: thomas, start_date: DateTime.parse("#{Date.today.next_occurring(:tuesday).strftime} 07:00 +0100"))
-cons_thomas_joseph_tue = Consultation.create!(patient: joseph, user: thomas, start_date: DateTime.parse("#{Date.today.next_occurring(:tuesday).strftime} 08:30 +0100"))
+# cons_thomas_joseph_tue = Consultation.create!(patient: joseph, user: thomas, start_date: DateTime.parse("#{Date.today.next_occurring(:tuesday).strftime} 08:30 +0100"))
 cons_thomas_catherine_tue = Consultation.create!(patient: catherine, user: thomas, start_date: DateTime.parse("#{Date.today.next_occurring(:tuesday).strftime} 10:00 +0100"))
 cons_thomas_florent_tue = Consultation.create!(patient: florent, user: thomas, start_date: DateTime.parse("#{Date.today.next_occurring(:tuesday).strftime} 11:00 +0100"))
 cons_thomas_jade_tue = Consultation.create!(patient: jade, user: thomas, start_date: DateTime.parse("#{Date.today.next_occurring(:tuesday).strftime} 13:00 +0100"))
@@ -132,7 +133,7 @@ cons_thomas_alexandre_tue_aft = Consultation.create!(patient: alexandre, user: t
 
 # Consultations du mercredi
 cons_thomas_alexandre_wed = Consultation.create!(patient: alexandre, user: thomas, start_date: DateTime.parse("#{Date.today.next_occurring(:wednesday).strftime} 07:00 +0100"))
-cons_thomas_joseph_wed = Consultation.create!(patient: joseph, user: thomas, start_date: DateTime.parse("#{Date.today.next_occurring(:wednesday).strftime} 08:30 +0100"))
+# cons_thomas_joseph_wed = Consultation.create!(patient: joseph, user: thomas, start_date: DateTime.parse("#{Date.today.next_occurring(:wednesday).strftime} 08:30 +0100"))
 cons_thomas_catherine_wed = Consultation.create!(patient: catherine, user: thomas, start_date: DateTime.parse("#{Date.today.next_occurring(:wednesday).strftime} 10:00 +0100"))
 cons_thomas_florent_wed = Consultation.create!(patient: florent, user: thomas, start_date: DateTime.parse("#{Date.today.next_occurring(:wednesday).strftime} 11:00 +0100"))
 cons_thomas_jade_wed = Consultation.create!(patient: jade, user: thomas, start_date: DateTime.parse("#{Date.today.next_occurring(:wednesday).strftime} 13:00 +0100"))
@@ -142,7 +143,7 @@ cons_thomas_alexandre_wed_aft = Consultation.create!(patient: alexandre, user: t
 
 # Consultations du jeudi
 cons_thomas_alexandre_thu = Consultation.create!(patient: alexandre, user: thomas, start_date: DateTime.parse("#{Date.today.next_occurring(:thursday).strftime} 07:00 +0100"))
-cons_thomas_joseph_thu = Consultation.create!(patient: joseph, user: thomas, start_date: DateTime.parse("#{Date.today.next_occurring(:thursday).strftime} 08:30 +0100"))
+# cons_thomas_joseph_thu = Consultation.create!(patient: joseph, user: thomas, start_date: DateTime.parse("#{Date.today.next_occurring(:thursday).strftime} 08:30 +0100"))
 cons_thomas_catherine_thu = Consultation.create!(patient: catherine, user: thomas, start_date: DateTime.parse("#{Date.today.next_occurring(:thursday).strftime} 10:00 +0100"))
 cons_thomas_florent_thu = Consultation.create!(patient: florent, user: thomas, start_date: DateTime.parse("#{Date.today.next_occurring(:thursday).strftime} 11:00 +0100"))
 cons_thomas_jade_thu = Consultation.create!(patient: jade, user: thomas, start_date: DateTime.parse("#{Date.today.next_occurring(:thursday).strftime} 13:00 +0100"))
@@ -152,7 +153,7 @@ cons_thomas_alexandre_thu_aft = Consultation.create!(patient: alexandre, user: t
 
 # Consultations du vendredi
 cons_thomas_alexandre_fri = Consultation.create!(patient: alexandre, user: thomas, start_date: DateTime.parse("#{Date.today.next_occurring(:friday).strftime} 07:00 +0100"))
-cons_thomas_joseph_fri = Consultation.create!(patient: joseph, user: thomas, start_date: DateTime.parse("#{Date.today.next_occurring(:friday).strftime} 08:30 +0100"))
+# cons_thomas_joseph_fri = Consultation.create!(patient: joseph, user: thomas, start_date: DateTime.parse("#{Date.today.next_occurring(:friday).strftime} 08:30 +0100"))
 cons_thomas_catherine_fri = Consultation.create!(patient: catherine, user: thomas, start_date: DateTime.parse("#{Date.today.next_occurring(:friday).strftime} 10:00 +0100"))
 cons_thomas_florent_fri = Consultation.create!(patient: florent, user: thomas, start_date: DateTime.parse("#{Date.today.next_occurring(:friday).strftime} 11:00 +0100"))
 cons_thomas_jade_fri = Consultation.create!(patient: jade, user: thomas, start_date: DateTime.parse("#{Date.today.next_occurring(:friday).strftime} 13:00 +0100"))
@@ -465,12 +466,12 @@ Treatment.create!(category: "Diabétique", done: false, content: "Administrer 10
 
 # Joseph, Louise, Ancelina - Prise de sang
 # Thomas > Joseph
-Treatment.create!(category: "Injection", done: false, content: "sous cutanée (EPO)", consultation: cons_thomas_joseph_today)
-Treatment.create!(category: "Injection", done: false, content: "sous cutanée (EPO)", consultation: cons_thomas_joseph_mon)
-Treatment.create!(category: "Injection", done: false, content: "sous cutanée (EPO)", consultation: cons_thomas_joseph_tue)
-Treatment.create!(category: "Injection", done: false, content: "sous cutanée (EPO)", consultation: cons_thomas_joseph_wed)
-Treatment.create!(category: "Injection", done: false, content: "sous cutanée (EPO)", consultation: cons_thomas_joseph_thu)
-Treatment.create!(category: "Injection", done: false, content: "sous cutanée (EPO)", consultation: cons_thomas_joseph_fri)
+
+puts "loading treatment to joseph..."
+
+joseph.consultations.each do |consultation|
+  Treatment.create!(category: "Injection", done: false, content: "sous cutanée (EPO)", consultation: consultation)
+end
 
 # Nicolas > Louise
 Treatment.create!(category: "Autre", done: false, content: "Surveillance des constantes", consultation: cons_nicolas_louise_mon)
