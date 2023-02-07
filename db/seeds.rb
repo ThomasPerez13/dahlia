@@ -301,31 +301,14 @@ puts "loading treatments..."
 # Ginette - Points de suture
 
 
-# Alexandre, Simone et Zdenek - plaie à panser et nettoyer + doliprane
-# Thomas > Alexandre
+# Alexandre, Simone et Zdenek
+# Thomas > Alexandre - Diabétique
 Treatment.create!(category: "Diabétique", done: true, content: "Mesure de la glycémie", consultation: cons_thomas_alexandre_past1)
-Treatment.create!(category: "Diabétique", done: false, content: "Mesure de la glycémie", consultation: cons_thomas_alexandre_today)
-Treatment.create!(category: "Diabétique", done: false, content: "Injection d'insuline", consultation: cons_thomas_alexandre_today)
 
-Treatment.create!(category: "Pansement", done: false, content: "Renouveler le pansement", consultation: cons_thomas_alexandre_mon)
-Treatment.create!(category: "Hygiène", done: false, content: "Nettoyer la plaie", consultation: cons_thomas_alexandre_mon)
-Treatment.create!(category: "Médicament", done: false, content: "Administrer 2mg de doliprane", consultation: cons_thomas_alexandre_mon)
-
-Treatment.create!(category: "Pansement", done: false, content: "Renouveler le pansement", consultation: cons_thomas_alexandre_tue)
-Treatment.create!(category: "Hygiène", done: false, content: "Nettoyer la plaie", consultation: cons_thomas_alexandre_tue)
-Treatment.create!(category: "Médicament", done: false, content: "Administrer 2mg de doliprane", consultation: cons_thomas_alexandre_tue)
-
-Treatment.create!(category: "Pansement", done: false, content: "Renouveler le pansement", consultation: cons_thomas_alexandre_wed)
-Treatment.create!(category: "Hygiène", done: false, content: "Nettoyer la plaie", consultation: cons_thomas_alexandre_wed)
-Treatment.create!(category: "Médicament", done: false, content: "Administrer 2mg de doliprane", consultation: cons_thomas_alexandre_wed)
-
-Treatment.create!(category: "Pansement", done: false, content: "Renouveler le pansement", consultation: cons_thomas_alexandre_thu)
-Treatment.create!(category: "Hygiène", done: false, content: "Nettoyer la plaie", consultation: cons_thomas_alexandre_thu)
-Treatment.create!(category: "Médicament", done: false, content: "Administrer 2mg de doliprane", consultation: cons_thomas_alexandre_thu)
-
-Treatment.create!(category: "Pansement", done: false, content: "Renouveler le pansement", consultation: cons_thomas_alexandre_fri)
-Treatment.create!(category: "Hygiène", done: false, content: "Nettoyer la plaie", consultation: cons_thomas_alexandre_fri)
-Treatment.create!(category: "Médicament", done: false, content: "Administrer 2mg de doliprane", consultation: cons_thomas_alexandre_fri)
+alexandre.consultations.each do |consultation|
+  Treatment.create!(category: "Diabétique", done: false, content: "Mesure de la glycémie", consultation: consultation)
+  Treatment.create!(category: "Diabétique", done: false, content: "Injection d'insuline", consultation: consultation)
+end
 
 # Nicolas > Simone
 Treatment.create!(category: "Pansement", done: false, content: "Renouveler le pansement", consultation: cons_nicolas_simone_mon)
