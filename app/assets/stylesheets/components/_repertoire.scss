@@ -1,0 +1,37 @@
+.add-patient-btn{
+  display: flex;
+  justify-content: flex-end;
+
+  img {
+    height: 5vh;
+    margin: 1vh 1vh 0vh 0vh;
+  }
+}
+
+.repertoire-generale-div {
+  background-color: white;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  overflow: auto;
+
+  h3 {
+    color: $rose;
+    line-height: 34px;
+    font-size: 28px;
+    text-align: center;
+    letter-spacing: 9px;
+    padding-bottom: 20px;
+  }
+}
+
+#query_query {
+  border: 1px solid $grey !important;
+  border-radius: 75px !important;
+  font-size: 16px;
+  text-align: center;
+  width: 42vh;
+  padding: 1vh !important;
+}
