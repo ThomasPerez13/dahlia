@@ -61,10 +61,6 @@
   }
 }
 
-// .formulaire {
-//   padding: 20px 0px 40px 0px;
-// }
-
 // NOUVELLE CONSULTATION FORM
 
 .consultation_new_title {
@@ -111,6 +107,33 @@
     align-items: center;
     flex-direction: column;
   }
+}
+
+// MODIFIER LE PATIENT FORM
+.container_modify_patient {
+  padding: 40px 25px 80px 25px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  overflow: auto;
+
+
+  h3 {
+    color: $rose;
+    line-height: 34px;
+    font-size: 28px;
+    text-align: center;
+    letter-spacing: 9px;
+    padding-bottom: 20px;
+    margin: 2vh 0vh 4vh 0vh;
+  }
+}
+
+.edit_patient {
+  display: flex;
+  flex-direction: column;
 }
 
 // INPUTS DES FORMS
