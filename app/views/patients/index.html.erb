@@ -5,9 +5,10 @@
 </div>
 
 <div class="repertoire-generale-div">
-    <h3>PATIENTS</h3>
+  <h3>PATIENTS</h3>
 
-  <div data-controller="search-patients">
+  <div data-controller="search-patients"></div>
+
     <%= simple_form_for :query, url: patients_path, method: :get,
       html: {class: "mb-4"}, data: { search_patients_target: "form"}  do |f| %>
       <%= f.input :query,
