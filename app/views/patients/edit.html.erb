@@ -1,5 +1,8 @@
-<div class="container-edit-patient w-100 px-3">
-  <h2 class="text-center">MODIFIER UN PATIENT</h2>
+<div class="back-black-button">
+  <%= image_tag "icones/retour.svg" %>
+</div>
+<div class="container_modify_patient">
+  <h3>MODIFIER LE PATIENT</h3>
   <div class="formulaire">
     <%= simple_form_for(@patient) do |f| %>
       <%= f.input :first_name, label: "Prénom", placeholder: " ",
@@ -52,7 +55,7 @@
           input_html: { class:"input"},
           label_html: {class:"user-label"} %>
       <%= f.input :blood_type, as: :radio_buttons, label: "Groupe sanguin", collection: Patient::BLOOD_TYPE %>
-      <%= f.button :submit, "MODIFIER LE PATIENT", class: "btn-edit" %>
-    </div>
-  <% end %>
+      <%= f.button :submit, "MODIFIER", class: "btn" %>
+    <% end %>
+  </div>
 </div>

@@ -18,6 +18,8 @@
     padding: 0;
     background-color: $rose;
     box-shadow: 0 -1px 12px #807f7f;
+    display: flex;
+    align-items: center;
 
     .return-bouton {
       margin-top: 10px;
