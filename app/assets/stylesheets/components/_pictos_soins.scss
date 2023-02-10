@@ -18,14 +18,16 @@
   cursor: pointer;
   box-sizing: border-box;
   width: 100%;
-  font-size: 14px;
+  font-size: 8px;
   text-align: center;
   font-weight: 600;
-  padding: 72px 10px 15px 10px;
+  padding: 72px 15px 15px 10px;
   border: 1px solid #EAEAEA;
   background-color: white;
   margin-bottom: 15px;
   border-radius: 35px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .category-selector:checked + label {
@@ -46,40 +48,76 @@
   background-image: asset-url("soins/pansement.svg");
 }
 
+#treatment_category_pansement:checked + label {
+  background-image: asset-url("soins/pansement-white.svg");
+}
+
 #treatment_category_diabétique + label {
   background-image: asset-url("soins/diabete.svg");
+}
+
+#treatment_category_diabétique:checked + label {
+  background-image: asset-url("soins/diabete-white.svg");
 }
 
 #treatment_category_injection + label {
   background-image: asset-url("soins/injection.svg");
 }
 
+#treatment_category_injection:checked + label {
+  background-image: asset-url("soins/injection-white.svg");
+}
+
 #treatment_category_prélèvement + label {
   background-image: asset-url("soins/prelevement.svg");
+}
+
+#treatment_category_prélèvement:checked + label {
+  background-image: asset-url("soins/prelevement-white.svg");
 }
 
 #treatment_category_perfusion + label {
   background-image: asset-url("soins/perfusion.svg");
 }
 
+#treatment_category_perfusion:checked + label {
+  background-image: asset-url("soins/perfusion-white.svg");
+}
+
 #treatment_category_hygiène + label {
   background-image: asset-url("soins/hygiene.svg");
+}
+
+#treatment_category_hygiène:checked + label {
+  background-image: asset-url("soins/hygiene-white.svg");
 }
 
 #treatment_category_médicament + label {
   background-image: asset-url("soins/medicament.svg");
 }
 
+#treatment_category_médicament:checked + label {
+  background-image: asset-url("soins/medicament-white.svg");
+}
+
 #treatment_category_aide_domicile + label {
   background-image: asset-url("soins/aide.svg");
+}
+
+#treatment_category_aide_domicile:checked + label {
+  background-image: asset-url("soins/aide-white.svg");
 }
 
 #treatment_category_autre + label {
   background-image: asset-url("soins/autre.svg");
 }
 
+#treatment_category_autre:checked + label {
+  background-image: asset-url("soins/autre-white.svg");
+}
+
 .treatment_category:checked + label {
-  background-color: $grey-typo;
+  background-color: $grey;
   color: white;
 }
 
