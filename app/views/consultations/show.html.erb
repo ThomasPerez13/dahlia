@@ -1,17 +1,23 @@
-<div class="back-white-button">
-  <%= image_tag "icones/white-retour.svg" %>
-</div>
 
 <div class="show-consultation">
+<div class="patient-show-header">
+  <div class="back-arrow">
+      <%= image_tag "icones/white-retour.svg" %>
+  </div>
+  <%= link_to patient_path(@consultation.patient) do %>
+    <div class="information-btn">
+      <%= image_tag "icones/informations-white-btn.svg" %>
+    </div>
+  <% end %>
+
+</div>
   <div class="consultation-card">
 
     <div class="card-info">
-      <%= link_to patient_path(@consultation.patient) do %>
-          <div class="card-patient-name-consultation">
-            <h6><%= @consultation.patient.first_name %></h6>
-            <h1><%= @consultation.patient.last_name.upcase %></h1>
-          </div>
-      <% end %>
+      <div class="card-patient-name-consultation">
+        <h6><%= @consultation.patient.first_name %></h6>
+        <h1><%= @consultation.patient.last_name.upcase %></h1>
+      </div>
 
       <div class="consultation-details-patient">
         <%# click to edit the nurse in charge of the consultation - START %>
