@@ -1,32 +1,31 @@
-<div>
-  <div class="container-sm">
-    <div class="d-flex justify-content-between align-items-center">
-      <h1 class="h2 my-3 d-flex justify-content-center">Patients du cabinet</h1>
-      <%= link_to "+", new_patient_path,class:"btn btn-create" %>
-    </div>
-    <div data-controller="search-patients">
-      <%= simple_form_for :query, url: patients_path, method: :get,
-        html: {class: "mb-4"}, data: { search_patients_target: "form"}  do |f| %>
-        <div class="input-group">
+<div class="add-patient-btn">
+  <%= link_to new_patient_path do %>
+    <%= image_tag "icones/add-btn.svg" %>
+  <% end %>
+</div>
 
-        </div>
-        <%# <%= f.label "Chercher un patient", class:"" %>
-        <%= f.input :query,
-          label: "Chercher un patient",
-          placeholder: " ",
-          required: false,
-          wrapper_html: { class:"input-groupe" },
-          input_html: {
-            class:"input",
-            data: {
-              search_patients_target: "input",
-              action: "keyup->search-patients#update"
-            }
-          },
-          label_html: {class:"user-label"},
-          value: params[:query]
-        %>
-      <% end %>
-      <%= render "list", patients: @patients %>
-  </div>
+<div class="repertoire-generale-div">
+  <h3>PATIENTS</h3>
+
+  <div data-controller="search-patients"></div>
+
+    <%= simple_form_for :query, url: patients_path, method: :get,
+      html: {class: "mb-4"}, data: { search_patients_target: "form"}  do |f| %>
+      <%= f.input :query,
+        label: "Chercher un patient",
+        placeholder: " ",
+        required: false,
+        wrapper_html: { class:"input-groupe" },
+        input_html: {
+          class:"input",
+          data: {
+            search_patients_target: "input",
+            action: "keyup->search-patients#update"
+          }
+        },
+        label_html: {class:"user-label"},
+        value: params[:query]
+      %>
+    <% end %>
+    <%= render "list", patients: @patients %>
 </div>

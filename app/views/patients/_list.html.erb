@@ -5,13 +5,13 @@
         <div class="card-index-patients">
           <div class="card-consult-header">
             <% if patient.gender == "Homme" %>
-              <%= image_tag "avatar_homme.svg" %>
+              <%= image_tag "icones/homme.svg" %>
             <% else %>
-              <%= image_tag "avatar_femme.svg" %>
+              <%= image_tag "icones/femme.svg" %>
             <% end %>
             <div class="card-info">
               <div class="card-patient-name">
-                <%= patient.first_name %> <%= patient.last_name %>
+                <%= patient.last_name.upcase %> <%= patient.first_name %>
               </div>
             </div>
           </div>
