@@ -1,3 +1,3 @@
 class ConsultationGroup < ApplicationRecord
-  has_many :consultations
+  has_many :consultations, dependent: :destroy
 end
