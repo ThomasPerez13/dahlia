@@ -1,3 +1,24 @@
+.patient-show-header {
+  display: flex;
+  width: 100%;
+  position: absolute;
+  justify-content: space-between;
+
+  .back-arrow img {
+    margin-top: 13px;
+    margin-left: 10px;
+    width: 10px;
+    margin-bottom: 4vh;
+  }
+
+  .information-btn img {
+    margin-top: 12px;
+    margin-right: 10px;
+    width: 22px;
+    margin-bottom: 4vh;
+  }
+}
+
 .show-consultation {
   display: flex;
   flex-direction: column;
@@ -187,7 +208,7 @@
         font-size: 18px;
         color: black;
         text-overflow: ellipsis;
-        line-height: 13px;
+        margin-top: -4px;
       }
     }
 
