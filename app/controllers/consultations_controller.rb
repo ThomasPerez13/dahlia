@@ -17,6 +17,8 @@ class ConsultationsController < ApplicationController
 
     @favorite_notes = Note.joins(:creation_consultation).where(favorite: true, creation_consultation: { patient_id: @patient.id })
     @final_notes = @favorite_notes + @notes_from_previous_consultations
+    # line below is usefull if we want to modify the recurency of a consultation_group
+    # @frequency = %w[daily weekly]
   end
 
   def new
@@ -27,7 +29,6 @@ class ConsultationsController < ApplicationController
   end
 
   def create
-    # raise
     @consultation = Consultation.new(consultation_params)
 
     if params[:consultation][:recurring].nil?
