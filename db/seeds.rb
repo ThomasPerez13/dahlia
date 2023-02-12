@@ -174,7 +174,7 @@ puts "loading treatments and notes for Jade..."
 
 jade.consultations.each do |consultation|
   Treatment.create!(category: "Autre", done: false, content: "Ablation de points", consultation: consultation)
-  Note.create!(content: "Rassurer la patiente pendant la suture", favorite: true, creation_consultation: consultation)
+  Note.create!(content: "Rassurer la patiente pendant la suture", favorite: false, creation_consultation: consultation)
 end
 
 # Create Joseph's consultation
@@ -188,7 +188,7 @@ puts "loading treatments and notes for joseph..."
 
 joseph.consultations.each do |consultation|
   Treatment.create!(category: "Injection", done: false, content: "sous cutanée (EPO)", consultation: consultation)
-  Note.create!(content: "Attention chien méchant, attendre au portail", favorite: true, creation_consultation: consultation)
+  Note.create!(content: "Attention chien méchant, attendre au portail", favorite: false, creation_consultation: consultation)
 end
 
 def weekly_consultations(patient, user, start_time)
@@ -275,7 +275,7 @@ puts "loading treatments and notes for Armand..."
 armand.consultations.each do |consultation|
   Treatment.create!(category: "Perfusion", done: false, content: "Poser la perfusion", consultation: consultation)
   Treatment.create!(category: "Injection", done: false, content: "Injecter 12 mg d'insuline", consultation: consultation)
-  Note.create!(content: "Patient sensible lors des piqures, rassurer et injecter délicatement", favorite: true, creation_consultation: consultation)
+  Note.create!(content: "Patient sensible lors des piqures, rassurer et injecter délicatement", favorite: false, creation_consultation: consultation)
 end
 
 # Cécile > Bellamy
@@ -284,7 +284,7 @@ puts "loading treatments and notes for Bellamy..."
 bellamy.consultations.each do |consultation|
   Treatment.create!(category: "Autre", done: false, content: "Pose alimentation parentéral", consultation: consultation)
   Treatment.create!(category: "Hygiène", done: false, content: "aide à la douche", consultation: consultation)
-  Note.create!(content: "Patient sensible lors des piqures, rassurer et injecter délicatement", favorite: true, creation_consultation: consultation)
+  Note.create!(content: "Patient sensible lors des piqures, rassurer et injecter délicatement", favorite: false, creation_consultation: consultation)
 end
 
 # Nicolas > Peppin
@@ -310,7 +310,7 @@ puts "loading treatments and notes for Louise..."
 
 louise.consultations.each do |consultation|
   Treatment.create!(category: "Autre", done: false, content: "Surveillance des constantes", consultation: consultation)
-  Note.create!(content: "Attention chien méchant, attendre au portail", favorite: true, creation_consultation: consultation)
+  Note.create!(content: "Attention chien méchant, attendre au portail", favorite: false, creation_consultation: consultation)
 end
 
 # Cécile > Ancelina
@@ -318,7 +318,7 @@ puts "loading treatments and notes for Ancelina..."
 
 ancelina.consultations.each do |consultation|
   Treatment.create!(category: "Prélèvement", done: false, content: "Prélever 5ml de sang", consultation: consultation)
-  Note.create!(content: "Attention chien méchant, attendre au portail", favorite: true, creation_consultation: consultation)
+  Note.create!(content: "Attention chien méchant, attendre au portail", favorite: false, creation_consultation: consultation)
 end
 
 # Nicolas > Clémentine
@@ -326,7 +326,7 @@ puts "loading treatments and notes for Clémentine..."
 
 clementine.consultations.each do |consultation|
   Treatment.create!(category: "Perfusion", done: false, content: "hydratation sous cutanée", consultation: consultation)
-  Note.create!(content: "Rassurer la patiente pendant la suture", favorite: true, creation_consultation: consultation)
+  Note.create!(content: "Rassurer la patiente pendant la suture", favorite: false, creation_consultation: consultation)
 end
 
 # Cécile > Ginette
@@ -334,7 +334,7 @@ puts "loading treatments and notes for Ginette..."
 
 ginette.consultations.each do |consultation|
   Treatment.create!(category: "Prélèvement", done: false, content: "Prélèvement sanguin", consultation: consultation)
-  Note.create!(content: "Rassurer la patiente pendant la suture", favorite: true, creation_consultation: consultation)
+  Note.create!(content: "Rassurer la patiente pendant la suture", favorite: false, creation_consultation: consultation)
 end
 
 puts "End of seeds!"
