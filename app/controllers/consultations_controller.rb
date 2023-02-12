@@ -21,18 +21,20 @@ class ConsultationsController < ApplicationController
 
   def new
     @consultation = Consultation.new
+    @frequency = %w[daily weekly]
     members_of_all_my_team
     @consultation.build_consultation_group # Create a consultation_group (nested in the "new consultation" form)
   end
 
   def create
+    # raise
     @consultation = Consultation.new(consultation_params)
 
     if params[:consultation][:recurring].nil?
       @consultation.recurring = false
       @consultation.user = current_user if @consultation.user.nil? # To check later
     else
-      @consultation_group = ConsultationGroup.new(start_date: @consultation.start_date, end_date: params[:consultation][:consultation_groups][:end_date], frequency: "weekly")
+      @consultation_group = ConsultationGroup.new(start_date: @consultation.start_date, end_date: params[:consultation][:consultation_groups][:end_date], frequency: params[:consultation][:consultation_groups][:frequency])
       @consultation_group.save
       @consultation.consultation_group = @consultation_group
       @consultation.user = current_user if @consultation.user.nil? # To check later
@@ -56,6 +58,7 @@ class ConsultationsController < ApplicationController
   private
 
   def create_recurring_consultations(consultation, consultation_group)
+    frequency = 1 if consultation_group.frequency == "daily"
     frequency = 7 if consultation_group.frequency == "weekly"
     start_date_of_recurring_consultation = consultation_group.start_date.advance(days: "+#{frequency}".to_i)
 
@@ -91,6 +94,6 @@ class ConsultationsController < ApplicationController
   end
 
   def consultation_params
-    params.require(:consultation).permit(:start_date, :patient_id, :user_id, :recurring, consultation_groups_attributes: :end_date)
+    params.require(:consultation).permit(:start_date, :patient_id, :user_id, :recurring, consultation_groups_attributes: [:end_date, :frequency])
   end
 end
