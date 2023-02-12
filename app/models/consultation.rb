@@ -4,8 +4,8 @@ class Consultation < ApplicationRecord
   belongs_to :consultation_group, optional: true
   accepts_nested_attributes_for :consultation_group
 
-  has_many :notes, foreign_key: :creation_consultation_id
-  has_many :treatments
+  has_many :notes, foreign_key: :creation_consultation_id, dependent: :destroy
+  has_many :treatments, dependent: :destroy
 
   validates :start_date, presence: true
 
