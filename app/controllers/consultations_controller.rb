@@ -23,7 +23,7 @@ class ConsultationsController < ApplicationController
 
   def new
     @consultation = Consultation.new
-    @frequency = %w[daily weekly]
+    @frequency = %w[journalière hebdomadaire]
     members_of_all_my_team
     @consultation.build_consultation_group # Create a consultation_group (nested in the "new consultation" form)
   end
@@ -59,8 +59,8 @@ class ConsultationsController < ApplicationController
   private
 
   def create_recurring_consultations(consultation, consultation_group)
-    frequency = 1 if consultation_group.frequency == "daily"
-    frequency = 7 if consultation_group.frequency == "weekly"
+    frequency = 1 if consultation_group.frequency == "journalière"
+    frequency = 7 if consultation_group.frequency == "hebdomadaire"
     start_date_of_recurring_consultation = consultation_group.start_date.advance(days: "+#{frequency}".to_i)
 
     while Consultation.last.start_date.advance(days: "+#{frequency}".to_i).end_of_day <= consultation_group.end_date.end_of_day
