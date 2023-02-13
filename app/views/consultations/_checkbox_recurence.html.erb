@@ -1,25 +1,23 @@
           <%# START - Checkbox and end_date field to make the consultation recurrent %>
             <%# Checkbox %>
-            <div class="" data-controller="edit">
-              <div>
-                <div class="consultation_new" data-action="click->edit#displayFormDate">
-                  <%= f.input :recurring,
-                              as: :boolean,
-                              checked_value: true,
-                              boolean_style: :inline,
-                              include_hidden: false,
-                              label: " Soin régulier ?",
-                              placeholder: " ",
-                              wrapper_html: { class:"input-groupe" },
-                              input_html: { class:"" },
-                              label_html: { class:"" } %>
-                </div>
+            <div class="consultation_new" data-controller="edit">
+              <div class="checkbox-recurrence" data-action="click->edit#displayFormDate">
+                <%= f.input :recurring,
+                            as: :boolean,
+                            checked_value: true,
+                            boolean_style: :inline,
+                            include_hidden: false,
+                            label: " Soin régulier ?",
+                            placeholder: " ",
+                            wrapper_html: { class:"input-groupe" },
+                            input_html: { class:"" },
+                            label_html: { class:"" } %>
               </div>
 
               <div class="d-none" data-edit-target="formDate">
                 <%# end_date %>
                 <%= f.simple_fields_for :consultation_groups do |m| %>
-                  <div class="consultation_new">
+                  <div class="recurrence-details">
                     <p>Définir une date de fin et une fréquence</p>
                     <%= m.input :end_date,
                                 label: "Date & heure",
