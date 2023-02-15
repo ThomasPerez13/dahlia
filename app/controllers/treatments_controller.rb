@@ -1,6 +1,7 @@
 class TreatmentsController < ApplicationController
   def new
     @treatment = Treatment.new()
+    @consulation = Consultation.find(params[:consultation_id])
   end
 
   def create

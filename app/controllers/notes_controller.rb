@@ -1,6 +1,7 @@
 class NotesController < ApplicationController
   def new
     @note = Note.new
+    @consulation = Consultation.find(params[:consultation_id])
   end
 
   def create
