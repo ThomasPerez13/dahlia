@@ -105,8 +105,16 @@
       background-color: white;
       border: solid black;
       width: 90%;
-      height: 30%;
       margin: auto;
+    }
+
+    .consultation-edit-close-modal {
+      color: black !important;
+      text-align: right;
+      font-size: 14px !important;
+      font-weight: bold !important;
+      padding-bottom: 0px !important;
+      padding: 4px 8px 0px 0px !important;
     }
 
     .consultation-edit-nurse-text-information {
@@ -133,7 +141,6 @@
       background-color: white;
       border: solid black;
       width: 90%;
-      height: 32%;
       margin: auto;
     }
 

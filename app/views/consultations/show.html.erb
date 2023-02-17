@@ -25,6 +25,7 @@
           <p data-action="click->edit#displayFormNurse"><i class="fa-solid fa-user-nurse"></i> <%= @consultation.user.first_name %>  <%= @consultation.user.last_name %></p>
           <div class="modal-container d-none" data-edit-target="formNurse">
             <div class="consultation-edit-nurse-form">
+              <p class="consultation-edit-close-modal" data-action="click->edit#displayFormNurse">X</p>
               <p class="consultation-edit-nurse-text-information">Sélectionner le nouvel infirmier</p>
               <%= simple_form_for @consultation do |f| %>
                 <div class="consultation_new">
@@ -53,6 +54,7 @@
           <p data-action="click->edit#displayFormDate"><%=l(@consultation.start_date, format: "%A %d %b %H:%M")%></p>
           <div class="modal-container d-none" data-edit-target="formDate">
             <div class="consultation-edit-date-form">
+              <p class="consultation-edit-close-modal" data-action="click->edit#displayFormDate">X</p>
               <p class="consultation-edit-date-text-information">Sélectionner la nouvelle date</p>
               <%= simple_form_for @consultation do |f| %>
                 <div class="consultation_new">
