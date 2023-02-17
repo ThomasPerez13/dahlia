@@ -2,9 +2,15 @@
 <div class="show-consultation">
 <div class="patient-show-header">
   <div class="back-arrow">
-    <%= link_to url_for(:back) do %>
-      <%= image_tag "icones/retour.svg" %>
-    <% end %>
+    <% if params[:patient_id].nil?  %>
+      <%= link_to consultations_path do %>
+        <%= image_tag "icones/retour.svg" %>
+      <% end %>
+    <% else  %>
+      <%= link_to patient_path(params[:patient_id]) do %>
+        <%= image_tag "icones/retour.svg" %>
+      <% end %>
+    <% end  %>
   </div>
   <%= link_to patient_path(@consultation.patient) do %>
     <div class="information-btn">
@@ -27,6 +33,7 @@
           <p data-action="click->edit#displayFormNurse"><i class="fa-solid fa-user-nurse"></i> <%= @consultation.user.first_name %>  <%= @consultation.user.last_name %></p>
           <div class="modal-container d-none" data-edit-target="formNurse">
             <div class="consultation-edit-nurse-form">
+              <p class="consultation-edit-close-modal" data-action="click->edit#displayFormNurse">X</p>
               <p class="consultation-edit-nurse-text-information">Sélectionner le nouvel infirmier</p>
               <%= simple_form_for @consultation do |f| %>
                 <div class="consultation_new">
@@ -55,6 +62,7 @@
           <p data-action="click->edit#displayFormDate"><%=l(@consultation.start_date, format: "%A %d %b %H:%M")%></p>
           <div class="modal-container d-none" data-edit-target="formDate">
             <div class="consultation-edit-date-form">
+              <p class="consultation-edit-close-modal" data-action="click->edit#displayFormDate">X</p>
               <p class="consultation-edit-date-text-information">Sélectionner la nouvelle date</p>
               <%= simple_form_for @consultation do |f| %>
                 <div class="consultation_new">
@@ -89,23 +97,23 @@
         <div class="checkbox-wrapper">
           <div class="d-flex">
             <% case treatment.category  %>
-            <% when "Injection" %>
+            <% when "INJECTION" %>
               <%= image_tag "soins/injection.svg", class: "icones-soins" %>
-            <% when "Pansement" %>
+            <% when "PANSEMENT" %>
               <%= image_tag "soins/pansement.svg", class: "icones-soins" %>
-            <% when "Prélèvement" %>
+            <% when "PRELEVEMENT" %>
               <%= image_tag "soins/prelevement.svg", class: "icones-soins" %>
-            <% when "Perfusion" %>
+            <% when "PERFUSION" %>
               <%= image_tag "soins/perfusion.svg", class: "icones-soins" %>
-            <% when "Hygiène" %>
+            <% when "HYGIENE" %>
               <%= image_tag "soins/hygiene.svg", class: "icones-soins" %>
-            <% when "Aide\ domicile" %>
+            <% when "SONDAGE" %>
               <%= image_tag "soins/aide.svg", class: "icones-soins" %>
-            <% when "Médicament" %>
+            <% when "MEDICAMENT" %>
               <%= image_tag "soins/medicament.svg", class: "icones-soins" %>
-            <% when "Diabétique" %>
+            <% when "DIABETE" %>
               <%= image_tag "soins/diabete.svg", class: "icones-soins" %>
-            <% when "Autre" %>
+            <% when "AUTRE" %>
               <%= image_tag "soins/autre.svg", class: "icones-soins" %>
             <% end %>
             <div class="card-soin-text">

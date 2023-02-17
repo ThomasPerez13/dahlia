@@ -4,7 +4,7 @@
     <% unless @last_3_consultations_minus_one.empty? %> <%# Lucie : on n'affiche rien si jamais le tableau des 3 dernières consultations est vide%>
 
       <% @last_3_consultations_minus_one.each do |consultation| %>
-        <%= link_to consultation_path(consultation.id) do %>
+        <%= link_to patient_consultation_path(@patient, consultation.id) do %>
           <div class="consultation-card-pink">
             <div class="consultation-card-pink-date">
               <%=l(consultation.start_date, format: "%A %d %b %H:%M").to_s.capitalize%>
@@ -25,7 +25,7 @@
     <% unless @last_3_consultations_rest.nil? %> <%# Lucie : on n'affiche rien si jamais il n'y a pas de dernière consultation %>
 
       <% @last_3_consultations_rest.each do |consultation| %>
-        <%= link_to consultation_path(consultation.id) do %>
+        <%= link_to patient_consultation_path(@patient, consultation.id) do %>
           <div class="consultation-card-pink">
             <div class="consultation-card-pink-date">
               <%=l(consultation.start_date, format: "%A %d %b %H:%M").to_s.capitalize%>
@@ -41,7 +41,7 @@
         <%# Plus button %>
         <div class="plus-button">
           <%#= image_tag "icones/add-btn.svg"%>
-          <%= link_to image_tag("icones/add-btn.svg"), new_consultation_path %>
+          <%= link_to image_tag("icones/add-btn.svg"), new_patient_consultation_path(@patient) %>
         </div>
 
       <% end %>
@@ -50,7 +50,7 @@
   </div>
   <% if @last_3_consultations_rest == nil %>
     <div class="btn link-ajout-consu">
-    <%= link_to "AJOUTER UNE CONSULTATION", new_consultation_path %>
+    <%= link_to "AJOUTER UNE CONSULTATION", new_patient_consultation_path(@patient) %>
     </div>
   <% end %>
 
@@ -64,7 +64,7 @@
     <% unless @last_3_consultations_minus_one.empty? %> <%# on n'affiche rien si jamais le tableau des 3 dernières consultations est vide%>
 
       <% @all_consultations_minus_one.each do |consultation| %>
-        <%= link_to consultation_path(consultation.id) do %>
+        <%= link_to patient_consultation_path(@patient, consultation.id) do %>
           <div class="consultation-card-pink" >
             <div class="consultation-card-pink-date">
               <%=l(consultation.start_date, format: "%A %d %b %H:%M").to_s.capitalize%>
@@ -85,7 +85,7 @@
     <% unless @last_3_consultations_rest.nil? %> <%#  Lucie : on n'affiche rien si jamais il n'y a pas de dernière consultation %>
 
       <% @all_consultations_rest.each do |consultation| %>
-        <%= link_to consultation_path(consultation.id) do %>
+        <%= link_to patient_consultation_path(@patient, consultation.id) do %>
           <div class="consultation-card-pink">
             <div class="consultation-card-pink-date">
               <%=l(consultation.start_date, format: "%A %d %b %H:%M").to_s.capitalize%>

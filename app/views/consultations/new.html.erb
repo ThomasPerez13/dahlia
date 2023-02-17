@@ -1,8 +1,14 @@
 <%# AJOUT CONSULTATION PAGE %>
 <div class="back-black-button">
-  <%= link_to url_for(:back) do %>
-    <%= image_tag "icones/retour.svg" %>
-  <% end %>
+  <% if params[:patient_id].nil?  %>
+    <%= link_to consultations_path do %>
+      <%= image_tag "icones/retour.svg" %>
+    <% end %>
+  <% else  %>
+    <%= link_to patient_path(params[:patient_id]) do %>
+      <%= image_tag "icones/retour.svg" %>
+    <% end %>
+  <% end  %>
 </div>
 
 <div class="general-div">
