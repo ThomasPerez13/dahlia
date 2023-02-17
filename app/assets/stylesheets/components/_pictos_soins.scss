@@ -52,11 +52,11 @@
   background-image: asset-url("soins/pansement-white.svg");
 }
 
-#treatment_category_diabétique + label {
+#treatment_category_diabete + label {
   background-image: asset-url("soins/diabete.svg");
 }
 
-#treatment_category_diabétique:checked + label {
+#treatment_category_diabete:checked + label {
   background-image: asset-url("soins/diabete-white.svg");
 }
 
@@ -68,11 +68,11 @@
   background-image: asset-url("soins/injection-white.svg");
 }
 
-#treatment_category_prélèvement + label {
+#treatment_category_prelevement + label {
   background-image: asset-url("soins/prelevement.svg");
 }
 
-#treatment_category_prélèvement:checked + label {
+#treatment_category_prelevement:checked + label {
   background-image: asset-url("soins/prelevement-white.svg");
 }
 
@@ -84,27 +84,27 @@
   background-image: asset-url("soins/perfusion-white.svg");
 }
 
-#treatment_category_hygiène + label {
+#treatment_category_hygiene + label {
   background-image: asset-url("soins/hygiene.svg");
 }
 
-#treatment_category_hygiène:checked + label {
+#treatment_category_hygiene:checked + label {
   background-image: asset-url("soins/hygiene-white.svg");
 }
 
-#treatment_category_médicament + label {
+#treatment_category_medicament + label {
   background-image: asset-url("soins/medicament.svg");
 }
 
-#treatment_category_médicament:checked + label {
+#treatment_category_medicament:checked + label {
   background-image: asset-url("soins/medicament-white.svg");
 }
 
-#treatment_category_aide_domicile + label {
+#treatment_category_sondage + label {
   background-image: asset-url("soins/aide.svg");
 }
 
-#treatment_category_aide_domicile:checked + label {
+#treatment_category_sondage:checked + label {
   background-image: asset-url("soins/aide-white.svg");
 }
 
