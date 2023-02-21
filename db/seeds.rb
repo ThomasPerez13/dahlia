@@ -113,11 +113,11 @@ cons_thomas_alexandre_today_aft = Consultation.create!(patient: alexandre, user:
 create_recurring_consultations(alexandre, cons_thomas_alexandre_today_aft, "daily")
 puts "loading treatments and notes for Alexandre..."
 
-Treatment.create!(category: "Diabétique", done: true, content: "Mesure de la glycémie", consultation: cons_thomas_alexandre_past1)
+Treatment.create!(category: "DIABETE", done: true, content: "Mesure de la glycémie", consultation: cons_thomas_alexandre_past1)
 
 alexandre.consultations.each do |consultation|
-  Treatment.create!(category: "Diabétique", done: false, content: "Mesure de la glycémie", consultation: consultation)
-  Treatment.create!(category: "Diabétique", done: false, content: "Injection d'insuline", consultation: consultation)
+  Treatment.create!(category: "DIABETE", done: false, content: "Mesure de la glycémie", consultation: consultation)
+  Treatment.create!(category: "DIABETE", done: false, content: "Injection d'insuline", consultation: consultation)
   Note.create!(content: "Demander au médecin référent une ordonnance pour médicaments", favorite: false, creation_consultation: consultation)
 end
 
@@ -135,7 +135,7 @@ create_recurring_consultations(catherine, cons_thomas_catherine_today_aft, "dail
 puts "loading treatments and notes for Catherine..."
 
 catherine.consultations.each do |consultation|
-  Treatment.create!(category: "Hygiène", done: false, content: "Aide à la douche", consultation: consultation)
+  Treatment.create!(category: "HYGIENE", done: false, content: "Aide à la douche", consultation: consultation)
   Note.create!(content: "Patient sensible lors des piqures, rassurer et injecter délicatement", favorite: false, creation_consultation: consultation)
 end
 
@@ -153,9 +153,9 @@ create_recurring_consultations(florent, cons_thomas_florent_today_aft, "daily")
 puts "loading treatments and notes for Florent..."
 
 florent.consultations.each do |consultation|
-  Treatment.create!(category: "Autre", done: false, content: "Sondage urinaire", consultation: consultation)
-  Treatment.create!(category: "Hygiène", done: false, content: "Toilette complète au lit", consultation: consultation)
-  Treatment.create!(category: "Pansement", done: false, content: "Pansement d’escarre", consultation: consultation)
+  Treatment.create!(category: "AUTRE", done: false, content: "Sondage urinaire", consultation: consultation)
+  Treatment.create!(category: "HYGIENE", done: false, content: "Toilette complète au lit", consultation: consultation)
+  Treatment.create!(category: "PANSEMENT", done: false, content: "Pansement d’escarre", consultation: consultation)
   Note.create!(content: "Lui faire penser d'appeler sa petite fille par son prénom et non par celui de sa femme", favorite: false, creation_consultation: consultation)
 end
 
@@ -173,7 +173,7 @@ create_recurring_consultations(jade, cons_thomas_jade_today_aft, "daily")
 puts "loading treatments and notes for Jade..."
 
 jade.consultations.each do |consultation|
-  Treatment.create!(category: "Autre", done: false, content: "Ablation de points", consultation: consultation)
+  Treatment.create!(category: "AUTRE", done: false, content: "Ablation de points", consultation: consultation)
   Note.create!(content: "Rassurer la patiente pendant la suture", favorite: false, creation_consultation: consultation)
 end
 
@@ -187,7 +187,7 @@ create_recurring_consultations(joseph, cons_thomas_joseph_mon_morn, "two weeks")
 puts "loading treatments and notes for joseph..."
 
 joseph.consultations.each do |consultation|
-  Treatment.create!(category: "Injection", done: false, content: "sous cutanée (EPO)", consultation: consultation)
+  Treatment.create!(category: "INJECTION", done: false, content: "sous cutanée (EPO)", consultation: consultation)
   Note.create!(content: "Attention chien méchant, attendre au portail", favorite: false, creation_consultation: consultation)
 end
 
@@ -255,7 +255,7 @@ puts "loading treatments and notes..."
 puts "loading treatments and notes for Simone..."
 
 simone.consultations.each do |consultation|
-  Treatment.create!(category: "Pansement", done: false, content: "Renouveler le pansement", consultation: consultation)
+  Treatment.create!(category: "PANSEMENT", done: false, content: "Renouveler le pansement", consultation: consultation)
   Note.create!(content: "Demander au médecin référent une ordonnance pour médicaments", favorite: false, creation_consultation: consultation)
 end
 
@@ -263,9 +263,9 @@ end
 puts "loading treatments and notes for Zdenek..."
 
 zdenek.consultations.each do |consultation|
-  Treatment.create!(category: "Pansement", done: false, content: "Renouveler le pansement", consultation: consultation)
-  Treatment.create!(category: "Hygiène", done: false, content: "Nettoyer la plaie", consultation: consultation)
-  Treatment.create!(category: "Médicament", done: false, content: "Administrer 2mg de doliprane", consultation: consultation)
+  Treatment.create!(category: "PANSEMENT", done: false, content: "Renouveler le pansement", consultation: consultation)
+  Treatment.create!(category: "HYGIENE", done: false, content: "Nettoyer la plaie", consultation: consultation)
+  Treatment.create!(category: "MEDICAMENT", done: false, content: "Administrer 2mg de doliprane", consultation: consultation)
   Note.create!(content: "Demander au médecin référent une ordonnance pour médicaments", favorite: false, creation_consultation: consultation)
 end
 
@@ -273,8 +273,8 @@ end
 puts "loading treatments and notes for Armand..."
 
 armand.consultations.each do |consultation|
-  Treatment.create!(category: "Perfusion", done: false, content: "Poser la perfusion", consultation: consultation)
-  Treatment.create!(category: "Injection", done: false, content: "Injecter 12 mg d'insuline", consultation: consultation)
+  Treatment.create!(category: "PERFUSION", done: false, content: "Poser la perfusion", consultation: consultation)
+  Treatment.create!(category: "INJECTION", done: false, content: "Injecter 12 mg d'insuline", consultation: consultation)
   Note.create!(content: "Patient sensible lors des piqures, rassurer et injecter délicatement", favorite: false, creation_consultation: consultation)
 end
 
@@ -282,8 +282,8 @@ end
 puts "loading treatments and notes for Bellamy..."
 
 bellamy.consultations.each do |consultation|
-  Treatment.create!(category: "Autre", done: false, content: "Pose alimentation parentéral", consultation: consultation)
-  Treatment.create!(category: "Hygiène", done: false, content: "aide à la douche", consultation: consultation)
+  Treatment.create!(category: "AUTRE", done: false, content: "Pose alimentation parentéral", consultation: consultation)
+  Treatment.create!(category: "HYGIENE", done: false, content: "aide à la douche", consultation: consultation)
   Note.create!(content: "Patient sensible lors des piqures, rassurer et injecter délicatement", favorite: false, creation_consultation: consultation)
 end
 
@@ -291,8 +291,8 @@ end
 puts "loading treatments and notes for Peppin..."
 
 peppin.consultations.each do |consultation|
-  Treatment.create!(category: "Prélèvement", done: false, content: "Prélever 5ml de sang", consultation: consultation)
-  Treatment.create!(category: "Diabétique", done: false, content: "Administrer 10mg de Glucophage", consultation: consultation)
+  Treatment.create!(category: "PRELEVEMENT", done: false, content: "Prélever 5ml de sang", consultation: consultation)
+  Treatment.create!(category: "DIABETE", done: false, content: "Administrer 10mg de Glucophage", consultation: consultation)
   Note.create!(content: "Lui faire penser d'appeler sa petite fille par son prénom et non par celui de sa femme", favorite: false, creation_consultation: consultation)
 end
 
@@ -300,8 +300,8 @@ end
 puts "loading treatments and notes for Aubrey..."
 
 aubrey.consultations.each do |consultation|
-  Treatment.create!(category: "Prélèvement", done: false, content: "Prélever 5ml de sang", consultation: consultation)
-  Treatment.create!(category: "Diabétique", done: false, content: "Administrer 10mg de Glucophage", consultation: consultation)
+  Treatment.create!(category: "PRELEVEMENT", done: false, content: "Prélever 5ml de sang", consultation: consultation)
+  Treatment.create!(category: "DIABETE", done: false, content: "Administrer 10mg de Glucophage", consultation: consultation)
   Note.create!(content: "Lui faire penser d'appeler sa petite fille par son prénom et non par celui de sa femme", favorite: false, creation_consultation: consultation)
 end
 
@@ -309,7 +309,7 @@ end
 puts "loading treatments and notes for Louise..."
 
 louise.consultations.each do |consultation|
-  Treatment.create!(category: "Autre", done: false, content: "Surveillance des constantes", consultation: consultation)
+  Treatment.create!(category: "AUTRE", done: false, content: "Surveillance des constantes", consultation: consultation)
   Note.create!(content: "Attention chien méchant, attendre au portail", favorite: false, creation_consultation: consultation)
 end
 
@@ -317,7 +317,7 @@ end
 puts "loading treatments and notes for Ancelina..."
 
 ancelina.consultations.each do |consultation|
-  Treatment.create!(category: "Prélèvement", done: false, content: "Prélever 5ml de sang", consultation: consultation)
+  Treatment.create!(category: "PRELEVEMENT", done: false, content: "Prélever 5ml de sang", consultation: consultation)
   Note.create!(content: "Attention chien méchant, attendre au portail", favorite: false, creation_consultation: consultation)
 end
 
@@ -325,7 +325,7 @@ end
 puts "loading treatments and notes for Clémentine..."
 
 clementine.consultations.each do |consultation|
-  Treatment.create!(category: "Perfusion", done: false, content: "hydratation sous cutanée", consultation: consultation)
+  Treatment.create!(category: "PERFUSION", done: false, content: "hydratation sous cutanée", consultation: consultation)
   Note.create!(content: "Rassurer la patiente pendant la suture", favorite: false, creation_consultation: consultation)
 end
 
@@ -333,7 +333,7 @@ end
 puts "loading treatments and notes for Ginette..."
 
 ginette.consultations.each do |consultation|
-  Treatment.create!(category: "Prélèvement", done: false, content: "Prélèvement sanguin", consultation: consultation)
+  Treatment.create!(category: "PRELEVEMENT", done: false, content: "Prélèvement sanguin", consultation: consultation)
   Note.create!(content: "Rassurer la patiente pendant la suture", favorite: false, creation_consultation: consultation)
 end
 
