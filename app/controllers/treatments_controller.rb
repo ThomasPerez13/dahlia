@@ -34,6 +34,6 @@ class TreatmentsController < ApplicationController
   private
 
   def params_treatment
-    params.require(:treatment).permit(:content, :category)
+    params.require(:treatment).permit(:content, :category, :recurring)
   end
 end
