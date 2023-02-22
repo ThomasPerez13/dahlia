@@ -26,13 +26,13 @@
           input_html: { class:"input"},
           label_html: {class:"user-label"} %>
 
-        <div class="checkbox-recurrence">
+        <div class="checkbox-recurrence <%= class_names({"d-none": !@recurring}) %>">
           <%= f.input :recurring,
                       as: :boolean,
                       checked_value: true,
                       boolean_style: :inline,
                       include_hidden: false,
-                      label: "Soin régulier ?",
+                      label: "Ajouter ce soin à toutes les consultations suivantes ?",
                       placeholder: " ",
                       wrapper_html: { class:"input-groupe" },
                       input_html: { class:"" },

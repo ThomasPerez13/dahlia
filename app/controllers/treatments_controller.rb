@@ -1,6 +1,8 @@
 class TreatmentsController < ApplicationController
   def new
     @treatment = Treatment.new()
+    @consultation = Consultation.find(params[:consultation_id])
+    @recurring = @consultation.recurring
   end
 
   def create
