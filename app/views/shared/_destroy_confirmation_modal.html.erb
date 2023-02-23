@@ -15,8 +15,22 @@
         <p><%= message_confirmation_récurrence %></p>
       </div>
       <div class="select-confirmation-destroy">
-        <%= link_to "Oui", "#", data: { action:"click->modal-confirmation-to-destroy#displayModal" }, class:"btn" %>
+        <%= link_to "Oui", "#", data: { action:"click->modal-confirmation-to-destroy#displayModalToDestroyGroup"}, class:"btn" %>
       </div>
+    </div>
+  </div>
+</div>
+<div class="modal-container d-none" data-modal-confirmation-to-destroy-target="modalDestroyGroup">
+  <div class="modal-confirmation-destroy">
+    <div class="close-modal" data-action="click->modal-confirmation-to-destroy#displayModalToDestroyGroup">
+      <p>X</p>
+    </div>
+    <div class="message-confirmation-destroy">
+      <p><%= message_confirmation_récurrence %></p>
+    </div>
+    <div class="select-confirmation-destroy">
+      <%= link_to "Oui", "#", class:"btn" %>
+      <%= link_to "Non", "#", data: { action:"click->modal-confirmation-to-destroy#displayModalToDestroyGroup" }, class:"btn" %>
     </div>
   </div>
 </div>
