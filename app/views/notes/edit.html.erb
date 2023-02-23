@@ -29,7 +29,11 @@
     <div class="destroy-element" data-controller="modal-confirmation-to-destroy">
       <p class="btn" data-action="click->modal-confirmation-to-destroy#displayModal">SUPPRIMER LA NOTE</p>
       <%# modal displayed when btn "SUPPRIMER LA NOTE" is clicked %>
-      <%= render "shared/destroy_confirmation_modal", path: note_path(@note), message: "Voulez-vous vraiment supprimer la note?" %>
+      <%= render "shared/destroy_confirmation_modal",
+        path: note_path(@note),
+        message_confirmation: "Voulez-vous vraiment supprimer la note?",
+        recurring: false,
+        message_confirmation_récurrence: "Voulez-vous supprimer les notes régulière?" %>
     </div>
   </div>
 </div>

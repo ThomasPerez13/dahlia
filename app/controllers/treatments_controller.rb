@@ -17,6 +17,7 @@ class TreatmentsController < ApplicationController
 
   def edit
     @treatment = Treatment.find(params[:id])
+    @recurring = @treatment.recurring
   end
 
   def update
@@ -24,7 +25,6 @@ class TreatmentsController < ApplicationController
     params[:treatment][:done] == "1" ? @treatment.done = true : @treatment.done = false
     @treatment.update(params_treatment)
     redirect_to consultation_path(@treatment.consultation)
-
   end
 
   def destroy

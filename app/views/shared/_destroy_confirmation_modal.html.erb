@@ -4,11 +4,19 @@
       <p>X</p>
     </div>
     <div class="message-confirmation-destroy">
-      <p><%= message %></p>
+      <p><%= message_confirmation %></p>
     </div>
     <div class="select-confirmation-destroy">
       <%= link_to "Oui", path, data: {turbo_method: :delete}, class:"btn" %>
       <%= link_to "Non", "#", data: { action:"click->modal-confirmation-to-destroy#displayModal" }, class:"btn" %>
+    </div>
+    <div class="items-group <%= class_names({"d-none": !recurring}) %>">
+      <div class="message-confirmation-destroy">
+        <p><%= message_confirmation_récurrence %></p>
+      </div>
+      <div class="select-confirmation-destroy">
+        <%= link_to "Oui", "#", data: { action:"click->modal-confirmation-to-destroy#displayModal" }, class:"btn" %>
+      </div>
     </div>
   </div>
 </div>
