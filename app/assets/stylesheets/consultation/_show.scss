@@ -4,6 +4,25 @@
   position: absolute;
   justify-content: space-between;
 
+  .patient-show-header-icons {
+    height: 20vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .top-icons {
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .bottom-icons {
+    width: 100vw;
+    display: flex;
+    justify-content: flex-end;
+  }
+
   .back-arrow img {
     margin-top: 13px;
     margin-left: 10px;
@@ -16,6 +35,13 @@
     margin-right: 10px;
     width: 22px;
     margin-bottom: 4vh;
+  }
+
+  .destroy-btn {
+    margin-bottom: 12px;
+    margin-right: 5px;
+    width: 22px;
+    color: white;
   }
 }
 

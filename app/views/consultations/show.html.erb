@@ -1,24 +1,34 @@
 
 <div class="show-consultation">
-<div class="patient-show-header">
-  <div class="back-arrow">
-    <% if params[:patient_id].nil?  %>
-      <%= link_to consultations_path do %>
-        <%= image_tag "icones/retour.svg" %>
-      <% end %>
-    <% else  %>
-      <%= link_to patient_path(params[:patient_id]) do %>
-        <%= image_tag "icones/retour.svg" %>
-      <% end %>
-    <% end  %>
-  </div>
-  <%= link_to patient_path(@consultation.patient) do %>
-    <div class="information-btn">
-      <%= image_tag "icones/informations-white-btn.svg" %>
+  <div class="patient-show-header">
+    <div class="patient-show-header-icons">
+      <div class="top-icons">
+        <div class="back-arrow">
+          <% if params[:patient_id].nil?  %>
+            <%= link_to consultations_path do %>
+              <%= image_tag "icones/retour.svg" %>
+            <% end %>
+          <% else  %>
+            <%= link_to patient_path(params[:patient_id]) do %>
+              <%= image_tag "icones/retour.svg" %>
+            <% end %>
+          <% end  %>
+        </div>
+        <div>
+          <%= link_to patient_path(@consultation.patient) do %>
+            <div class="information-btn">
+              <%= image_tag "icones/informations-white-btn.svg" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="bottom-icons">
+        <div class="destroy-btn">
+          <i class="fa-regular fa-trash-can"></i>
+        </div>
+      </div>
     </div>
-  <% end %>
-
-</div>
+  </div>
   <div class="consultation-card">
 
     <div class="card-info">
