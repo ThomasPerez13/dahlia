@@ -1,5 +1,7 @@
 <div class="back-black-button">
-  <%= image_tag "icones/retour.svg" %>
+  <%= link_to patient_path(@patient) do %>
+    <%= image_tag "icones/retour.svg" %>
+  <% end %>
 </div>
 <div class="container_modify_patient">
   <h3>MODIFIER LE PATIENT</h3>

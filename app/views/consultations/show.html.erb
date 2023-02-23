@@ -2,7 +2,15 @@
 <div class="show-consultation">
 <div class="patient-show-header">
   <div class="back-arrow">
-      <%= image_tag "icones/white-retour.svg" %>
+    <% if params[:patient_id].nil?  %>
+      <%= link_to consultations_path do %>
+        <%= image_tag "icones/retour.svg" %>
+      <% end %>
+    <% else  %>
+      <%= link_to patient_path(params[:patient_id]) do %>
+        <%= image_tag "icones/retour.svg" %>
+      <% end %>
+    <% end  %>
   </div>
   <%= link_to patient_path(@consultation.patient) do %>
     <div class="information-btn">
