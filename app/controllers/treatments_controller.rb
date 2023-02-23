@@ -1,7 +1,8 @@
 class TreatmentsController < ApplicationController
   def new
     @treatment = Treatment.new()
-    @consulation = Consultation.find(params[:consultation_id])
+    @consultation = Consultation.find(params[:consultation_id])
+    @recurring = @consultation.recurring
   end
 
   def create
@@ -35,6 +36,6 @@ class TreatmentsController < ApplicationController
   private
 
   def params_treatment
-    params.require(:treatment).permit(:content, :category)
+    params.require(:treatment).permit(:content, :category, :recurring)
   end
 end
