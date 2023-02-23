@@ -5,7 +5,7 @@ export default class extends Controller {
   static targets = ["modal"]
 
   connect() {
-
+    console.log("well connected to modal controller");
   }
 
   displayModal(event) {
