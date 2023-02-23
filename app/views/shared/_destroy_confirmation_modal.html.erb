@@ -32,7 +32,7 @@
       <p><%= message_confirmation_récurrence %></p>
     </div>
     <div class="select-confirmation-destroy">
-      <%= link_to "Oui", "#", class:"btn" %>
+      <%= link_to "Oui", group_path, data: {turbo_method: :delete}, class:"btn" %>
       <%= link_to "Non", "#", data: { action:"click->modal-confirmation-to-destroy#displayModalToDestroyGroup" }, class:"btn" %>
     </div>
   </div>

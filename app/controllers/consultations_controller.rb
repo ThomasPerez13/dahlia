@@ -7,7 +7,6 @@ class ConsultationsController < ApplicationController
     @consultation = Consultation.find(params[:id])
     @patient = @consultation.patient
     @recurring = @consultation.recurring
-    # @frequency_message = "Consultations #{@consultation.consultation_group.frequency} jusqu'au #{@consultation.consultation_group.end_date}"
     @frequency_message = @consultation.consultation_group.description
     members_of_all_my_team
     @consultations = @patient.consultations
