@@ -1,40 +1,61 @@
+
 <div class="show-consultation">
+<!--
   <div class="patient-show-header">
-    <div class="patient-show-header-icons">
-      <div class="top-icons">
-        <div class="back-arrow">
-          <% if params[:patient_id].nil?  %>
-            <%= link_to consultations_path do %>
-              <%= image_tag "icones/retour.svg" %>
-            <% end %>
-          <% else  %>
-            <%= link_to patient_path(params[:patient_id]) do %>
-              <%= image_tag "icones/retour.svg" %>
-            <% end %>
-          <% end  %>
+    <div class="back-arrow">
+      <% if params[:patient_id].nil?  %>
+        <%= link_to consultations_path do %>
+          <%= image_tag "icones/retour.svg" %>
+        <% end %>
+      <% else  %>
+        <%= link_to patient_path(params[:patient_id]) do %>
+          <%= image_tag "icones/retour.svg" %>
+        <% end %>
+      <% end  %>
+    </div>
+    <div class="patient-information-icon">
+      <%= link_to patient_path(@consultation.patient) do %>
+        <div class="information-btn">
+          <%= image_tag "icones/informations-white-btn.svg" %>
         </div>
-        <div>
-          <%= link_to patient_path(@consultation.patient) do %>
-            <div class="information-btn">
-              <%= image_tag "icones/informations-white-btn.svg" %>
-            </div>
-          <% end %>
-        </div>
+      <% end %>
+    </div>
+    <div class="destroy-consultation" data-controller="modal-confirmation-to-destroy">
+      <div class="destroy-btn" data-action="click->modal-confirmation-to-destroy#displayModal">
+        <i class="fa-regular fa-trash-can"></i>
       </div>
-      <div data-controller="modal-confirmation-to-destroy">
-        <div class="bottom-icons">
-          <div class="destroy-consultation" data-action="click->modal-confirmation-to-destroy#displayModal">
-            <div class="destroy-btn">
-              <i class="fa-regular fa-trash-can"></i>
-            </div>
-          </div>
-        </div>
-        <%# modal displayed when btn "destroy-btn" is clicked %>
-        <%= render "shared/destroy_confirmation_modal", path: consultation_path(@consultation), message: "Voulez-vous supprimer la consultation?" %>
-      </div>
+      <%# modal displayed when btn "destroy-btn" is clicked %>
+      <%= render "shared/destroy_confirmation_modal", path: consultation_path(@consultation), message: "Voulez-vous supprimer la consultation?" %>
     </div>
   </div>
+  -->
+
   <div class="consultation-card">
+    <div class="back-arrow">
+      <% if params[:patient_id].nil?  %>
+        <%= link_to consultations_path do %>
+          <%= image_tag "icones/retour.svg" %>
+        <% end %>
+      <% else  %>
+        <%= link_to patient_path(params[:patient_id]) do %>
+          <%= image_tag "icones/retour.svg" %>
+        <% end %>
+      <% end  %>
+    </div>
+    <div class="patient-information-icon">
+      <%= link_to patient_path(@consultation.patient) do %>
+        <div class="information-btn">
+          <%= image_tag "icones/informations-white-btn.svg" %>
+        </div>
+      <% end %>
+    </div>
+    <div class="destroy-consultation" data-controller="modal-confirmation-to-destroy">
+      <div class="destroy-btn" data-action="click->modal-confirmation-to-destroy#displayModal">
+        <i class="fa-regular fa-trash-can"></i>
+      </div>
+      <%# modal displayed when btn "destroy-btn" is clicked %>
+      <%= render "shared/destroy_confirmation_modal", path: consultation_path(@consultation), message: "Voulez-vous supprimer la consultation?" %>
+    </div>
 
     <div class="card-info">
       <div class="card-patient-name-consultation">
