@@ -58,8 +58,9 @@ class ConsultationsController < ApplicationController
 
   def destroy
     @consultation = Consultation.find(params[:id])
+    @patient = @consultation.patient
     @consultation.destroy
-    redirect_to consultations_path, status: :see_other, info: "La consultation a bien été supprimée"
+    redirect_to patient_path(@patient), status: :see_other, info: "La consultation a bien été supprimée"
   end
 
   private
