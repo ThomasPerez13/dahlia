@@ -6,7 +6,7 @@ export default class extends Controller {
   static targets = ["starIcon"]
 
   connect() {
-    console.log(this.starIconTarget)
+    
   }
 
   changeStarClass() {

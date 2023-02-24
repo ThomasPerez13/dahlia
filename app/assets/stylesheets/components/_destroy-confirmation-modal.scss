@@ -6,19 +6,21 @@
   background: white;
 }
 
-.close-modal {
+.close-modal p {
   font-size: 14px;
   font-weight: bold;
-  text-align: right;
+  text-align: right !important;
   padding: 4px 8px 0px 0px;
-  margin: 0px;
+  margin: 0px !important;
+  color: black !important;
 }
 
 .message-confirmation-destroy p {
-  text-align: center;
+  text-align: center !important;
   font-size: 14px;
   font-weight: bold;
   margin: 0px;
+  color: black !important;
 }
 
 .select-confirmation-destroy {
