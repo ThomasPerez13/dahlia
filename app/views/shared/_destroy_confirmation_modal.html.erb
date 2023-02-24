@@ -4,11 +4,36 @@
       <p>X</p>
     </div>
     <div class="message-confirmation-destroy">
-      <p><%= message %></p>
+      <p><%= message_confirmation %></p>
     </div>
     <div class="select-confirmation-destroy">
       <%= link_to "Oui", path, data: {turbo_method: :delete}, class:"btn" %>
       <%= link_to "Non", "#", data: { action:"click->modal-confirmation-to-destroy#displayModal" }, class:"btn" %>
+    </div>
+    <div class="items-group <%= class_names({"d-none": !recurring}) %>">
+      <div class="message-confirmation-destroy">
+        <p><%= message_confirmation_récurrence %></p>
+      </div>
+      <div class="select-confirmation-destroy">
+        <%= link_to "Oui", "#", data: { action:"click->modal-confirmation-to-destroy#displayModalToDestroyGroup"}, class:"btn" %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-container d-none" data-modal-confirmation-to-destroy-target="modalDestroyGroup">
+  <div class="modal-confirmation-destroy">
+    <div class="close-modal" data-action="click->modal-confirmation-to-destroy#displayModalToDestroyGroup">
+      <p>X</p>
+    </div>
+    <div class="details-frequency">
+      <p><%= message_frequency %></p>
+    </div>
+    <div class="message-confirmation-destroy">
+      <p><%= message_confirmation_récurrence %></p>
+    </div>
+    <div class="select-confirmation-destroy">
+      <%= link_to "Oui", group_path, data: {turbo_method: :delete}, class:"btn" %>
+      <%= link_to "Non", "#", data: { action:"click->modal-confirmation-to-destroy#displayModalToDestroyGroup" }, class:"btn" %>
     </div>
   </div>
 </div>

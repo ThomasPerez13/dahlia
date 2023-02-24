@@ -6,6 +6,8 @@ class ConsultationsController < ApplicationController
   def show
     @consultation = Consultation.find(params[:id])
     @patient = @consultation.patient
+    @recurring = @consultation.recurring
+    @frequency_message = @consultation.consultation_group.description
     members_of_all_my_team
     @consultations = @patient.consultations
     @latest_consultation = @consultations.where(start_date: ...@consultation.start_date).order(:start_date).last
