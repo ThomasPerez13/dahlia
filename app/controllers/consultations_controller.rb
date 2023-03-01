@@ -7,7 +7,8 @@ class ConsultationsController < ApplicationController
     @consultation = Consultation.find(params[:id])
     @patient = @consultation.patient
     @recurring = @consultation.recurring
-    @frequency_message = @consultation.consultation_group.description
+    @group_path = @consultation.consultation_group ? consultation_group_path(@consultation.consultation_group) : "#"
+    @frequency_message = @consultation.consultation_group.description if @consultation.consultation_group
     members_of_all_my_team
     @consultations = @patient.consultations
     @latest_consultation = @consultations.where(start_date: ...@consultation.start_date).order(:start_date).last
