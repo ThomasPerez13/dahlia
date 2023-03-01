@@ -19,7 +19,7 @@ class Treatment < ApplicationRecord
       consultations = consultation_group.consultations.select { |consultation| consultation.start_date > self.consultation.start_date}
 
       # create a new treatment_grouped
-      treatment_group = TreatmentGroup.create!
+      treatment_group = TreatmentGroup.create!(frequency: consultation_group.frequency, start_date: self.consultation.start_date, end_date: consultation_group.end_date)
 
       # update self to include it in a new treatment
       self.update(treatment_group: treatment_group)
