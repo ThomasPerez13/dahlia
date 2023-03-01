@@ -18,6 +18,8 @@ class TreatmentsController < ApplicationController
   def edit
     @treatment = Treatment.find(params[:id])
     @recurring = @treatment.recurring
+    @frequency_message = @treatment.treatment_group.description if @treatment.treatment_group
+    @message_comment = @treatment.content if @treatment.content
   end
 
   def update
