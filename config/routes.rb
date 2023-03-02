@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :treatments, only: [:edit, :update, :destroy]
 
   resources :consultation_groups, only: [:destroy]
+  resources :treatment_groups, only: [:destroy]
 
   resources :patients, only: [:index, :show, :edit, :create, :new, :update] do
     resources :consultations, only: [:index, :show, :new]
