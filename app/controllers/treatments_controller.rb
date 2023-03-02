@@ -18,6 +18,9 @@ class TreatmentsController < ApplicationController
   def edit
     @treatment = Treatment.find(params[:id])
     @recurring = @treatment.recurring
+    @group_path = @treatment.treatment_group ? treatment_group_path(@treatment.treatment_group) : "#"
+    @frequency_message = @treatment.treatment_group.description if @treatment.treatment_group
+    @message_comment = @treatment.content if @treatment.content
   end
 
   def update
