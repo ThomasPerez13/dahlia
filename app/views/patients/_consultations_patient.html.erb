@@ -62,11 +62,11 @@
     </div>
   <% end %>
 
-  <%# <br>
+  <br>
   <%# Below: "Afficher plus" link %>
-  <%# <div class="bottom-link"> %>
-    <%# <a  data-see-all-target="button" data-action="click->see-all#revealContent">Afficher plus</a> %>
-  <%# </div> %>
+  <div class="bottom-link">
+    <a  data-see-all-target="button" data-action="click->see-all#revealContent">Afficher plus</a>
+  </div>
 
   <div class="d-none" data-see-all-target="allconsultations">
     <% unless @last_3_consultations_minus_one.empty? %> <%# on n'affiche rien si jamais le tableau des 3 dernières consultations est vide%>
