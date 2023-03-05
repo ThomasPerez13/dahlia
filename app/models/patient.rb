@@ -1,6 +1,6 @@
 class Patient < ApplicationRecord
   belongs_to :referring_user, class_name: "User"
-  has_many :consultations
+  has_many :consultations, dependent: :destroy
 
   BLOOD_TYPE = %W[O- O+ B- B+ A- A+ AB- AB+]
 

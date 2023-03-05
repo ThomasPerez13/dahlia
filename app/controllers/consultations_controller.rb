@@ -94,6 +94,13 @@ class ConsultationsController < ApplicationController
     @users_of_team = users_of_team.uniq
   end
 
+  def destroy
+    raise
+    @consultation = Consultation.find(params[:id])
+    @consultation.destroy
+    redirect_to consultations_path
+  end
+
   def consultation_params
     params.require(:consultation).permit(:start_date, :patient_id, :user_id, :recurring, consultation_groups_attributes: [:end_date, :frequency])
   end

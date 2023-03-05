@@ -3,7 +3,9 @@
 
     <div class="back-arrow">
       <a href="/patients" class="">
-        <%= image_tag "icones/retour.svg" %>
+        <%= link_to patients_path do %>
+          <%= image_tag "icones/retour.svg" %>
+         <% end %>
       </a>
     </div>
 

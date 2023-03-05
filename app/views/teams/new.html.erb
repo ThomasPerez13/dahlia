@@ -1,4 +1,9 @@
-<div class="container-add-team w-100 px-3">
+<div class="return-bouton-treatments">
+   <%= link_to url_for(:back) do %>
+    <%= image_tag "icones/retour.svg" %>
+   <% end %>
+ </div>
+ <div class="container-add-team w-100 px-3">
   <h2 class="text-center">AJOUTER UNE TEAM</h2>
   <div class="w-75 mt-4 h-25">
     <%= simple_form_for(@team) do |f| %>

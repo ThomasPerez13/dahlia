@@ -1,4 +1,9 @@
-<div class="container-edit-team w-100 px-3">
+<div class="return-bouton-treatments">
+   <%= link_to url_for(:back) do %>
+    <%= image_tag "icones/retour.svg" %>
+   <% end %>
+ </div>
+ <div class="container-edit-team w-100 px-3">
   <h2>MODIFIER UN GROUPE</h2>
   <%= simple_form_for(@team) do |f| %>
     <%= f.input :name, label: "Nom du groupe :", placeholder: " "%>
